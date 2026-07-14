@@ -1,22 +1,20 @@
 # -*- coding: utf-8 -*-
 """
-File 1: Chạy Full Pipeline (main.py) - Tự động xóa data cũ và làm mới hoàn toàn
-Chạy script này để thực hiện toàn bộ quy trình từ A đến Z:
-    python main.py
-(hoặc: py main.py)
+File: main.py
+Chạy full pipeline quy trình xây dựng máy tìm kiếm DevSeek từ A đến Z:
+    py main.py
 
-Quy trình thực thi mỗi lần chạy:
-0. XÓA SẠCH toàn bộ dữ liệu cũ (raw, processed index, metadata, eval results)
-1. Thu thập & tổng hợp bộ dữ liệu IT mới từ đầu (520+ bài viết hướng dẫn tiếng Việt)
-2. Tiền xử lý tách từ ghép tiếng Việt (underthesea) & xây dựng Inverted Index mới
-3. Đồng bộ truy vấn Benchmark & Chạy kiểm thử tự động xác minh độ chính xác P@10 và MAP
+Quy trình thực thi:
+0. Xóa sạch toàn bộ dữ liệu cũ (raw & processed index, metadata, evaluation)
+1. Thu thập & tổng hợp bộ dữ liệu tài liệu lập trình IT mới từ đầu (520+ bài viết)
+2. Tiền xử lý tách từ ghép tiếng Việt (underthesea) & Xây dựng Inverted Index (tqdm)
+3. Đồng bộ truy vấn Benchmark & Chạy kiểm thử tự động đo lường P@10, MAP (tqdm)
 """
 
 import os
 import sys
 import io
 import time
-import shutil
 
 # Set encoding UTF-8 cho console Windows
 if sys.stdout.encoding != 'utf-8':
@@ -34,13 +32,12 @@ from evaluation.evaluate import run_evaluation
 from evaluation.generate_benchmark import generate_benchmark
 
 def clean_old_data():
-    print("\n[BƯỚC 0/3] Dọn dẹp & Xóa sạch dữ liệu cũ (Reset hệ thống từ đầu)...")
+    print("\n[BUOC 0/3] Don dep & Xoa sach du lieu cu (Reset he thong tu dau)...")
     raw_dir = os.path.join(PROJECT_ROOT, "data", "raw")
     processed_dir = os.path.join(PROJECT_ROOT, "data", "processed")
     eval_metrics = os.path.join(PROJECT_ROOT, "evaluation", "eval_metrics.json")
     
     deleted_count = 0
-    # Xóa file trong data/raw
     if os.path.exists(raw_dir):
         for f in os.listdir(raw_dir):
             file_path = os.path.join(raw_dir, f)
@@ -51,7 +48,6 @@ def clean_old_data():
                 except Exception:
                     pass
 
-    # Xóa file trong data/processed (trừ stopwords.txt để giữ từ dừng)
     if os.path.exists(processed_dir):
         for f in os.listdir(processed_dir):
             if f == "stopwords.txt":
@@ -64,7 +60,6 @@ def clean_old_data():
                 except Exception:
                     pass
 
-    # Xóa file báo cáo eval cũ
     if os.path.exists(eval_metrics):
         try:
             os.remove(eval_metrics)
@@ -72,7 +67,7 @@ def clean_old_data():
         except Exception:
             pass
 
-    print(f"-> Đã xóa sạch {deleted_count} file dữ liệu cũ (articles.json, index.json, doc_store.json...). Sẵn sàng xây dựng mới!")
+    print(f"-> Da xoa sach {deleted_count} file du lieu cu (articles.json, index.json, doc_store.json...). San sang xay dung moi!")
 
 def main():
     print("=" * 80)
@@ -80,33 +75,33 @@ def main():
     print("=" * 80)
     start_total_time = time.time()
 
-    # BƯỚC 0: Xóa toàn bộ dữ liệu cũ
+    # BUOC 0: Xoa toan bo du lieu cu
     clean_old_data()
 
-    # BƯỚC 1: Thu thập / Tổng hợp Cơ Sở Dữ Liệu (Quy mô 520+ bài viết)
-    print("\n[BƯỚC 1/3] Thu thập & Xây dựng Cơ sở dữ liệu tài liệu lập trình IT từ đầu...")
+    # BUOC 1: Thu thap / Tong hop Co So Du Lieu (Quy mo 520+ bai viet)
+    print("\n[BUOC 1/3] Thu thap & Xay dung Co so du lieu tai lieu lap trinh IT tu dau...")
     crawler = ITArticleCrawler()
     articles = crawler.run(mode="seed")
-    print(f"-> Hoàn tất BƯỚC 1: Đã chuẩn bị {len(articles)} bài viết mới tại data/raw/articles.json")
+    print(f"-> Hoan tat BUOC 1: Da chuan bi {len(articles)} bai viet moi tai data/raw/articles.json")
 
-    # BƯỚC 2: Tiền xử lý văn bản tiếng Việt & Xây dựng Chỉ mục ngược
-    print("\n[BƯỚC 2/3] Xử lý NLP tách từ tiếng Việt & Xây dựng Inverted Index...")
+    # BUOC 2: Tien xu ly van ban tieng Viet & Xay dung Chi muc nguoc (co tqdm)
+    print("\n[BUOC 2/3] Xu ly NLP tach tu tieng Viet & Xay dung Inverted Index...")
     indexer = InvertedIndexer(raw_path=crawler.output_path)
     indexer.build_index()
-    print(f"-> Hoàn tất BƯỚC 2: Chỉ mục ngược (index.json & doc_store.json) đã sẵn sàng!")
+    print("-> Hoan tat BUOC 2: Chi muc nguoc (index.json & doc_store.json) da san sang!")
 
-    # BƯỚC 3: Đồng bộ truy vấn mẫu & Kiểm thử tự động chuẩn độ chính xác của hệ thống
-    print("\n[BƯỚC 3/3] Đồng bộ bộ truy vấn mẫu & Chạy kiểm thử tự động (Benchmark)...")
+    # BUOC 3: Dong bo truy van mau & Kiem thu tu dong (co tqdm)
+    print("\n[BUOC 3/3] Dong bo bo truy van mau & Chay kiem thu tu dong (Benchmark)...")
     try:
         generate_benchmark()
         run_evaluation()
     except Exception as e:
-        print(f"[Cảnh báo] Kiểm thử đánh giá gặp lỗi nhỏ: {e}")
+        print(f"[Canh bao] Kiem thu danh gia gap loi: {e}")
 
     total_elapsed = round(time.time() - start_total_time, 2)
     print("\n" + "=" * 80)
-    print(f"🎉 HOÀN TẤT CHẠY FULL PIPELINE VÀ XÂY DỰNG MỚI TRONG {total_elapsed} GIÂY!")
-    print(f"👉 Bây giờ bạn có thể mở Web App bằng cách gõ lệnh: py run_app.py")
+    print(f"HOAN TAT CHAY FULL PIPELINE VA XAY DUNG MOI TRONG {total_elapsed} GIAY!")
+    print("Bay gio ban co the mo Web App bang cach go lenh: py run_app.py")
     print("=" * 80)
 
 if __name__ == "__main__":

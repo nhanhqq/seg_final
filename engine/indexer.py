@@ -27,9 +27,10 @@ if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
 
 from engine.preprocessor import TextPreprocessor
+from tqdm import tqdm
 
-RAW_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "raw", "articles.json")
-PROCESSED_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "processed")
+RAW_PATH = os.path.join(PROJECT_ROOT, "data", "raw", "articles.json")
+PROCESSED_DIR = os.path.join(PROJECT_ROOT, "data", "processed")
 INDEX_PATH = os.path.join(PROCESSED_DIR, "index.json")
 DOC_STORE_PATH = os.path.join(PROCESSED_DIR, "doc_store.json")
 META_PATH = os.path.join(PROCESSED_DIR, "index_metadata.json")
@@ -55,11 +56,9 @@ class InvertedIndexer:
             articles = json.load(f)
 
         self.doc_count = len(articles)
-        print(f"[Indexer] Bắt đầu xây dựng chỉ mục cho {self.doc_count} bài viết IT...")
+        print(f"[Indexer] Bắt đầu xử lý NLP và tách từ tiếng Việt cho {self.doc_count} bài viết...")
 
-        for i, doc in enumerate(articles, 1):
-            if i % 50 == 0 or i == self.doc_count:
-                print(f"  + [Indexer] Đang xử lý NLP và tách từ: {i}/{self.doc_count} bài viết ({round(i/self.doc_count*100, 1)}%)...")
+        for doc in tqdm(articles, desc="[Indexer] NLP & Lập chỉ mục", unit="bài", ncols=88):
             doc_id = doc["doc_id"]
             title = doc.get("title", "")
             tags = doc.get("tags", [])

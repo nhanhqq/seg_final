@@ -25,10 +25,9 @@ from web.app import app
 def main():
     print("=" * 80)
     print("DEVSEEK VERTICAL SEARCH ENGINE - KHỞI CHẠY GIAO DIỆN WEB")
-    print("=" * 80)
-    print("🚀 Máy chủ đang khởi động tại: http://localhost:5000")
-    print("👉 Mở trình duyệt web và truy cập địa chỉ trên để trải nghiệm tìm kiếm!")
-    print("👉 Nhấn Ctrl + C để dừng máy chủ.")
+    print("[Web Server] May chu dang khoi dong tai: http://localhost:5000")
+    print("[Instruction] Mo trinh duyet web va truy cap dia chi tren de tra cuu!")
+    print("[Note] Nhan Ctrl + C de dung may chu.")
     print("=" * 80)
     
     # Khởi chạy Flask Web Server

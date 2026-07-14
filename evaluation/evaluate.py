@@ -22,6 +22,7 @@ if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
 
 from engine.ranker import TFIDFRanker
+from tqdm import tqdm
 
 BENCHMARK_PATH = os.path.join(PROJECT_ROOT, "evaluation", "benchmark_queries.json")
 OUTPUT_METRICS_PATH = os.path.join(PROJECT_ROOT, "evaluation", "eval_metrics.json")
@@ -68,10 +69,7 @@ def run_evaluation():
     total_ap = 0.0
     total_time = 0.0
 
-    print(f"{'ID':<6} | {'Truy Vấn':<42} | {'P@10':<8} | {'AP':<8} | {'Thời gian (ms)':<14}")
-    print("-" * 86)
-
-    for item in benchmark:
+    for item in tqdm(benchmark, desc="[Evaluation] Đánh giá truy vấn", unit="câu", ncols=88):
         qid = item["query_id"]
         query = item["query"]
         gt_set = set(item["ground_truth"])
@@ -100,9 +98,12 @@ def run_evaluation():
             "time_taken_ms": elapsed
         })
 
-        # Display row (truncate query if too long)
-        q_display = (query[:39] + "...") if len(query) > 42 else query
-        print(f"{qid:<6} | {q_display:<42} | {p_at_10:<8.4f} | {ap:<8.4f} | {elapsed:<14.2f}")
+    print("\n" + "="*86)
+    print(f"{'ID':<6} | {'Truy Vấn':<42} | {'P@10':<8} | {'AP':<8} | {'Thời gian (ms)':<14}")
+    print("-" * 86)
+    for d in results_detail:
+        q_display = (d["query"][:39] + "...") if len(d["query"]) > 42 else d["query"]
+        print(f"{d['query_id']:<6} | {q_display:<42} | {d['precision_at_10']:<8.4f} | {d['average_precision']:<8.4f} | {d['time_taken_ms']:<14.2f}")
 
     num_queries = len(benchmark)
     mean_p10 = round(total_p10 / num_queries, 4)
