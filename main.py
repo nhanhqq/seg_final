@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
 """
-File 1: Tự động cào/xây dựng Cơ Sở Dữ Liệu & Lập Chỉ Mục Ngược (build_db.py)
-Chạy script này để:
+File 1: Chạy Full Pipeline (main.py)
+Chạy script này để thực hiện toàn bộ quy trình xây dựng máy tìm kiếm từ A đến Z:
+    python main.py
+(hoặc: py main.py)
+
+Quy trình tự động thực thi:
 1. Thu thập & tổng hợp bộ dữ liệu IT quy mô lớn (520+ bài viết, hướng dẫn lập trình tiếng Việt)
 2. Tiền xử lý tách từ ghép tiếng Việt (underthesea) & xây dựng Inverted Index (index.json, doc_store.json)
-3. Chạy kiểm thử tự động xác minh độ chính xác Precision@10 & MAP của hệ thống
+3. Đồng bộ tập truy vấn Benchmark & Chạy kiểm thử tự động xác minh độ chính xác P@10 và MAP
 """
 
 import os
@@ -25,10 +29,11 @@ if PROJECT_ROOT not in sys.path:
 from crawler.it_crawler import ITArticleCrawler
 from engine.indexer import InvertedIndexer
 from evaluation.evaluate import run_evaluation
+from evaluation.generate_benchmark import generate_benchmark
 
 def main():
     print("=" * 80)
-    print("DEVSEEK VERTICAL SEARCH ENGINE - HỆ THỐNG TỰ ĐỘNG XÂY DỰNG CSDL & CHỈ MỤC")
+    print("DEVSEEK VERTICAL SEARCH ENGINE - FULL PIPELINE (CRAWL -> INDEX -> EVALUATE)")
     print("=" * 80)
     start_total_time = time.time()
 
@@ -44,10 +49,9 @@ def main():
     indexer.build_index()
     print(f"-> Hoàn tất BƯỚC 2: Chỉ mục ngược (index.json & doc_store.json) đã sẵn sàng!")
 
-    # BƯỚC 3: Kiểm thử tự động chuẩn độ chính xác của hệ thống
-    print("\n[BƯỚC 3/3] Đồng bộ bộ truy vấn mẫu & Chạy kiểm thử tự động...")
+    # BƯỚC 3: Đồng bộ truy vấn mẫu & Kiểm thử tự động chuẩn độ chính xác của hệ thống
+    print("\n[BƯỚC 3/3] Đồng bộ bộ truy vấn mẫu & Chạy kiểm thử tự động (Benchmark)...")
     try:
-        from evaluation.generate_benchmark import generate_benchmark
         generate_benchmark()
         run_evaluation()
     except Exception as e:
@@ -55,8 +59,8 @@ def main():
 
     total_elapsed = round(time.time() - start_total_time, 2)
     print("\n" + "=" * 80)
-    print(f"🎉 HOÀN TẤT XÂY DỰNG TOÀN BỘ CSDL & HỆ THỐNG CHỈ MỤC TRONG {total_elapsed} GIÂY!")
-    print(f"👉 Bây giờ bạn có thể mở Web App bằng cách chạy file: python run_app.py")
+    print(f"🎉 HOÀN TẤT CHẠY FULL PIPELINE TRONG {total_elapsed} GIÂY!")
+    print(f"👉 Bây giờ bạn có thể mở Web App bằng cách gõ lệnh: py run_app.py")
     print("=" * 80)
 
 if __name__ == "__main__":
