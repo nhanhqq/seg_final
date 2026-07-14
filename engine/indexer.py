@@ -57,7 +57,9 @@ class InvertedIndexer:
         self.doc_count = len(articles)
         print(f"[Indexer] Bắt đầu xây dựng chỉ mục cho {self.doc_count} bài viết IT...")
 
-        for doc in articles:
+        for i, doc in enumerate(articles, 1):
+            if i % 50 == 0 or i == self.doc_count:
+                print(f"  + [Indexer] Đang xử lý NLP và tách từ: {i}/{self.doc_count} bài viết ({round(i/self.doc_count*100, 1)}%)...")
             doc_id = doc["doc_id"]
             title = doc.get("title", "")
             tags = doc.get("tags", [])
