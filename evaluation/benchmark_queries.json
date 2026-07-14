@@ -1,0 +1,102 @@
+[
+  {
+    "query_id": "q01",
+    "query": "học python cơ bản cho người mới bắt đầu",
+    "ground_truth": ["doc_001", "doc_002", "doc_011", "doc_012", "doc_013", "doc_027", "doc_043"]
+  },
+  {
+    "query_id": "q02",
+    "query": "thuật toán sắp xếp nhanh quicksort bằng c++ và python",
+    "ground_truth": ["doc_003", "doc_017", "doc_018", "doc_033", "doc_049", "doc_065", "doc_081"]
+  },
+  {
+    "query_id": "q03",
+    "query": "khái niệm lập trình hướng đối tượng oop và các tính chất",
+    "ground_truth": ["doc_004", "doc_019", "doc_035", "doc_051", "doc_067", "doc_083", "doc_099"]
+  },
+  {
+    "query_id": "q04",
+    "query": "hiểu rõ về async await trong javascript và promise",
+    "ground_truth": ["doc_005", "doc_014", "doc_015", "doc_016", "doc_030", "doc_046", "doc_062"]
+  },
+  {
+    "query_id": "q05",
+    "query": "hướng dẫn sử dụng git branch và git merge khi làm việc nhóm",
+    "ground_truth": ["doc_006", "doc_023", "doc_024", "doc_039", "doc_055", "doc_071", "doc_087"]
+  },
+  {
+    "query_id": "q06",
+    "query": "con trỏ pointer trong c++ và quản lý bộ nhớ động",
+    "ground_truth": ["doc_007", "doc_017", "doc_033", "doc_049", "doc_065", "doc_081", "doc_097"]
+  },
+  {
+    "query_id": "q07",
+    "query": "kiến trúc restful api là gì nguyên tắc thiết kế chuẩn",
+    "ground_truth": ["doc_008", "doc_012", "doc_020", "doc_025", "doc_041", "doc_057", "doc_073"]
+  },
+  {
+    "query_id": "q08",
+    "query": "docker là gì hướng dẫn dockerfile và docker compose",
+    "ground_truth": ["doc_009", "doc_024", "doc_040", "doc_056", "doc_072", "doc_088", "doc_104"]
+  },
+  {
+    "query_id": "q09",
+    "query": "lệnh sql truy vấn select join group by cơ bản",
+    "ground_truth": ["doc_010", "doc_021", "doc_022", "doc_037", "doc_053", "doc_069", "doc_085"]
+  },
+  {
+    "query_id": "q10",
+    "query": "phân tích dữ liệu bằng pandas và numpy trong python",
+    "ground_truth": ["doc_011", "doc_001", "doc_002", "doc_027", "doc_043", "doc_059", "doc_075"]
+  },
+  {
+    "query_id": "q11",
+    "query": "xây dựng web api tốc độ cao với fastapi",
+    "ground_truth": ["doc_012", "doc_008", "doc_028", "doc_044", "doc_060", "doc_076", "doc_092"]
+  },
+  {
+    "query_id": "q12",
+    "query": "thuật toán học máy linear regression hồi quy tuyến tính",
+    "ground_truth": ["doc_013", "doc_026", "doc_029", "doc_045", "doc_061", "doc_077", "doc_093"]
+  },
+  {
+    "query_id": "q13",
+    "query": "xử lý mảng nâng cao javascript với map filter reduce",
+    "ground_truth": ["doc_014", "doc_005", "doc_030", "doc_046", "doc_062", "doc_078", "doc_094"]
+  },
+  {
+    "query_id": "q14",
+    "query": "quản lý trạng thái ứng dụng redux toolkit trong react",
+    "ground_truth": ["doc_015", "doc_014", "doc_031", "doc_047", "doc_063", "doc_079", "doc_095"]
+  },
+  {
+    "query_id": "q15",
+    "query": "hiểu rõ event loop và call stack trong nodejs",
+    "ground_truth": ["doc_016", "doc_005", "doc_032", "doc_048", "doc_064", "doc_080", "doc_096"]
+  },
+  {
+    "query_id": "q16",
+    "query": "cấu trúc dữ liệu danh sách liên kết đơn linked list",
+    "ground_truth": ["doc_017", "doc_007", "doc_033", "doc_049", "doc_065", "doc_081", "doc_097"]
+  },
+  {
+    "query_id": "q17",
+    "query": "thuật toán tìm kiếm nhị phân binary search c++",
+    "ground_truth": ["doc_018", "doc_003", "doc_034", "doc_050", "doc_066", "doc_082", "doc_098"]
+  },
+  {
+    "query_id": "q18",
+    "query": "lập trình đa luồng multithreading trong java",
+    "ground_truth": ["doc_019", "doc_004", "doc_035", "doc_051", "doc_067", "doc_083", "doc_099"]
+  },
+  {
+    "query_id": "q19",
+    "query": "sử dụng spring boot xây dựng microservices java",
+    "ground_truth": ["doc_020", "doc_008", "doc_036", "doc_052", "doc_068", "doc_084", "doc_100"]
+  },
+  {
+    "query_id": "q20",
+    "query": "bảo mật web phòng chống tấn công xss và sql injection",
+    "ground_truth": ["doc_025", "doc_010", "doc_041", "doc_057", "doc_073", "doc_089", "doc_105"]
+  }
+]

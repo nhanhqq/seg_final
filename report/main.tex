@@ -1,0 +1,309 @@
+\documentclass[12pt,a4paper]{article}
+
+% --- PACKAGES ---
+\usepackage[utf8]{inputenc}
+\usepackage[T5]{fontenc}
+\usepackage[vietnamese]{babel}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{tcolorbox}
+
+% --- COLOR DEFINITIONS ---
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.96,0.96,0.98}
+\definecolor{primaryblue}{RGB}{15, 23, 42}
+\definecolor{accentblue}{RGB}{56, 189, 248}
+
+% --- LISTINGS STYLE ---
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+% --- HEADER & FOOTER ---
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\footnotesize Đồ Án Máy Tìm Kiếm Chuyên Sâu (Vertical Search Engine)}
+\lhead{\footnotesize DevSeek - IT Learning Resources}
+\cfoot{\thepage}
+
+% --- TITLE & AUTHOR ---
+\title{
+    \vspace{-1.5cm}
+    \Large \textbf{BÁO CÁO ĐỒ ÁN CUỐI KỲ MÔN HỌC}\\
+    \huge \textbf{XÂY DỰNG MÁY TÌM KIẾM CHUYÊN Sâu\\(VERTICAL SEARCH ENGINE)}\\[0.3cm]
+    \Large \textit{Lĩnh Vực: Bài Viết, Hướng Dẫn \& Tài Liệu Lập Trình IT (DevSeek)}
+}
+\author{\textbf{Nhóm Sinh Viên Thực Hiện}\\
+Khoa Công Nghệ Thông Tin}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\begin{abstract}
+Báo cáo này trình bày thiết kế, hiện thực và đánh giá toàn diện hệ thống \textbf{DevSeek} -- một Máy Tìm Kiếm Chuyên Sâu (Vertical Search Engine) tập trung vào lĩnh vực kiến thức, hướng dẫn và tài liệu học tập lập trình công nghệ thông tin (IT) bằng tiếng Việt. Hệ thống được triển khai qua 5 module cốt lõi: (1) Thu thập dữ liệu tự động với BeautifulSoup/requests tuân thủ \texttt{robots.txt} cùng tập dữ liệu chuẩn 122 bài viết IT chất lượng cao; (2) Tiền xử lý văn bản tiếng Việt sử dụng thư viện xử lý ngôn ngữ tự nhiên \texttt{underthesea} kết hợp với việc xây dựng Chỉ mục ngược (\textit{Inverted Index}) hỗ trợ ghi nhận vị trí từ khóa (\textit{positions}) và tần suất theo từng trường; (3) Bộ máy xử lý truy vấn và xếp hạng theo mô hình \textbf{Multi-Field TF-IDF} áp dụng trọng số ưu tiên cho Tiêu đề ($\times 3.0$) và Thẻ từ khóa ($\times 2.5$); (4) Giao diện Web Flask hiện đại với phong cách \textit{Dark Mode Glassmorphism}, tính năng làm nổi bật từ khóa (\textit{keyword highlighting}) bằng thẻ \texttt{<mark>} và phân trang mượt mà; (5) Bộ kiểm thử đánh giá hệ thống trên 20 câu truy vấn chuẩn thực tế đạt độ chính xác trung bình \textbf{Precision@10 = 0.5450} và điểm số trung bình toàn cục \textbf{MAP = 0.7906} với thời gian phản hồi trung bình chỉ \textbf{48.24 ms}.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+% ==============================================================================
+\section{Giới Thiệu \& Lý Do Chọn Đề Tài}
+% ==============================================================================
+
+\subsection{Máy Tìm Kiếm Chuyên Sâu Là Gì?}
+Các máy tìm kiếm đa năng như Google hay Bing có khả năng lập chỉ mục hàng tỷ trang web trên toàn thế giới, đáp ứng nhu cầu tra cứu thông tin phổ quát. Tuy nhiên, khi người dùng (đặc biệt là lập trình viên hoặc sinh viên CNTT) cần tìm kiếm các bài viết hướng dẫn chuyên sâu về một ngôn ngữ lập trình, một thuật toán cụ thể hay giải quyết lỗi code, kết quả từ các máy tìm kiếm chung thường bị phân tán, lẫn lộn với các trang tin tức thương mại, quảng cáo hoặc các diễn đàn không liên quan.
+
+\textbf{Máy tìm kiếm chuyên sâu (Vertical Search Engine)} ra đời như một giải pháp khắc phục vấn đề trên bằng cách tập trung thu thập, phân tích và lập chỉ mục dữ liệu thuộc duy nhất một lĩnh vực cụ thể (\textit{domain-specific}). Do giới hạn phạm vi, máy tìm kiếm chuyên sâu có thể áp dụng các luật xử lý đặc thù (như giữ lại các từ khóa kỹ thuật \texttt{C++}, \texttt{C\#}, \texttt{NodeJS}), tối ưu hóa cấu trúc chỉ mục theo trường (Tiêu đề, Thẻ Tags, Nội dung) và mang lại kết quả chính xác hơn đáng kể cho tập người dùng mục tiêu.
+
+\subsection{Mục Tiêu Đồ Án}
+Đồ án hướng đến việc rèn luyện toàn diện cả về mặt lý thuyết lẫn kỹ năng thực chiến xây dựng một hệ thống truy xuất thông tin (\textit{Information Retrieval}) hoàn chỉnh:
+\begin{itemize}
+    \item \textbf{Về kiến thức:} Nắm vững vòng đời của máy tìm kiếm từ cấu trúc Crawler, tiền xử lý văn bản tiếng Việt, kỹ thuật xây dựng Inverted Index, đến thuật toán định giá độ liên quan Multi-field TF-IDF và các phương pháp đánh giá định lượng (Precision@10, MAP).
+    \item \textbf{Về kỹ năng:} Lập trình Python Backend mạnh mẽ, xử lý cấu trúc dữ liệu lớn, xây dựng ứng dụng Web với Flask và thiết kế giao diện theo phong cách UI/UX hiện đại (Rich Aesthetics).
+\end{itemize}
+
+% ==============================================================================
+\section{Kiến Trúc Hệ Thống Tổng Thể}
+% ==============================================================================
+
+Hệ thống DevSeek được thiết kế theo kiến trúc đường ống (\textit{Pipeline Architecture}) phân rõ 5 module chức năng độc lập nhưng liên kết chặt chẽ với nhau thông qua cấu trúc dữ liệu JSON chuẩn hóa.
+
+\begin{figure}[H]
+\centering
+\begin{tcolorbox}[colback=backcolour,colframe=primaryblue,title=\textbf{Sơ đồ luồng dữ liệu 5 Modules của DevSeek}]
+\small
+\begin{verbatim}
++-----------------------------------------------------------------------------+
+| MODULE 1: THU THẬP DỮ LIỆU (CRAWLER & SEED GENERATOR)                        |
+|  [IT Websites / Blogs] --> (robots.txt check) --> data/raw/articles.json   |
++-----------------------------------------------------------------------------+
+                                      |
+                                      v
++-----------------------------------------------------------------------------+
+| MODULE 2: XỬ LÝ VĂN BẢN & XÂY DỰNG CHỈ MỤC (PREPROCESSOR & INDEXER)         |
+|  + underthesea.word_tokenize (Tách từ ghép tiếng Việt: "lập_trình")         |
+|  + Chuẩn hóa từ khóa C++, C#, loại bỏ Stopwords tiếng Việt                 |
+|  + Xây dựng Inverted Index (docID, positions, field_tf: title, tags, body)  |
+|  --> Output: data/processed/index.json & doc_store.json                     |
++-----------------------------------------------------------------------------+
+                                      |
+                                      v
++-----------------------------------------------------------------------------+
+| MODULE 3: TRUY VẤN & XẾP HẠNG (MULTI-FIELD TF-IDF RANKER)                  |
+|  [Query User] --> Tokenize --> Multi-Field TF-IDF Scoring --> Sort Top-K    |
+|  Score(Q,D) = sum( IDF(t) * [ w_title*TF_title + w_tags*TF_tags + w_body*TF ]|
++-----------------------------------------------------------------------------+
+                                      |
+                                      v
++-----------------------------------------------------------------------------+
+| MODULE 4: GIAO DIỆN WEB (FLASK BACKEND & PREMIUM FRONTEND)                  |
+|  [Web UI / API] <-- Highlight <mark> Snippet <-- Pagination <-- SERP Display|
++-----------------------------------------------------------------------------+
+                                      ^
+                                      | (Kiểm thử & Đánh giá)
++-----------------------------------------------------------------------------+
+| MODULE 5: ĐÁNH GIÁ HỆ THỐNG (EVALUATION SUITE)                              |
+|  [20 Benchmark Queries + Ground Truth] --> evaluate.py --> Precision@10, MAP|
++-----------------------------------------------------------------------------+
+\end{verbatim}
+\end{tcolorbox}
+\caption{Kiến trúc tổng thể và luồng xử lý thông tin trong hệ thống DevSeek.}
+\end{figure}
+
+% ==============================================================================
+\section{Thiết Kế Chi Tiết & Thuật Toán Các Modules}
+% ==============================================================================
+
+\subsection{Module 1: Thu Thập Dữ Liệu (Crawling)}
+Module thu thập dữ liệu (\texttt{crawler/it\_crawler.py}) được xây dựng với hai cơ chế hoạt động linh hoạt:
+\begin{enumerate}
+    \item \textbf{Cơ chế Crawl Live (BeautifulSoup + Requests):} Lớp \texttt{ITArticleCrawler} tích hợp bộ kiểm tra \texttt{urllib.robotparser} đảm bảo tuân thủ nghiêm ngặt quy định trong file \texttt{robots.txt} của các domain đích, thiết lập \texttt{User-Agent} hợp lệ và áp dụng độ trễ (\texttt{delay}) giữa các request để tránh tấn công từ chối dịch vụ (DoS) vô ý đối với máy chủ gốc.
+    \item \textbf{Cơ chế Seed Data Generator (Fallback độ tin cậy cao):} Để đảm bảo hệ thống luôn hoạt động ổn định khi chấm điểm, demo hoặc khi các trang web nguồn thay đổi giao diện/bật bảo vệ Cloudflare, chúng tôi xây dựng bộ dữ liệu hạt giống với \textbf{122 bài hướng dẫn lập trình tiếng Việt} đầy đủ cấu trúc (chủ đề Python, JavaScript, C++, Java, Database, Git, Docker, AI/ML, REST API...). Dữ liệu được lưu trữ chuẩn JSON tại \texttt{data/raw/articles.json}.
+\end{enumerate}
+
+\subsection{Module 2: Xử Lý Văn Bản & Xây Dựng Chỉ Mục (Inverted Index)}
+\subsubsection{Tiền xử lý văn bản tiếng Việt (\texttt{preprocessor.py})}
+Khác với tiếng Anh (nơi khoảng trắng là ranh giới từ), tiếng Việt có rất nhiều từ ghép 2 đến 3 âm tiết (ví dụ: \textit{"lập trình"}, \textit{"hướng đối tượng"}, \textit{"cơ sở dữ liệu"}). Nếu chỉ tách từ theo khoảng trắng, ngữ nghĩa của truy vấn sẽ bị xé lẻ. Chúng tôi áp dụng thư viện \texttt{underthesea} với hàm \texttt{word\_tokenize(text, format="text")} để tự động nhận dạng và nối các từ ghép bằng dấu gạch dưới (\texttt{\_}), chuyển văn bản về chữ thường và lọc từ dừng (\texttt{stopwords.txt}). Đồng thời, danh sách các ký hiệu lập trình đặc thù được bảo toàn trong danh sách trắng (\textit{whitelist}) như \texttt{c++}, \texttt{c\#}, \texttt{js}, \texttt{ai}.
+
+\subsubsection{Cấu trúc Chỉ Mục Ngược (\texttt{indexer.py})}
+Chỉ mục ngược (\textit{Inverted Index}) là xương sống giúp giảm thời gian truy vấn từ $\mathcal{O}(N \cdot L)$ (quét tuyến tính toàn bộ $N$ văn bản độ dài $L$) xuống mức gần như tức thời $\mathcal{O}(|Q| \cdot \text{avg\_postings})$.
+
+Cấu trúc lưu trữ trong \texttt{data/processed/index.json} được thiết kế tối ưu hóa bao gồm cả vị trí xuất hiện (\texttt{positions}) và tần suất theo từng trường (\texttt{field\_tf}):
+\begin{lstlisting}[language=json, caption=Cấu trúc chỉ mục ngược của một từ khóa trong index.json]
+{
+  "python": {
+    "doc_001": {
+      "tf": 5,
+      "positions": [2, 14, 45, 88, 120],
+      "field_tf": { "title": 1, "tags": 1, "content": 3 }
+    },
+    "doc_002": {
+      "tf": 3,
+      "positions": [5, 22, 60],
+      "field_tf": { "title": 1, "tags": 1, "content": 1 }
+    }
+  }
+}
+\end{lstlisting}
+
+\subsection{Module 3: Truy Vấn \& Xếp Hạng Kết Quả (Multi-Field TF-IDF Ranker)}
+Khi người dùng nhập câu hỏi truy vấn $Q$, hệ thống tiến hành tách từ câu hỏi qua \texttt{TextPreprocessor} để nhận được tập các token $q_1, q_2, \dots, q_k$. Với mỗi văn bản $D$ có chứa ít nhất một từ khóa của $Q$, điểm số độ liên quan được tính toán dựa trên mô hình \textbf{Multi-Field TF-IDF} có gia quyền theo từng trường:
+
+\subsubsection{Công thức tính trọng số độ liên quan}
+Điểm số tổng hợp của văn bản $D$ đối với truy vấn $Q$ được xác định bởi:
+\begin{equation}
+\text{Score}(Q, D) = \sum_{t \in Q} \text{IDF}(t) \times \text{TF}_{\text{weighted}}(t, D)
+\end{equation}
+
+Trong đó, điểm \textbf{Inverse Document Frequency (IDF)} của từ khóa $t$ được áp dụng làm trơn (\textit{smoothed IDF}) để tránh chia cho 0:
+\begin{equation}
+\text{IDF}(t) = \ln \left( \frac{N + 1}{\text{df}(t) + 1} \right) + 1.0
+\end{equation}
+với $N$ là tổng số tài liệu trong tập chỉ mục ($N = 122$), và $\text{df}(t)$ là số lượng văn bản chứa từ khóa $t$.
+
+Tần suất từ tổng hợp có trọng số $\text{TF}_{\text{weighted}}(t, D)$ phản ánh độ quan trọng của vị trí xuất hiện từ khóa trong văn bản:
+\begin{equation}
+\text{WeightedTF}(t, D) = w_{\text{title}} \cdot \text{TF}_{\text{title}}(t, D) + w_{\text{tags}} \cdot \text{TF}_{\text{tags}}(t, D) + w_{\text{content}} \cdot \text{TF}_{\text{content}}(t, D)
+\end{equation}
+Theo yêu cầu đồ án, chúng tôi thiết lập các trọng số gia tăng cho trường quan trọng:
+\begin{itemize}
+    \item Trọng số Tiêu đề (\textbf{Title}): $w_{\text{title}} = 3.0$ (Từ khóa xuất hiện ở tiêu đề có giá trị gấp 3 lần nội dung).
+    \item Trọng số Từ khóa (\textbf{Tags}): $w_{\text{tags}} = 2.5$.
+    \item Trọng số Nội dung (\textbf{Content}): $w_{\text{content}} = 1.0$.
+\end{itemize}
+Để tránh việc các bài viết quá dài có lợi thế không công bằng do lặp từ nhiều lần, chúng tôi áp dụng hàm chuẩn hóa logarit (\textit{Sublinear TF scaling}):
+\begin{equation}
+\text{TF}_{\text{weighted}}(t, D) = 
+\begin{cases} 
+1.0 + \ln \left( \text{WeightedTF}(t, D) \right) & \text{nếu } \text{WeightedTF}(t, D) > 0 \\
+0 & \text{ngược lại}
+\end{cases}
+\end{equation}
+
+\subsubsection{Kỹ thuật làm nổi bật từ khóa (Keyword Highlighting)}
+Để tạo trải nghiệm tốt nhất trên trang kết quả, hàm \texttt{create\_highlighted\_snippet()} trong \texttt{ranker.py} tận dụng danh sách từ khóa khớp và vị trí của chúng, tìm kiếm trong Tiêu đề và Tóm tắt/Nội dung để bao bọc từ khóa bằng thẻ HTML \texttt{<mark>}. Hệ thống tự động sắp xếp từ khóa theo độ dài giảm dần khi tìm thế để tránh lỗi ghi đè một phần đối với từ ngắn trong từ ghép dài.
+
+\subsection{Module 4: Giao Diện Web (Flask \& Premium UI/UX)}
+Giao diện Web được xây dựng dựa trên framework \texttt{Flask} (Backend) kết hợp với \texttt{Vanilla CSS} cao cấp (Frontend):
+\begin{itemize}
+    \item \textbf{Trang chủ (\texttt{index.html}):} Sử dụng bảng màu Dark Mode (\texttt{\#0b0f19}, \texttt{\#1e293b}), hiệu ứng kính mờ \textit{Glassmorphism} (\texttt{backdrop-filter: blur(20px)}), hệ thống thẻ gợi ý nhanh (\textit{Quick Suggestions}) và các thẻ hiệu ứng động.
+    \item \textbf{Trang kết quả (\texttt{results.html}):} Hiển thị thanh tìm kiếm thu nhỏ ở header, thống kê thời gian tra cứu từng mili giây, hiển thị các token tiếng Việt sau khi tách, danh sách bài viết kèm link gốc, điểm số TF-IDF, tags liên quan, snippet có highlight vàng sặc sỡ và thanh phân trang 10 kết quả/trang.
+\end{itemize}
+
+% ==============================================================================
+\section{Thực Nghiệm \& Đánh Giá Hệ Thống (Module 5)}
+% ==============================================================================
+
+\subsection{Phương Pháp \& Bộ Truy Vấn Benchmark}
+Để chứng minh tính hiệu quả một cách khoa học, chúng tôi đã xây dựng bộ dữ liệu benchmark (\texttt{evaluation/benchmark\_queries.json}) bao gồm \textbf{20 truy vấn tiêu biểu} đại diện cho các hành vi tìm kiếm phổ biến của lập trình viên (từ truy vấn khái niệm, thuật toán, ngôn ngữ cho đến công cụ quản lý mã nguồn và bảo mật). Mỗi truy vấn được gán nhãn Ground Truth chính xác với 5--10 tài liệu chuẩn.
+
+Các chỉ số đánh giá chính được sử dụng bao gồm:
+\begin{enumerate}
+    \item \textbf{Precision@10 (P@10):} Tỷ lệ tài liệu đúng (có liên quan) trong 10 kết quả đầu tiên trả về:
+    \begin{equation}
+    \text{Precision@10} = \frac{|\text{Retrieved@10} \cap \text{Ground Truth}|}{10}
+    \end{equation}
+    \item \textbf{Average Precision (AP):} Trung bình của các độ chính xác tại từng vị trí có tài liệu đúng xuất hiện:
+    \begin{equation}
+    \text{AP}(Q) = \frac{1}{|G|} \sum_{k=1}^{n} \text{Precision@k} \times \text{rel}(k)
+    \end{equation}
+    trong đó $\text{rel}(k) \in \{0, 1\}$ chỉ định tài liệu thứ $k$ có liên quan hay không, và $|G|$ là tổng số tài liệu đúng của truy vấn $Q$.
+    \item \textbf{Mean Average Precision (MAP):} Giá trị trung bình của AP trên toàn bộ $|Q| = 20$ truy vấn:
+    \begin{equation}
+    \text{MAP} = \frac{1}{|Q|} \sum_{q \in Q} \text{AP}(q)
+    \end{equation}
+\end{enumerate}
+
+\subsection{Kết Quả Đánh Giá Định Lượng}
+Bảng \ref{tab:eval_results} tổng hợp kết quả chạy kiểm thử thực tế của script \texttt{evaluate.py} trên toàn bộ tập chỉ mục 122 bài viết của hệ thống DevSeek.
+
+\begin{table}[H]
+\centering
+\caption{Kết quả kiểm thử độ chính xác Precision@10, AP và Thời gian trên 20 truy vấn mẫu.}
+\label{tab:eval_results}
+\small
+\begin{tabular}{@{}c l c c c@{}}
+\toprule
+\textbf{ID} & \textbf{Câu Hỏi Truy Vấn (Query)} & \textbf{P@10} & \textbf{AP} & \textbf{Thời gian (ms)} \\
+\midrule
+q01 & học python cơ bản cho người mới bắt đầu & 0.3000 & 0.5461 & 805.07* \\
+q02 & thuật toán sắp xếp nhanh quicksort bằng c++ và python & 0.2000 & 0.4075 & 10.61 \\
+q03 & khái niệm lập trình hướng đối tượng oop và các tính chất & 0.7000 & 0.8260 & 5.63 \\
+q04 & hiểu rõ về async await trong javascript và promise & 0.3000 & 0.5648 & 10.06 \\
+q05 & hướng dẫn sử dụng git branch và git merge khi làm việc nhóm & 0.7000 & 0.9683 & 12.47 \\
+q06 & con trỏ pointer trong c++ và quản lý bộ nhớ động & 0.7000 & 1.0000 & 7.61 \\
+q07 & kiến trúc restful api là gì nguyên tắc thiết kế chuẩn & 0.2000 & 0.2857 & 3.28 \\
+q08 & docker là gì hướng dẫn dockerfile và docker compose & 0.1000 & 0.1666 & 8.98 \\
+q09 & lệnh sql truy vấn select join group by cơ bản & 0.6000 & 0.8571 & 8.05 \\
+q10 & phân tích dữ liệu bằng pandas và numpy trong python & 0.7000 & 0.9214 & 9.12 \\
+q11 & xây dựng web api tốc độ cao với fastapi & 0.7000 & 0.9821 & 10.25 \\
+q12 & thuật toán học máy linear regression hồi quy tuyến tính & 0.6000 & 0.8571 & 6.58 \\
+q13 & xử lý mảng nâng cao javascript với map filter reduce & 0.6000 & 0.9238 & 12.36 \\
+q14 & quản lý trạng thái ứng dụng redux toolkit trong react & 0.6000 & 0.8988 & 11.28 \\
+q15 & hiểu rõ event loop và call stack trong nodejs & 0.6000 & 0.9196 & 5.49 \\
+q16 & cấu trúc dữ liệu danh sách liên kết đơn linked list & 0.6000 & 0.8571 & 10.14 \\
+q17 & thuật toán tìm kiếm nhị phân binary search c++ & 0.7000 & 0.9821 & 7.78 \\
+q18 & lập trình đa luồng multithreading trong java & 0.7000 & 0.9821 & 4.31 \\
+q19 & sử dụng spring boot xây dựng microservices java & 0.6000 & 0.8828 & 9.14 \\
+q20 & bảo mật web phòng chống tấn công xss và sql injection & 0.7000 & 0.9821 & 6.52 \\
+\midrule
+\multicolumn{2}{r}{\textbf{TỔNG HỢP TRUNG BÌNH (20 Truy Vấn):}} & \textbf{0.5450} & \textbf{0.7906} & \textbf{48.24 ms} \\
+\bottomrule
+\end{tabular}
+\\[0.2cm]
+\footnotesize{\textit{Ghi chú (*):} Truy vấn q01 mất 805 ms do thời gian tải mô hình NLP \texttt{underthesea} vào bộ nhớ RAM ở lần gọi đầu tiên (\textit{cold-start}). Các truy vấn tiếp theo (\textit{warm-cache}) chỉ mất trung bình từ \textbf{4.31 ms đến 12.47 ms}.}
+\end{table}
+
+\subsection{Nhận Xét \& Phân Tích Số Liệu}
+Từ bảng kết quả trên, chúng tôi rút ra các kết luận quan trọng:
+\begin{itemize}
+    \item \textbf{Độ chính xác xếp hạng vượt trội (MAP = 0.7906):} Điểm số MAP gần 0.80 cho thấy hệ thống có khả năng đưa các văn bản liên quan nhất lên ngay những vị trí đầu tiên ($k=1, 2, 3$). Nhiều truy vấn đạt chỉ số $AP > 0.95$ đến $1.0000$ (như \texttt{q06}, \texttt{q11}, \texttt{q17}, \texttt{q18}, \texttt{q20}) nhờ cơ chế gia quyền trường Tiêu đề ($\times 3.0$) và Tags ($\times 2.5$) đã phát huy tác dụng cực kỳ mạnh mẽ.
+    \item \textbf{Precision@10 đạt mức cao (P@10 = 0.5450):} Trong 10 kết quả đầu tiên trả về, trung bình có hơn 5.4 tài liệu là hoàn toàn khớp với Ground Truth chuẩn xác của chủ đề đó.
+    \item \textbf{Tốc độ phản hồi cực nhanh:} Loại trừ thời gian khởi tạo mô hình NLP ở lần đầu, thời gian tra cứu và xếp hạng trung bình cho mỗi truy vấn chỉ là \textbf{$\sim 8.2$ mili giây}, hoàn toàn đáp ứng thời gian thực cho ứng dụng web dưới mức nhận biết của mắt người ($< 100\text{ms}$).
+\end{itemize}
+
+% ==============================================================================
+\section{Kết Luận \& Hướng Phát Triển}
+% ==============================================================================
+
+\subsection{Kết Luận}
+Đồ án đã xây dựng thành công trọn bộ hệ thống \textbf{DevSeek - Máy tìm kiếm chuyên sâu lập trình IT} qua đầy đủ 5 module yêu cầu. Hệ thống không chỉ thể hiện năng lực lập trình hệ thống backend với Python, xử lý ngôn ngữ tự nhiên tiếng Việt và cấu trúc chỉ mục ngược hiệu năng cao, mà còn sở hữu giao diện Web bắt mắt, trực quan và hệ thống đánh giá số liệu minh bạch, đạt chất lượng học thuật cao.
+
+\subsection{Hướng Phát Triển Trong Tương Lai}
+\begin{enumerate}
+    \item \textbf{Tích hợp Tìm kiếm Ngữ nghĩa (Semantic Search):} Kết hợp Inverted Index truyền thống với Vector Database và mô hình Embeddings (như PhoBERT hoặc OpenAI Embeddings) theo cơ chế \textit{Hybrid Search} để hiểu đồng nghĩa (ví dụ: "JS" $\equiv$ "JavaScript", "cơ sở dữ liệu" $\equiv$ "Database").
+    \item \textbf{Mở rộng hệ thống thu thập tự động theo thời gian thực:} Lập lịch cào dữ liệu định kỳ bằng Celery / Cron jobs và cập nhật chỉ mục động (\textit{Dynamic Indexing}) không cần khởi động lại server.
+    \item \textbf{Cá nhân hóa gợi ý (Personalization):} Ghi nhận lịch sử tìm kiếm của người dùng và điều chỉnh trọng số kết quả theo sở thích hoặc cấp độ kỹ năng (Người mới bắt đầu vs Chuyên gia).
+\end{enumerate}
+
+\end{document}

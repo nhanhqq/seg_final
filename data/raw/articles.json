@@ -1,0 +1,1852 @@
+[
+  {
+    "doc_id": "doc_001",
+    "url": "https://howkteam.vn/course/hoc-python-co-ban/gioi-thieu-ngon-ngu-lap-trinh-python-1",
+    "title": "Giới thiệu ngôn ngữ lập trình Python và cách cài đặt cho người mới bắt đầu",
+    "author": "Kteam",
+    "publish_date": "2024-01-15",
+    "tags": [
+      "python",
+      "cơ bản",
+      "người mới",
+      "lập trình python",
+      "cài đặt"
+    ],
+    "summary": "Python là ngôn ngữ lập trình bậc cao, dễ học, cú pháp trong sáng. Bài viết hướng dẫn chi tiết cách cài đặt Python và viết chương trình Hello World đầu tiên.",
+    "content": "Python là một trong những ngôn ngữ lập trình phổ biến nhất thế giới hiện nay nhờ cú pháp đơn giản, dễ đọc và cộng đồng hỗ trợ khổng lồ. Ngôn ngữ lập trình Python được ứng dụng rộng rãi trong phát triển web với Django và Flask, phân tích dữ liệu, khoa học dữ liệu, học máy (Machine Learning) và trí tuệ nhân tạo (AI). Để cài đặt Python trên Windows, bạn truy cập trang chủ python.org, tải bộ cài mới nhất và nhớ tích chọn 'Add Python to PATH'. Sau đó mở Terminal và gõ 'python --version' để kiểm tra. Chương trình đầu tiên trong Python cực kỳ ngắn gọn chỉ với lệnh print('Hello World')."
+  },
+  {
+    "doc_id": "doc_002",
+    "url": "https://viblo.asia/p/hieu-ro-ve-bien-va-kieu-du-lieu-trong-python",
+    "title": "Hiểu rõ về biến và các kiểu dữ liệu cơ bản trong Python",
+    "author": "Nguyễn Văn Hoàng",
+    "publish_date": "2024-01-18",
+    "tags": [
+      "python",
+      "biến",
+      "kiểu dữ liệu",
+      "int",
+      "string",
+      "list",
+      "dict"
+    ],
+    "summary": "Hướng dẫn sử dụng biến và phân biệt các kiểu dữ liệu cơ bản trong Python như số nguyên (int), số thực (float), chuỗi (str), danh sách (list) và từ điển (dict).",
+    "content": "Trong Python, biến được tạo tự động ngay khi bạn gán giá trị cho nó bằng toán tử bằng (=). Bạn không cần khai báo kiểu dữ liệu một cách tường minh như C++ hay Java. Các kiểu dữ liệu cơ bản trong Python bao gồm: int (số nguyên như 10, -5), float (số thực như 3.14), str (chuỗi ký tự đặt trong nháy đơn hoặc nháy kép), bool (giá trị đúng sai True hoặc False). Ngoài ra, Python cung cấp các cấu trúc dữ liệu mạnh mẽ như List (danh sách có thứ tự và thay đổi được), Tuple (danh sách không thể thay đổi sau khi tạo), Set (tập hợp các phần tử duy nhất) và Dictionary (lưu trữ dữ liệu dạng cặp key-value cực kỳ tiện lợi cho tra cứu)."
+  },
+  {
+    "doc_id": "doc_003",
+    "url": "https://topdev.vn/blog/thuat-toan-sap-xep-nhanh-quicksort-va-cach-cai-dat/",
+    "title": "Thuật toán sắp xếp nhanh QuickSort - Nguyên lý và cách cài đặt bằng C++ và Python",
+    "author": "Trần Đức Thắng",
+    "publish_date": "2024-02-01",
+    "tags": [
+      "thuật toán",
+      "quicksort",
+      "sắp xếp",
+      "c++",
+      "python",
+      "chia để trị"
+    ],
+    "summary": "QuickSort là thuật toán sắp xếp cực kỳ hiệu quả dựa trên chiến lược chia để trị (Divide and Conquer). Bài viết phân tích độ phức tạp và code mẫu chuẩn xác.",
+    "content": "QuickSort là một trong những thuật toán sắp xếp có tốc độ trung bình nhanh nhất với độ phức tạp thời gian là O(N log N). Thuật toán QuickSort hoạt động dựa trên phương pháp chia để trị: chọn một phần tử làm chốt (pivot), sau đó phân đoạn mảng thành hai nửa: nửa bên trái gồm các phần tử nhỏ hơn hoặc bằng chốt, và nửa bên phải gồm các phần tử lớn hơn chốt. Sau đó áp dụng đệ quy cho hai nửa mảng này. Việc chọn chốt pivot rất quan trọng; nếu chọn phần tử đầu hoặc cuối trong mảng đã sắp xếp, độ phức tạp xấu nhất có thể bị suy biến thành O(N^2). Để khắc phục, người ta thường chọn pivot ngẫu nhiên hoặc chọn phần tử trung vị."
+  },
+  {
+    "doc_id": "doc_004",
+    "url": "https://f8.edu.vn/blog/khai-niem-lap-trinh-huong-doi-tuong-oop-va-4-tinh-chat",
+    "title": "Khái niệm Lập trình Hướng đối tượng (OOP) và 4 tính chất cốt lõi cần nhớ",
+    "author": "Sơn Đặng",
+    "publish_date": "2024-02-10",
+    "tags": [
+      "oop",
+      "lập trình hướng đối tượng",
+      "java",
+      "c++",
+      "đóng gói",
+      "kế thừa",
+      "đa hình"
+    ],
+    "summary": "Lập trình hướng đối tượng (OOP) là mô hình lập trình dựa trên khái niệm lớp (Class) và đối tượng (Object). Giải thích dễ hiểu 4 tính chất OOP kèm ví dụ thực tế.",
+    "content": "Lập trình hướng đối tượng (Object-Oriented Programming - OOP) giúp tổ chức mã nguồn khoa học, dễ bảo trì và tái sử dụng. 4 tính chất cốt lõi của OOP bao gồm: 1) Tính đóng gói (Encapsulation): che giấu thông tin nội bộ của đối tượng bên trong lớp và chỉ cho phép giao tiếp qua các phương thức công khai (getter/setter). 2) Tính kế thừa (Inheritance): cho phép lớp con kế thừa lại các thuộc tính và phương thức từ lớp cha, giảm thiểu lặp lại code. 3) Tính đa hình (Polymorphism): cùng một phương thức có thể thực hiện hành vi khác nhau tùy thuộc vào đối tượng gọi nó (ghi đè method overriding hoặc nạp chồng method overloading). 4) Tính trừu tượng (Abstraction): loại bỏ các chi tiết phức tạp, chỉ hiển thị những thông tin thiết yếu cho người dùng thông qua abstract class hoặc interface."
+  },
+  {
+    "doc_id": "doc_005",
+    "url": "https://viblo.asia/p/async-await-trong-javascript-tu-callback-den-promise",
+    "title": "Hiểu sâu về Async Await trong JavaScript - Từ Callback Hell đến Promise",
+    "author": "Lê Minh Tuấn",
+    "publish_date": "2024-02-20",
+    "tags": [
+      "javascript",
+      "async",
+      "await",
+      "promise",
+      "callback",
+      "bất đồng bộ"
+    ],
+    "summary": "Xử lý bất đồng bộ trong JavaScript luôn là thử thách. Bài viết hướng dẫn cách dùng từ khóa async/await giúp viết code bất đồng bộ trông như đồng bộ và dễ đọc.",
+    "content": "JavaScript là ngôn ngữ đơn luồng (single-threaded), do đó xử lý bất đồng bộ là khái niệm tối quan trọng khi làm việc với API hoặc thao tác I/O. Trước đây, lập trình viên thường dùng Callback, nhưng việc lồng quá nhiều callback dẫn đến hiện tượng Callback Hell khó kiểm soát. Sau đó ES6 giới thiệu Promise giúp giải quyết vấn đề quản lý luồng với .then() và .catch(). Đến ES2017, từ khóa async và await ra đời đã tạo nên bước ngoặt lớn: khi khai báo một hàm là async, hàm đó luôn trả về một Promise. Từ khóa await chỉ được dùng bên trong hàm async, tạm dừng thực thi cho đến khi Promise được giải quyết (resolved hoặc rejected), giúp code ngắn gọn, rành mạch như code đồng bộ."
+  },
+  {
+    "doc_id": "doc_006",
+    "url": "https://topdev.vn/blog/huong-dan-su-dung-git-branch-va-git-merge/",
+    "title": "Hướng dẫn sử dụng Git Branch và Git Merge cho người làm việc nhóm",
+    "author": "Phạm Quốc Huy",
+    "publish_date": "2024-02-25",
+    "tags": [
+      "git",
+      "branch",
+      "merge",
+      "quản lý mã nguồn",
+      "devops",
+      "teamwork"
+    ],
+    "summary": "Chi nhánh (branch) trong Git cho phép bạn phát triển tính năng mới một cách độc lập mà không ảnh hưởng đến luồng code chính (master/main). Hướng dẫn tạo nhánh và gộp code.",
+    "content": "Trong quản lý mã nguồn với Git, việc sử dụng nhánh (Branch) là kỹ năng bắt buộc khi làm việc nhóm. Nhánh main (hoặc master) thường lưu trữ phiên bản ổn định đang chạy trên production. Khi bạn muốn làm một tính năng mới hoặc sửa lỗi (bugfix), bạn sẽ tạo ra một nhánh mới bằng lệnh 'git branch <ten-nhanh>' và chuyển sang nhánh đó với 'git checkout <ten-nhanh>' (hoặc dùng 'git checkout -b <ten-nhanh>'). Sau khi hoàn thiện code và commit trên nhánh mới, bạn có thể gộp mã nguồn vào nhánh chính bằng lệnh 'git merge <ten-nhanh>'. Nếu hai nhánh cùng sửa một dòng code, Git sẽ báo lỗi xung đột (merge conflict); khi đó bạn cần mở file, quyết định chọn phần code nào và commit lại để giải quyết xung đột."
+  },
+  {
+    "doc_id": "doc_007",
+    "url": "https://howkteam.vn/course/c-co-ban/con-tro-pointer-trong-c-nhung-dieu-can-biet",
+    "title": "Con trỏ (Pointer) trong C++ và quản lý bộ nhớ động - Những điều cần biết",
+    "author": "Kteam",
+    "publish_date": "2024-03-01",
+    "tags": [
+      "c++",
+      "con trỏ",
+      "pointer",
+      "bộ nhớ động",
+      "malloc",
+      "new"
+    ],
+    "summary": "Con trỏ trong C++ là biến lưu trữ địa chỉ bộ nhớ của một biến khác. Bài viết giải thích chi tiết cách dùng con trỏ, toán tử & và *, cùng cách cấp phát bộ nhớ động.",
+    "content": "Con trỏ (Pointer) là một trong những tính năng mạnh mẽ nhất và cũng khiến người mới học C++ dễ nhầm lẫn nhất. Biến con trỏ không lưu trữ giá trị thông thường mà lưu địa chỉ bộ nhớ trong RAM của biến khác. Để lấy địa chỉ của một biến, ta dùng toán tử '&' (ví dụ &x). Để khai báo biến con trỏ, ta dùng dấu '*' (ví dụ int* ptr = &x). Để truy xuất giá trị tại địa chỉ mà con trỏ đang trỏ tới (dereference), ta dùng toán tử '*ptr'. Khi lập trình hệ thống, con trỏ cho phép cấp phát bộ nhớ động trên vùng nhớ Heap bằng toán tử 'new' và giải phóng bằng toán tử 'delete' để tránh rò rỉ bộ nhớ (memory leak)."
+  },
+  {
+    "doc_id": "doc_008",
+    "url": "https://viblo.asia/p/kien-truc-restful-api-la-gi-nguyen-tac-thiet-ke-api-chuan",
+    "title": "Kiến trúc RESTful API là gì? Các nguyên tắc thiết kế API chuẩn cho Backend",
+    "author": "Đoàn Văn Nam",
+    "publish_date": "2024-03-05",
+    "tags": [
+      "api",
+      "restful api",
+      "backend",
+      "http",
+      "json",
+      "web development"
+    ],
+    "summary": "RESTful API là tiêu chuẩn giao tiếp phổ biến nhất giữa Frontend và Backend hiện nay. Tìm hiểu các phương thức HTTP (GET, POST, PUT, DELETE) và quy tắc đặt tên endpoint.",
+    "content": "REST (Representational State Transfer) là một kiểu kiến trúc phần mềm dành cho các hệ thống phân tán trên mạng internet. RESTful API sử dụng các phương thức HTTP tiêu chuẩn để thực hiện các thao tác CRUD (Create, Read, Update, Delete) với tài nguyên: GET để lấy dữ liệu, POST để tạo mới tài nguyên, PUT hoặc PATCH để cập nhật, và DELETE để xóa tài nguyên. Khi thiết kế endpoint chuẩn REST, URL nên sử dụng danh từ số nhiều để đại diện cho tài nguyên (ví dụ: /api/users thay vì /api/getUsers). Dữ liệu trả về thường ở định dạng JSON kèm theo mã trạng thái HTTP chuẩn xác (200 OK, 201 Created, 400 Bad Request, 404 Not Found, 500 Internal Server Error)."
+  },
+  {
+    "doc_id": "doc_009",
+    "url": "https://topdev.vn/blog/docker-la-gi-vi-sao-moi-lap-trinh-vien-deu-can-hoc-docker/",
+    "title": "Docker là gì? Vì sao mọi lập trình viên và DevOps đều cần thành thạo Docker",
+    "author": "Bùi Xuân Hoàng",
+    "publish_date": "2024-03-12",
+    "tags": [
+      "docker",
+      "container",
+      "devops",
+      "deploy",
+      "virtualization"
+    ],
+    "summary": "Docker giải quyết triệt để vấn đề 'code chạy trên máy tôi nhưng lỗi trên server'. Tìm hiểu khái niệm Image, Container, Dockerfile và Docker Compose.",
+    "content": "Docker là một nền tảng mã nguồn mở cho phép lập trình viên đóng gói ứng dụng cùng toàn bộ thư viện, cấu hình và phụ thuộc (dependencies) của nó vào một môi trường độc lập gọi là Container. Khác với máy ảo truyền thống (Virtual Machine) phải chạy toàn bộ một hệ điều hành riêng biệt gây tốn tài nguyên, Docker Container chia sẻ chung nhân hệ điều hành với máy chủ nên khởi động cực nhanh chỉ trong vài giây. Các khái niệm cốt lõi của Docker bao gồm: Dockerfile (kịch bản chứa các lệnh để xây dựng image), Docker Image (bản mẫu chỉ đọc chứa mã nguồn và môi trường chạy), và Docker Container (thực thể đang chạy của Image). Docker Compose giúp bạn khởi chạy đồng thời nhiều container như Web, Database, Cache chỉ bằng lệnh docker-compose up."
+  },
+  {
+    "doc_id": "doc_010",
+    "url": "https://f8.edu.vn/blog/hoc-sql-co-ban-cac-lenh-truy-van-select-join-group-by",
+    "title": "Học SQL cơ bản - Thành thạo các lệnh truy vấn SELECT, WHERE, JOIN và GROUP BY",
+    "author": "Nguyễn Thanh Tùng",
+    "publish_date": "2024-03-18",
+    "tags": [
+      "sql",
+      "database",
+      "mysql",
+      "postgresql",
+      "truy vấn",
+      "cơ sở dữ liệu"
+    ],
+    "summary": "SQL là ngôn ngữ truy vấn cơ sở dữ liệu quan hệ mạnh mẽ. Hướng dẫn chi tiết cách viết truy vấn lọc dữ liệu, kết nối bảng (INNER JOIN, LEFT JOIN) và gom nhóm.",
+    "content": "Cơ sở dữ liệu quan hệ (RDBMS) như MySQL, PostgreSQL, SQL Server là xương sống của hầu hết các ứng dụng phần mềm. Ngôn ngữ SQL (Structured Query Language) cho phép bạn giao tiếp và truy xuất thông tin chính xác từ cơ sở dữ liệu. Lệnh cơ bản nhất là SELECT dùng để chọn các cột cần lấy từ bảng, kết hợp mệnh đề WHERE để lọc dữ liệu theo điều kiện. Khi dữ liệu được phân chia trên nhiều bảng theo chuẩn hóa, bạn cần dùng mệnh đề JOIN để kết nối chúng: INNER JOIN lấy các bản ghi khớp nhau ở cả hai bảng, LEFT JOIN lấy toàn bộ bảng bên trái và dữ liệu khớp bên phải. Mệnh đề GROUP BY đi kèm với các hàm tổng hợp như COUNT, SUM, AVG, MAX giúp gom nhóm và thống kê dữ liệu chuyên nghiệp."
+  },
+  {
+    "doc_id": "doc_011",
+    "url": "https://itlearning.vn/tutorials/python/011",
+    "title": "[Python] Hướng dẫn chi tiết phân tích dữ liệu với Pandas và NumPy - Phần 1",
+    "author": "Chuyên gia IT Python",
+    "publish_date": "2024-12-12",
+    "tags": [
+      "python",
+      "pandas",
+      "numpy",
+      "data science"
+    ],
+    "summary": "Học cách thao tác dataframe, lọc dữ liệu, làm sạch dữ liệu thiếu (missing values) và thống kê nhanh với bộ đôi thư viện Pandas và NumPy trong Python.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Python: phân tích dữ liệu với Pandas và NumPy. Học cách thao tác dataframe, lọc dữ liệu, làm sạch dữ liệu thiếu (missing values) và thống kê nhanh với bộ đôi thư viện Pandas và NumPy trong Python. Khi làm việc thực tế với Python, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 1 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: python, pandas, numpy, data science. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_012",
+    "url": "https://itlearning.vn/tutorials/python/012",
+    "title": "[Python] Hướng dẫn chi tiết xây dựng Web API tốc độ cao với FastAPI - Phần 1",
+    "author": "Chuyên gia IT Python",
+    "publish_date": "2024-01-13",
+    "tags": [
+      "python",
+      "fastapi",
+      "web api",
+      "async"
+    ],
+    "summary": "FastAPI là framework hiện đại, hiệu năng cực cao để xây dựng API với Python 3.7+ dựa trên type hints, tự động tạo tài liệu Swagger UI.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Python: xây dựng Web API tốc độ cao với FastAPI. FastAPI là framework hiện đại, hiệu năng cực cao để xây dựng API với Python 3.7+ dựa trên type hints, tự động tạo tài liệu Swagger UI. Khi làm việc thực tế với Python, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 1 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: python, fastapi, web api, async. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_013",
+    "url": "https://itlearning.vn/tutorials/python/013",
+    "title": "[Python] Hướng dẫn chi tiết thuật toán học máy Linear Regression từ con số 0 - Phần 1",
+    "author": "Chuyên gia IT Python",
+    "publish_date": "2024-02-14",
+    "tags": [
+      "python",
+      "machine learning",
+      "ai",
+      "linear regression"
+    ],
+    "summary": "Tìm hiểu phương trình hồi quy tuyến tính, hàm mất mát Mean Squared Error và thuật toán tối ưu Gradient Descent bằng code Python.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Python: thuật toán học máy Linear Regression từ con số 0. Tìm hiểu phương trình hồi quy tuyến tính, hàm mất mát Mean Squared Error và thuật toán tối ưu Gradient Descent bằng code Python. Khi làm việc thực tế với Python, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 1 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: python, machine learning, ai, linear regression. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_014",
+    "url": "https://itlearning.vn/tutorials/javascript/014",
+    "title": "[JavaScript] Hướng dẫn chi tiết xử lý mảng nâng cao với map, filter và reduce - Phần 1",
+    "author": "Chuyên gia IT JavaScript",
+    "publish_date": "2024-03-15",
+    "tags": [
+      "javascript",
+      "array",
+      "es6",
+      "map filter reduce"
+    ],
+    "summary": "Ba phương thức map(), filter() và reduce() là công cụ mạnh mẽ giúp thao tác mảng theo phong cách lập trình hàm trong JavaScript ES6.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề JavaScript: xử lý mảng nâng cao với map, filter và reduce. Ba phương thức map(), filter() và reduce() là công cụ mạnh mẽ giúp thao tác mảng theo phong cách lập trình hàm trong JavaScript ES6. Khi làm việc thực tế với JavaScript, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 1 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: javascript, array, es6, map filter reduce. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_015",
+    "url": "https://itlearning.vn/tutorials/javascript/015",
+    "title": "[JavaScript] Hướng dẫn chi tiết quản lý trạng thái ứng dụng với Redux Toolkit trong React - Phần 1",
+    "author": "Chuyên gia IT JavaScript",
+    "publish_date": "2024-04-16",
+    "tags": [
+      "javascript",
+      "react",
+      "redux",
+      "state management"
+    ],
+    "summary": "Redux Toolkit giúp giảm thiểu code boilerplate khi quản lý global state trong ứng dụng React, hỗ trợ slices và thunks mượt mà.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề JavaScript: quản lý trạng thái ứng dụng với Redux Toolkit trong React. Redux Toolkit giúp giảm thiểu code boilerplate khi quản lý global state trong ứng dụng React, hỗ trợ slices và thunks mượt mà. Khi làm việc thực tế với JavaScript, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 1 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: javascript, react, redux, state management. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_016",
+    "url": "https://itlearning.vn/tutorials/javascript/016",
+    "title": "[JavaScript] Hướng dẫn chi tiết hiểu rõ Event Loop và Call Stack trong NodeJS - Phần 1",
+    "author": "Chuyên gia IT JavaScript",
+    "publish_date": "2024-05-17",
+    "tags": [
+      "javascript",
+      "nodejs",
+      "event loop",
+      "backend"
+    ],
+    "summary": "Event Loop cơ chế cốt lõi giúp Node.js xử lý hàng nghìn kết nối đồng thời với mô hình non-blocking I/O dù chỉ chạy trên một luồng đơn.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề JavaScript: hiểu rõ Event Loop và Call Stack trong NodeJS. Event Loop cơ chế cốt lõi giúp Node.js xử lý hàng nghìn kết nối đồng thời với mô hình non-blocking I/O dù chỉ chạy trên một luồng đơn. Khi làm việc thực tế với JavaScript, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 1 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: javascript, nodejs, event loop, backend. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_017",
+    "url": "https://itlearning.vn/tutorials/c++/017",
+    "title": "[C++] Hướng dẫn chi tiết cấu trúc dữ liệu Danh sách liên kết đơn (Linked List) - Phần 1",
+    "author": "Chuyên gia IT C++",
+    "publish_date": "2024-06-18",
+    "tags": [
+      "c++",
+      "cấu trúc dữ liệu",
+      "linked list",
+      "con trỏ"
+    ],
+    "summary": "Danh sách liên kết đơn là cấu trúc dữ liệu động gồm các nút (node) chứa dữ liệu và con trỏ trỏ tới nút tiếp theo, cho phép thêm xóa linh hoạt.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề C++: cấu trúc dữ liệu Danh sách liên kết đơn (Linked List). Danh sách liên kết đơn là cấu trúc dữ liệu động gồm các nút (node) chứa dữ liệu và con trỏ trỏ tới nút tiếp theo, cho phép thêm xóa linh hoạt. Khi làm việc thực tế với C++, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 1 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: c++, cấu trúc dữ liệu, linked list, con trỏ. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_018",
+    "url": "https://itlearning.vn/tutorials/c++/018",
+    "title": "[C++] Hướng dẫn chi tiết thuật toán tìm kiếm nhị phân (Binary Search) độ phức tạp O(log N) - Phần 1",
+    "author": "Chuyên gia IT C++",
+    "publish_date": "2024-07-19",
+    "tags": [
+      "c++",
+      "thuật toán",
+      "binary search",
+      "tìm kiếm"
+    ],
+    "summary": "Tìm kiếm nhị phân hoạt động trên mảng đã sắp xếp bằng cách liên tục chia đôi khoảng tìm kiếm, giúp tìm thấy phần tử chỉ trong vài bước.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề C++: thuật toán tìm kiếm nhị phân (Binary Search) độ phức tạp O(log N). Tìm kiếm nhị phân hoạt động trên mảng đã sắp xếp bằng cách liên tục chia đôi khoảng tìm kiếm, giúp tìm thấy phần tử chỉ trong vài bước. Khi làm việc thực tế với C++, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 1 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: c++, thuật toán, binary search, tìm kiếm. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_019",
+    "url": "https://itlearning.vn/tutorials/java/019",
+    "title": "[Java] Hướng dẫn chi tiết lập trình đa luồng (Multithreading) và đồng bộ hóa (Synchronization) - Phần 1",
+    "author": "Chuyên gia IT Java",
+    "publish_date": "2024-08-20",
+    "tags": [
+      "java",
+      "multithreading",
+      "thread",
+      "concurrency"
+    ],
+    "summary": "Java hỗ trợ lập trình đa luồng mạnh mẽ với lớp Thread và giao diện Runnable, cùng từ khóa synchronized giúp ngăn chặn xung đột dữ liệu.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Java: lập trình đa luồng (Multithreading) và đồng bộ hóa (Synchronization). Java hỗ trợ lập trình đa luồng mạnh mẽ với lớp Thread và giao diện Runnable, cùng từ khóa synchronized giúp ngăn chặn xung đột dữ liệu. Khi làm việc thực tế với Java, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 1 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: java, multithreading, thread, concurrency. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_020",
+    "url": "https://itlearning.vn/tutorials/java/020",
+    "title": "[Java] Hướng dẫn chi tiết sử dụng Spring Boot để xây dựng Microservices chuẩn doanh nghiệp - Phần 1",
+    "author": "Chuyên gia IT Java",
+    "publish_date": "2024-09-21",
+    "tags": [
+      "java",
+      "spring boot",
+      "microservices",
+      "backend"
+    ],
+    "summary": "Spring Boot đơn giản hóa quá trình khởi tạo và phát triển ứng dụng Java, cung cấp dependency injection và tích hợp sẵn máy chủ Tomcat.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Java: sử dụng Spring Boot để xây dựng Microservices chuẩn doanh nghiệp. Spring Boot đơn giản hóa quá trình khởi tạo và phát triển ứng dụng Java, cung cấp dependency injection và tích hợp sẵn máy chủ Tomcat. Khi làm việc thực tế với Java, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 1 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: java, spring boot, microservices, backend. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_021",
+    "url": "https://itlearning.vn/tutorials/database/021",
+    "title": "[Database] Hướng dẫn chi tiết tối ưu hóa câu lệnh truy vấn SQL với Index (Chỉ mục) - Phần 1",
+    "author": "Chuyên gia IT Database",
+    "publish_date": "2024-10-22",
+    "tags": [
+      "sql",
+      "database",
+      "index",
+      "performance"
+    ],
+    "summary": "Index trong cơ sở dữ liệu giống như mục lục của cuốn sách, giúp tăng tốc độ tìm kiếm dữ liệu B-Tree gấp hàng trăm lần nhưng tốn bộ nhớ lưu trữ.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Database: tối ưu hóa câu lệnh truy vấn SQL với Index (Chỉ mục). Index trong cơ sở dữ liệu giống như mục lục của cuốn sách, giúp tăng tốc độ tìm kiếm dữ liệu B-Tree gấp hàng trăm lần nhưng tốn bộ nhớ lưu trữ. Khi làm việc thực tế với Database, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 1 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: sql, database, index, performance. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_022",
+    "url": "https://itlearning.vn/tutorials/database/022",
+    "title": "[Database] Hướng dẫn chi tiết khái niệm NoSQL và khi nào nên sử dụng MongoDB - Phần 1",
+    "author": "Chuyên gia IT Database",
+    "publish_date": "2024-11-23",
+    "tags": [
+      "database",
+      "nosql",
+      "mongodb",
+      "json"
+    ],
+    "summary": "MongoDB là cơ sở dữ liệu NoSQL lưu trữ dưới dạng document JSON/BSON linh hoạt, rất phù hợp cho dữ liệu lớn không có cấu trúc cố định.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Database: khái niệm NoSQL và khi nào nên sử dụng MongoDB. MongoDB là cơ sở dữ liệu NoSQL lưu trữ dưới dạng document JSON/BSON linh hoạt, rất phù hợp cho dữ liệu lớn không có cấu trúc cố định. Khi làm việc thực tế với Database, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 1 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: database, nosql, mongodb, json. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_023",
+    "url": "https://itlearning.vn/tutorials/git-&-devops/023",
+    "title": "[Git & DevOps] Hướng dẫn chi tiết các lệnh Git cơ bản cần nhớ: status, add, commit, push, pull - Phần 1",
+    "author": "Chuyên gia IT Git & DevOps",
+    "publish_date": "2024-12-24",
+    "tags": [
+      "git",
+      "github",
+      "cơ bản",
+      "mã nguồn"
+    ],
+    "summary": "Tổng hợp danh sách các lệnh Git thiết yếu hàng ngày giúp lập trình viên theo dõi lịch sử thay đổi mã nguồn và làm việc an toàn.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Git & DevOps: các lệnh Git cơ bản cần nhớ: status, add, commit, push, pull. Tổng hợp danh sách các lệnh Git thiết yếu hàng ngày giúp lập trình viên theo dõi lịch sử thay đổi mã nguồn và làm việc an toàn. Khi làm việc thực tế với Git & DevOps, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 1 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: git, github, cơ bản, mã nguồn. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_024",
+    "url": "https://itlearning.vn/tutorials/git-&-devops/024",
+    "title": "[Git & DevOps] Hướng dẫn chi tiết xây dựng CI/CD Pipeline tự động hóa kiểm thử với GitHub Actions - Phần 1",
+    "author": "Chuyên gia IT Git & DevOps",
+    "publish_date": "2024-01-25",
+    "tags": [
+      "devops",
+      "ci cd",
+      "github actions",
+      "testing"
+    ],
+    "summary": "GitHub Actions cho phép tự động hóa quy trình test, build và deploy code ngay khi có Pull Request hoặc Push lên nhánh main.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Git & DevOps: xây dựng CI/CD Pipeline tự động hóa kiểm thử với GitHub Actions. GitHub Actions cho phép tự động hóa quy trình test, build và deploy code ngay khi có Pull Request hoặc Push lên nhánh main. Khi làm việc thực tế với Git & DevOps, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 1 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: devops, ci cd, github actions, testing. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_025",
+    "url": "https://itlearning.vn/tutorials/web-development/025",
+    "title": "[Web Development] Hướng dẫn chi tiết hiểu về Bảo mật Web: phòng chống tấn công XSS và SQL Injection - Phần 1",
+    "author": "Chuyên gia IT Web Development",
+    "publish_date": "2024-02-26",
+    "tags": [
+      "security",
+      "web development",
+      "xss",
+      "sql injection"
+    ],
+    "summary": "Cross-Site Scripting (XSS) và SQL Injection là hai lỗ hổng bảo mật phổ biến nhất. Hướng dẫn cách lọc dữ liệu đầu vào và dùng Prepared Statements.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Web Development: hiểu về Bảo mật Web: phòng chống tấn công XSS và SQL Injection. Cross-Site Scripting (XSS) và SQL Injection là hai lỗ hổng bảo mật phổ biến nhất. Hướng dẫn cách lọc dữ liệu đầu vào và dùng Prepared Statements. Khi làm việc thực tế với Web Development, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 1 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: security, web development, xss, sql injection. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_026",
+    "url": "https://itlearning.vn/tutorials/ai-&-machine-learning/026",
+    "title": "[AI & Machine Learning] Hướng dẫn chi tiết mạng nơ-ron tích chập (CNN) trong nhận dạng hình ảnh - Phần 1",
+    "author": "Chuyên gia IT AI & Machine Learning",
+    "publish_date": "2024-03-27",
+    "tags": [
+      "ai",
+      "deep learning",
+      "cnn",
+      "image processing"
+    ],
+    "summary": "Mạng Convolutional Neural Network (CNN) sử dụng các lớp tích chập để tự động trích xuất đặc trưng hình ảnh, là xương sống của Computer Vision.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề AI & Machine Learning: mạng nơ-ron tích chập (CNN) trong nhận dạng hình ảnh. Mạng Convolutional Neural Network (CNN) sử dụng các lớp tích chập để tự động trích xuất đặc trưng hình ảnh, là xương sống của Computer Vision. Khi làm việc thực tế với AI & Machine Learning, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 1 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: ai, deep learning, cnn, image processing. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_027",
+    "url": "https://itlearning.vn/tutorials/python/027",
+    "title": "[Python] Hướng dẫn chi tiết phân tích dữ liệu với Pandas và NumPy - Phần 2",
+    "author": "Chuyên gia IT Python",
+    "publish_date": "2024-04-28",
+    "tags": [
+      "python",
+      "pandas",
+      "numpy",
+      "data science"
+    ],
+    "summary": "Học cách thao tác dataframe, lọc dữ liệu, làm sạch dữ liệu thiếu (missing values) và thống kê nhanh với bộ đôi thư viện Pandas và NumPy trong Python.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Python: phân tích dữ liệu với Pandas và NumPy. Học cách thao tác dataframe, lọc dữ liệu, làm sạch dữ liệu thiếu (missing values) và thống kê nhanh với bộ đôi thư viện Pandas và NumPy trong Python. Khi làm việc thực tế với Python, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 2 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: python, pandas, numpy, data science. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_028",
+    "url": "https://itlearning.vn/tutorials/python/028",
+    "title": "[Python] Hướng dẫn chi tiết xây dựng Web API tốc độ cao với FastAPI - Phần 2",
+    "author": "Chuyên gia IT Python",
+    "publish_date": "2024-05-01",
+    "tags": [
+      "python",
+      "fastapi",
+      "web api",
+      "async"
+    ],
+    "summary": "FastAPI là framework hiện đại, hiệu năng cực cao để xây dựng API với Python 3.7+ dựa trên type hints, tự động tạo tài liệu Swagger UI.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Python: xây dựng Web API tốc độ cao với FastAPI. FastAPI là framework hiện đại, hiệu năng cực cao để xây dựng API với Python 3.7+ dựa trên type hints, tự động tạo tài liệu Swagger UI. Khi làm việc thực tế với Python, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 2 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: python, fastapi, web api, async. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_029",
+    "url": "https://itlearning.vn/tutorials/python/029",
+    "title": "[Python] Hướng dẫn chi tiết thuật toán học máy Linear Regression từ con số 0 - Phần 2",
+    "author": "Chuyên gia IT Python",
+    "publish_date": "2024-06-02",
+    "tags": [
+      "python",
+      "machine learning",
+      "ai",
+      "linear regression"
+    ],
+    "summary": "Tìm hiểu phương trình hồi quy tuyến tính, hàm mất mát Mean Squared Error và thuật toán tối ưu Gradient Descent bằng code Python.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Python: thuật toán học máy Linear Regression từ con số 0. Tìm hiểu phương trình hồi quy tuyến tính, hàm mất mát Mean Squared Error và thuật toán tối ưu Gradient Descent bằng code Python. Khi làm việc thực tế với Python, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 2 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: python, machine learning, ai, linear regression. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_030",
+    "url": "https://itlearning.vn/tutorials/javascript/030",
+    "title": "[JavaScript] Hướng dẫn chi tiết xử lý mảng nâng cao với map, filter và reduce - Phần 2",
+    "author": "Chuyên gia IT JavaScript",
+    "publish_date": "2024-07-03",
+    "tags": [
+      "javascript",
+      "array",
+      "es6",
+      "map filter reduce"
+    ],
+    "summary": "Ba phương thức map(), filter() và reduce() là công cụ mạnh mẽ giúp thao tác mảng theo phong cách lập trình hàm trong JavaScript ES6.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề JavaScript: xử lý mảng nâng cao với map, filter và reduce. Ba phương thức map(), filter() và reduce() là công cụ mạnh mẽ giúp thao tác mảng theo phong cách lập trình hàm trong JavaScript ES6. Khi làm việc thực tế với JavaScript, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 2 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: javascript, array, es6, map filter reduce. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_031",
+    "url": "https://itlearning.vn/tutorials/javascript/031",
+    "title": "[JavaScript] Hướng dẫn chi tiết quản lý trạng thái ứng dụng với Redux Toolkit trong React - Phần 2",
+    "author": "Chuyên gia IT JavaScript",
+    "publish_date": "2024-08-04",
+    "tags": [
+      "javascript",
+      "react",
+      "redux",
+      "state management"
+    ],
+    "summary": "Redux Toolkit giúp giảm thiểu code boilerplate khi quản lý global state trong ứng dụng React, hỗ trợ slices và thunks mượt mà.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề JavaScript: quản lý trạng thái ứng dụng với Redux Toolkit trong React. Redux Toolkit giúp giảm thiểu code boilerplate khi quản lý global state trong ứng dụng React, hỗ trợ slices và thunks mượt mà. Khi làm việc thực tế với JavaScript, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 2 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: javascript, react, redux, state management. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_032",
+    "url": "https://itlearning.vn/tutorials/javascript/032",
+    "title": "[JavaScript] Hướng dẫn chi tiết hiểu rõ Event Loop và Call Stack trong NodeJS - Phần 2",
+    "author": "Chuyên gia IT JavaScript",
+    "publish_date": "2024-09-05",
+    "tags": [
+      "javascript",
+      "nodejs",
+      "event loop",
+      "backend"
+    ],
+    "summary": "Event Loop cơ chế cốt lõi giúp Node.js xử lý hàng nghìn kết nối đồng thời với mô hình non-blocking I/O dù chỉ chạy trên một luồng đơn.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề JavaScript: hiểu rõ Event Loop và Call Stack trong NodeJS. Event Loop cơ chế cốt lõi giúp Node.js xử lý hàng nghìn kết nối đồng thời với mô hình non-blocking I/O dù chỉ chạy trên một luồng đơn. Khi làm việc thực tế với JavaScript, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 2 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: javascript, nodejs, event loop, backend. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_033",
+    "url": "https://itlearning.vn/tutorials/c++/033",
+    "title": "[C++] Hướng dẫn chi tiết cấu trúc dữ liệu Danh sách liên kết đơn (Linked List) - Phần 2",
+    "author": "Chuyên gia IT C++",
+    "publish_date": "2024-10-06",
+    "tags": [
+      "c++",
+      "cấu trúc dữ liệu",
+      "linked list",
+      "con trỏ"
+    ],
+    "summary": "Danh sách liên kết đơn là cấu trúc dữ liệu động gồm các nút (node) chứa dữ liệu và con trỏ trỏ tới nút tiếp theo, cho phép thêm xóa linh hoạt.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề C++: cấu trúc dữ liệu Danh sách liên kết đơn (Linked List). Danh sách liên kết đơn là cấu trúc dữ liệu động gồm các nút (node) chứa dữ liệu và con trỏ trỏ tới nút tiếp theo, cho phép thêm xóa linh hoạt. Khi làm việc thực tế với C++, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 2 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: c++, cấu trúc dữ liệu, linked list, con trỏ. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_034",
+    "url": "https://itlearning.vn/tutorials/c++/034",
+    "title": "[C++] Hướng dẫn chi tiết thuật toán tìm kiếm nhị phân (Binary Search) độ phức tạp O(log N) - Phần 2",
+    "author": "Chuyên gia IT C++",
+    "publish_date": "2024-11-07",
+    "tags": [
+      "c++",
+      "thuật toán",
+      "binary search",
+      "tìm kiếm"
+    ],
+    "summary": "Tìm kiếm nhị phân hoạt động trên mảng đã sắp xếp bằng cách liên tục chia đôi khoảng tìm kiếm, giúp tìm thấy phần tử chỉ trong vài bước.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề C++: thuật toán tìm kiếm nhị phân (Binary Search) độ phức tạp O(log N). Tìm kiếm nhị phân hoạt động trên mảng đã sắp xếp bằng cách liên tục chia đôi khoảng tìm kiếm, giúp tìm thấy phần tử chỉ trong vài bước. Khi làm việc thực tế với C++, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 2 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: c++, thuật toán, binary search, tìm kiếm. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_035",
+    "url": "https://itlearning.vn/tutorials/java/035",
+    "title": "[Java] Hướng dẫn chi tiết lập trình đa luồng (Multithreading) và đồng bộ hóa (Synchronization) - Phần 2",
+    "author": "Chuyên gia IT Java",
+    "publish_date": "2024-12-08",
+    "tags": [
+      "java",
+      "multithreading",
+      "thread",
+      "concurrency"
+    ],
+    "summary": "Java hỗ trợ lập trình đa luồng mạnh mẽ với lớp Thread và giao diện Runnable, cùng từ khóa synchronized giúp ngăn chặn xung đột dữ liệu.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Java: lập trình đa luồng (Multithreading) và đồng bộ hóa (Synchronization). Java hỗ trợ lập trình đa luồng mạnh mẽ với lớp Thread và giao diện Runnable, cùng từ khóa synchronized giúp ngăn chặn xung đột dữ liệu. Khi làm việc thực tế với Java, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 2 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: java, multithreading, thread, concurrency. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_036",
+    "url": "https://itlearning.vn/tutorials/java/036",
+    "title": "[Java] Hướng dẫn chi tiết sử dụng Spring Boot để xây dựng Microservices chuẩn doanh nghiệp - Phần 2",
+    "author": "Chuyên gia IT Java",
+    "publish_date": "2024-01-09",
+    "tags": [
+      "java",
+      "spring boot",
+      "microservices",
+      "backend"
+    ],
+    "summary": "Spring Boot đơn giản hóa quá trình khởi tạo và phát triển ứng dụng Java, cung cấp dependency injection và tích hợp sẵn máy chủ Tomcat.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Java: sử dụng Spring Boot để xây dựng Microservices chuẩn doanh nghiệp. Spring Boot đơn giản hóa quá trình khởi tạo và phát triển ứng dụng Java, cung cấp dependency injection và tích hợp sẵn máy chủ Tomcat. Khi làm việc thực tế với Java, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 2 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: java, spring boot, microservices, backend. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_037",
+    "url": "https://itlearning.vn/tutorials/database/037",
+    "title": "[Database] Hướng dẫn chi tiết tối ưu hóa câu lệnh truy vấn SQL với Index (Chỉ mục) - Phần 2",
+    "author": "Chuyên gia IT Database",
+    "publish_date": "2024-02-10",
+    "tags": [
+      "sql",
+      "database",
+      "index",
+      "performance"
+    ],
+    "summary": "Index trong cơ sở dữ liệu giống như mục lục của cuốn sách, giúp tăng tốc độ tìm kiếm dữ liệu B-Tree gấp hàng trăm lần nhưng tốn bộ nhớ lưu trữ.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Database: tối ưu hóa câu lệnh truy vấn SQL với Index (Chỉ mục). Index trong cơ sở dữ liệu giống như mục lục của cuốn sách, giúp tăng tốc độ tìm kiếm dữ liệu B-Tree gấp hàng trăm lần nhưng tốn bộ nhớ lưu trữ. Khi làm việc thực tế với Database, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 2 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: sql, database, index, performance. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_038",
+    "url": "https://itlearning.vn/tutorials/database/038",
+    "title": "[Database] Hướng dẫn chi tiết khái niệm NoSQL và khi nào nên sử dụng MongoDB - Phần 2",
+    "author": "Chuyên gia IT Database",
+    "publish_date": "2024-03-11",
+    "tags": [
+      "database",
+      "nosql",
+      "mongodb",
+      "json"
+    ],
+    "summary": "MongoDB là cơ sở dữ liệu NoSQL lưu trữ dưới dạng document JSON/BSON linh hoạt, rất phù hợp cho dữ liệu lớn không có cấu trúc cố định.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Database: khái niệm NoSQL và khi nào nên sử dụng MongoDB. MongoDB là cơ sở dữ liệu NoSQL lưu trữ dưới dạng document JSON/BSON linh hoạt, rất phù hợp cho dữ liệu lớn không có cấu trúc cố định. Khi làm việc thực tế với Database, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 2 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: database, nosql, mongodb, json. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_039",
+    "url": "https://itlearning.vn/tutorials/git-&-devops/039",
+    "title": "[Git & DevOps] Hướng dẫn chi tiết các lệnh Git cơ bản cần nhớ: status, add, commit, push, pull - Phần 2",
+    "author": "Chuyên gia IT Git & DevOps",
+    "publish_date": "2024-04-12",
+    "tags": [
+      "git",
+      "github",
+      "cơ bản",
+      "mã nguồn"
+    ],
+    "summary": "Tổng hợp danh sách các lệnh Git thiết yếu hàng ngày giúp lập trình viên theo dõi lịch sử thay đổi mã nguồn và làm việc an toàn.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Git & DevOps: các lệnh Git cơ bản cần nhớ: status, add, commit, push, pull. Tổng hợp danh sách các lệnh Git thiết yếu hàng ngày giúp lập trình viên theo dõi lịch sử thay đổi mã nguồn và làm việc an toàn. Khi làm việc thực tế với Git & DevOps, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 2 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: git, github, cơ bản, mã nguồn. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_040",
+    "url": "https://itlearning.vn/tutorials/git-&-devops/040",
+    "title": "[Git & DevOps] Hướng dẫn chi tiết xây dựng CI/CD Pipeline tự động hóa kiểm thử với GitHub Actions - Phần 2",
+    "author": "Chuyên gia IT Git & DevOps",
+    "publish_date": "2024-05-13",
+    "tags": [
+      "devops",
+      "ci cd",
+      "github actions",
+      "testing"
+    ],
+    "summary": "GitHub Actions cho phép tự động hóa quy trình test, build và deploy code ngay khi có Pull Request hoặc Push lên nhánh main.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Git & DevOps: xây dựng CI/CD Pipeline tự động hóa kiểm thử với GitHub Actions. GitHub Actions cho phép tự động hóa quy trình test, build và deploy code ngay khi có Pull Request hoặc Push lên nhánh main. Khi làm việc thực tế với Git & DevOps, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 2 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: devops, ci cd, github actions, testing. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_041",
+    "url": "https://itlearning.vn/tutorials/web-development/041",
+    "title": "[Web Development] Hướng dẫn chi tiết hiểu về Bảo mật Web: phòng chống tấn công XSS và SQL Injection - Phần 2",
+    "author": "Chuyên gia IT Web Development",
+    "publish_date": "2024-06-14",
+    "tags": [
+      "security",
+      "web development",
+      "xss",
+      "sql injection"
+    ],
+    "summary": "Cross-Site Scripting (XSS) và SQL Injection là hai lỗ hổng bảo mật phổ biến nhất. Hướng dẫn cách lọc dữ liệu đầu vào và dùng Prepared Statements.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Web Development: hiểu về Bảo mật Web: phòng chống tấn công XSS và SQL Injection. Cross-Site Scripting (XSS) và SQL Injection là hai lỗ hổng bảo mật phổ biến nhất. Hướng dẫn cách lọc dữ liệu đầu vào và dùng Prepared Statements. Khi làm việc thực tế với Web Development, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 2 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: security, web development, xss, sql injection. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_042",
+    "url": "https://itlearning.vn/tutorials/ai-&-machine-learning/042",
+    "title": "[AI & Machine Learning] Hướng dẫn chi tiết mạng nơ-ron tích chập (CNN) trong nhận dạng hình ảnh - Phần 2",
+    "author": "Chuyên gia IT AI & Machine Learning",
+    "publish_date": "2024-07-15",
+    "tags": [
+      "ai",
+      "deep learning",
+      "cnn",
+      "image processing"
+    ],
+    "summary": "Mạng Convolutional Neural Network (CNN) sử dụng các lớp tích chập để tự động trích xuất đặc trưng hình ảnh, là xương sống của Computer Vision.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề AI & Machine Learning: mạng nơ-ron tích chập (CNN) trong nhận dạng hình ảnh. Mạng Convolutional Neural Network (CNN) sử dụng các lớp tích chập để tự động trích xuất đặc trưng hình ảnh, là xương sống của Computer Vision. Khi làm việc thực tế với AI & Machine Learning, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 2 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: ai, deep learning, cnn, image processing. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_043",
+    "url": "https://itlearning.vn/tutorials/python/043",
+    "title": "[Python] Hướng dẫn chi tiết phân tích dữ liệu với Pandas và NumPy - Phần 3",
+    "author": "Chuyên gia IT Python",
+    "publish_date": "2024-08-16",
+    "tags": [
+      "python",
+      "pandas",
+      "numpy",
+      "data science"
+    ],
+    "summary": "Học cách thao tác dataframe, lọc dữ liệu, làm sạch dữ liệu thiếu (missing values) và thống kê nhanh với bộ đôi thư viện Pandas và NumPy trong Python.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Python: phân tích dữ liệu với Pandas và NumPy. Học cách thao tác dataframe, lọc dữ liệu, làm sạch dữ liệu thiếu (missing values) và thống kê nhanh với bộ đôi thư viện Pandas và NumPy trong Python. Khi làm việc thực tế với Python, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 3 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: python, pandas, numpy, data science. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_044",
+    "url": "https://itlearning.vn/tutorials/python/044",
+    "title": "[Python] Hướng dẫn chi tiết xây dựng Web API tốc độ cao với FastAPI - Phần 3",
+    "author": "Chuyên gia IT Python",
+    "publish_date": "2024-09-17",
+    "tags": [
+      "python",
+      "fastapi",
+      "web api",
+      "async"
+    ],
+    "summary": "FastAPI là framework hiện đại, hiệu năng cực cao để xây dựng API với Python 3.7+ dựa trên type hints, tự động tạo tài liệu Swagger UI.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Python: xây dựng Web API tốc độ cao với FastAPI. FastAPI là framework hiện đại, hiệu năng cực cao để xây dựng API với Python 3.7+ dựa trên type hints, tự động tạo tài liệu Swagger UI. Khi làm việc thực tế với Python, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 3 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: python, fastapi, web api, async. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_045",
+    "url": "https://itlearning.vn/tutorials/python/045",
+    "title": "[Python] Hướng dẫn chi tiết thuật toán học máy Linear Regression từ con số 0 - Phần 3",
+    "author": "Chuyên gia IT Python",
+    "publish_date": "2024-10-18",
+    "tags": [
+      "python",
+      "machine learning",
+      "ai",
+      "linear regression"
+    ],
+    "summary": "Tìm hiểu phương trình hồi quy tuyến tính, hàm mất mát Mean Squared Error và thuật toán tối ưu Gradient Descent bằng code Python.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Python: thuật toán học máy Linear Regression từ con số 0. Tìm hiểu phương trình hồi quy tuyến tính, hàm mất mát Mean Squared Error và thuật toán tối ưu Gradient Descent bằng code Python. Khi làm việc thực tế với Python, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 3 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: python, machine learning, ai, linear regression. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_046",
+    "url": "https://itlearning.vn/tutorials/javascript/046",
+    "title": "[JavaScript] Hướng dẫn chi tiết xử lý mảng nâng cao với map, filter và reduce - Phần 3",
+    "author": "Chuyên gia IT JavaScript",
+    "publish_date": "2024-11-19",
+    "tags": [
+      "javascript",
+      "array",
+      "es6",
+      "map filter reduce"
+    ],
+    "summary": "Ba phương thức map(), filter() và reduce() là công cụ mạnh mẽ giúp thao tác mảng theo phong cách lập trình hàm trong JavaScript ES6.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề JavaScript: xử lý mảng nâng cao với map, filter và reduce. Ba phương thức map(), filter() và reduce() là công cụ mạnh mẽ giúp thao tác mảng theo phong cách lập trình hàm trong JavaScript ES6. Khi làm việc thực tế với JavaScript, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 3 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: javascript, array, es6, map filter reduce. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_047",
+    "url": "https://itlearning.vn/tutorials/javascript/047",
+    "title": "[JavaScript] Hướng dẫn chi tiết quản lý trạng thái ứng dụng với Redux Toolkit trong React - Phần 3",
+    "author": "Chuyên gia IT JavaScript",
+    "publish_date": "2024-12-20",
+    "tags": [
+      "javascript",
+      "react",
+      "redux",
+      "state management"
+    ],
+    "summary": "Redux Toolkit giúp giảm thiểu code boilerplate khi quản lý global state trong ứng dụng React, hỗ trợ slices và thunks mượt mà.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề JavaScript: quản lý trạng thái ứng dụng với Redux Toolkit trong React. Redux Toolkit giúp giảm thiểu code boilerplate khi quản lý global state trong ứng dụng React, hỗ trợ slices và thunks mượt mà. Khi làm việc thực tế với JavaScript, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 3 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: javascript, react, redux, state management. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_048",
+    "url": "https://itlearning.vn/tutorials/javascript/048",
+    "title": "[JavaScript] Hướng dẫn chi tiết hiểu rõ Event Loop và Call Stack trong NodeJS - Phần 3",
+    "author": "Chuyên gia IT JavaScript",
+    "publish_date": "2024-01-21",
+    "tags": [
+      "javascript",
+      "nodejs",
+      "event loop",
+      "backend"
+    ],
+    "summary": "Event Loop cơ chế cốt lõi giúp Node.js xử lý hàng nghìn kết nối đồng thời với mô hình non-blocking I/O dù chỉ chạy trên một luồng đơn.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề JavaScript: hiểu rõ Event Loop và Call Stack trong NodeJS. Event Loop cơ chế cốt lõi giúp Node.js xử lý hàng nghìn kết nối đồng thời với mô hình non-blocking I/O dù chỉ chạy trên một luồng đơn. Khi làm việc thực tế với JavaScript, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 3 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: javascript, nodejs, event loop, backend. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_049",
+    "url": "https://itlearning.vn/tutorials/c++/049",
+    "title": "[C++] Hướng dẫn chi tiết cấu trúc dữ liệu Danh sách liên kết đơn (Linked List) - Phần 3",
+    "author": "Chuyên gia IT C++",
+    "publish_date": "2024-02-22",
+    "tags": [
+      "c++",
+      "cấu trúc dữ liệu",
+      "linked list",
+      "con trỏ"
+    ],
+    "summary": "Danh sách liên kết đơn là cấu trúc dữ liệu động gồm các nút (node) chứa dữ liệu và con trỏ trỏ tới nút tiếp theo, cho phép thêm xóa linh hoạt.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề C++: cấu trúc dữ liệu Danh sách liên kết đơn (Linked List). Danh sách liên kết đơn là cấu trúc dữ liệu động gồm các nút (node) chứa dữ liệu và con trỏ trỏ tới nút tiếp theo, cho phép thêm xóa linh hoạt. Khi làm việc thực tế với C++, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 3 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: c++, cấu trúc dữ liệu, linked list, con trỏ. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_050",
+    "url": "https://itlearning.vn/tutorials/c++/050",
+    "title": "[C++] Hướng dẫn chi tiết thuật toán tìm kiếm nhị phân (Binary Search) độ phức tạp O(log N) - Phần 3",
+    "author": "Chuyên gia IT C++",
+    "publish_date": "2024-03-23",
+    "tags": [
+      "c++",
+      "thuật toán",
+      "binary search",
+      "tìm kiếm"
+    ],
+    "summary": "Tìm kiếm nhị phân hoạt động trên mảng đã sắp xếp bằng cách liên tục chia đôi khoảng tìm kiếm, giúp tìm thấy phần tử chỉ trong vài bước.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề C++: thuật toán tìm kiếm nhị phân (Binary Search) độ phức tạp O(log N). Tìm kiếm nhị phân hoạt động trên mảng đã sắp xếp bằng cách liên tục chia đôi khoảng tìm kiếm, giúp tìm thấy phần tử chỉ trong vài bước. Khi làm việc thực tế với C++, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 3 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: c++, thuật toán, binary search, tìm kiếm. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_051",
+    "url": "https://itlearning.vn/tutorials/java/051",
+    "title": "[Java] Hướng dẫn chi tiết lập trình đa luồng (Multithreading) và đồng bộ hóa (Synchronization) - Phần 3",
+    "author": "Chuyên gia IT Java",
+    "publish_date": "2024-04-24",
+    "tags": [
+      "java",
+      "multithreading",
+      "thread",
+      "concurrency"
+    ],
+    "summary": "Java hỗ trợ lập trình đa luồng mạnh mẽ với lớp Thread và giao diện Runnable, cùng từ khóa synchronized giúp ngăn chặn xung đột dữ liệu.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Java: lập trình đa luồng (Multithreading) và đồng bộ hóa (Synchronization). Java hỗ trợ lập trình đa luồng mạnh mẽ với lớp Thread và giao diện Runnable, cùng từ khóa synchronized giúp ngăn chặn xung đột dữ liệu. Khi làm việc thực tế với Java, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 3 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: java, multithreading, thread, concurrency. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_052",
+    "url": "https://itlearning.vn/tutorials/java/052",
+    "title": "[Java] Hướng dẫn chi tiết sử dụng Spring Boot để xây dựng Microservices chuẩn doanh nghiệp - Phần 3",
+    "author": "Chuyên gia IT Java",
+    "publish_date": "2024-05-25",
+    "tags": [
+      "java",
+      "spring boot",
+      "microservices",
+      "backend"
+    ],
+    "summary": "Spring Boot đơn giản hóa quá trình khởi tạo và phát triển ứng dụng Java, cung cấp dependency injection và tích hợp sẵn máy chủ Tomcat.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Java: sử dụng Spring Boot để xây dựng Microservices chuẩn doanh nghiệp. Spring Boot đơn giản hóa quá trình khởi tạo và phát triển ứng dụng Java, cung cấp dependency injection và tích hợp sẵn máy chủ Tomcat. Khi làm việc thực tế với Java, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 3 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: java, spring boot, microservices, backend. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_053",
+    "url": "https://itlearning.vn/tutorials/database/053",
+    "title": "[Database] Hướng dẫn chi tiết tối ưu hóa câu lệnh truy vấn SQL với Index (Chỉ mục) - Phần 3",
+    "author": "Chuyên gia IT Database",
+    "publish_date": "2024-06-26",
+    "tags": [
+      "sql",
+      "database",
+      "index",
+      "performance"
+    ],
+    "summary": "Index trong cơ sở dữ liệu giống như mục lục của cuốn sách, giúp tăng tốc độ tìm kiếm dữ liệu B-Tree gấp hàng trăm lần nhưng tốn bộ nhớ lưu trữ.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Database: tối ưu hóa câu lệnh truy vấn SQL với Index (Chỉ mục). Index trong cơ sở dữ liệu giống như mục lục của cuốn sách, giúp tăng tốc độ tìm kiếm dữ liệu B-Tree gấp hàng trăm lần nhưng tốn bộ nhớ lưu trữ. Khi làm việc thực tế với Database, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 3 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: sql, database, index, performance. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_054",
+    "url": "https://itlearning.vn/tutorials/database/054",
+    "title": "[Database] Hướng dẫn chi tiết khái niệm NoSQL và khi nào nên sử dụng MongoDB - Phần 3",
+    "author": "Chuyên gia IT Database",
+    "publish_date": "2024-07-27",
+    "tags": [
+      "database",
+      "nosql",
+      "mongodb",
+      "json"
+    ],
+    "summary": "MongoDB là cơ sở dữ liệu NoSQL lưu trữ dưới dạng document JSON/BSON linh hoạt, rất phù hợp cho dữ liệu lớn không có cấu trúc cố định.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Database: khái niệm NoSQL và khi nào nên sử dụng MongoDB. MongoDB là cơ sở dữ liệu NoSQL lưu trữ dưới dạng document JSON/BSON linh hoạt, rất phù hợp cho dữ liệu lớn không có cấu trúc cố định. Khi làm việc thực tế với Database, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 3 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: database, nosql, mongodb, json. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_055",
+    "url": "https://itlearning.vn/tutorials/git-&-devops/055",
+    "title": "[Git & DevOps] Hướng dẫn chi tiết các lệnh Git cơ bản cần nhớ: status, add, commit, push, pull - Phần 3",
+    "author": "Chuyên gia IT Git & DevOps",
+    "publish_date": "2024-08-28",
+    "tags": [
+      "git",
+      "github",
+      "cơ bản",
+      "mã nguồn"
+    ],
+    "summary": "Tổng hợp danh sách các lệnh Git thiết yếu hàng ngày giúp lập trình viên theo dõi lịch sử thay đổi mã nguồn và làm việc an toàn.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Git & DevOps: các lệnh Git cơ bản cần nhớ: status, add, commit, push, pull. Tổng hợp danh sách các lệnh Git thiết yếu hàng ngày giúp lập trình viên theo dõi lịch sử thay đổi mã nguồn và làm việc an toàn. Khi làm việc thực tế với Git & DevOps, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 3 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: git, github, cơ bản, mã nguồn. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_056",
+    "url": "https://itlearning.vn/tutorials/git-&-devops/056",
+    "title": "[Git & DevOps] Hướng dẫn chi tiết xây dựng CI/CD Pipeline tự động hóa kiểm thử với GitHub Actions - Phần 3",
+    "author": "Chuyên gia IT Git & DevOps",
+    "publish_date": "2024-09-01",
+    "tags": [
+      "devops",
+      "ci cd",
+      "github actions",
+      "testing"
+    ],
+    "summary": "GitHub Actions cho phép tự động hóa quy trình test, build và deploy code ngay khi có Pull Request hoặc Push lên nhánh main.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Git & DevOps: xây dựng CI/CD Pipeline tự động hóa kiểm thử với GitHub Actions. GitHub Actions cho phép tự động hóa quy trình test, build và deploy code ngay khi có Pull Request hoặc Push lên nhánh main. Khi làm việc thực tế với Git & DevOps, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 3 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: devops, ci cd, github actions, testing. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_057",
+    "url": "https://itlearning.vn/tutorials/web-development/057",
+    "title": "[Web Development] Hướng dẫn chi tiết hiểu về Bảo mật Web: phòng chống tấn công XSS và SQL Injection - Phần 3",
+    "author": "Chuyên gia IT Web Development",
+    "publish_date": "2024-10-02",
+    "tags": [
+      "security",
+      "web development",
+      "xss",
+      "sql injection"
+    ],
+    "summary": "Cross-Site Scripting (XSS) và SQL Injection là hai lỗ hổng bảo mật phổ biến nhất. Hướng dẫn cách lọc dữ liệu đầu vào và dùng Prepared Statements.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Web Development: hiểu về Bảo mật Web: phòng chống tấn công XSS và SQL Injection. Cross-Site Scripting (XSS) và SQL Injection là hai lỗ hổng bảo mật phổ biến nhất. Hướng dẫn cách lọc dữ liệu đầu vào và dùng Prepared Statements. Khi làm việc thực tế với Web Development, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 3 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: security, web development, xss, sql injection. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_058",
+    "url": "https://itlearning.vn/tutorials/ai-&-machine-learning/058",
+    "title": "[AI & Machine Learning] Hướng dẫn chi tiết mạng nơ-ron tích chập (CNN) trong nhận dạng hình ảnh - Phần 3",
+    "author": "Chuyên gia IT AI & Machine Learning",
+    "publish_date": "2024-11-03",
+    "tags": [
+      "ai",
+      "deep learning",
+      "cnn",
+      "image processing"
+    ],
+    "summary": "Mạng Convolutional Neural Network (CNN) sử dụng các lớp tích chập để tự động trích xuất đặc trưng hình ảnh, là xương sống của Computer Vision.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề AI & Machine Learning: mạng nơ-ron tích chập (CNN) trong nhận dạng hình ảnh. Mạng Convolutional Neural Network (CNN) sử dụng các lớp tích chập để tự động trích xuất đặc trưng hình ảnh, là xương sống của Computer Vision. Khi làm việc thực tế với AI & Machine Learning, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 3 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: ai, deep learning, cnn, image processing. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_059",
+    "url": "https://itlearning.vn/tutorials/python/059",
+    "title": "[Python] Hướng dẫn chi tiết phân tích dữ liệu với Pandas và NumPy - Phần 4",
+    "author": "Chuyên gia IT Python",
+    "publish_date": "2024-12-04",
+    "tags": [
+      "python",
+      "pandas",
+      "numpy",
+      "data science"
+    ],
+    "summary": "Học cách thao tác dataframe, lọc dữ liệu, làm sạch dữ liệu thiếu (missing values) và thống kê nhanh với bộ đôi thư viện Pandas và NumPy trong Python.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Python: phân tích dữ liệu với Pandas và NumPy. Học cách thao tác dataframe, lọc dữ liệu, làm sạch dữ liệu thiếu (missing values) và thống kê nhanh với bộ đôi thư viện Pandas và NumPy trong Python. Khi làm việc thực tế với Python, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 4 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: python, pandas, numpy, data science. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_060",
+    "url": "https://itlearning.vn/tutorials/python/060",
+    "title": "[Python] Hướng dẫn chi tiết xây dựng Web API tốc độ cao với FastAPI - Phần 4",
+    "author": "Chuyên gia IT Python",
+    "publish_date": "2024-01-05",
+    "tags": [
+      "python",
+      "fastapi",
+      "web api",
+      "async"
+    ],
+    "summary": "FastAPI là framework hiện đại, hiệu năng cực cao để xây dựng API với Python 3.7+ dựa trên type hints, tự động tạo tài liệu Swagger UI.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Python: xây dựng Web API tốc độ cao với FastAPI. FastAPI là framework hiện đại, hiệu năng cực cao để xây dựng API với Python 3.7+ dựa trên type hints, tự động tạo tài liệu Swagger UI. Khi làm việc thực tế với Python, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 4 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: python, fastapi, web api, async. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_061",
+    "url": "https://itlearning.vn/tutorials/python/061",
+    "title": "[Python] Hướng dẫn chi tiết thuật toán học máy Linear Regression từ con số 0 - Phần 4",
+    "author": "Chuyên gia IT Python",
+    "publish_date": "2024-02-06",
+    "tags": [
+      "python",
+      "machine learning",
+      "ai",
+      "linear regression"
+    ],
+    "summary": "Tìm hiểu phương trình hồi quy tuyến tính, hàm mất mát Mean Squared Error và thuật toán tối ưu Gradient Descent bằng code Python.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Python: thuật toán học máy Linear Regression từ con số 0. Tìm hiểu phương trình hồi quy tuyến tính, hàm mất mát Mean Squared Error và thuật toán tối ưu Gradient Descent bằng code Python. Khi làm việc thực tế với Python, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 4 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: python, machine learning, ai, linear regression. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_062",
+    "url": "https://itlearning.vn/tutorials/javascript/062",
+    "title": "[JavaScript] Hướng dẫn chi tiết xử lý mảng nâng cao với map, filter và reduce - Phần 4",
+    "author": "Chuyên gia IT JavaScript",
+    "publish_date": "2024-03-07",
+    "tags": [
+      "javascript",
+      "array",
+      "es6",
+      "map filter reduce"
+    ],
+    "summary": "Ba phương thức map(), filter() và reduce() là công cụ mạnh mẽ giúp thao tác mảng theo phong cách lập trình hàm trong JavaScript ES6.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề JavaScript: xử lý mảng nâng cao với map, filter và reduce. Ba phương thức map(), filter() và reduce() là công cụ mạnh mẽ giúp thao tác mảng theo phong cách lập trình hàm trong JavaScript ES6. Khi làm việc thực tế với JavaScript, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 4 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: javascript, array, es6, map filter reduce. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_063",
+    "url": "https://itlearning.vn/tutorials/javascript/063",
+    "title": "[JavaScript] Hướng dẫn chi tiết quản lý trạng thái ứng dụng với Redux Toolkit trong React - Phần 4",
+    "author": "Chuyên gia IT JavaScript",
+    "publish_date": "2024-04-08",
+    "tags": [
+      "javascript",
+      "react",
+      "redux",
+      "state management"
+    ],
+    "summary": "Redux Toolkit giúp giảm thiểu code boilerplate khi quản lý global state trong ứng dụng React, hỗ trợ slices và thunks mượt mà.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề JavaScript: quản lý trạng thái ứng dụng với Redux Toolkit trong React. Redux Toolkit giúp giảm thiểu code boilerplate khi quản lý global state trong ứng dụng React, hỗ trợ slices và thunks mượt mà. Khi làm việc thực tế với JavaScript, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 4 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: javascript, react, redux, state management. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_064",
+    "url": "https://itlearning.vn/tutorials/javascript/064",
+    "title": "[JavaScript] Hướng dẫn chi tiết hiểu rõ Event Loop và Call Stack trong NodeJS - Phần 4",
+    "author": "Chuyên gia IT JavaScript",
+    "publish_date": "2024-05-09",
+    "tags": [
+      "javascript",
+      "nodejs",
+      "event loop",
+      "backend"
+    ],
+    "summary": "Event Loop cơ chế cốt lõi giúp Node.js xử lý hàng nghìn kết nối đồng thời với mô hình non-blocking I/O dù chỉ chạy trên một luồng đơn.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề JavaScript: hiểu rõ Event Loop và Call Stack trong NodeJS. Event Loop cơ chế cốt lõi giúp Node.js xử lý hàng nghìn kết nối đồng thời với mô hình non-blocking I/O dù chỉ chạy trên một luồng đơn. Khi làm việc thực tế với JavaScript, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 4 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: javascript, nodejs, event loop, backend. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_065",
+    "url": "https://itlearning.vn/tutorials/c++/065",
+    "title": "[C++] Hướng dẫn chi tiết cấu trúc dữ liệu Danh sách liên kết đơn (Linked List) - Phần 4",
+    "author": "Chuyên gia IT C++",
+    "publish_date": "2024-06-10",
+    "tags": [
+      "c++",
+      "cấu trúc dữ liệu",
+      "linked list",
+      "con trỏ"
+    ],
+    "summary": "Danh sách liên kết đơn là cấu trúc dữ liệu động gồm các nút (node) chứa dữ liệu và con trỏ trỏ tới nút tiếp theo, cho phép thêm xóa linh hoạt.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề C++: cấu trúc dữ liệu Danh sách liên kết đơn (Linked List). Danh sách liên kết đơn là cấu trúc dữ liệu động gồm các nút (node) chứa dữ liệu và con trỏ trỏ tới nút tiếp theo, cho phép thêm xóa linh hoạt. Khi làm việc thực tế với C++, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 4 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: c++, cấu trúc dữ liệu, linked list, con trỏ. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_066",
+    "url": "https://itlearning.vn/tutorials/c++/066",
+    "title": "[C++] Hướng dẫn chi tiết thuật toán tìm kiếm nhị phân (Binary Search) độ phức tạp O(log N) - Phần 4",
+    "author": "Chuyên gia IT C++",
+    "publish_date": "2024-07-11",
+    "tags": [
+      "c++",
+      "thuật toán",
+      "binary search",
+      "tìm kiếm"
+    ],
+    "summary": "Tìm kiếm nhị phân hoạt động trên mảng đã sắp xếp bằng cách liên tục chia đôi khoảng tìm kiếm, giúp tìm thấy phần tử chỉ trong vài bước.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề C++: thuật toán tìm kiếm nhị phân (Binary Search) độ phức tạp O(log N). Tìm kiếm nhị phân hoạt động trên mảng đã sắp xếp bằng cách liên tục chia đôi khoảng tìm kiếm, giúp tìm thấy phần tử chỉ trong vài bước. Khi làm việc thực tế với C++, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 4 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: c++, thuật toán, binary search, tìm kiếm. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_067",
+    "url": "https://itlearning.vn/tutorials/java/067",
+    "title": "[Java] Hướng dẫn chi tiết lập trình đa luồng (Multithreading) và đồng bộ hóa (Synchronization) - Phần 4",
+    "author": "Chuyên gia IT Java",
+    "publish_date": "2024-08-12",
+    "tags": [
+      "java",
+      "multithreading",
+      "thread",
+      "concurrency"
+    ],
+    "summary": "Java hỗ trợ lập trình đa luồng mạnh mẽ với lớp Thread và giao diện Runnable, cùng từ khóa synchronized giúp ngăn chặn xung đột dữ liệu.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Java: lập trình đa luồng (Multithreading) và đồng bộ hóa (Synchronization). Java hỗ trợ lập trình đa luồng mạnh mẽ với lớp Thread và giao diện Runnable, cùng từ khóa synchronized giúp ngăn chặn xung đột dữ liệu. Khi làm việc thực tế với Java, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 4 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: java, multithreading, thread, concurrency. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_068",
+    "url": "https://itlearning.vn/tutorials/java/068",
+    "title": "[Java] Hướng dẫn chi tiết sử dụng Spring Boot để xây dựng Microservices chuẩn doanh nghiệp - Phần 4",
+    "author": "Chuyên gia IT Java",
+    "publish_date": "2024-09-13",
+    "tags": [
+      "java",
+      "spring boot",
+      "microservices",
+      "backend"
+    ],
+    "summary": "Spring Boot đơn giản hóa quá trình khởi tạo và phát triển ứng dụng Java, cung cấp dependency injection và tích hợp sẵn máy chủ Tomcat.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Java: sử dụng Spring Boot để xây dựng Microservices chuẩn doanh nghiệp. Spring Boot đơn giản hóa quá trình khởi tạo và phát triển ứng dụng Java, cung cấp dependency injection và tích hợp sẵn máy chủ Tomcat. Khi làm việc thực tế với Java, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 4 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: java, spring boot, microservices, backend. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_069",
+    "url": "https://itlearning.vn/tutorials/database/069",
+    "title": "[Database] Hướng dẫn chi tiết tối ưu hóa câu lệnh truy vấn SQL với Index (Chỉ mục) - Phần 4",
+    "author": "Chuyên gia IT Database",
+    "publish_date": "2024-10-14",
+    "tags": [
+      "sql",
+      "database",
+      "index",
+      "performance"
+    ],
+    "summary": "Index trong cơ sở dữ liệu giống như mục lục của cuốn sách, giúp tăng tốc độ tìm kiếm dữ liệu B-Tree gấp hàng trăm lần nhưng tốn bộ nhớ lưu trữ.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Database: tối ưu hóa câu lệnh truy vấn SQL với Index (Chỉ mục). Index trong cơ sở dữ liệu giống như mục lục của cuốn sách, giúp tăng tốc độ tìm kiếm dữ liệu B-Tree gấp hàng trăm lần nhưng tốn bộ nhớ lưu trữ. Khi làm việc thực tế với Database, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 4 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: sql, database, index, performance. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_070",
+    "url": "https://itlearning.vn/tutorials/database/070",
+    "title": "[Database] Hướng dẫn chi tiết khái niệm NoSQL và khi nào nên sử dụng MongoDB - Phần 4",
+    "author": "Chuyên gia IT Database",
+    "publish_date": "2024-11-15",
+    "tags": [
+      "database",
+      "nosql",
+      "mongodb",
+      "json"
+    ],
+    "summary": "MongoDB là cơ sở dữ liệu NoSQL lưu trữ dưới dạng document JSON/BSON linh hoạt, rất phù hợp cho dữ liệu lớn không có cấu trúc cố định.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Database: khái niệm NoSQL và khi nào nên sử dụng MongoDB. MongoDB là cơ sở dữ liệu NoSQL lưu trữ dưới dạng document JSON/BSON linh hoạt, rất phù hợp cho dữ liệu lớn không có cấu trúc cố định. Khi làm việc thực tế với Database, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 4 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: database, nosql, mongodb, json. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_071",
+    "url": "https://itlearning.vn/tutorials/git-&-devops/071",
+    "title": "[Git & DevOps] Hướng dẫn chi tiết các lệnh Git cơ bản cần nhớ: status, add, commit, push, pull - Phần 4",
+    "author": "Chuyên gia IT Git & DevOps",
+    "publish_date": "2024-12-16",
+    "tags": [
+      "git",
+      "github",
+      "cơ bản",
+      "mã nguồn"
+    ],
+    "summary": "Tổng hợp danh sách các lệnh Git thiết yếu hàng ngày giúp lập trình viên theo dõi lịch sử thay đổi mã nguồn và làm việc an toàn.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Git & DevOps: các lệnh Git cơ bản cần nhớ: status, add, commit, push, pull. Tổng hợp danh sách các lệnh Git thiết yếu hàng ngày giúp lập trình viên theo dõi lịch sử thay đổi mã nguồn và làm việc an toàn. Khi làm việc thực tế với Git & DevOps, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 4 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: git, github, cơ bản, mã nguồn. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_072",
+    "url": "https://itlearning.vn/tutorials/git-&-devops/072",
+    "title": "[Git & DevOps] Hướng dẫn chi tiết xây dựng CI/CD Pipeline tự động hóa kiểm thử với GitHub Actions - Phần 4",
+    "author": "Chuyên gia IT Git & DevOps",
+    "publish_date": "2024-01-17",
+    "tags": [
+      "devops",
+      "ci cd",
+      "github actions",
+      "testing"
+    ],
+    "summary": "GitHub Actions cho phép tự động hóa quy trình test, build và deploy code ngay khi có Pull Request hoặc Push lên nhánh main.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Git & DevOps: xây dựng CI/CD Pipeline tự động hóa kiểm thử với GitHub Actions. GitHub Actions cho phép tự động hóa quy trình test, build và deploy code ngay khi có Pull Request hoặc Push lên nhánh main. Khi làm việc thực tế với Git & DevOps, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 4 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: devops, ci cd, github actions, testing. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_073",
+    "url": "https://itlearning.vn/tutorials/web-development/073",
+    "title": "[Web Development] Hướng dẫn chi tiết hiểu về Bảo mật Web: phòng chống tấn công XSS và SQL Injection - Phần 4",
+    "author": "Chuyên gia IT Web Development",
+    "publish_date": "2024-02-18",
+    "tags": [
+      "security",
+      "web development",
+      "xss",
+      "sql injection"
+    ],
+    "summary": "Cross-Site Scripting (XSS) và SQL Injection là hai lỗ hổng bảo mật phổ biến nhất. Hướng dẫn cách lọc dữ liệu đầu vào và dùng Prepared Statements.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Web Development: hiểu về Bảo mật Web: phòng chống tấn công XSS và SQL Injection. Cross-Site Scripting (XSS) và SQL Injection là hai lỗ hổng bảo mật phổ biến nhất. Hướng dẫn cách lọc dữ liệu đầu vào và dùng Prepared Statements. Khi làm việc thực tế với Web Development, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 4 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: security, web development, xss, sql injection. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_074",
+    "url": "https://itlearning.vn/tutorials/ai-&-machine-learning/074",
+    "title": "[AI & Machine Learning] Hướng dẫn chi tiết mạng nơ-ron tích chập (CNN) trong nhận dạng hình ảnh - Phần 4",
+    "author": "Chuyên gia IT AI & Machine Learning",
+    "publish_date": "2024-03-19",
+    "tags": [
+      "ai",
+      "deep learning",
+      "cnn",
+      "image processing"
+    ],
+    "summary": "Mạng Convolutional Neural Network (CNN) sử dụng các lớp tích chập để tự động trích xuất đặc trưng hình ảnh, là xương sống của Computer Vision.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề AI & Machine Learning: mạng nơ-ron tích chập (CNN) trong nhận dạng hình ảnh. Mạng Convolutional Neural Network (CNN) sử dụng các lớp tích chập để tự động trích xuất đặc trưng hình ảnh, là xương sống của Computer Vision. Khi làm việc thực tế với AI & Machine Learning, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 4 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: ai, deep learning, cnn, image processing. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_075",
+    "url": "https://itlearning.vn/tutorials/python/075",
+    "title": "[Python] Hướng dẫn chi tiết phân tích dữ liệu với Pandas và NumPy - Phần 5",
+    "author": "Chuyên gia IT Python",
+    "publish_date": "2024-04-20",
+    "tags": [
+      "python",
+      "pandas",
+      "numpy",
+      "data science"
+    ],
+    "summary": "Học cách thao tác dataframe, lọc dữ liệu, làm sạch dữ liệu thiếu (missing values) và thống kê nhanh với bộ đôi thư viện Pandas và NumPy trong Python.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Python: phân tích dữ liệu với Pandas và NumPy. Học cách thao tác dataframe, lọc dữ liệu, làm sạch dữ liệu thiếu (missing values) và thống kê nhanh với bộ đôi thư viện Pandas và NumPy trong Python. Khi làm việc thực tế với Python, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 5 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: python, pandas, numpy, data science. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_076",
+    "url": "https://itlearning.vn/tutorials/python/076",
+    "title": "[Python] Hướng dẫn chi tiết xây dựng Web API tốc độ cao với FastAPI - Phần 5",
+    "author": "Chuyên gia IT Python",
+    "publish_date": "2024-05-21",
+    "tags": [
+      "python",
+      "fastapi",
+      "web api",
+      "async"
+    ],
+    "summary": "FastAPI là framework hiện đại, hiệu năng cực cao để xây dựng API với Python 3.7+ dựa trên type hints, tự động tạo tài liệu Swagger UI.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Python: xây dựng Web API tốc độ cao với FastAPI. FastAPI là framework hiện đại, hiệu năng cực cao để xây dựng API với Python 3.7+ dựa trên type hints, tự động tạo tài liệu Swagger UI. Khi làm việc thực tế với Python, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 5 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: python, fastapi, web api, async. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_077",
+    "url": "https://itlearning.vn/tutorials/python/077",
+    "title": "[Python] Hướng dẫn chi tiết thuật toán học máy Linear Regression từ con số 0 - Phần 5",
+    "author": "Chuyên gia IT Python",
+    "publish_date": "2024-06-22",
+    "tags": [
+      "python",
+      "machine learning",
+      "ai",
+      "linear regression"
+    ],
+    "summary": "Tìm hiểu phương trình hồi quy tuyến tính, hàm mất mát Mean Squared Error và thuật toán tối ưu Gradient Descent bằng code Python.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Python: thuật toán học máy Linear Regression từ con số 0. Tìm hiểu phương trình hồi quy tuyến tính, hàm mất mát Mean Squared Error và thuật toán tối ưu Gradient Descent bằng code Python. Khi làm việc thực tế với Python, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 5 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: python, machine learning, ai, linear regression. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_078",
+    "url": "https://itlearning.vn/tutorials/javascript/078",
+    "title": "[JavaScript] Hướng dẫn chi tiết xử lý mảng nâng cao với map, filter và reduce - Phần 5",
+    "author": "Chuyên gia IT JavaScript",
+    "publish_date": "2024-07-23",
+    "tags": [
+      "javascript",
+      "array",
+      "es6",
+      "map filter reduce"
+    ],
+    "summary": "Ba phương thức map(), filter() và reduce() là công cụ mạnh mẽ giúp thao tác mảng theo phong cách lập trình hàm trong JavaScript ES6.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề JavaScript: xử lý mảng nâng cao với map, filter và reduce. Ba phương thức map(), filter() và reduce() là công cụ mạnh mẽ giúp thao tác mảng theo phong cách lập trình hàm trong JavaScript ES6. Khi làm việc thực tế với JavaScript, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 5 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: javascript, array, es6, map filter reduce. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_079",
+    "url": "https://itlearning.vn/tutorials/javascript/079",
+    "title": "[JavaScript] Hướng dẫn chi tiết quản lý trạng thái ứng dụng với Redux Toolkit trong React - Phần 5",
+    "author": "Chuyên gia IT JavaScript",
+    "publish_date": "2024-08-24",
+    "tags": [
+      "javascript",
+      "react",
+      "redux",
+      "state management"
+    ],
+    "summary": "Redux Toolkit giúp giảm thiểu code boilerplate khi quản lý global state trong ứng dụng React, hỗ trợ slices và thunks mượt mà.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề JavaScript: quản lý trạng thái ứng dụng với Redux Toolkit trong React. Redux Toolkit giúp giảm thiểu code boilerplate khi quản lý global state trong ứng dụng React, hỗ trợ slices và thunks mượt mà. Khi làm việc thực tế với JavaScript, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 5 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: javascript, react, redux, state management. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_080",
+    "url": "https://itlearning.vn/tutorials/javascript/080",
+    "title": "[JavaScript] Hướng dẫn chi tiết hiểu rõ Event Loop và Call Stack trong NodeJS - Phần 5",
+    "author": "Chuyên gia IT JavaScript",
+    "publish_date": "2024-09-25",
+    "tags": [
+      "javascript",
+      "nodejs",
+      "event loop",
+      "backend"
+    ],
+    "summary": "Event Loop cơ chế cốt lõi giúp Node.js xử lý hàng nghìn kết nối đồng thời với mô hình non-blocking I/O dù chỉ chạy trên một luồng đơn.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề JavaScript: hiểu rõ Event Loop và Call Stack trong NodeJS. Event Loop cơ chế cốt lõi giúp Node.js xử lý hàng nghìn kết nối đồng thời với mô hình non-blocking I/O dù chỉ chạy trên một luồng đơn. Khi làm việc thực tế với JavaScript, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 5 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: javascript, nodejs, event loop, backend. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_081",
+    "url": "https://itlearning.vn/tutorials/c++/081",
+    "title": "[C++] Hướng dẫn chi tiết cấu trúc dữ liệu Danh sách liên kết đơn (Linked List) - Phần 5",
+    "author": "Chuyên gia IT C++",
+    "publish_date": "2024-10-26",
+    "tags": [
+      "c++",
+      "cấu trúc dữ liệu",
+      "linked list",
+      "con trỏ"
+    ],
+    "summary": "Danh sách liên kết đơn là cấu trúc dữ liệu động gồm các nút (node) chứa dữ liệu và con trỏ trỏ tới nút tiếp theo, cho phép thêm xóa linh hoạt.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề C++: cấu trúc dữ liệu Danh sách liên kết đơn (Linked List). Danh sách liên kết đơn là cấu trúc dữ liệu động gồm các nút (node) chứa dữ liệu và con trỏ trỏ tới nút tiếp theo, cho phép thêm xóa linh hoạt. Khi làm việc thực tế với C++, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 5 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: c++, cấu trúc dữ liệu, linked list, con trỏ. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_082",
+    "url": "https://itlearning.vn/tutorials/c++/082",
+    "title": "[C++] Hướng dẫn chi tiết thuật toán tìm kiếm nhị phân (Binary Search) độ phức tạp O(log N) - Phần 5",
+    "author": "Chuyên gia IT C++",
+    "publish_date": "2024-11-27",
+    "tags": [
+      "c++",
+      "thuật toán",
+      "binary search",
+      "tìm kiếm"
+    ],
+    "summary": "Tìm kiếm nhị phân hoạt động trên mảng đã sắp xếp bằng cách liên tục chia đôi khoảng tìm kiếm, giúp tìm thấy phần tử chỉ trong vài bước.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề C++: thuật toán tìm kiếm nhị phân (Binary Search) độ phức tạp O(log N). Tìm kiếm nhị phân hoạt động trên mảng đã sắp xếp bằng cách liên tục chia đôi khoảng tìm kiếm, giúp tìm thấy phần tử chỉ trong vài bước. Khi làm việc thực tế với C++, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 5 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: c++, thuật toán, binary search, tìm kiếm. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_083",
+    "url": "https://itlearning.vn/tutorials/java/083",
+    "title": "[Java] Hướng dẫn chi tiết lập trình đa luồng (Multithreading) và đồng bộ hóa (Synchronization) - Phần 5",
+    "author": "Chuyên gia IT Java",
+    "publish_date": "2024-12-28",
+    "tags": [
+      "java",
+      "multithreading",
+      "thread",
+      "concurrency"
+    ],
+    "summary": "Java hỗ trợ lập trình đa luồng mạnh mẽ với lớp Thread và giao diện Runnable, cùng từ khóa synchronized giúp ngăn chặn xung đột dữ liệu.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Java: lập trình đa luồng (Multithreading) và đồng bộ hóa (Synchronization). Java hỗ trợ lập trình đa luồng mạnh mẽ với lớp Thread và giao diện Runnable, cùng từ khóa synchronized giúp ngăn chặn xung đột dữ liệu. Khi làm việc thực tế với Java, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 5 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: java, multithreading, thread, concurrency. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_084",
+    "url": "https://itlearning.vn/tutorials/java/084",
+    "title": "[Java] Hướng dẫn chi tiết sử dụng Spring Boot để xây dựng Microservices chuẩn doanh nghiệp - Phần 5",
+    "author": "Chuyên gia IT Java",
+    "publish_date": "2024-01-01",
+    "tags": [
+      "java",
+      "spring boot",
+      "microservices",
+      "backend"
+    ],
+    "summary": "Spring Boot đơn giản hóa quá trình khởi tạo và phát triển ứng dụng Java, cung cấp dependency injection và tích hợp sẵn máy chủ Tomcat.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Java: sử dụng Spring Boot để xây dựng Microservices chuẩn doanh nghiệp. Spring Boot đơn giản hóa quá trình khởi tạo và phát triển ứng dụng Java, cung cấp dependency injection và tích hợp sẵn máy chủ Tomcat. Khi làm việc thực tế với Java, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 5 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: java, spring boot, microservices, backend. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_085",
+    "url": "https://itlearning.vn/tutorials/database/085",
+    "title": "[Database] Hướng dẫn chi tiết tối ưu hóa câu lệnh truy vấn SQL với Index (Chỉ mục) - Phần 5",
+    "author": "Chuyên gia IT Database",
+    "publish_date": "2024-02-02",
+    "tags": [
+      "sql",
+      "database",
+      "index",
+      "performance"
+    ],
+    "summary": "Index trong cơ sở dữ liệu giống như mục lục của cuốn sách, giúp tăng tốc độ tìm kiếm dữ liệu B-Tree gấp hàng trăm lần nhưng tốn bộ nhớ lưu trữ.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Database: tối ưu hóa câu lệnh truy vấn SQL với Index (Chỉ mục). Index trong cơ sở dữ liệu giống như mục lục của cuốn sách, giúp tăng tốc độ tìm kiếm dữ liệu B-Tree gấp hàng trăm lần nhưng tốn bộ nhớ lưu trữ. Khi làm việc thực tế với Database, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 5 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: sql, database, index, performance. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_086",
+    "url": "https://itlearning.vn/tutorials/database/086",
+    "title": "[Database] Hướng dẫn chi tiết khái niệm NoSQL và khi nào nên sử dụng MongoDB - Phần 5",
+    "author": "Chuyên gia IT Database",
+    "publish_date": "2024-03-03",
+    "tags": [
+      "database",
+      "nosql",
+      "mongodb",
+      "json"
+    ],
+    "summary": "MongoDB là cơ sở dữ liệu NoSQL lưu trữ dưới dạng document JSON/BSON linh hoạt, rất phù hợp cho dữ liệu lớn không có cấu trúc cố định.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Database: khái niệm NoSQL và khi nào nên sử dụng MongoDB. MongoDB là cơ sở dữ liệu NoSQL lưu trữ dưới dạng document JSON/BSON linh hoạt, rất phù hợp cho dữ liệu lớn không có cấu trúc cố định. Khi làm việc thực tế với Database, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 5 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: database, nosql, mongodb, json. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_087",
+    "url": "https://itlearning.vn/tutorials/git-&-devops/087",
+    "title": "[Git & DevOps] Hướng dẫn chi tiết các lệnh Git cơ bản cần nhớ: status, add, commit, push, pull - Phần 5",
+    "author": "Chuyên gia IT Git & DevOps",
+    "publish_date": "2024-04-04",
+    "tags": [
+      "git",
+      "github",
+      "cơ bản",
+      "mã nguồn"
+    ],
+    "summary": "Tổng hợp danh sách các lệnh Git thiết yếu hàng ngày giúp lập trình viên theo dõi lịch sử thay đổi mã nguồn và làm việc an toàn.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Git & DevOps: các lệnh Git cơ bản cần nhớ: status, add, commit, push, pull. Tổng hợp danh sách các lệnh Git thiết yếu hàng ngày giúp lập trình viên theo dõi lịch sử thay đổi mã nguồn và làm việc an toàn. Khi làm việc thực tế với Git & DevOps, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 5 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: git, github, cơ bản, mã nguồn. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_088",
+    "url": "https://itlearning.vn/tutorials/git-&-devops/088",
+    "title": "[Git & DevOps] Hướng dẫn chi tiết xây dựng CI/CD Pipeline tự động hóa kiểm thử với GitHub Actions - Phần 5",
+    "author": "Chuyên gia IT Git & DevOps",
+    "publish_date": "2024-05-05",
+    "tags": [
+      "devops",
+      "ci cd",
+      "github actions",
+      "testing"
+    ],
+    "summary": "GitHub Actions cho phép tự động hóa quy trình test, build và deploy code ngay khi có Pull Request hoặc Push lên nhánh main.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Git & DevOps: xây dựng CI/CD Pipeline tự động hóa kiểm thử với GitHub Actions. GitHub Actions cho phép tự động hóa quy trình test, build và deploy code ngay khi có Pull Request hoặc Push lên nhánh main. Khi làm việc thực tế với Git & DevOps, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 5 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: devops, ci cd, github actions, testing. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_089",
+    "url": "https://itlearning.vn/tutorials/web-development/089",
+    "title": "[Web Development] Hướng dẫn chi tiết hiểu về Bảo mật Web: phòng chống tấn công XSS và SQL Injection - Phần 5",
+    "author": "Chuyên gia IT Web Development",
+    "publish_date": "2024-06-06",
+    "tags": [
+      "security",
+      "web development",
+      "xss",
+      "sql injection"
+    ],
+    "summary": "Cross-Site Scripting (XSS) và SQL Injection là hai lỗ hổng bảo mật phổ biến nhất. Hướng dẫn cách lọc dữ liệu đầu vào và dùng Prepared Statements.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Web Development: hiểu về Bảo mật Web: phòng chống tấn công XSS và SQL Injection. Cross-Site Scripting (XSS) và SQL Injection là hai lỗ hổng bảo mật phổ biến nhất. Hướng dẫn cách lọc dữ liệu đầu vào và dùng Prepared Statements. Khi làm việc thực tế với Web Development, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 5 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: security, web development, xss, sql injection. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_090",
+    "url": "https://itlearning.vn/tutorials/ai-&-machine-learning/090",
+    "title": "[AI & Machine Learning] Hướng dẫn chi tiết mạng nơ-ron tích chập (CNN) trong nhận dạng hình ảnh - Phần 5",
+    "author": "Chuyên gia IT AI & Machine Learning",
+    "publish_date": "2024-07-07",
+    "tags": [
+      "ai",
+      "deep learning",
+      "cnn",
+      "image processing"
+    ],
+    "summary": "Mạng Convolutional Neural Network (CNN) sử dụng các lớp tích chập để tự động trích xuất đặc trưng hình ảnh, là xương sống của Computer Vision.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề AI & Machine Learning: mạng nơ-ron tích chập (CNN) trong nhận dạng hình ảnh. Mạng Convolutional Neural Network (CNN) sử dụng các lớp tích chập để tự động trích xuất đặc trưng hình ảnh, là xương sống của Computer Vision. Khi làm việc thực tế với AI & Machine Learning, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 5 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: ai, deep learning, cnn, image processing. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_091",
+    "url": "https://itlearning.vn/tutorials/python/091",
+    "title": "[Python] Hướng dẫn chi tiết phân tích dữ liệu với Pandas và NumPy - Phần 6",
+    "author": "Chuyên gia IT Python",
+    "publish_date": "2024-08-08",
+    "tags": [
+      "python",
+      "pandas",
+      "numpy",
+      "data science"
+    ],
+    "summary": "Học cách thao tác dataframe, lọc dữ liệu, làm sạch dữ liệu thiếu (missing values) và thống kê nhanh với bộ đôi thư viện Pandas và NumPy trong Python.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Python: phân tích dữ liệu với Pandas và NumPy. Học cách thao tác dataframe, lọc dữ liệu, làm sạch dữ liệu thiếu (missing values) và thống kê nhanh với bộ đôi thư viện Pandas và NumPy trong Python. Khi làm việc thực tế với Python, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 6 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: python, pandas, numpy, data science. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_092",
+    "url": "https://itlearning.vn/tutorials/python/092",
+    "title": "[Python] Hướng dẫn chi tiết xây dựng Web API tốc độ cao với FastAPI - Phần 6",
+    "author": "Chuyên gia IT Python",
+    "publish_date": "2024-09-09",
+    "tags": [
+      "python",
+      "fastapi",
+      "web api",
+      "async"
+    ],
+    "summary": "FastAPI là framework hiện đại, hiệu năng cực cao để xây dựng API với Python 3.7+ dựa trên type hints, tự động tạo tài liệu Swagger UI.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Python: xây dựng Web API tốc độ cao với FastAPI. FastAPI là framework hiện đại, hiệu năng cực cao để xây dựng API với Python 3.7+ dựa trên type hints, tự động tạo tài liệu Swagger UI. Khi làm việc thực tế với Python, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 6 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: python, fastapi, web api, async. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_093",
+    "url": "https://itlearning.vn/tutorials/python/093",
+    "title": "[Python] Hướng dẫn chi tiết thuật toán học máy Linear Regression từ con số 0 - Phần 6",
+    "author": "Chuyên gia IT Python",
+    "publish_date": "2024-10-10",
+    "tags": [
+      "python",
+      "machine learning",
+      "ai",
+      "linear regression"
+    ],
+    "summary": "Tìm hiểu phương trình hồi quy tuyến tính, hàm mất mát Mean Squared Error và thuật toán tối ưu Gradient Descent bằng code Python.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Python: thuật toán học máy Linear Regression từ con số 0. Tìm hiểu phương trình hồi quy tuyến tính, hàm mất mát Mean Squared Error và thuật toán tối ưu Gradient Descent bằng code Python. Khi làm việc thực tế với Python, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 6 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: python, machine learning, ai, linear regression. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_094",
+    "url": "https://itlearning.vn/tutorials/javascript/094",
+    "title": "[JavaScript] Hướng dẫn chi tiết xử lý mảng nâng cao với map, filter và reduce - Phần 6",
+    "author": "Chuyên gia IT JavaScript",
+    "publish_date": "2024-11-11",
+    "tags": [
+      "javascript",
+      "array",
+      "es6",
+      "map filter reduce"
+    ],
+    "summary": "Ba phương thức map(), filter() và reduce() là công cụ mạnh mẽ giúp thao tác mảng theo phong cách lập trình hàm trong JavaScript ES6.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề JavaScript: xử lý mảng nâng cao với map, filter và reduce. Ba phương thức map(), filter() và reduce() là công cụ mạnh mẽ giúp thao tác mảng theo phong cách lập trình hàm trong JavaScript ES6. Khi làm việc thực tế với JavaScript, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 6 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: javascript, array, es6, map filter reduce. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_095",
+    "url": "https://itlearning.vn/tutorials/javascript/095",
+    "title": "[JavaScript] Hướng dẫn chi tiết quản lý trạng thái ứng dụng với Redux Toolkit trong React - Phần 6",
+    "author": "Chuyên gia IT JavaScript",
+    "publish_date": "2024-12-12",
+    "tags": [
+      "javascript",
+      "react",
+      "redux",
+      "state management"
+    ],
+    "summary": "Redux Toolkit giúp giảm thiểu code boilerplate khi quản lý global state trong ứng dụng React, hỗ trợ slices và thunks mượt mà.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề JavaScript: quản lý trạng thái ứng dụng với Redux Toolkit trong React. Redux Toolkit giúp giảm thiểu code boilerplate khi quản lý global state trong ứng dụng React, hỗ trợ slices và thunks mượt mà. Khi làm việc thực tế với JavaScript, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 6 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: javascript, react, redux, state management. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_096",
+    "url": "https://itlearning.vn/tutorials/javascript/096",
+    "title": "[JavaScript] Hướng dẫn chi tiết hiểu rõ Event Loop và Call Stack trong NodeJS - Phần 6",
+    "author": "Chuyên gia IT JavaScript",
+    "publish_date": "2024-01-13",
+    "tags": [
+      "javascript",
+      "nodejs",
+      "event loop",
+      "backend"
+    ],
+    "summary": "Event Loop cơ chế cốt lõi giúp Node.js xử lý hàng nghìn kết nối đồng thời với mô hình non-blocking I/O dù chỉ chạy trên một luồng đơn.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề JavaScript: hiểu rõ Event Loop và Call Stack trong NodeJS. Event Loop cơ chế cốt lõi giúp Node.js xử lý hàng nghìn kết nối đồng thời với mô hình non-blocking I/O dù chỉ chạy trên một luồng đơn. Khi làm việc thực tế với JavaScript, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 6 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: javascript, nodejs, event loop, backend. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_097",
+    "url": "https://itlearning.vn/tutorials/c++/097",
+    "title": "[C++] Hướng dẫn chi tiết cấu trúc dữ liệu Danh sách liên kết đơn (Linked List) - Phần 6",
+    "author": "Chuyên gia IT C++",
+    "publish_date": "2024-02-14",
+    "tags": [
+      "c++",
+      "cấu trúc dữ liệu",
+      "linked list",
+      "con trỏ"
+    ],
+    "summary": "Danh sách liên kết đơn là cấu trúc dữ liệu động gồm các nút (node) chứa dữ liệu và con trỏ trỏ tới nút tiếp theo, cho phép thêm xóa linh hoạt.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề C++: cấu trúc dữ liệu Danh sách liên kết đơn (Linked List). Danh sách liên kết đơn là cấu trúc dữ liệu động gồm các nút (node) chứa dữ liệu và con trỏ trỏ tới nút tiếp theo, cho phép thêm xóa linh hoạt. Khi làm việc thực tế với C++, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 6 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: c++, cấu trúc dữ liệu, linked list, con trỏ. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_098",
+    "url": "https://itlearning.vn/tutorials/c++/098",
+    "title": "[C++] Hướng dẫn chi tiết thuật toán tìm kiếm nhị phân (Binary Search) độ phức tạp O(log N) - Phần 6",
+    "author": "Chuyên gia IT C++",
+    "publish_date": "2024-03-15",
+    "tags": [
+      "c++",
+      "thuật toán",
+      "binary search",
+      "tìm kiếm"
+    ],
+    "summary": "Tìm kiếm nhị phân hoạt động trên mảng đã sắp xếp bằng cách liên tục chia đôi khoảng tìm kiếm, giúp tìm thấy phần tử chỉ trong vài bước.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề C++: thuật toán tìm kiếm nhị phân (Binary Search) độ phức tạp O(log N). Tìm kiếm nhị phân hoạt động trên mảng đã sắp xếp bằng cách liên tục chia đôi khoảng tìm kiếm, giúp tìm thấy phần tử chỉ trong vài bước. Khi làm việc thực tế với C++, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 6 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: c++, thuật toán, binary search, tìm kiếm. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_099",
+    "url": "https://itlearning.vn/tutorials/java/099",
+    "title": "[Java] Hướng dẫn chi tiết lập trình đa luồng (Multithreading) và đồng bộ hóa (Synchronization) - Phần 6",
+    "author": "Chuyên gia IT Java",
+    "publish_date": "2024-04-16",
+    "tags": [
+      "java",
+      "multithreading",
+      "thread",
+      "concurrency"
+    ],
+    "summary": "Java hỗ trợ lập trình đa luồng mạnh mẽ với lớp Thread và giao diện Runnable, cùng từ khóa synchronized giúp ngăn chặn xung đột dữ liệu.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Java: lập trình đa luồng (Multithreading) và đồng bộ hóa (Synchronization). Java hỗ trợ lập trình đa luồng mạnh mẽ với lớp Thread và giao diện Runnable, cùng từ khóa synchronized giúp ngăn chặn xung đột dữ liệu. Khi làm việc thực tế với Java, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 6 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: java, multithreading, thread, concurrency. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_100",
+    "url": "https://itlearning.vn/tutorials/java/100",
+    "title": "[Java] Hướng dẫn chi tiết sử dụng Spring Boot để xây dựng Microservices chuẩn doanh nghiệp - Phần 6",
+    "author": "Chuyên gia IT Java",
+    "publish_date": "2024-05-17",
+    "tags": [
+      "java",
+      "spring boot",
+      "microservices",
+      "backend"
+    ],
+    "summary": "Spring Boot đơn giản hóa quá trình khởi tạo và phát triển ứng dụng Java, cung cấp dependency injection và tích hợp sẵn máy chủ Tomcat.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Java: sử dụng Spring Boot để xây dựng Microservices chuẩn doanh nghiệp. Spring Boot đơn giản hóa quá trình khởi tạo và phát triển ứng dụng Java, cung cấp dependency injection và tích hợp sẵn máy chủ Tomcat. Khi làm việc thực tế với Java, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 6 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: java, spring boot, microservices, backend. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_101",
+    "url": "https://itlearning.vn/tutorials/database/101",
+    "title": "[Database] Hướng dẫn chi tiết tối ưu hóa câu lệnh truy vấn SQL với Index (Chỉ mục) - Phần 6",
+    "author": "Chuyên gia IT Database",
+    "publish_date": "2024-06-18",
+    "tags": [
+      "sql",
+      "database",
+      "index",
+      "performance"
+    ],
+    "summary": "Index trong cơ sở dữ liệu giống như mục lục của cuốn sách, giúp tăng tốc độ tìm kiếm dữ liệu B-Tree gấp hàng trăm lần nhưng tốn bộ nhớ lưu trữ.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Database: tối ưu hóa câu lệnh truy vấn SQL với Index (Chỉ mục). Index trong cơ sở dữ liệu giống như mục lục của cuốn sách, giúp tăng tốc độ tìm kiếm dữ liệu B-Tree gấp hàng trăm lần nhưng tốn bộ nhớ lưu trữ. Khi làm việc thực tế với Database, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 6 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: sql, database, index, performance. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_102",
+    "url": "https://itlearning.vn/tutorials/database/102",
+    "title": "[Database] Hướng dẫn chi tiết khái niệm NoSQL và khi nào nên sử dụng MongoDB - Phần 6",
+    "author": "Chuyên gia IT Database",
+    "publish_date": "2024-07-19",
+    "tags": [
+      "database",
+      "nosql",
+      "mongodb",
+      "json"
+    ],
+    "summary": "MongoDB là cơ sở dữ liệu NoSQL lưu trữ dưới dạng document JSON/BSON linh hoạt, rất phù hợp cho dữ liệu lớn không có cấu trúc cố định.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Database: khái niệm NoSQL và khi nào nên sử dụng MongoDB. MongoDB là cơ sở dữ liệu NoSQL lưu trữ dưới dạng document JSON/BSON linh hoạt, rất phù hợp cho dữ liệu lớn không có cấu trúc cố định. Khi làm việc thực tế với Database, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 6 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: database, nosql, mongodb, json. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_103",
+    "url": "https://itlearning.vn/tutorials/git-&-devops/103",
+    "title": "[Git & DevOps] Hướng dẫn chi tiết các lệnh Git cơ bản cần nhớ: status, add, commit, push, pull - Phần 6",
+    "author": "Chuyên gia IT Git & DevOps",
+    "publish_date": "2024-08-20",
+    "tags": [
+      "git",
+      "github",
+      "cơ bản",
+      "mã nguồn"
+    ],
+    "summary": "Tổng hợp danh sách các lệnh Git thiết yếu hàng ngày giúp lập trình viên theo dõi lịch sử thay đổi mã nguồn và làm việc an toàn.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Git & DevOps: các lệnh Git cơ bản cần nhớ: status, add, commit, push, pull. Tổng hợp danh sách các lệnh Git thiết yếu hàng ngày giúp lập trình viên theo dõi lịch sử thay đổi mã nguồn và làm việc an toàn. Khi làm việc thực tế với Git & DevOps, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 6 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: git, github, cơ bản, mã nguồn. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_104",
+    "url": "https://itlearning.vn/tutorials/git-&-devops/104",
+    "title": "[Git & DevOps] Hướng dẫn chi tiết xây dựng CI/CD Pipeline tự động hóa kiểm thử với GitHub Actions - Phần 6",
+    "author": "Chuyên gia IT Git & DevOps",
+    "publish_date": "2024-09-21",
+    "tags": [
+      "devops",
+      "ci cd",
+      "github actions",
+      "testing"
+    ],
+    "summary": "GitHub Actions cho phép tự động hóa quy trình test, build và deploy code ngay khi có Pull Request hoặc Push lên nhánh main.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Git & DevOps: xây dựng CI/CD Pipeline tự động hóa kiểm thử với GitHub Actions. GitHub Actions cho phép tự động hóa quy trình test, build và deploy code ngay khi có Pull Request hoặc Push lên nhánh main. Khi làm việc thực tế với Git & DevOps, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 6 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: devops, ci cd, github actions, testing. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_105",
+    "url": "https://itlearning.vn/tutorials/web-development/105",
+    "title": "[Web Development] Hướng dẫn chi tiết hiểu về Bảo mật Web: phòng chống tấn công XSS và SQL Injection - Phần 6",
+    "author": "Chuyên gia IT Web Development",
+    "publish_date": "2024-10-22",
+    "tags": [
+      "security",
+      "web development",
+      "xss",
+      "sql injection"
+    ],
+    "summary": "Cross-Site Scripting (XSS) và SQL Injection là hai lỗ hổng bảo mật phổ biến nhất. Hướng dẫn cách lọc dữ liệu đầu vào và dùng Prepared Statements.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Web Development: hiểu về Bảo mật Web: phòng chống tấn công XSS và SQL Injection. Cross-Site Scripting (XSS) và SQL Injection là hai lỗ hổng bảo mật phổ biến nhất. Hướng dẫn cách lọc dữ liệu đầu vào và dùng Prepared Statements. Khi làm việc thực tế với Web Development, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 6 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: security, web development, xss, sql injection. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_106",
+    "url": "https://itlearning.vn/tutorials/ai-&-machine-learning/106",
+    "title": "[AI & Machine Learning] Hướng dẫn chi tiết mạng nơ-ron tích chập (CNN) trong nhận dạng hình ảnh - Phần 6",
+    "author": "Chuyên gia IT AI & Machine Learning",
+    "publish_date": "2024-11-23",
+    "tags": [
+      "ai",
+      "deep learning",
+      "cnn",
+      "image processing"
+    ],
+    "summary": "Mạng Convolutional Neural Network (CNN) sử dụng các lớp tích chập để tự động trích xuất đặc trưng hình ảnh, là xương sống của Computer Vision.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề AI & Machine Learning: mạng nơ-ron tích chập (CNN) trong nhận dạng hình ảnh. Mạng Convolutional Neural Network (CNN) sử dụng các lớp tích chập để tự động trích xuất đặc trưng hình ảnh, là xương sống của Computer Vision. Khi làm việc thực tế với AI & Machine Learning, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 6 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: ai, deep learning, cnn, image processing. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_107",
+    "url": "https://itlearning.vn/tutorials/python/107",
+    "title": "[Python] Hướng dẫn chi tiết phân tích dữ liệu với Pandas và NumPy - Phần 7",
+    "author": "Chuyên gia IT Python",
+    "publish_date": "2024-12-24",
+    "tags": [
+      "python",
+      "pandas",
+      "numpy",
+      "data science"
+    ],
+    "summary": "Học cách thao tác dataframe, lọc dữ liệu, làm sạch dữ liệu thiếu (missing values) và thống kê nhanh với bộ đôi thư viện Pandas và NumPy trong Python.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Python: phân tích dữ liệu với Pandas và NumPy. Học cách thao tác dataframe, lọc dữ liệu, làm sạch dữ liệu thiếu (missing values) và thống kê nhanh với bộ đôi thư viện Pandas và NumPy trong Python. Khi làm việc thực tế với Python, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 7 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: python, pandas, numpy, data science. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_108",
+    "url": "https://itlearning.vn/tutorials/python/108",
+    "title": "[Python] Hướng dẫn chi tiết xây dựng Web API tốc độ cao với FastAPI - Phần 7",
+    "author": "Chuyên gia IT Python",
+    "publish_date": "2024-01-25",
+    "tags": [
+      "python",
+      "fastapi",
+      "web api",
+      "async"
+    ],
+    "summary": "FastAPI là framework hiện đại, hiệu năng cực cao để xây dựng API với Python 3.7+ dựa trên type hints, tự động tạo tài liệu Swagger UI.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Python: xây dựng Web API tốc độ cao với FastAPI. FastAPI là framework hiện đại, hiệu năng cực cao để xây dựng API với Python 3.7+ dựa trên type hints, tự động tạo tài liệu Swagger UI. Khi làm việc thực tế với Python, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 7 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: python, fastapi, web api, async. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_109",
+    "url": "https://itlearning.vn/tutorials/python/109",
+    "title": "[Python] Hướng dẫn chi tiết thuật toán học máy Linear Regression từ con số 0 - Phần 7",
+    "author": "Chuyên gia IT Python",
+    "publish_date": "2024-02-26",
+    "tags": [
+      "python",
+      "machine learning",
+      "ai",
+      "linear regression"
+    ],
+    "summary": "Tìm hiểu phương trình hồi quy tuyến tính, hàm mất mát Mean Squared Error và thuật toán tối ưu Gradient Descent bằng code Python.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Python: thuật toán học máy Linear Regression từ con số 0. Tìm hiểu phương trình hồi quy tuyến tính, hàm mất mát Mean Squared Error và thuật toán tối ưu Gradient Descent bằng code Python. Khi làm việc thực tế với Python, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 7 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: python, machine learning, ai, linear regression. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_110",
+    "url": "https://itlearning.vn/tutorials/javascript/110",
+    "title": "[JavaScript] Hướng dẫn chi tiết xử lý mảng nâng cao với map, filter và reduce - Phần 7",
+    "author": "Chuyên gia IT JavaScript",
+    "publish_date": "2024-03-27",
+    "tags": [
+      "javascript",
+      "array",
+      "es6",
+      "map filter reduce"
+    ],
+    "summary": "Ba phương thức map(), filter() và reduce() là công cụ mạnh mẽ giúp thao tác mảng theo phong cách lập trình hàm trong JavaScript ES6.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề JavaScript: xử lý mảng nâng cao với map, filter và reduce. Ba phương thức map(), filter() và reduce() là công cụ mạnh mẽ giúp thao tác mảng theo phong cách lập trình hàm trong JavaScript ES6. Khi làm việc thực tế với JavaScript, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 7 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: javascript, array, es6, map filter reduce. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_111",
+    "url": "https://itlearning.vn/tutorials/javascript/111",
+    "title": "[JavaScript] Hướng dẫn chi tiết quản lý trạng thái ứng dụng với Redux Toolkit trong React - Phần 7",
+    "author": "Chuyên gia IT JavaScript",
+    "publish_date": "2024-04-28",
+    "tags": [
+      "javascript",
+      "react",
+      "redux",
+      "state management"
+    ],
+    "summary": "Redux Toolkit giúp giảm thiểu code boilerplate khi quản lý global state trong ứng dụng React, hỗ trợ slices và thunks mượt mà.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề JavaScript: quản lý trạng thái ứng dụng với Redux Toolkit trong React. Redux Toolkit giúp giảm thiểu code boilerplate khi quản lý global state trong ứng dụng React, hỗ trợ slices và thunks mượt mà. Khi làm việc thực tế với JavaScript, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 7 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: javascript, react, redux, state management. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_112",
+    "url": "https://itlearning.vn/tutorials/javascript/112",
+    "title": "[JavaScript] Hướng dẫn chi tiết hiểu rõ Event Loop và Call Stack trong NodeJS - Phần 7",
+    "author": "Chuyên gia IT JavaScript",
+    "publish_date": "2024-05-01",
+    "tags": [
+      "javascript",
+      "nodejs",
+      "event loop",
+      "backend"
+    ],
+    "summary": "Event Loop cơ chế cốt lõi giúp Node.js xử lý hàng nghìn kết nối đồng thời với mô hình non-blocking I/O dù chỉ chạy trên một luồng đơn.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề JavaScript: hiểu rõ Event Loop và Call Stack trong NodeJS. Event Loop cơ chế cốt lõi giúp Node.js xử lý hàng nghìn kết nối đồng thời với mô hình non-blocking I/O dù chỉ chạy trên một luồng đơn. Khi làm việc thực tế với JavaScript, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 7 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: javascript, nodejs, event loop, backend. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_113",
+    "url": "https://itlearning.vn/tutorials/c++/113",
+    "title": "[C++] Hướng dẫn chi tiết cấu trúc dữ liệu Danh sách liên kết đơn (Linked List) - Phần 7",
+    "author": "Chuyên gia IT C++",
+    "publish_date": "2024-06-02",
+    "tags": [
+      "c++",
+      "cấu trúc dữ liệu",
+      "linked list",
+      "con trỏ"
+    ],
+    "summary": "Danh sách liên kết đơn là cấu trúc dữ liệu động gồm các nút (node) chứa dữ liệu và con trỏ trỏ tới nút tiếp theo, cho phép thêm xóa linh hoạt.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề C++: cấu trúc dữ liệu Danh sách liên kết đơn (Linked List). Danh sách liên kết đơn là cấu trúc dữ liệu động gồm các nút (node) chứa dữ liệu và con trỏ trỏ tới nút tiếp theo, cho phép thêm xóa linh hoạt. Khi làm việc thực tế với C++, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 7 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: c++, cấu trúc dữ liệu, linked list, con trỏ. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_114",
+    "url": "https://itlearning.vn/tutorials/c++/114",
+    "title": "[C++] Hướng dẫn chi tiết thuật toán tìm kiếm nhị phân (Binary Search) độ phức tạp O(log N) - Phần 7",
+    "author": "Chuyên gia IT C++",
+    "publish_date": "2024-07-03",
+    "tags": [
+      "c++",
+      "thuật toán",
+      "binary search",
+      "tìm kiếm"
+    ],
+    "summary": "Tìm kiếm nhị phân hoạt động trên mảng đã sắp xếp bằng cách liên tục chia đôi khoảng tìm kiếm, giúp tìm thấy phần tử chỉ trong vài bước.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề C++: thuật toán tìm kiếm nhị phân (Binary Search) độ phức tạp O(log N). Tìm kiếm nhị phân hoạt động trên mảng đã sắp xếp bằng cách liên tục chia đôi khoảng tìm kiếm, giúp tìm thấy phần tử chỉ trong vài bước. Khi làm việc thực tế với C++, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 7 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: c++, thuật toán, binary search, tìm kiếm. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_115",
+    "url": "https://itlearning.vn/tutorials/java/115",
+    "title": "[Java] Hướng dẫn chi tiết lập trình đa luồng (Multithreading) và đồng bộ hóa (Synchronization) - Phần 7",
+    "author": "Chuyên gia IT Java",
+    "publish_date": "2024-08-04",
+    "tags": [
+      "java",
+      "multithreading",
+      "thread",
+      "concurrency"
+    ],
+    "summary": "Java hỗ trợ lập trình đa luồng mạnh mẽ với lớp Thread và giao diện Runnable, cùng từ khóa synchronized giúp ngăn chặn xung đột dữ liệu.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Java: lập trình đa luồng (Multithreading) và đồng bộ hóa (Synchronization). Java hỗ trợ lập trình đa luồng mạnh mẽ với lớp Thread và giao diện Runnable, cùng từ khóa synchronized giúp ngăn chặn xung đột dữ liệu. Khi làm việc thực tế với Java, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 7 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: java, multithreading, thread, concurrency. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_116",
+    "url": "https://itlearning.vn/tutorials/java/116",
+    "title": "[Java] Hướng dẫn chi tiết sử dụng Spring Boot để xây dựng Microservices chuẩn doanh nghiệp - Phần 7",
+    "author": "Chuyên gia IT Java",
+    "publish_date": "2024-09-05",
+    "tags": [
+      "java",
+      "spring boot",
+      "microservices",
+      "backend"
+    ],
+    "summary": "Spring Boot đơn giản hóa quá trình khởi tạo và phát triển ứng dụng Java, cung cấp dependency injection và tích hợp sẵn máy chủ Tomcat.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Java: sử dụng Spring Boot để xây dựng Microservices chuẩn doanh nghiệp. Spring Boot đơn giản hóa quá trình khởi tạo và phát triển ứng dụng Java, cung cấp dependency injection và tích hợp sẵn máy chủ Tomcat. Khi làm việc thực tế với Java, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 7 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: java, spring boot, microservices, backend. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_117",
+    "url": "https://itlearning.vn/tutorials/database/117",
+    "title": "[Database] Hướng dẫn chi tiết tối ưu hóa câu lệnh truy vấn SQL với Index (Chỉ mục) - Phần 7",
+    "author": "Chuyên gia IT Database",
+    "publish_date": "2024-10-06",
+    "tags": [
+      "sql",
+      "database",
+      "index",
+      "performance"
+    ],
+    "summary": "Index trong cơ sở dữ liệu giống như mục lục của cuốn sách, giúp tăng tốc độ tìm kiếm dữ liệu B-Tree gấp hàng trăm lần nhưng tốn bộ nhớ lưu trữ.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Database: tối ưu hóa câu lệnh truy vấn SQL với Index (Chỉ mục). Index trong cơ sở dữ liệu giống như mục lục của cuốn sách, giúp tăng tốc độ tìm kiếm dữ liệu B-Tree gấp hàng trăm lần nhưng tốn bộ nhớ lưu trữ. Khi làm việc thực tế với Database, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 7 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: sql, database, index, performance. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_118",
+    "url": "https://itlearning.vn/tutorials/database/118",
+    "title": "[Database] Hướng dẫn chi tiết khái niệm NoSQL và khi nào nên sử dụng MongoDB - Phần 7",
+    "author": "Chuyên gia IT Database",
+    "publish_date": "2024-11-07",
+    "tags": [
+      "database",
+      "nosql",
+      "mongodb",
+      "json"
+    ],
+    "summary": "MongoDB là cơ sở dữ liệu NoSQL lưu trữ dưới dạng document JSON/BSON linh hoạt, rất phù hợp cho dữ liệu lớn không có cấu trúc cố định.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Database: khái niệm NoSQL và khi nào nên sử dụng MongoDB. MongoDB là cơ sở dữ liệu NoSQL lưu trữ dưới dạng document JSON/BSON linh hoạt, rất phù hợp cho dữ liệu lớn không có cấu trúc cố định. Khi làm việc thực tế với Database, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 7 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: database, nosql, mongodb, json. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_119",
+    "url": "https://itlearning.vn/tutorials/git-&-devops/119",
+    "title": "[Git & DevOps] Hướng dẫn chi tiết các lệnh Git cơ bản cần nhớ: status, add, commit, push, pull - Phần 7",
+    "author": "Chuyên gia IT Git & DevOps",
+    "publish_date": "2024-12-08",
+    "tags": [
+      "git",
+      "github",
+      "cơ bản",
+      "mã nguồn"
+    ],
+    "summary": "Tổng hợp danh sách các lệnh Git thiết yếu hàng ngày giúp lập trình viên theo dõi lịch sử thay đổi mã nguồn và làm việc an toàn.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Git & DevOps: các lệnh Git cơ bản cần nhớ: status, add, commit, push, pull. Tổng hợp danh sách các lệnh Git thiết yếu hàng ngày giúp lập trình viên theo dõi lịch sử thay đổi mã nguồn và làm việc an toàn. Khi làm việc thực tế với Git & DevOps, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 7 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: git, github, cơ bản, mã nguồn. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_120",
+    "url": "https://itlearning.vn/tutorials/git-&-devops/120",
+    "title": "[Git & DevOps] Hướng dẫn chi tiết xây dựng CI/CD Pipeline tự động hóa kiểm thử với GitHub Actions - Phần 7",
+    "author": "Chuyên gia IT Git & DevOps",
+    "publish_date": "2024-01-09",
+    "tags": [
+      "devops",
+      "ci cd",
+      "github actions",
+      "testing"
+    ],
+    "summary": "GitHub Actions cho phép tự động hóa quy trình test, build và deploy code ngay khi có Pull Request hoặc Push lên nhánh main.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Git & DevOps: xây dựng CI/CD Pipeline tự động hóa kiểm thử với GitHub Actions. GitHub Actions cho phép tự động hóa quy trình test, build và deploy code ngay khi có Pull Request hoặc Push lên nhánh main. Khi làm việc thực tế với Git & DevOps, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 7 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: devops, ci cd, github actions, testing. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_121",
+    "url": "https://itlearning.vn/tutorials/web-development/121",
+    "title": "[Web Development] Hướng dẫn chi tiết hiểu về Bảo mật Web: phòng chống tấn công XSS và SQL Injection - Phần 7",
+    "author": "Chuyên gia IT Web Development",
+    "publish_date": "2024-02-10",
+    "tags": [
+      "security",
+      "web development",
+      "xss",
+      "sql injection"
+    ],
+    "summary": "Cross-Site Scripting (XSS) và SQL Injection là hai lỗ hổng bảo mật phổ biến nhất. Hướng dẫn cách lọc dữ liệu đầu vào và dùng Prepared Statements.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề Web Development: hiểu về Bảo mật Web: phòng chống tấn công XSS và SQL Injection. Cross-Site Scripting (XSS) và SQL Injection là hai lỗ hổng bảo mật phổ biến nhất. Hướng dẫn cách lọc dữ liệu đầu vào và dùng Prepared Statements. Khi làm việc thực tế với Web Development, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 7 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: security, web development, xss, sql injection. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  },
+  {
+    "doc_id": "doc_122",
+    "url": "https://itlearning.vn/tutorials/ai-&-machine-learning/122",
+    "title": "[AI & Machine Learning] Hướng dẫn chi tiết mạng nơ-ron tích chập (CNN) trong nhận dạng hình ảnh - Phần 7",
+    "author": "Chuyên gia IT AI & Machine Learning",
+    "publish_date": "2024-03-11",
+    "tags": [
+      "ai",
+      "deep learning",
+      "cnn",
+      "image processing"
+    ],
+    "summary": "Mạng Convolutional Neural Network (CNN) sử dụng các lớp tích chập để tự động trích xuất đặc trưng hình ảnh, là xương sống của Computer Vision.",
+    "content": "Bài viết hướng dẫn chi tiết về chủ đề AI & Machine Learning: mạng nơ-ron tích chập (CNN) trong nhận dạng hình ảnh. Mạng Convolutional Neural Network (CNN) sử dụng các lớp tích chập để tự động trích xuất đặc trưng hình ảnh, là xương sống của Computer Vision. Khi làm việc thực tế với AI & Machine Learning, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. Trong bài hướng dẫn phần 7 này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. Các từ khóa quan trọng liên quan đến bài viết bao gồm: ai, deep learning, cnn, image processing. Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+  }
+]

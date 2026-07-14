@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ query }} - DevSeek IT Search</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="results-body">
+    <!-- Top Navigation & Compact Search -->
+    <header class="results-header">
+        <div class="header-container">
+            <a href="{{ url_for('index') }}" class="mini-logo">
+                <div class="logo-icon-mini"><i class="fa-solid fa-code"></i></div>
+                <span class="logo-title-mini">Dev<span class="gradient-text">Seek</span></span>
+            </a>
+
+            <form action="{{ url_for('search') }}" method="GET" class="compact-search-form">
+                <div class="compact-input-wrapper">
+                    <input type="text" name="q" value="{{ query }}" class="compact-input" 
+                           placeholder="Tìm kiếm tài liệu IT..." autocomplete="off" required>
+                    <button type="submit" class="compact-submit-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </form>
+
+            <div class="header-actions">
+                <span class="badge-status"><i class="fa-solid fa-circle-check"></i> Multi-field TF-IDF</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Results Area -->
+    <main class="results-main">
+        <div class="results-layout">
+            <!-- SERP Column -->
+            <div class="serp-container">
+                <!-- Search Meta Info -->
+                <div class="serp-stats-card">
+                    <div class="stats-left">
+                        <span class="query-highlight-text">Kết quả cho: <strong>"{{ query }}"</strong></span>
+                        <div class="tokens-badge">
+                            <span class="token-label">Tokens tiếng Việt:</span>
+                            {% for token in query_tokens %}
+                                <span class="token-item">{{ token }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="stats-right">
+                        <span class="time-badge"><i class="fa-solid fa-stopwatch"></i> {{ time_taken_ms }} giây</span>
+                        <span class="count-badge"><i class="fa-solid fa-file-lines"></i> {{ total_results }} kết quả</span>
+                    </div>
+                </div>
+
+                <!-- Results List -->
+                {% if results %}
+                    <div class="results-list">
+                        {% for item in results %}
+                            <article class="result-card">
+                                <div class="result-header">
+                                    <div class="result-meta">
+                                        <span class="meta-author"><i class="fa-solid fa-user-pen"></i> {{ item.author }}</span>
+                                        <span class="meta-date"><i class="fa-regular fa-calendar"></i> {{ item.publish_date }}</span>
+                                        <span class="score-pill" title="TF-IDF Multi-field Score"><i class="fa-solid fa-ranking-star"></i> Score: {{ item.score }}</span>
+                                    </div>
+                                    <a href="{{ item.url }}" target="_blank" class="result-title">
+                                        {{ item.title | safe }} <i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
+                                    </a>
+                                </div>
+
+                                <p class="result-snippet">{{ item.summary | safe }}</p>
+
+                                <div class="result-footer">
+                                    <div class="result-tags">
+                                        <i class="fa-solid fa-tags tag-icon"></i>
+                                        {% for tag in item.tags %}
+                                            <a href="{{ url_for('search', q=tag) }}" class="tag-link">{{ tag }}</a>
+                                        {% endfor %}
+                                    </div>
+                                    <span class="matched-info">
+                                        Khớp từ: <code>{{ ", ".join(item.matched_terms) if item.matched_terms else "TF-IDF" }}</code>
+                                    </span>
+                                </div>
+                            </article>
+                        {% endfor %}
+                    </div>
+
+                    <!-- Pagination -->
+                    {% if total_pages > 1 %}
+                        <nav class="pagination">
+                            {% if current_page > 1 %}
+                                <a href="{{ url_for('search', q=query, page=current_page-1) }}" class="page-btn prev-next"><i class="fa-solid fa-chevron-left"></i> Trang trước</a>
+                            {% endif %}
+
+                            <div class="page-numbers">
+                                {% for p in range(1, total_pages + 1) %}
+                                    {% if p == current_page %}
+                                        <span class="page-num active">{{ p }}</span>
+                                    {% elif p <= 3 or p >= total_pages - 1 or (p >= current_page - 1 and p <= current_page + 1) %}
+                                        <a href="{{ url_for('search', q=query, page=p) }}" class="page-num">{{ p }}</a>
+                                    {% elif p == 4 or p == total_pages - 2 %}
+                                        <span class="page-ellipsis">...</span>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+
+                            {% if current_page < total_pages %}
+                                <a href="{{ url_for('search', q=query, page=current_page+1) }}" class="page-btn prev-next">Trang sau <i class="fa-solid fa-chevron-right"></i></a>
+                            {% endif %}
+                        </nav>
+                    {% endif %}
+
+                {% else %}
+                    <div class="empty-state">
+                        <div class="empty-icon"><i class="fa-solid fa-face-frown-open"></i></div>
+                        <h2>Không tìm thấy tài liệu phù hợp</h2>
+                        <p>Chúng tôi không tìm thấy bài viết nào cho từ khóa <strong>"{{ query }}"</strong> trong hệ thống 122+ bài hướng dẫn lập trình.</p>
+                        <div class="empty-suggestions">
+                            <h4>Gợi ý khắc phục:</h4>
+                            <ul>
+                                <li>Kiểm tra lại chính tả các từ khóa lập trình.</li>
+                                <li>Thử tìm kiếm bằng các từ khóa ngắn gọn hoặc chung hơn (ví dụ: <code>python</code>, <code>javascript</code>, <code>sql</code>).</li>
+                                <li>Thử tìm kiếm các khái niệm cốt lõi như <code>oop</code>, <code>restful api</code>, <code>docker</code>.</li>
+                            </ul>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Side Widget (Infobox) -->
+            <aside class="sidebar-widget">
+                <div class="info-card architecture-card">
+                    <h4><i class="fa-solid fa-microchip"></i> Engine Thông Số</h4>
+                    <ul class="engine-specs">
+                        <li><span>Tách từ:</span> <strong>underthesea (NLP)</strong></li>
+                        <li><span>Chỉ mục:</span> <strong>Inverted Index + Positions</strong></li>
+                        <li><span>Xếp hạng:</span> <strong>Multi-Field TF-IDF</strong></li>
+                        <li><span>Trọng số Title:</span> <strong>x3.0</strong></li>
+                        <li><span>Trọng số Tags:</span> <strong>x2.5</strong></li>
+                        <li><span>Trọng số Content:</span> <strong>x1.0</strong></li>
+                    </ul>
+                </div>
+
+                <div class="info-card tips-card">
+                    <h4><i class="fa-solid fa-lightbulb"></i> Mẹo Tìm Kiếm IT</h4>
+                    <p>Bạn có thể tìm kiếm cả tiếng Việt lẫn từ khóa tiếng Anh kỹ thuật. Nhờ thuật toán tách từ tiếng Việt thông minh, hệ thống sẽ tự động ghép các từ như <code>lập trình hướng đối tượng</code> thành <code>lập_trình hướng_đối_tượng</code> để tra cứu với độ chính xác cao nhất.</p>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="results-footer">
+        <p>DevSeek Vertical Search Engine | Đồ án Môn học Máy tìm kiếm Chuyên sâu</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
