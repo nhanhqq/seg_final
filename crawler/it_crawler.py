@@ -198,42 +198,56 @@ class ITArticleCrawler:
             }
         ]
 
-        # Mở rộng bộ dữ liệu lên 120+ bài viết phong phú bao phủ đầy đủ các lĩnh vực lập trình
+        # Mở rộng quy mô bộ dữ liệu lên 520+ bài viết phong phú bao phủ toàn diện công nghệ thông tin
         topics_template = [
             ("Python", "phân tích dữ liệu với Pandas và NumPy", ["python", "pandas", "numpy", "data science"], "Học cách thao tác dataframe, lọc dữ liệu, làm sạch dữ liệu thiếu (missing values) và thống kê nhanh với bộ đôi thư viện Pandas và NumPy trong Python."),
             ("Python", "xây dựng Web API tốc độ cao với FastAPI", ["python", "fastapi", "web api", "async"], "FastAPI là framework hiện đại, hiệu năng cực cao để xây dựng API với Python 3.7+ dựa trên type hints, tự động tạo tài liệu Swagger UI."),
             ("Python", "thuật toán học máy Linear Regression từ con số 0", ["python", "machine learning", "ai", "linear regression"], "Tìm hiểu phương trình hồi quy tuyến tính, hàm mất mát Mean Squared Error và thuật toán tối ưu Gradient Descent bằng code Python."),
+            ("Python", "xử lý ngôn ngữ tự nhiên NLP với transformers và PyTorch", ["python", "nlp", "pytorch", "transformers", "ai"], "Hướng dẫn tinh chỉnh mô hình ngôn ngữ lớn (LLM) và BERT cho bài toán phân loại văn bản và tách từ tiếng Việt chuẩn xác."),
+            ("Python", "lập trình bất đồng bộ Asyncio và aiohttp xử lý hàng nghìn request", ["python", "asyncio", "aiohttp", "concurrency"], "Tối ưu hóa tốc độ cào dữ liệu và gọi API đồng thời với thư viện Asyncio và aiohttp giúp giảm thời gian chờ I/O."),
             ("JavaScript", "xử lý mảng nâng cao với map, filter và reduce", ["javascript", "array", "es6", "map filter reduce"], "Ba phương thức map(), filter() và reduce() là công cụ mạnh mẽ giúp thao tác mảng theo phong cách lập trình hàm trong JavaScript ES6."),
             ("JavaScript", "quản lý trạng thái ứng dụng với Redux Toolkit trong React", ["javascript", "react", "redux", "state management"], "Redux Toolkit giúp giảm thiểu code boilerplate khi quản lý global state trong ứng dụng React, hỗ trợ slices và thunks mượt mà."),
             ("JavaScript", "hiểu rõ Event Loop và Call Stack trong NodeJS", ["javascript", "nodejs", "event loop", "backend"], "Event Loop cơ chế cốt lõi giúp Node.js xử lý hàng nghìn kết nối đồng thời với mô hình non-blocking I/O dù chỉ chạy trên một luồng đơn."),
+            ("TypeScript", "kiểu dữ liệu nâng cao Generics và Utility Types trong TypeScript", ["typescript", "generics", "javascript", "clean code"], "TypeScript mang lại sự an toàn về kiểu dữ liệu (type safety). Hướng dẫn sử dụng Generics, Partial, Pick và Omit chuẩn doanh nghiệp."),
+            ("TypeScript", "xây dựng ứng dụng Fullstack với Next.js 14 App Router", ["nextjs", "react", "typescript", "fullstack", "ssr"], "Next.js 14 giới thiệu App Router, Server Components và Server Actions giúp xây dựng trang web SEO tối ưu và hiệu năng vượt trội."),
             ("C++", "cấu trúc dữ liệu Danh sách liên kết đơn (Linked List)", ["c++", "cấu trúc dữ liệu", "linked list", "con trỏ"], "Danh sách liên kết đơn là cấu trúc dữ liệu động gồm các nút (node) chứa dữ liệu và con trỏ trỏ tới nút tiếp theo, cho phép thêm xóa linh hoạt."),
             ("C++", "thuật toán tìm kiếm nhị phân (Binary Search) độ phức tạp O(log N)", ["c++", "thuật toán", "binary search", "tìm kiếm"], "Tìm kiếm nhị phân hoạt động trên mảng đã sắp xếp bằng cách liên tục chia đôi khoảng tìm kiếm, giúp tìm thấy phần tử chỉ trong vài bước."),
+            ("C++", "thuật toán quy hoạch động (Dynamic Programming) giải bài toán cái túi Knapsack", ["c++", "quy hoạch động", "thuật toán", "tối ưu"], "Quy hoạch động giúp giải quyết các bài toán tối ưu phức tạp bằng cách chia nhỏ thành bài toán con gối nhau và lưu trữ kết quả vào bảng Memoization."),
             ("Java", "lập trình đa luồng (Multithreading) và đồng bộ hóa (Synchronization)", ["java", "multithreading", "thread", "concurrency"], "Java hỗ trợ lập trình đa luồng mạnh mẽ với lớp Thread và giao diện Runnable, cùng từ khóa synchronized giúp ngăn chặn xung đột dữ liệu."),
             ("Java", "sử dụng Spring Boot để xây dựng Microservices chuẩn doanh nghiệp", ["java", "spring boot", "microservices", "backend"], "Spring Boot đơn giản hóa quá trình khởi tạo và phát triển ứng dụng Java, cung cấp dependency injection và tích hợp sẵn máy chủ Tomcat."),
+            ("Java", "thiết kế Clean Architecture và SOLID Patterns trong lập trình OOP", ["java", "clean architecture", "solid", "design patterns", "oop"], "5 nguyên lý SOLID (Single Responsibility, Open-Closed, Liskov, Interface Segregation, Dependency Inversion) là kim chỉ nam để viết code dễ bảo trì."),
+            ("Golang", "xử lý đồng thời cực nhanh với Goroutines và Channels trong Go", ["golang", "goroutines", "concurrency", "backend"], "Goroutines là các luồng siêu nhẹ do Go runtime quản lý, kết hợp với Channels giúp giao tiếp an toàn giữa các tiến trình mà không cần khóa Lock."),
+            ("Golang", "xây dựng RESTful API hiệu năng cao với Gin Framework và GORM", ["golang", "gin", "gorm", "api", "database"], "Gin là web framework có tốc độ xử lý nhanh nhất hiện nay cho Golang, tích hợp dễ dàng với GORM để tra cứu cơ sở dữ liệu MySQL hoặc PostgreSQL."),
             ("Database", "tối ưu hóa câu lệnh truy vấn SQL với Index (Chỉ mục)", ["sql", "database", "index", "performance"], "Index trong cơ sở dữ liệu giống như mục lục của cuốn sách, giúp tăng tốc độ tìm kiếm dữ liệu B-Tree gấp hàng trăm lần nhưng tốn bộ nhớ lưu trữ."),
             ("Database", "khái niệm NoSQL và khi nào nên sử dụng MongoDB", ["database", "nosql", "mongodb", "json"], "MongoDB là cơ sở dữ liệu NoSQL lưu trữ dưới dạng document JSON/BSON linh hoạt, rất phù hợp cho dữ liệu lớn không có cấu trúc cố định."),
+            ("Database", "ứng dụng bộ nhớ đệm Redis để giảm tải cho cơ sở dữ liệu chính", ["redis", "cache", "database", "performance", "backend"], "Redis là hệ thống lưu trữ cấu trúc dữ liệu trên bộ nhớ RAM với tốc độ đọc ghi cực nhanh dưới mili giây, dùng làm Cache hoặc Message Broker."),
+            ("System Design", "thiết kế hệ thống chịu tải cao Load Balancing và Horizontal Scaling", ["system design", "load balancer", "microservices", "scaling"], "Phân tích các chiến lược phân tải Load Balancing (Round Robin, Least Connections) và mở rộng ngang (Horizontal Scaling) để phục vụ hàng triệu người dùng."),
+            ("System Design", "giao tiếp giữa các dịch vụ với Apache Kafka và RabbitMQ", ["kafka", "rabbitmq", "message queue", "microservices", "system design"], "Message Queue giúp tách biệt các thành phần hệ thống (Decoupling) và đảm bảo tính liên tục của dữ liệu khi xảy ra bùng nổ traffic bất ngờ."),
             ("Git & DevOps", "các lệnh Git cơ bản cần nhớ: status, add, commit, push, pull", ["git", "github", "cơ bản", "mã nguồn"], "Tổng hợp danh sách các lệnh Git thiết yếu hàng ngày giúp lập trình viên theo dõi lịch sử thay đổi mã nguồn và làm việc an toàn."),
             ("Git & DevOps", "xây dựng CI/CD Pipeline tự động hóa kiểm thử với GitHub Actions", ["devops", "ci cd", "github actions", "testing"], "GitHub Actions cho phép tự động hóa quy trình test, build và deploy code ngay khi có Pull Request hoặc Push lên nhánh main."),
+            ("Git & DevOps", "quản lý hạ tầng bằng mã nguồn Infrastructure as Code với Terraform", ["terraform", "devops", "iac", "aws", "cloud"], "Terraform giúp định nghĩa, triển khai và quản lý toàn bộ hạ tầng máy chủ Cloud (AWS, Azure, GCP) tự động hóa thông qua các file cấu hình rõ ràng."),
+            ("Git & DevOps", "điều phối container ở quy mô lớn với Kubernetes (K8s)", ["kubernetes", "k8s", "docker", "devops", "cloud"], "Kubernetes là nền tảng tự động hóa việc triển khai, mở rộng quy mô và quản lý các ứng dụng đóng gói dưới dạng container trên cụm máy chủ."),
             ("Web Development", "hiểu về Bảo mật Web: phòng chống tấn công XSS và SQL Injection", ["security", "web development", "xss", "sql injection"], "Cross-Site Scripting (XSS) và SQL Injection là hai lỗ hổng bảo mật phổ biến nhất. Hướng dẫn cách lọc dữ liệu đầu vào và dùng Prepared Statements."),
+            ("Web Development", "tối ưu hóa Core Web Vitals giúp tăng tốc độ tải trang và SEO", ["seo", "web development", "performance", "frontend"], "Các chỉ số LCP, FID và CLS đo lường trải nghiệm thực tế của người dùng trên website, đóng vai trò quyết định thứ hạng trên máy tìm kiếm Google."),
             ("AI & Machine Learning", "mạng nơ-ron tích chập (CNN) trong nhận dạng hình ảnh", ["ai", "deep learning", "cnn", "image processing"], "Mạng Convolutional Neural Network (CNN) sử dụng các lớp tích chập để tự động trích xuất đặc trưng hình ảnh, là xương sống của Computer Vision.")
         ]
 
         idx = len(seed_articles) + 1
-        for i in range(1, 8):  # Nhân bản và đa dạng hóa để tạo 120+ bài viết phong phú
+        for i in range(1, 18):  # Tạo 17 chuỗi biến thể giúp mở rộng lên hơn 520 bài viết chất lượng
             for topic, sub_title, tags, desc in topics_template:
                 doc_id = f"doc_{idx:03d}"
                 title = f"[{topic}] Hướng dẫn chi tiết {sub_title} - Phần {i}"
                 url = f"https://itlearning.vn/tutorials/{topic.lower().replace(' ', '-')}/{idx:03d}"
-                author = f"Chuyên gia IT {topic}"
-                pub_date = f"2024-{((idx % 12) + 1):02d}-{(idx % 28 + 1):02d}"
+                author = f"Chuyên gia IT {topic} (Team {i})"
+                pub_date = f"2024-{(idx % 12) + 1:02d}-{(idx % 28) + 1:02d}"
                 
                 content = (
                     f"Bài viết hướng dẫn chi tiết về chủ đề {topic}: {sub_title}. "
                     f"{desc} "
-                    f"Khi làm việc thực tế với {topic}, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống. "
-                    f"Trong bài hướng dẫn phần {i} này, chúng ta sẽ đi sâu vào cấu trúc mã nguồn, xử lý ngoại lệ và tối ưu hóa hiệu năng. "
-                    f"Các từ khóa quan trọng liên quan đến bài viết bao gồm: {', '.join(tags)}. "
-                    f"Hãy luôn tuân thủ các thực hành tốt nhất (best practices), viết unit test đầy đủ và ghi nhận log rõ ràng trong quá trình phát triển ứng dụng."
+                    f"Khi làm việc thực tế với {topic}, kỹ sư phần mềm cần nắm vững nguyên lý hoạt động nội tại của hệ thống và kiến trúc mã nguồn. "
+                    f"Trong bài hướng dẫn chuyên sâu phần {i} này, chúng ta sẽ đi qua cấu trúc dự án thực tế, xử lý các ngoại lệ khó (edge cases) và tối ưu hóa hiệu năng vượt trội. "
+                    f"Các từ khóa kỹ thuật cốt lõi liên quan bao gồm: {', '.join(tags)}. "
+                    f"Đặc biệt khi thiết kế hệ thống lớn, hãy luôn tuân thủ các nguyên tắc lập trình sạch (Clean Code), viết unit test với độ phủ trên 80% và cấu hình giám sát log định kỳ để đảm bảo hệ thống vận hành liên tục 24/7 mà không gặp gián đoạn."
                 )
                 
                 seed_articles.append({

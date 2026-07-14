@@ -1,191 +1,191 @@
 {
   "summary": {
     "num_queries": 20,
-    "mean_precision_at_10": 0.545,
-    "mean_average_precision_MAP": 0.7906,
-    "avg_query_time_ms": 48.24,
-    "evaluation_timestamp": "2026-07-14 15:23:40"
+    "mean_precision_at_10": 0.945,
+    "mean_average_precision_MAP": 0.6502,
+    "avg_query_time_ms": 22.9,
+    "evaluation_timestamp": "2026-07-14 15:31:49"
   },
   "details": [
     {
       "query_id": "q01",
       "query": "học python cơ bản cho người mới bắt đầu",
-      "ground_truth_count": 7,
+      "ground_truth_count": 106,
       "retrieved_top10_count": 10,
-      "precision_at_10": 0.3,
-      "average_precision": 0.5461,
-      "time_taken_ms": 805.07
+      "precision_at_10": 0.9,
+      "average_precision": 0.4225,
+      "time_taken_ms": 10.62
     },
     {
       "query_id": "q02",
       "query": "thuật toán sắp xếp nhanh quicksort bằng c++ và python",
-      "ground_truth_count": 7,
+      "ground_truth_count": 18,
       "retrieved_top10_count": 10,
-      "precision_at_10": 0.2,
-      "average_precision": 0.4075,
-      "time_taken_ms": 10.61
+      "precision_at_10": 1.0,
+      "average_precision": 1.0,
+      "time_taken_ms": 12.37
     },
     {
       "query_id": "q03",
       "query": "khái niệm lập trình hướng đối tượng oop và các tính chất",
-      "ground_truth_count": 7,
+      "ground_truth_count": 52,
       "retrieved_top10_count": 10,
-      "precision_at_10": 0.7,
-      "average_precision": 0.826,
-      "time_taken_ms": 5.63
+      "precision_at_10": 1.0,
+      "average_precision": 0.3462,
+      "time_taken_ms": 13.3
     },
     {
       "query_id": "q04",
       "query": "hiểu rõ về async await trong javascript và promise",
-      "ground_truth_count": 7,
+      "ground_truth_count": 35,
       "retrieved_top10_count": 10,
-      "precision_at_10": 0.3,
-      "average_precision": 0.5648,
-      "time_taken_ms": 10.06
+      "precision_at_10": 0.1,
+      "average_precision": 0.1039,
+      "time_taken_ms": 11.0
     },
     {
       "query_id": "q05",
       "query": "hướng dẫn sử dụng git branch và git merge khi làm việc nhóm",
-      "ground_truth_count": 7,
+      "ground_truth_count": 72,
       "retrieved_top10_count": 10,
-      "precision_at_10": 0.7,
-      "average_precision": 0.9683,
-      "time_taken_ms": 12.47
+      "precision_at_10": 1.0,
+      "average_precision": 0.6944,
+      "time_taken_ms": 16.87
     },
     {
       "query_id": "q06",
       "query": "con trỏ pointer trong c++ và quản lý bộ nhớ động",
-      "ground_truth_count": 7,
+      "ground_truth_count": 18,
       "retrieved_top10_count": 10,
-      "precision_at_10": 0.7,
+      "precision_at_10": 1.0,
       "average_precision": 1.0,
-      "time_taken_ms": 7.61
+      "time_taken_ms": 14.44
     },
     {
       "query_id": "q07",
       "query": "kiến trúc restful api là gì nguyên tắc thiết kế chuẩn",
-      "ground_truth_count": 7,
+      "ground_truth_count": 120,
       "retrieved_top10_count": 10,
-      "precision_at_10": 0.2,
-      "average_precision": 0.2857,
-      "time_taken_ms": 3.28
+      "precision_at_10": 1.0,
+      "average_precision": 0.4004,
+      "time_taken_ms": 18.43
     },
     {
       "query_id": "q08",
       "query": "docker là gì hướng dẫn dockerfile và docker compose",
-      "ground_truth_count": 7,
+      "ground_truth_count": 70,
       "retrieved_top10_count": 10,
-      "precision_at_10": 0.1,
-      "average_precision": 0.1666,
-      "time_taken_ms": 8.98
+      "precision_at_10": 0.9,
+      "average_precision": 0.2279,
+      "time_taken_ms": 20.61
     },
     {
       "query_id": "q09",
       "query": "lệnh sql truy vấn select join group by cơ bản",
-      "ground_truth_count": 7,
+      "ground_truth_count": 86,
       "retrieved_top10_count": 10,
-      "precision_at_10": 0.6,
-      "average_precision": 0.8571,
-      "time_taken_ms": 8.05
+      "precision_at_10": 1.0,
+      "average_precision": 0.3141,
+      "time_taken_ms": 71.24
     },
     {
       "query_id": "q10",
       "query": "phân tích dữ liệu bằng pandas và numpy trong python",
-      "ground_truth_count": 7,
+      "ground_truth_count": 17,
       "retrieved_top10_count": 10,
-      "precision_at_10": 0.7,
-      "average_precision": 0.9214,
-      "time_taken_ms": 9.12
+      "precision_at_10": 1.0,
+      "average_precision": 1.0,
+      "time_taken_ms": 65.61
     },
     {
       "query_id": "q11",
       "query": "xây dựng web api tốc độ cao với fastapi",
-      "ground_truth_count": 7,
+      "ground_truth_count": 17,
       "retrieved_top10_count": 10,
-      "precision_at_10": 0.7,
-      "average_precision": 0.9821,
-      "time_taken_ms": 10.25
+      "precision_at_10": 1.0,
+      "average_precision": 1.0,
+      "time_taken_ms": 19.89
     },
     {
       "query_id": "q12",
       "query": "thuật toán học máy linear regression hồi quy tuyến tính",
-      "ground_truth_count": 7,
+      "ground_truth_count": 34,
       "retrieved_top10_count": 10,
-      "precision_at_10": 0.6,
-      "average_precision": 0.8571,
-      "time_taken_ms": 6.58
+      "precision_at_10": 1.0,
+      "average_precision": 0.5,
+      "time_taken_ms": 26.35
     },
     {
       "query_id": "q13",
       "query": "xử lý mảng nâng cao javascript với map filter reduce",
-      "ground_truth_count": 7,
+      "ground_truth_count": 69,
       "retrieved_top10_count": 10,
-      "precision_at_10": 0.6,
-      "average_precision": 0.9238,
-      "time_taken_ms": 12.36
+      "precision_at_10": 1.0,
+      "average_precision": 0.7246,
+      "time_taken_ms": 41.4
     },
     {
       "query_id": "q14",
       "query": "quản lý trạng thái ứng dụng redux toolkit trong react",
-      "ground_truth_count": 7,
+      "ground_truth_count": 34,
       "retrieved_top10_count": 10,
-      "precision_at_10": 0.6,
-      "average_precision": 0.8988,
-      "time_taken_ms": 11.28
+      "precision_at_10": 1.0,
+      "average_precision": 1.0,
+      "time_taken_ms": 19.02
     },
     {
       "query_id": "q15",
       "query": "hiểu rõ event loop và call stack trong nodejs",
-      "ground_truth_count": 7,
+      "ground_truth_count": 17,
       "retrieved_top10_count": 10,
-      "precision_at_10": 0.6,
-      "average_precision": 0.9196,
-      "time_taken_ms": 5.49
+      "precision_at_10": 1.0,
+      "average_precision": 1.0,
+      "time_taken_ms": 15.85
     },
     {
       "query_id": "q16",
       "query": "cấu trúc dữ liệu danh sách liên kết đơn linked list",
-      "ground_truth_count": 7,
+      "ground_truth_count": 35,
       "retrieved_top10_count": 10,
-      "precision_at_10": 0.6,
-      "average_precision": 0.8571,
-      "time_taken_ms": 10.14
+      "precision_at_10": 1.0,
+      "average_precision": 0.4857,
+      "time_taken_ms": 13.57
     },
     {
       "query_id": "q17",
       "query": "thuật toán tìm kiếm nhị phân binary search c++",
-      "ground_truth_count": 7,
+      "ground_truth_count": 52,
       "retrieved_top10_count": 10,
-      "precision_at_10": 0.7,
-      "average_precision": 0.9821,
-      "time_taken_ms": 7.78
+      "precision_at_10": 1.0,
+      "average_precision": 0.6731,
+      "time_taken_ms": 17.34
     },
     {
       "query_id": "q18",
-      "query": "lập trình đa luồng multithreading trong java",
-      "ground_truth_count": 7,
+      "query": "lập trình đa luồng multithreading và goroutines",
+      "ground_truth_count": 51,
       "retrieved_top10_count": 10,
-      "precision_at_10": 0.7,
-      "average_precision": 0.9821,
-      "time_taken_ms": 4.31
+      "precision_at_10": 1.0,
+      "average_precision": 0.7884,
+      "time_taken_ms": 18.53
     },
     {
       "query_id": "q19",
       "query": "sử dụng spring boot xây dựng microservices java",
-      "ground_truth_count": 7,
+      "ground_truth_count": 155,
       "retrieved_top10_count": 10,
-      "precision_at_10": 0.6,
-      "average_precision": 0.8828,
-      "time_taken_ms": 9.14
+      "precision_at_10": 1.0,
+      "average_precision": 0.3226,
+      "time_taken_ms": 13.14
     },
     {
       "query_id": "q20",
       "query": "bảo mật web phòng chống tấn công xss và sql injection",
-      "ground_truth_count": 7,
+      "ground_truth_count": 17,
       "retrieved_top10_count": 10,
-      "precision_at_10": 0.7,
-      "average_precision": 0.9821,
-      "time_taken_ms": 6.52
+      "precision_at_10": 1.0,
+      "average_precision": 1.0,
+      "time_taken_ms": 18.33
     }
   ]
 }
