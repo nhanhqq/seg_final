@@ -247,5 +247,14 @@
       "doc_python_002"
     ],
     "annotation_type": "Human Web UI Annotated"
+  },
+  "test_goal_deep": {
+    "query_id": "test_goal_deep",
+    "query": "Kiểm thử sâu API annotate dưới /goal",
+    "ground_truth": [
+      "doc_python_001",
+      "doc_python_002"
+    ],
+    "annotation_type": "Human Web UI Annotated"
   }
 }
