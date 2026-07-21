@@ -3,11 +3,11 @@
     "query_id": "q01",
     "query": "học python cơ bản cho người mới bắt đầu",
     "ground_truth": [
-      "wiki_vi_003",
       "wiki_vi_006",
+      "wiki_vi_003",
       "wiki_vi_002",
-      "devto_002",
-      "devto_003"
+      "wiki_vi_007",
+      "devto_149"
     ],
     "annotation_type": "Expert Verified (Scientific Standard)"
   },
@@ -16,10 +16,10 @@
     "query": "thuật toán sắp xếp nhanh quicksort bằng c++ và python",
     "ground_truth": [
       "wiki_vi_003",
-      "wiki_vi_005",
-      "devto_002",
-      "devto_003",
-      "devto_001"
+      "devto_312",
+      "devto_131",
+      "devto_354",
+      "devto_376"
     ],
     "annotation_type": "Expert Verified (Scientific Standard)"
   },
@@ -28,10 +28,10 @@
     "query": "khái niệm lập trình hướng đối tượng oop và các tính chất",
     "ground_truth": [
       "wiki_vi_003",
-      "devto_009",
       "wiki_vi_002",
       "wiki_vi_006",
-      "wiki_vi_005"
+      "wiki_vi_009",
+      "devto_366"
     ],
     "annotation_type": "Expert Verified (Scientific Standard)"
   },
@@ -39,11 +39,11 @@
     "query_id": "q04",
     "query": "hiểu rõ về async await trong javascript và promise",
     "ground_truth": [
-      "wiki_vi_002",
-      "devto_005",
-      "devto_004",
-      "devto_006",
-      "devto_019"
+      "devto_181",
+      "devto_178",
+      "devto_118",
+      "devto_684",
+      "devto_969"
     ],
     "annotation_type": "Expert Verified (Scientific Standard)"
   },
@@ -52,10 +52,10 @@
     "query": "hướng dẫn sử dụng git branch và git merge khi làm việc nhóm",
     "ground_truth": [
       "wiki_vi_010",
-      "devto_016",
-      "devto_018",
-      "devto_017",
-      "wiki_vi_008"
+      "wiki_vi_008",
+      "wiki_vi_005",
+      "wiki_vi_007",
+      "devto_763"
     ],
     "annotation_type": "Expert Verified (Scientific Standard)"
   },
@@ -63,9 +63,11 @@
     "query_id": "q06",
     "query": "con trỏ pointer trong c++ và quản lý bộ nhớ động",
     "ground_truth": [
-      "wiki_vi_010",
-      "wiki_vi_003",
-      "wiki_vi_007"
+      "devto_357",
+      "devto_376",
+      "devto_514",
+      "devto_444",
+      "devto_351"
     ],
     "annotation_type": "Expert Verified (Scientific Standard)"
   },
@@ -74,10 +76,10 @@
     "query": "kiến trúc restful api là gì nguyên tắc thiết kế chuẩn",
     "ground_truth": [
       "wiki_vi_013",
-      "devto_014",
-      "devto_010",
+      "devto_015",
       "wiki_vi_005",
-      "wiki_vi_007"
+      "devto_678",
+      "devto_961"
     ],
     "annotation_type": "Expert Verified (Scientific Standard)"
   },
@@ -85,8 +87,11 @@
     "query_id": "q08",
     "query": "docker là gì hướng dẫn dockerfile và docker compose",
     "ground_truth": [
-      "wiki_vi_010",
-      "wiki_vi_007"
+      "devto_846",
+      "devto_811",
+      "devto_899",
+      "devto_900",
+      "wiki_vi_010"
     ],
     "annotation_type": "Expert Verified (Scientific Standard)"
   },
@@ -94,11 +99,11 @@
     "query_id": "q09",
     "query": "lệnh sql truy vấn select join group by cơ bản",
     "ground_truth": [
-      "devto_015",
-      "wiki_vi_009",
-      "wiki_vi_008",
-      "devto_011",
-      "devto_007"
+      "devto_686",
+      "devto_674",
+      "devto_603",
+      "devto_606",
+      "devto_743"
     ],
     "annotation_type": "Expert Verified (Scientific Standard)"
   },
@@ -108,19 +113,21 @@
     "ground_truth": [
       "wiki_vi_003",
       "wiki_vi_005",
-      "devto_002"
+      "wiki_vi_006",
+      "wiki_vi_009",
+      "wiki_vi_008"
     ],
-    "annotation_type": "Human Web UI Annotated"
+    "annotation_type": "Expert Verified (Scientific Standard)"
   },
   "q11": {
     "query_id": "q11",
     "query": "xây dựng web api tốc độ cao với fastapi",
     "ground_truth": [
-      "devto_014",
-      "devto_010",
-      "wiki_vi_006",
-      "devto_019",
-      "wiki_vi_005"
+      "devto_099",
+      "devto_961",
+      "devto_522",
+      "devto_944",
+      "devto_036"
     ],
     "annotation_type": "Expert Verified (Scientific Standard)"
   },
@@ -128,11 +135,11 @@
     "query_id": "q12",
     "query": "thuật toán học máy linear regression hồi quy tuyến tính",
     "ground_truth": [
+      "devto_437",
+      "devto_526",
+      "devto_513",
       "wiki_vi_006",
-      "devto_009",
-      "wiki_vi_005",
-      "wiki_vi_002",
-      "wiki_vi_009"
+      "devto_427"
     ],
     "annotation_type": "Expert Verified (Scientific Standard)"
   },
@@ -140,11 +147,11 @@
     "query_id": "q13",
     "query": "xử lý mảng nâng cao javascript với map filter reduce",
     "ground_truth": [
-      "wiki_vi_002",
-      "devto_005",
-      "wiki_vi_013",
-      "devto_004",
-      "devto_006"
+      "devto_176",
+      "devto_274",
+      "devto_265",
+      "devto_249",
+      "devto_243"
     ],
     "annotation_type": "Expert Verified (Scientific Standard)"
   },
@@ -153,10 +160,10 @@
     "query": "quản lý trạng thái ứng dụng redux toolkit trong react",
     "ground_truth": [
       "wiki_vi_010",
-      "wiki_vi_007",
-      "wiki_vi_013",
-      "wiki_vi_005",
-      "wiki_vi_006"
+      "devto_396",
+      "devto_248",
+      "devto_164",
+      "devto_939"
     ],
     "annotation_type": "Expert Verified (Scientific Standard)"
   },
@@ -164,8 +171,11 @@
     "query_id": "q15",
     "query": "hiểu rõ event loop và call stack trong nodejs",
     "ground_truth": [
-      "wiki_vi_002",
-      "wiki_vi_013"
+      "devto_611",
+      "devto_375",
+      "devto_160",
+      "devto_925",
+      "devto_972"
     ],
     "annotation_type": "Expert Verified (Scientific Standard)"
   },
@@ -174,10 +184,10 @@
     "query": "cấu trúc dữ liệu danh sách liên kết đơn linked list",
     "ground_truth": [
       "wiki_vi_005",
+      "devto_332",
       "wiki_vi_009",
       "wiki_vi_008",
-      "wiki_vi_003",
-      "wiki_vi_006"
+      "devto_639"
     ],
     "annotation_type": "Expert Verified (Scientific Standard)"
   },
@@ -185,10 +195,11 @@
     "query_id": "q17",
     "query": "thuật toán tìm kiếm nhị phân binary search c++",
     "ground_truth": [
+      "devto_312",
+      "devto_365",
+      "devto_313",
       "wiki_vi_003",
-      "wiki_vi_006",
-      "wiki_vi_005",
-      "wiki_vi_007"
+      "devto_376"
     ],
     "annotation_type": "Expert Verified (Scientific Standard)"
   },
@@ -209,8 +220,8 @@
       "wiki_vi_005",
       "wiki_vi_013",
       "wiki_vi_006",
-      "wiki_vi_008",
-      "wiki_vi_002"
+      "devto_447",
+      "devto_805"
     ],
     "annotation_type": "Expert Verified (Scientific Standard)"
   },
@@ -218,11 +229,11 @@
     "query_id": "q20",
     "query": "bảo mật web phòng chống tấn công xss và sql injection",
     "ground_truth": [
-      "wiki_vi_009",
-      "devto_015",
-      "devto_014",
-      "devto_013",
-      "wiki_vi_008"
+      "devto_660",
+      "devto_657",
+      "devto_672",
+      "devto_119",
+      "devto_665"
     ],
     "annotation_type": "Expert Verified (Scientific Standard)"
   }

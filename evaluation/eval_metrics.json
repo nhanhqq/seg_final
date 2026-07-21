@@ -1,0 +1,430 @@
+{
+  "summary": {
+    "num_queries": 20,
+    "automated_ground_truth": {
+      "tfidf": {
+        "mean_precision_at_10": 0.51,
+        "mean_average_precision_MAP": 0.2214,
+        "avg_query_time_ms": 15.42
+      },
+      "bm25": {
+        "mean_precision_at_10": 0.555,
+        "mean_average_precision_MAP": 0.2395,
+        "avg_query_time_ms": 15.71
+      }
+    },
+    "expert_human_ground_truth": {
+      "tfidf": {
+        "mean_precision_at_10": 0.475,
+        "mean_average_precision_MAP": 0.9356
+      },
+      "bm25": {
+        "mean_precision_at_10": 0.48,
+        "mean_average_precision_MAP": 0.9361
+      }
+    },
+    "evaluation_timestamp": "2026-07-21 21:49:07"
+  },
+  "details": [
+    {
+      "query_id": "q01",
+      "query": "học python cơ bản cho người mới bắt đầu",
+      "ground_truth_count": 239,
+      "human_gt_count": 5,
+      "tfidf": {
+        "precision_at_10": 0.6,
+        "average_precision": 0.152,
+        "human_precision_at_10": 0.5,
+        "human_average_precision": 1.0,
+        "time_taken_ms": 20.56
+      },
+      "bm25": {
+        "precision_at_10": 0.7,
+        "average_precision": 0.1632,
+        "human_precision_at_10": 0.4,
+        "human_average_precision": 0.7143,
+        "time_taken_ms": 19.03
+      }
+    },
+    {
+      "query_id": "q02",
+      "query": "thuật toán sắp xếp nhanh quicksort bằng c++ và python",
+      "ground_truth_count": 0,
+      "human_gt_count": 5,
+      "tfidf": {
+        "precision_at_10": 0.0,
+        "average_precision": 0.0,
+        "human_precision_at_10": 0.5,
+        "human_average_precision": 0.9,
+        "time_taken_ms": 19.0
+      },
+      "bm25": {
+        "precision_at_10": 0.0,
+        "average_precision": 0.0,
+        "human_precision_at_10": 0.5,
+        "human_average_precision": 0.9667,
+        "time_taken_ms": 17.66
+      }
+    },
+    {
+      "query_id": "q03",
+      "query": "khái niệm lập trình hướng đối tượng oop và các tính chất",
+      "ground_truth_count": 164,
+      "human_gt_count": 5,
+      "tfidf": {
+        "precision_at_10": 0.7,
+        "average_precision": 0.2424,
+        "human_precision_at_10": 0.4,
+        "human_average_precision": 0.8,
+        "time_taken_ms": 14.53
+      },
+      "bm25": {
+        "precision_at_10": 0.7,
+        "average_precision": 0.2424,
+        "human_precision_at_10": 0.5,
+        "human_average_precision": 1.0,
+        "time_taken_ms": 14.94
+      }
+    },
+    {
+      "query_id": "q04",
+      "query": "hiểu rõ về async await trong javascript và promise",
+      "ground_truth_count": 16,
+      "human_gt_count": 5,
+      "tfidf": {
+        "precision_at_10": 0.4,
+        "average_precision": 0.3235,
+        "human_precision_at_10": 0.4,
+        "human_average_precision": 0.8714,
+        "time_taken_ms": 16.22
+      },
+      "bm25": {
+        "precision_at_10": 0.7,
+        "average_precision": 0.4364,
+        "human_precision_at_10": 0.5,
+        "human_average_precision": 1.0,
+        "time_taken_ms": 17.07
+      }
+    },
+    {
+      "query_id": "q05",
+      "query": "hướng dẫn sử dụng git branch và git merge khi làm việc nhóm",
+      "ground_truth_count": 189,
+      "human_gt_count": 5,
+      "tfidf": {
+        "precision_at_10": 0.4,
+        "average_precision": 0.1731,
+        "human_precision_at_10": 0.5,
+        "human_average_precision": 1.0,
+        "time_taken_ms": 25.13
+      },
+      "bm25": {
+        "precision_at_10": 0.8,
+        "average_precision": 0.2258,
+        "human_precision_at_10": 0.4,
+        "human_average_precision": 0.8,
+        "time_taken_ms": 24.49
+      }
+    },
+    {
+      "query_id": "q06",
+      "query": "con trỏ pointer trong c++ và quản lý bộ nhớ động",
+      "ground_truth_count": 3,
+      "human_gt_count": 5,
+      "tfidf": {
+        "precision_at_10": 0.2,
+        "average_precision": 0.3,
+        "human_precision_at_10": 0.5,
+        "human_average_precision": 1.0,
+        "time_taken_ms": 3.99
+      },
+      "bm25": {
+        "precision_at_10": 0.2,
+        "average_precision": 0.2444,
+        "human_precision_at_10": 0.5,
+        "human_average_precision": 1.0,
+        "time_taken_ms": 6.47
+      }
+    },
+    {
+      "query_id": "q07",
+      "query": "kiến trúc restful api là gì nguyên tắc thiết kế chuẩn",
+      "ground_truth_count": 267,
+      "human_gt_count": 5,
+      "tfidf": {
+        "precision_at_10": 0.7,
+        "average_precision": 0.0815,
+        "human_precision_at_10": 0.5,
+        "human_average_precision": 0.925,
+        "time_taken_ms": 13.67
+      },
+      "bm25": {
+        "precision_at_10": 0.8,
+        "average_precision": 0.0893,
+        "human_precision_at_10": 0.5,
+        "human_average_precision": 0.925,
+        "time_taken_ms": 12.12
+      }
+    },
+    {
+      "query_id": "q08",
+      "query": "docker là gì hướng dẫn dockerfile và docker compose",
+      "ground_truth_count": 172,
+      "human_gt_count": 5,
+      "tfidf": {
+        "precision_at_10": 1.0,
+        "average_precision": 0.2151,
+        "human_precision_at_10": 0.5,
+        "human_average_precision": 1.0,
+        "time_taken_ms": 9.27
+      },
+      "bm25": {
+        "precision_at_10": 1.0,
+        "average_precision": 0.2151,
+        "human_precision_at_10": 0.5,
+        "human_average_precision": 1.0,
+        "time_taken_ms": 7.79
+      }
+    },
+    {
+      "query_id": "q09",
+      "query": "lệnh sql truy vấn select join group by cơ bản",
+      "ground_truth_count": 192,
+      "human_gt_count": 5,
+      "tfidf": {
+        "precision_at_10": 1.0,
+        "average_precision": 0.2254,
+        "human_precision_at_10": 0.5,
+        "human_average_precision": 0.925,
+        "time_taken_ms": 18.45
+      },
+      "bm25": {
+        "precision_at_10": 1.0,
+        "average_precision": 0.1124,
+        "human_precision_at_10": 0.5,
+        "human_average_precision": 1.0,
+        "time_taken_ms": 20.39
+      }
+    },
+    {
+      "query_id": "q10",
+      "query": "phân tích dữ liệu bằng pandas và numpy trong python",
+      "ground_truth_count": 3,
+      "human_gt_count": 5,
+      "tfidf": {
+        "precision_at_10": 0.0,
+        "average_precision": 0.0,
+        "human_precision_at_10": 0.5,
+        "human_average_precision": 1.0,
+        "time_taken_ms": 21.92
+      },
+      "bm25": {
+        "precision_at_10": 0.0,
+        "average_precision": 0.0,
+        "human_precision_at_10": 0.5,
+        "human_average_precision": 1.0,
+        "time_taken_ms": 18.27
+      }
+    },
+    {
+      "query_id": "q11",
+      "query": "xây dựng web api tốc độ cao với fastapi",
+      "ground_truth_count": 5,
+      "human_gt_count": 5,
+      "tfidf": {
+        "precision_at_10": 0.5,
+        "average_precision": 0.6595,
+        "human_precision_at_10": 0.5,
+        "human_average_precision": 0.9429,
+        "time_taken_ms": 19.93
+      },
+      "bm25": {
+        "precision_at_10": 0.5,
+        "average_precision": 0.8529,
+        "human_precision_at_10": 0.5,
+        "human_average_precision": 1.0,
+        "time_taken_ms": 24.94
+      }
+    },
+    {
+      "query_id": "q12",
+      "query": "thuật toán học máy linear regression hồi quy tuyến tính",
+      "ground_truth_count": 524,
+      "human_gt_count": 5,
+      "tfidf": {
+        "precision_at_10": 0.6,
+        "average_precision": 0.0216,
+        "human_precision_at_10": 0.5,
+        "human_average_precision": 1.0,
+        "time_taken_ms": 31.6
+      },
+      "bm25": {
+        "precision_at_10": 0.7,
+        "average_precision": 0.0168,
+        "human_precision_at_10": 0.5,
+        "human_average_precision": 1.0,
+        "time_taken_ms": 29.19
+      }
+    },
+    {
+      "query_id": "q13",
+      "query": "xử lý mảng nâng cao javascript với map filter reduce",
+      "ground_truth_count": 224,
+      "human_gt_count": 5,
+      "tfidf": {
+        "precision_at_10": 1.0,
+        "average_precision": 0.152,
+        "human_precision_at_10": 0.5,
+        "human_average_precision": 0.9029,
+        "time_taken_ms": 24.88
+      },
+      "bm25": {
+        "precision_at_10": 0.6,
+        "average_precision": 0.1328,
+        "human_precision_at_10": 0.5,
+        "human_average_precision": 0.521,
+        "time_taken_ms": 21.48
+      }
+    },
+    {
+      "query_id": "q14",
+      "query": "quản lý trạng thái ứng dụng redux toolkit trong react",
+      "ground_truth_count": 37,
+      "human_gt_count": 5,
+      "tfidf": {
+        "precision_at_10": 0.6,
+        "average_precision": 0.3834,
+        "human_precision_at_10": 0.5,
+        "human_average_precision": 0.7862,
+        "time_taken_ms": 7.7
+      },
+      "bm25": {
+        "precision_at_10": 0.7,
+        "average_precision": 0.4271,
+        "human_precision_at_10": 0.5,
+        "human_average_precision": 1.0,
+        "time_taken_ms": 12.98
+      }
+    },
+    {
+      "query_id": "q15",
+      "query": "hiểu rõ event loop và call stack trong nodejs",
+      "ground_truth_count": 2,
+      "human_gt_count": 5,
+      "tfidf": {
+        "precision_at_10": 0.1,
+        "average_precision": 0.0714,
+        "human_precision_at_10": 0.5,
+        "human_average_precision": 0.9267,
+        "time_taken_ms": 7.76
+      },
+      "bm25": {
+        "precision_at_10": 0.0,
+        "average_precision": 0.0172,
+        "human_precision_at_10": 0.5,
+        "human_average_precision": 0.8529,
+        "time_taken_ms": 7.09
+      }
+    },
+    {
+      "query_id": "q16",
+      "query": "cấu trúc dữ liệu danh sách liên kết đơn linked list",
+      "ground_truth_count": 2,
+      "human_gt_count": 5,
+      "tfidf": {
+        "precision_at_10": 0.2,
+        "average_precision": 1.0,
+        "human_precision_at_10": 0.5,
+        "human_average_precision": 0.9429,
+        "time_taken_ms": 6.02
+      },
+      "bm25": {
+        "precision_at_10": 0.2,
+        "average_precision": 1.0,
+        "human_precision_at_10": 0.5,
+        "human_average_precision": 1.0,
+        "time_taken_ms": 5.98
+      }
+    },
+    {
+      "query_id": "q17",
+      "query": "thuật toán tìm kiếm nhị phân binary search c++",
+      "ground_truth_count": 153,
+      "human_gt_count": 5,
+      "tfidf": {
+        "precision_at_10": 0.9,
+        "average_precision": 0.2046,
+        "human_precision_at_10": 0.4,
+        "human_average_precision": 0.8769,
+        "time_taken_ms": 13.67
+      },
+      "bm25": {
+        "precision_at_10": 0.8,
+        "average_precision": 0.2051,
+        "human_precision_at_10": 0.5,
+        "human_average_precision": 1.0,
+        "time_taken_ms": 18.86
+      }
+    },
+    {
+      "query_id": "q18",
+      "query": "lập trình đa luồng multithreading và goroutines",
+      "ground_truth_count": 6,
+      "human_gt_count": 3,
+      "tfidf": {
+        "precision_at_10": 0.0,
+        "average_precision": 0.0,
+        "human_precision_at_10": 0.3,
+        "human_average_precision": 1.0,
+        "time_taken_ms": 2.99
+      },
+      "bm25": {
+        "precision_at_10": 0.0,
+        "average_precision": 0.0,
+        "human_precision_at_10": 0.3,
+        "human_average_precision": 1.0,
+        "time_taken_ms": 1.99
+      }
+    },
+    {
+      "query_id": "q19",
+      "query": "sử dụng spring boot xây dựng microservices java",
+      "ground_truth_count": 224,
+      "human_gt_count": 5,
+      "tfidf": {
+        "precision_at_10": 0.6,
+        "average_precision": 0.0257,
+        "human_precision_at_10": 0.5,
+        "human_average_precision": 0.9111,
+        "time_taken_ms": 6.49
+      },
+      "bm25": {
+        "precision_at_10": 0.7,
+        "average_precision": 0.0343,
+        "human_precision_at_10": 0.5,
+        "human_average_precision": 0.9429,
+        "time_taken_ms": 5.98
+      }
+    },
+    {
+      "query_id": "q20",
+      "query": "bảo mật web phòng chống tấn công xss và sql injection",
+      "ground_truth_count": 39,
+      "human_gt_count": 5,
+      "tfidf": {
+        "precision_at_10": 0.7,
+        "average_precision": 0.1971,
+        "human_precision_at_10": 0.5,
+        "human_average_precision": 1.0,
+        "time_taken_ms": 24.56
+      },
+      "bm25": {
+        "precision_at_10": 1.0,
+        "average_precision": 0.3758,
+        "human_precision_at_10": 0.5,
+        "human_average_precision": 1.0,
+        "time_taken_ms": 27.53
+      }
+    }
+  ]
+}
