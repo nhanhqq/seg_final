@@ -3,15 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ query }} - DevSeek IT Search</title>
+    <title>{{ query }} - DevSeek</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .results-body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+        }
+        
+        .results-header {
+            position: sticky;
+            top: 0;
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1rem 2rem;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .mini-logo {
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .mini-logo .gradient-text {
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .compact-search-form {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .compact-input-wrapper {
+            background: rgba(26, 34, 56, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            padding: 0.4rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .compact-input-wrapper:focus-within {
+            background: rgba(26, 34, 56, 0.8);
+            border-color: rgba(56, 189, 248, 0.5);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.1);
+        }
+
+        .compact-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            padding: 0.4rem;
+            outline: none;
+        }
+
+        .compact-submit-btn {
+            background: none;
+            border: none;
+            color: #38bdf8;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .results-main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .stats-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .results-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 800px;
+        }
+
+        .result-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .result-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .result-meta a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .result-title {
+            font-size: 1.3rem;
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .result-title:hover {
+            text-decoration: underline;
+        }
+
+        .result-snippet {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        mark {
+            background: rgba(56, 189, 248, 0.2);
+            color: #38bdf8;
+            padding: 0 0.2rem;
+            border-radius: 4px;
+        }
+
+        .control-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-select {
+            background: rgba(26, 34, 56, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            outline: none;
+            cursor: pointer;
+        }
+
+    </style>
 </head>
 <body class="results-body">
-    <!-- Top Navigation & Compact Search -->
     <header class="results-header">
         <div class="header-container">
             <a href="{{ url_for('index') }}" class="mini-logo">
@@ -21,233 +182,59 @@
 
             <form action="{{ url_for('search') }}" method="GET" class="compact-search-form">
                 <input type="hidden" name="algorithm" value="{{ algorithm.lower() }}">
-                <input type="hidden" name="category" value="{{ category }}">
-                <input type="hidden" name="difficulty" value="{{ difficulty }}">
-                <input type="hidden" name="sort_by" value="{{ sort_by }}">
                 <div class="compact-input-wrapper">
-                    <input type="text" name="q" value="{{ query }}" class="compact-input" 
-                           placeholder="Tìm kiếm tài liệu, hướng dẫn lập trình IT..." autocomplete="off" required>
+                    <input type="text" name="q" value="{{ query }}" class="compact-input" autocomplete="off" required>
                     <button type="submit" class="compact-submit-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
             </form>
-
-            <div class="header-actions" style="display: flex; gap: 0.8rem; align-items: center;">
-                <a href="{{ url_for('annotate_page') }}" style="text-decoration: none; background: rgba(236, 72, 153, 0.15); border: 1px solid rgba(236, 72, 153, 0.4); padding: 0.35rem 0.8rem; border-radius: 9999px; color: #f472b6; font-size: 0.85rem; font-weight: 600;">
-                    <i class="fa-solid fa-user-check"></i> Chấm Điểm
-                </a>
-                <span class="badge-status">
-                    <i class="fa-solid fa-circle-check"></i> 
-                    {{ "Okapi BM25F" if algorithm == "BM25" else ("Hybrid Engine" if algorithm == "HYBRID" else "Multi-Field TF-IDF") }}
-                </span>
-            </div>
         </div>
     </header>
 
-    <!-- Main Results Area -->
     <main class="results-main">
-        <div class="results-layout">
-            <!-- SERP Column -->
-            <div class="serp-container">
-                <!-- Search Meta Info -->
-                <div class="serp-stats-card">
-                    <div class="stats-left">
-                        <span class="query-highlight-text">Kết quả cho: <strong>"{{ query }}"</strong></span>
-                        <div class="tokens-badge">
-                            <span class="token-label">Tokens tách từ (NLP + Đồng nghĩa):</span>
-                            {% for token in query_tokens %}
-                                <span class="token-item">{{ token }}</span>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div class="stats-right">
-                        <span class="time-badge"><i class="fa-solid fa-stopwatch"></i> {{ time_taken_ms }} giây</span>
-                        <span class="count-badge"><i class="fa-solid fa-file-lines"></i> {{ total_results }} kết quả</span>
-                    </div>
-                </div>
-
-                <!-- Dual Ranking & Faceted Control Panel Bar -->
-                <div class="control-bar">
-                    <!-- Algorithm selection pills -->
-                    <div class="control-group">
-                        <span class="control-label"><i class="fa-solid fa-scale-balanced"></i> Thuật toán:</span>
-                        <div class="algo-tabs">
-                            <a href="{{ url_for('search', q=query, algorithm='tfidf', category=category, difficulty=difficulty, sort_by=sort_by) }}" 
-                               class="algo-tab {{ 'active' if algorithm == 'TFIDF' else '' }}">
-                               <i class="fa-solid fa-chart-bar"></i> Multi-Field TF-IDF
-                            </a>
-                            <a href="{{ url_for('search', q=query, algorithm='bm25', category=category, difficulty=difficulty, sort_by=sort_by) }}" 
-                               class="algo-tab {{ 'active' if algorithm == 'BM25' else '' }}">
-                               <i class="fa-solid fa-bolt"></i> Okapi BM25F
-                            </a>
-                            <a href="{{ url_for('search', q=query, algorithm='hybrid', category=category, difficulty=difficulty, sort_by=sort_by) }}" 
-                               class="algo-tab {{ 'active' if algorithm == 'HYBRID' else '' }}">
-                               <i class="fa-solid fa-wand-magic-sparkles"></i> Hybrid AI
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Faceted Filtering & Sorting Form -->
-                    <form action="{{ url_for('search') }}" method="GET" class="control-group" id="filterForm">
-                        <input type="hidden" name="q" value="{{ query }}">
-                        <input type="hidden" name="algorithm" value="{{ algorithm.lower() }}">
-                        
-                        <!-- Category Filter -->
-                        <div style="display: flex; align-items: center; gap: 0.4rem;">
-                            <span class="control-label"><i class="fa-solid fa-folder-tree"></i> Chuyên đề:</span>
-                            <select name="category" class="filter-select" onchange="this.form.submit()">
-                                <option value="All" {% if category == 'All' %}selected{% endif %}>Tất cả chuyên đề</option>
-                                {% if facets and facets.categories %}
-                                    {% for cat_name, cat_count in facets.categories.items() %}
-                                        <option value="{{ cat_name }}" {% if category == cat_name %}selected{% endif %}>{{ cat_name }} ({{ cat_count }})</option>
-                                    {% endfor %}
-                                {% endif %}
-                            </select>
-                        </div>
-
-                        <!-- Difficulty Filter -->
-                        <div style="display: flex; align-items: center; gap: 0.4rem;">
-                            <span class="control-label"><i class="fa-solid fa-signal"></i> Độ khó:</span>
-                            <select name="difficulty" class="filter-select" onchange="this.form.submit()">
-                                <option value="All" {% if difficulty == 'All' %}selected{% endif %}>Mọi độ khó</option>
-                                {% if facets and facets.difficulties %}
-                                    {% for diff_name, diff_count in facets.difficulties.items() %}
-                                        <option value="{{ diff_name }}" {% if difficulty == diff_name %}selected{% endif %}>{{ diff_name }} ({{ diff_count }})</option>
-                                    {% endfor %}
-                                {% endif %}
-                            </select>
-                        </div>
-
-                        <!-- Sort By Selector -->
-                        <div style="display: flex; align-items: center; gap: 0.4rem;">
-                            <span class="control-label"><i class="fa-solid fa-arrow-down-short-wide"></i> Sắp xếp:</span>
-                            <select name="sort_by" class="filter-select" onchange="this.form.submit()">
-                                <option value="relevance" {% if sort_by == 'relevance' %}selected{% endif %}>Độ liên quan (Relevance)</option>
-                                <option value="newest" {% if sort_by == 'newest' %}selected{% endif %}>Mới nhất (Publish Date)</option>
-                                <option value="popularity" {% if sort_by == 'popularity' %}selected{% endif %}>Xem nhiều (Views)</option>
-                                <option value="rating" {% if sort_by == 'rating' %}selected{% endif %}>Điểm cao (Rating)</option>
-                            </select>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Results List -->
-                {% if results %}
-                    <div class="results-list">
-                        {% for item in results %}
-                            <article class="result-card">
-                                <div class="result-header">
-                                    <div class="result-meta">
-                                        <!-- Rich Facet Badges -->
-                                        <span class="meta-badge-cat"><i class="fa-solid fa-folder"></i> {{ item.category }}</span>
-                                        <span class="meta-badge-diff"><i class="fa-solid fa-layer-group"></i> {{ item.difficulty }}</span>
-                                        <span class="meta-badge-time"><i class="fa-solid fa-clock"></i> {{ item.reading_time_min }} phút đọc</span>
-                                        <span class="meta-badge-views"><i class="fa-solid fa-eye"></i> {{ "{:,}".format(item.views | int) }} lượt xem</span>
-                                        <span class="meta-badge-rating"><i class="fa-solid fa-star"></i> {{ item.rating }}</span>
-                                        <span class="meta-author" style="margin-left: 0.5rem;"><i class="fa-solid fa-user-pen"></i> {{ item.author }}</span>
-                                        <span class="meta-date"><i class="fa-regular fa-calendar"></i> {{ item.publish_date }}</span>
-                                        
-                                        <span class="score-pill" title="Relevance Score"><i class="fa-solid fa-ranking-star"></i> Score: {{ item.score }}</span>
-                                    </div>
-                                    <a href="{{ item.url }}" target="_blank" class="result-title">
-                                        {{ item.title | safe }} <i class="fa-solid fa-arrow-up-right-from-square external-icon"></i>
-                                    </a>
-                                </div>
-
-                                <p class="result-snippet">{{ item.summary | safe }}</p>
-
-                                <div class="result-footer">
-                                    <div class="result-tags">
-                                        <i class="fa-solid fa-tags tag-icon"></i>
-                                        {% for tag in item.tags %}
-                                            <a href="{{ url_for('search', q=tag, algorithm=algorithm.lower()) }}" class="tag-link">{{ tag }}</a>
-                                        {% endfor %}
-                                    </div>
-                                    <span class="matched-info">
-                                        Khớp từ: <code>{{ ", ".join(item.matched_terms) if item.matched_terms else algorithm }}</code>
-                                    </span>
-                                </div>
-                            </article>
+        <p class="stats-text">Khoảng {{ total_results }} kết quả ({{ time_taken_ms / 1000 }} giây) cho thuật toán <strong>{{ algorithm }}</strong></p>
+        
+        <div class="control-bar">
+            <form action="{{ url_for('search') }}" method="GET" style="display: flex; gap: 1rem; width: 100%;">
+                <input type="hidden" name="q" value="{{ query }}">
+                <select name="algorithm" class="filter-select" onchange="this.form.submit()">
+                    <option value="tfidf" {% if algorithm == 'TFIDF' %}selected{% endif %}>TF-IDF</option>
+                    <option value="bm25" {% if algorithm == 'BM25' %}selected{% endif %}>Okapi BM25</option>
+                    <option value="hybrid" {% if algorithm == 'HYBRID' %}selected{% endif %}>Hybrid AI</option>
+                </select>
+                <select name="category" class="filter-select" onchange="this.form.submit()">
+                    <option value="All">Tất cả chuyên đề</option>
+                    {% if facets and facets.categories %}
+                        {% for cat_name, cat_count in facets.categories.items() %}
+                            <option value="{{ cat_name }}" {% if category == cat_name %}selected{% endif %}>{{ cat_name }}</option>
                         {% endfor %}
-                    </div>
-
-                    <!-- Pagination -->
-                    {% if total_pages > 1 %}
-                        <nav class="pagination">
-                            {% if current_page > 1 %}
-                                <a href="{{ url_for('search', q=query, page=current_page-1, algorithm=algorithm.lower(), category=category, difficulty=difficulty, sort_by=sort_by) }}" class="page-btn prev-next"><i class="fa-solid fa-chevron-left"></i> Trang trước</a>
-                            {% endif %}
-
-                            <div class="page-numbers">
-                                {% for p in range(1, total_pages + 1) %}
-                                    {% if p == current_page %}
-                                        <span class="page-num active">{{ p }}</span>
-                                    {% elif p <= 3 or p >= total_pages - 1 or (p >= current_page - 1 and p <= current_page + 1) %}
-                                        <a href="{{ url_for('search', q=query, page=p, algorithm=algorithm.lower(), category=category, difficulty=difficulty, sort_by=sort_by) }}" class="page-num">{{ p }}</a>
-                                    {% elif p == 4 or p == total_pages - 2 %}
-                                        <span class="page-ellipsis">...</span>
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
-
-                            {% if current_page < total_pages %}
-                                <a href="{{ url_for('search', q=query, page=current_page+1, algorithm=algorithm.lower(), category=category, difficulty=difficulty, sort_by=sort_by) }}" class="page-btn prev-next">Trang sau <i class="fa-solid fa-chevron-right"></i></a>
-                            {% endif %}
-                        </nav>
                     {% endif %}
+                </select>
+                <select name="sort_by" class="filter-select" onchange="this.form.submit()">
+                    <option value="relevance" {% if sort_by == 'relevance' %}selected{% endif %}>Độ liên quan</option>
+                    <option value="newest" {% if sort_by == 'newest' %}selected{% endif %}>Mới nhất</option>
+                    <option value="popularity" {% if sort_by == 'popularity' %}selected{% endif %}>Lượt xem</option>
+                </select>
+            </form>
+        </div>
 
-                {% else %}
-                    <div class="empty-state">
-                        <div class="empty-icon"><i class="fa-solid fa-face-frown-open"></i></div>
-                        <h2>Không tìm thấy tài liệu phù hợp</h2>
-                        <p>Chúng tôi không tìm thấy bài viết nào cho truy vấn <strong>"{{ query }}"</strong> với bộ lọc hiện tại.</p>
-                        <div class="empty-suggestions">
-                            <h4>Gợi ý khắc phục:</h4>
-                            <ul>
-                                <li>Kiểm tra lại chính tả hoặc thử chuyển sang bộ lọc <strong>Tất cả chuyên đề</strong>.</li>
-                                <li>Thử chuyển đổi thuật toán từ <strong>{{ algorithm }}</strong> sang <strong>Hybrid AI</strong> hoặc <strong>Multi-Field TF-IDF</strong>.</li>
-                                <li>Thử tìm kiếm bằng từ khóa ngắn gọn hoặc từ đồng nghĩa như <code>python</code>, <code>js</code>, <code>docker</code>, <code>api</code>.</li>
-                            </ul>
+        <div class="results-list">
+            {% if results %}
+                {% for item in results %}
+                    <div class="result-item">
+                        <div class="result-meta">
+                            <span>{{ item.author }}</span> &bull; 
+                            <span>{{ item.publish_date }}</span> &bull;
+                            <span>{{ item.category }}</span> &bull;
+                            <span>Score: {{ item.score }}</span>
                         </div>
+                        <a href="{{ item.url }}" target="_blank" class="result-title">{{ item.title | safe }}</a>
+                        <p class="result-snippet">{{ item.summary | safe }}</p>
                     </div>
-                {% endif %}
-            </div>
-
-            <!-- Side Widget (Infobox & Evaluation) -->
-            <aside class="sidebar-widget">
-                <div class="info-card architecture-card">
-                    <h4><i class="fa-solid fa-microchip"></i> Engine Xếp Hạng Kép</h4>
-                    <ul class="engine-specs">
-                        <li><span>Thuật toán chạy:</span> <strong>{{ algorithm }}</strong></li>
-                        <li><span>Tách từ NLP:</span> <strong>underthesea + Synonym</strong></li>
-                        <li><span>Trọng số Title:</span> <strong>x3.0</strong></li>
-                        <li><span>Trọng số Tags:</span> <strong>x2.5</strong></li>
-                        <li><span>Trọng số Summary:</span> <strong>x1.5</strong></li>
-                        <li><span>Okapi BM25 ($k_1, b$):</span> <strong>1.5 | 0.75</strong></li>
-                        <li><span>Độ dài văn bản TB:</span> <strong>~131 tokens</strong></li>
-                    </ul>
-                </div>
-
-                <div class="info-card tips-card">
-                    <h4><i class="fa-solid fa-chart-line"></i> Đánh Giá Benchmark</h4>
-                    <p>Hệ thống DevSeek đã được kiểm thử trên bộ <strong>20 truy vấn chuẩn</strong> với Ground Truth chuyên sâu:</p>
-                    <ul class="engine-specs" style="margin-top: 0.6rem;">
-                        <li><span>Mean P@10 (TF-IDF):</span> <strong>0.9450 (94.5%)</strong></li>
-                        <li><span>MAP (TF-IDF):</span> <strong>0.6139</strong></li>
-                        <li><span>Mean P@10 (BM25):</span> <strong>0.8900 (89.0%)</strong></li>
-                        <li><span>MAP (BM25):</span> <strong>0.5883</strong></li>
-                    </ul>
-                    <a href="{{ url_for('api_evaluate') }}" target="_blank" style="display: block; margin-top: 1rem; text-align: center; background: rgba(56, 189, 248, 0.15); color: var(--color-primary); padding: 0.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; border: 1px solid rgba(56, 189, 248, 0.3);">
-                        <i class="fa-solid fa-file-code"></i> Xem Báo Cáo JSON Đánh Giá
-                    </a>
-                </div>
-            </aside>
+                {% endfor %}
+            {% else %}
+                <p>Không tìm thấy kết quả phù hợp.</p>
+            {% endif %}
         </div>
     </main>
-
-    <footer class="results-footer">
-        <p>DevSeek Vertical Search Engine | Đồ án Môn học Máy tìm kiếm Chuyên sâu</p>
-    </footer>
-
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>

@@ -187,7 +187,7 @@ class APICrawler:
         ]
 
         wiki_articles = self.fetch_wikipedia_articles(wiki_vi_topics, lang="vi")
-        devto_articles = self.fetch_devto_articles(devto_tags, max_per_tag=3)
+        devto_articles = self.fetch_devto_articles(devto_tags, max_per_tag=150)
         
         combined = wiki_articles + devto_articles
         print(f"[API Crawler -> Hoàn tất] Tổng hợp {len(combined)} bài viết từ các Open API.")
