@@ -1,58 +1,58 @@
-# DevSeek - Hệ Thống Tìm Kiếm Chuyên Sâu Dành Cho Lập Trình Viên (Vertical Search Engine)
+# DevSeek - Vertical Search Engine for Developers
 
-## Giới thiệu chung
-DevSeek là một máy tìm kiếm chuyên biệt (Vertical Search Engine) được xây dựng từ đầu (from scratch) dành riêng cho lĩnh vực Công nghệ thông tin (IT) và Lập trình. 
+## Overview
+DevSeek is a Vertical Search Engine built from scratch specifically for the Information Technology (IT) and Programming domain.
 
-Hệ thống được thiết kế theo quy trình chuẩn của Data Engineering & Information Retrieval (Truy xuất thông tin), bao gồm các chức năng cốt lõi:
-- **Thu thập dữ liệu tự động (Crawling)**: Thu thập và tổng hợp hàng trăm bài viết IT chuyên sâu và lưu trữ đa định dạng (JSON, CSV, SQLite Database).
-- **Tiền xử lý & Lập chỉ mục (Indexing)**: Xử lý ngôn ngữ tự nhiên tiếng Việt (tách từ ghép với Underthesea), xây dựng cấu trúc dữ liệu Chỉ mục ngược (Inverted Index) đa trường kết hợp vị trí (Positions) và tần suất (Field TF).
-- **Xếp hạng & Truy xuất (Ranking)**: Hỗ trợ hai thuật toán tìm kiếm và xếp hạng tài liệu phổ biến nhất là Multi-Field TF-IDF và Okapi BM25F.
-- **Đánh giá tự động (Evaluation)**: Tích hợp hệ thống kiểm thử tự động, so sánh trực tiếp hiệu năng giữa TF-IDF và BM25 (đo lường bằng Precision@10 và MAP).
-- **Giao diện Web (Web App)**: Giao diện trực quan cho phép người dùng tra cứu tài liệu dễ dàng, được xây dựng bằng Flask.
+The system is designed following standard Data Engineering & Information Retrieval pipelines, consisting of the following core features:
+- **Automated Data Crawling**: Collects and aggregates hundreds of in-depth IT articles, storing them in multiple formats (JSON, CSV, SQLite Database).
+- **Preprocessing & Indexing**: Performs Vietnamese Natural Language Processing (tokenization using Underthesea) and builds a multi-field Inverted Index data structure incorporating Positions and Field Term Frequency (TF).
+- **Ranking & Retrieval**: Supports two of the most popular document search and ranking algorithms: Multi-Field TF-IDF and Okapi BM25F.
+- **Automated Evaluation**: Integrates an automated testing system to directly compare the performance of TF-IDF and BM25 (measured by Precision@10 and MAP).
+- **Web Interface (Web App)**: An intuitive graphical user interface built with Flask, allowing users to easily query and retrieve documents.
 
-## Cài đặt môi trường
-Đảm bảo bạn đã cài đặt Python (khuyến nghị phiên bản 3.8 trở lên).
-Để cài đặt các thư viện cần thiết, hãy mở Terminal/Command Prompt tại thư mục dự án và chạy lệnh sau:
+## Environment Setup
+Ensure you have Python installed (version 3.8 or higher is recommended).
+To install the required libraries, open your Terminal/Command Prompt in the project's root directory and run the following command:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Hướng dẫn sử dụng
+## Usage Instructions
 
-Dự án bao gồm 2 quy trình chính: **Xây dựng dữ liệu & Đánh giá (Backend Pipeline)** và **Khởi chạy ứng dụng Web (Frontend App)**.
+The project consists of 2 main workflows: **Data Building & Evaluation (Backend Pipeline)** and **Running the Web App (Frontend App)**.
 
-### Bước 1: Chạy Full Pipeline (Xây dựng dữ liệu, Lập chỉ mục & Kiểm thử)
-Trước khi tìm kiếm, bạn cần chạy hệ thống để thu thập dữ liệu, tạo chỉ mục và đánh giá thuật toán.
-Từ thư mục gốc của dự án, chạy file `main.py`:
+### Step 1: Run the Full Pipeline (Data Building, Indexing & Evaluation)
+Before you can search, you need to run the system to crawl data, create the index, and evaluate the algorithms.
+From the project's root directory, run the `main.py` file:
 
 ```bash
 python main.py
 ```
 
-Quy trình sẽ tự động thực hiện tuần tự:
-1. Xóa sạch dữ liệu cũ (reset toàn bộ hệ thống).
-2. Thu thập bộ dữ liệu IT mới và lưu vào thư mục `data/raw/`.
-3. Xử lý NLP tiếng Việt và tạo Inverted Index tại `data/processed/`.
-4. Chạy kiểm thử benchmark tự động để so sánh thuật toán TF-IDF vs BM25.
+The process will automatically execute sequentially:
+1. Clear all old data (complete system reset).
+2. Crawl the new IT dataset and save it to the `data/raw/` directory.
+3. Process Vietnamese NLP and create the Inverted Index at `data/processed/`.
+4. Run the automated benchmark evaluation to compare TF-IDF vs BM25 algorithms.
 
-### Bước 2: Khởi chạy Giao diện Tìm kiếm Web
-Sau khi Bước 1 đã hoàn tất việc chuẩn bị dữ liệu, bạn có thể mở giao diện tìm kiếm dành cho người dùng cuối bằng cách chạy:
+### Step 2: Launch the Web Search Interface
+After Step 1 has successfully prepared the data, you can open the search interface for end-users by running:
 
 ```bash
 python run_app.py
 ```
 
-Sau khi máy chủ khởi động thành công, hãy mở trình duyệt web và truy cập vào địa chỉ:
+Once the server has successfully started, open your web browser and navigate to the following address:
 👉 **http://localhost:5000**
 
-*(Lưu ý: Để dừng máy chủ web, bạn có thể nhấn tổ hợp phím `Ctrl + C` trên cửa sổ Terminal).*
+*(Note: To stop the web server, you can press the `Ctrl + C` key combination in the Terminal window).*
 
-## Cấu trúc thư mục dự án
-- `crawler/`: Chứa các script crawl/thu thập dữ liệu từ các trang công nghệ.
-- `data/`: Nơi lưu trữ dữ liệu thô (raw) và dữ liệu đã qua xử lý/lập chỉ mục (processed).
-- `engine/`: Chứa core logic của máy tìm kiếm (Inverted Indexer, Retrieval/Ranking Models).
-- `evaluation/`: Scripts kiểm thử tự động, sinh bộ truy vấn benchmark đánh giá hệ thống.
-- `web/`: Mã nguồn Flask Backend và HTML/CSS/JS Frontend của ứng dụng web.
-- `main.py`: Script kích hoạt toàn bộ quy trình Data pipeline & Evaluation.
-- `run_app.py`: Script khởi chạy máy chủ Flask Web App.
+## Project Directory Structure
+- `crawler/`: Contains scripts for crawling/collecting data from technology websites.
+- `data/`: The location for storing raw data (`raw/`) and processed/indexed data (`processed/`).
+- `engine/`: Contains the core logic of the search engine (Inverted Indexer, Retrieval/Ranking Models).
+- `evaluation/`: Automated testing scripts and generation of benchmark queries for system evaluation.
+- `web/`: The Flask Backend source code and HTML/CSS/JS Frontend of the web application.
+- `main.py`: The script to trigger the entire Data pipeline & Evaluation process.
+- `run_app.py`: The script to start the Flask Web App server.
