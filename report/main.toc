@@ -1,0 +1,20 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {1}Introduction \& Domain Specificity}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}What is a Vertical Search Engine?}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Project Objectives \& Key Technical Contributions}{3}{subsection.1.2}%
+\contentsline {section}{\numberline {2}System Architecture \& End-to-End Pipeline Flow}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Module 1: Multi-Source Data Acquisition (`crawler/`)}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Module 2: Preprocessor \& Indexer (`engine/`)}{5}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Module 3: Dual Ranking Engine (`engine/ranker.py`)}{5}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Module 4 \& Module 5: Web UI (`web/`) \& Evaluation Suite (`evaluation/`)}{5}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Core Ranking Algorithms \& Mathematical Derivations}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Multi-Field TF-IDF (Title \& Tags Prioritization)}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Okapi BM25F (Industry-Standard Field Normalized Ranking)}{6}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Database Schema \& Relational B-Tree Indexing}{7}{section.4}%
+\contentsline {section}{\numberline {5}Domain-Specific Natural Language Processing \& Query Expansion}{7}{section.5}%
+\contentsline {section}{\numberline {6}Comprehensive Comparative Evaluation \& Results}{8}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Table 1: Automated Keyword Ground Truth Evaluation (20 Queries)}{9}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Table 2: Gold Standard Expert Human Ground Truth Evaluation (20 Queries)}{10}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Empirical Analysis \& Insights}{11}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Web Interface Design \& Expert Verification Portal}{11}{section.7}%
+\contentsline {section}{\numberline {8}Conclusion \& Future Directions}{12}{section.8}%
