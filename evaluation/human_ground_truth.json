@@ -238,5 +238,14 @@
       "doc_098"
     ],
     "annotation_type": "Expert Verified (Scientific Standard)"
+  },
+  "test_q99": {
+    "query_id": "test_q99",
+    "query": "Kiểm thử API annotate",
+    "ground_truth": [
+      "doc_python_001",
+      "doc_python_002"
+    ],
+    "annotation_type": "Human Web UI Annotated"
   }
 }
