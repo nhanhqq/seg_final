@@ -5,25 +5,25 @@
       "tfidf": {
         "mean_precision_at_10": 0.945,
         "mean_average_precision_MAP": 0.6139,
-        "avg_query_time_ms": 34.92
+        "avg_query_time_ms": 36.76
       },
       "bm25": {
         "mean_precision_at_10": 0.89,
         "mean_average_precision_MAP": 0.5883,
-        "avg_query_time_ms": 34.09
+        "avg_query_time_ms": 34.15
       }
     },
     "expert_human_ground_truth": {
       "tfidf": {
         "mean_precision_at_10": 0.47,
-        "mean_average_precision_MAP": 0.707
+        "mean_average_precision_MAP": 0.628
       },
       "bm25": {
-        "mean_precision_at_10": 0.5,
-        "mean_average_precision_MAP": 0.7398
+        "mean_precision_at_10": 0.495,
+        "mean_average_precision_MAP": 0.6585
       }
     },
-    "evaluation_timestamp": "2026-07-21 21:23:11"
+    "evaluation_timestamp": "2026-07-21 21:35:17"
   },
   "details": [
     {
@@ -36,14 +36,14 @@
         "average_precision": 0.4225,
         "human_precision_at_10": 0.4,
         "human_average_precision": 0.8256,
-        "time_taken_ms": 24.7
+        "time_taken_ms": 18.9
       },
       "bm25": {
         "precision_at_10": 0.8,
         "average_precision": 0.4025,
         "human_precision_at_10": 0.5,
         "human_average_precision": 1.0,
-        "time_taken_ms": 22.49
+        "time_taken_ms": 14.16
       }
     },
     {
@@ -55,15 +55,15 @@
         "precision_at_10": 1.0,
         "average_precision": 1.0,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.7643,
-        "time_taken_ms": 26.44
+        "human_average_precision": 0.521,
+        "time_taken_ms": 29.7
       },
       "bm25": {
         "precision_at_10": 1.0,
         "average_precision": 1.0,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.7643,
-        "time_taken_ms": 28.73
+        "human_average_precision": 0.521,
+        "time_taken_ms": 28.41
       }
     },
     {
@@ -75,15 +75,15 @@
         "precision_at_10": 1.0,
         "average_precision": 0.2214,
         "human_precision_at_10": 0.1,
-        "human_average_precision": 0.3169,
-        "time_taken_ms": 46.11
+        "human_average_precision": 0.3136,
+        "time_taken_ms": 45.87
       },
       "bm25": {
         "precision_at_10": 0.1,
         "average_precision": 0.1219,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.6254,
-        "time_taken_ms": 35.5
+        "human_average_precision": 0.5768,
+        "time_taken_ms": 46.04
       }
     },
     {
@@ -95,15 +95,15 @@
         "precision_at_10": 0.1,
         "average_precision": 0.1039,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.8444,
-        "time_taken_ms": 16.86
+        "human_average_precision": 0.5413,
+        "time_taken_ms": 28.63
       },
       "bm25": {
         "precision_at_10": 0.1,
         "average_precision": 0.1919,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.8444,
-        "time_taken_ms": 19.56
+        "human_average_precision": 0.5413,
+        "time_taken_ms": 29.76
       }
     },
     {
@@ -115,15 +115,15 @@
         "precision_at_10": 1.0,
         "average_precision": 0.6864,
         "human_precision_at_10": 0.4,
-        "human_average_precision": 0.6615,
-        "time_taken_ms": 58.31
+        "human_average_precision": 0.6183,
+        "time_taken_ms": 68.14
       },
       "bm25": {
         "precision_at_10": 0.9,
         "average_precision": 0.3619,
-        "human_precision_at_10": 0.5,
-        "human_average_precision": 0.8333,
-        "time_taken_ms": 61.86
+        "human_precision_at_10": 0.4,
+        "human_average_precision": 0.7909,
+        "time_taken_ms": 48.09
       }
     },
     {
@@ -135,15 +135,15 @@
         "precision_at_10": 1.0,
         "average_precision": 1.0,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.6222,
-        "time_taken_ms": 21.61
+        "human_average_precision": 0.8529,
+        "time_taken_ms": 19.75
       },
       "bm25": {
         "precision_at_10": 1.0,
         "average_precision": 1.0,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.6222,
-        "time_taken_ms": 20.71
+        "human_average_precision": 0.8529,
+        "time_taken_ms": 19.52
       }
     },
     {
@@ -155,15 +155,15 @@
         "precision_at_10": 1.0,
         "average_precision": 0.2864,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.7087,
-        "time_taken_ms": 39.25
+        "human_average_precision": 0.7343,
+        "time_taken_ms": 37.3
       },
       "bm25": {
         "precision_at_10": 1.0,
         "average_precision": 0.2816,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.7087,
-        "time_taken_ms": 44.37
+        "human_average_precision": 0.7343,
+        "time_taken_ms": 35.1
       }
     },
     {
@@ -175,15 +175,15 @@
         "precision_at_10": 0.9,
         "average_precision": 0.2279,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.9,
-        "time_taken_ms": 30.57
+        "human_average_precision": 0.8767,
+        "time_taken_ms": 27.9
       },
       "bm25": {
         "precision_at_10": 0.9,
         "average_precision": 0.2279,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.9,
-        "time_taken_ms": 28.84
+        "human_average_precision": 0.8767,
+        "time_taken_ms": 21.38
       }
     },
     {
@@ -195,15 +195,15 @@
         "precision_at_10": 1.0,
         "average_precision": 0.3141,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.7593,
-        "time_taken_ms": 25.62
+        "human_average_precision": 0.6476,
+        "time_taken_ms": 18.88
       },
       "bm25": {
         "precision_at_10": 1.0,
         "average_precision": 0.2947,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.7593,
-        "time_taken_ms": 20.13
+        "human_average_precision": 0.6476,
+        "time_taken_ms": 19.07
       }
     },
     {
@@ -215,15 +215,15 @@
         "precision_at_10": 1.0,
         "average_precision": 1.0,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.4268,
-        "time_taken_ms": 51.66
+        "human_average_precision": 0.6787,
+        "time_taken_ms": 43.22
       },
       "bm25": {
         "precision_at_10": 1.0,
         "average_precision": 1.0,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.4268,
-        "time_taken_ms": 41.99
+        "human_average_precision": 0.6787,
+        "time_taken_ms": 46.05
       }
     },
     {
@@ -235,15 +235,15 @@
         "precision_at_10": 1.0,
         "average_precision": 1.0,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.7595,
-        "time_taken_ms": 50.25
+        "human_average_precision": 0.6087,
+        "time_taken_ms": 46.62
       },
       "bm25": {
         "precision_at_10": 1.0,
         "average_precision": 1.0,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.7595,
-        "time_taken_ms": 42.23
+        "human_average_precision": 0.6087,
+        "time_taken_ms": 53.13
       }
     },
     {
@@ -255,15 +255,15 @@
         "precision_at_10": 1.0,
         "average_precision": 0.2189,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.5926,
-        "time_taken_ms": 35.45
+        "human_average_precision": 0.6783,
+        "time_taken_ms": 57.28
       },
       "bm25": {
         "precision_at_10": 1.0,
         "average_precision": 0.1645,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.5926,
-        "time_taken_ms": 42.55
+        "human_average_precision": 0.6783,
+        "time_taken_ms": 52.64
       }
     },
     {
@@ -275,15 +275,15 @@
         "precision_at_10": 1.0,
         "average_precision": 0.7246,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.7962,
-        "time_taken_ms": 45.78
+        "human_average_precision": 0.7893,
+        "time_taken_ms": 58.67
       },
       "bm25": {
         "precision_at_10": 1.0,
         "average_precision": 0.705,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.7962,
-        "time_taken_ms": 42.77
+        "human_average_precision": 0.7893,
+        "time_taken_ms": 42.52
       }
     },
     {
@@ -295,15 +295,15 @@
         "precision_at_10": 1.0,
         "average_precision": 1.0,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.5054,
-        "time_taken_ms": 23.6
+        "human_average_precision": 0.4554,
+        "time_taken_ms": 20.87
       },
       "bm25": {
         "precision_at_10": 1.0,
         "average_precision": 1.0,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.5054,
-        "time_taken_ms": 17.94
+        "human_average_precision": 0.4554,
+        "time_taken_ms": 19.25
       }
     },
     {
@@ -315,15 +315,15 @@
         "precision_at_10": 1.0,
         "average_precision": 1.0,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.5978,
-        "time_taken_ms": 16.95
+        "human_average_precision": 0.6193,
+        "time_taken_ms": 22.36
       },
       "bm25": {
         "precision_at_10": 1.0,
         "average_precision": 1.0,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.5978,
-        "time_taken_ms": 17.38
+        "human_average_precision": 0.6193,
+        "time_taken_ms": 18.69
       }
     },
     {
@@ -335,15 +335,15 @@
         "precision_at_10": 1.0,
         "average_precision": 0.4857,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.7454,
-        "time_taken_ms": 44.68
+        "human_average_precision": 0.835,
+        "time_taken_ms": 41.23
       },
       "bm25": {
         "precision_at_10": 1.0,
         "average_precision": 0.4857,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.7454,
-        "time_taken_ms": 42.35
+        "human_average_precision": 0.835,
+        "time_taken_ms": 50.88
       }
     },
     {
@@ -355,15 +355,15 @@
         "precision_at_10": 1.0,
         "average_precision": 0.4762,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.6587,
-        "time_taken_ms": 30.54
+        "human_average_precision": 0.4635,
+        "time_taken_ms": 34.84
       },
       "bm25": {
         "precision_at_10": 1.0,
         "average_precision": 0.4762,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.6587,
-        "time_taken_ms": 31.36
+        "human_average_precision": 0.4635,
+        "time_taken_ms": 28.02
       }
     },
     {
@@ -375,15 +375,15 @@
         "precision_at_10": 1.0,
         "average_precision": 0.7884,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.9029,
-        "time_taken_ms": 40.27
+        "human_average_precision": 0.4411,
+        "time_taken_ms": 42.25
       },
       "bm25": {
         "precision_at_10": 1.0,
         "average_precision": 0.7422,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.9029,
-        "time_taken_ms": 40.24
+        "human_average_precision": 0.4411,
+        "time_taken_ms": 45.38
       }
     },
     {
@@ -395,15 +395,15 @@
         "precision_at_10": 1.0,
         "average_precision": 0.3226,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.9267,
-        "time_taken_ms": 50.16
+        "human_average_precision": 0.4302,
+        "time_taken_ms": 46.85
       },
       "bm25": {
         "precision_at_10": 1.0,
         "average_precision": 0.31,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.9267,
-        "time_taken_ms": 51.16
+        "human_average_precision": 0.4302,
+        "time_taken_ms": 34.96
       }
     },
     {
@@ -415,15 +415,15 @@
         "precision_at_10": 1.0,
         "average_precision": 1.0,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.8254,
-        "time_taken_ms": 19.51
+        "human_average_precision": 0.6295,
+        "time_taken_ms": 26.0
       },
       "bm25": {
         "precision_at_10": 1.0,
         "average_precision": 1.0,
         "human_precision_at_10": 0.5,
-        "human_average_precision": 0.8254,
-        "time_taken_ms": 29.67
+        "human_average_precision": 0.6295,
+        "time_taken_ms": 29.97
       }
     }
   ]
