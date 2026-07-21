@@ -30,6 +30,7 @@ if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
 
 from engine.preprocessor import TextPreprocessor
+from engine.sqlite_indexer import SQLiteIndexer
 
 try:
     from tqdm import tqdm
@@ -183,6 +184,13 @@ class InvertedIndexer:
 
         with open(META_PATH, "w", encoding="utf-8") as f:
             json.dump(metadata, f, ensure_ascii=False, indent=2)
+
+        # Lưu đồng bộ ra SQLite Relational Index (devseek_index.db)
+        try:
+            sqlite_idx = SQLiteIndexer()
+            sqlite_idx.save_to_sqlite(self.inverted_index, self.doc_store, metadata)
+        except Exception as e:
+            print(f"[Indexer -> Cảnh báo] Không thể lưu SQLite index: {e}")
 
         print(f"[Indexer -> Hoàn tất] Vocabulary size: {len(self.inverted_index)} từ | Tổng số tài liệu: {self.doc_count} | Avg length: {avg_doc_length:.1f} tokens.")
         return self.inverted_index, self.doc_store, metadata

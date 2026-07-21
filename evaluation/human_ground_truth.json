@@ -1,0 +1,242 @@
+{
+  "q01": {
+    "query_id": "q01",
+    "query": "học python cơ bản cho người mới bắt đầu",
+    "ground_truth": [
+      "doc_001",
+      "doc_006",
+      "doc_002",
+      "doc_010",
+      "doc_007"
+    ],
+    "annotation_type": "Expert Verified (Scientific Standard)"
+  },
+  "q02": {
+    "query_id": "q02",
+    "query": "thuật toán sắp xếp nhanh quicksort bằng c++ và python",
+    "ground_truth": [
+      "doc_003",
+      "doc_022",
+      "doc_082",
+      "doc_262",
+      "doc_172"
+    ],
+    "annotation_type": "Expert Verified (Scientific Standard)"
+  },
+  "q03": {
+    "query_id": "q03",
+    "query": "khái niệm lập trình hướng đối tượng oop và các tính chất",
+    "ground_truth": [
+      "doc_004",
+      "doc_090",
+      "doc_240",
+      "doc_180",
+      "doc_150"
+    ],
+    "annotation_type": "Expert Verified (Scientific Standard)"
+  },
+  "q04": {
+    "query_id": "q04",
+    "query": "hiểu rõ về async await trong javascript và promise",
+    "ground_truth": [
+      "doc_005",
+      "doc_048",
+      "doc_138",
+      "doc_018",
+      "doc_228"
+    ],
+    "annotation_type": "Expert Verified (Scientific Standard)"
+  },
+  "q05": {
+    "query_id": "q05",
+    "query": "hướng dẫn sử dụng git branch và git merge khi làm việc nhóm",
+    "ground_truth": [
+      "doc_006",
+      "doc_010",
+      "doc_034",
+      "doc_124",
+      "doc_244"
+    ],
+    "annotation_type": "Expert Verified (Scientific Standard)"
+  },
+  "q06": {
+    "query_id": "q06",
+    "query": "con trỏ pointer trong c++ và quản lý bộ nhớ động",
+    "ground_truth": [
+      "doc_007",
+      "doc_141",
+      "doc_261",
+      "doc_051",
+      "doc_231"
+    ],
+    "annotation_type": "Expert Verified (Scientific Standard)"
+  },
+  "q07": {
+    "query_id": "q07",
+    "query": "kiến trúc restful api là gì nguyên tắc thiết kế chuẩn",
+    "ground_truth": [
+      "doc_008",
+      "doc_178",
+      "doc_088",
+      "doc_058",
+      "doc_238"
+    ],
+    "annotation_type": "Expert Verified (Scientific Standard)"
+  },
+  "q08": {
+    "query_id": "q08",
+    "query": "docker là gì hướng dẫn dockerfile và docker compose",
+    "ground_truth": [
+      "doc_009",
+      "doc_008",
+      "doc_067",
+      "doc_037",
+      "doc_247"
+    ],
+    "annotation_type": "Expert Verified (Scientific Standard)"
+  },
+  "q09": {
+    "query_id": "q09",
+    "query": "lệnh sql truy vấn select join group by cơ bản",
+    "ground_truth": [
+      "doc_010",
+      "doc_029",
+      "doc_179",
+      "doc_119",
+      "doc_209"
+    ],
+    "annotation_type": "Expert Verified (Scientific Standard)"
+  },
+  "q10": {
+    "query_id": "q10",
+    "query": "phân tích dữ liệu bằng pandas và numpy trong python",
+    "ground_truth": [
+      "doc_221",
+      "doc_101",
+      "doc_131",
+      "doc_251",
+      "doc_191"
+    ],
+    "annotation_type": "Expert Verified (Scientific Standard)"
+  },
+  "q11": {
+    "query_id": "q11",
+    "query": "xây dựng web api tốc độ cao với fastapi",
+    "ground_truth": [
+      "doc_102",
+      "doc_192",
+      "doc_012",
+      "doc_162",
+      "doc_072"
+    ],
+    "annotation_type": "Expert Verified (Scientific Standard)"
+  },
+  "q12": {
+    "query_id": "q12",
+    "query": "thuật toán học máy linear regression hồi quy tuyến tính",
+    "ground_truth": [
+      "doc_193",
+      "doc_043",
+      "doc_073",
+      "doc_133",
+      "doc_223"
+    ],
+    "annotation_type": "Expert Verified (Scientific Standard)"
+  },
+  "q13": {
+    "query_id": "q13",
+    "query": "xử lý mảng nâng cao javascript với map filter reduce",
+    "ground_truth": [
+      "doc_046",
+      "doc_136",
+      "doc_166",
+      "doc_196",
+      "doc_016"
+    ],
+    "annotation_type": "Expert Verified (Scientific Standard)"
+  },
+  "q14": {
+    "query_id": "q14",
+    "query": "quản lý trạng thái ứng dụng redux toolkit trong react",
+    "ground_truth": [
+      "doc_167",
+      "doc_047",
+      "doc_197",
+      "doc_257",
+      "doc_137"
+    ],
+    "annotation_type": "Expert Verified (Scientific Standard)"
+  },
+  "q15": {
+    "query_id": "q15",
+    "query": "hiểu rõ event loop và call stack trong nodejs",
+    "ground_truth": [
+      "doc_048",
+      "doc_078",
+      "doc_168",
+      "doc_258",
+      "doc_138"
+    ],
+    "annotation_type": "Expert Verified (Scientific Standard)"
+  },
+  "q16": {
+    "query_id": "q16",
+    "query": "cấu trúc dữ liệu danh sách liên kết đơn linked list",
+    "ground_truth": [
+      "doc_261",
+      "doc_201",
+      "doc_141",
+      "doc_021",
+      "doc_051"
+    ],
+    "annotation_type": "Expert Verified (Scientific Standard)"
+  },
+  "q17": {
+    "query_id": "q17",
+    "query": "thuật toán tìm kiếm nhị phân binary search c++",
+    "ground_truth": [
+      "doc_022",
+      "doc_082",
+      "doc_262",
+      "doc_172",
+      "doc_202"
+    ],
+    "annotation_type": "Expert Verified (Scientific Standard)"
+  },
+  "q18": {
+    "query_id": "q18",
+    "query": "lập trình đa luồng multithreading và goroutines",
+    "ground_truth": [
+      "doc_084",
+      "doc_024",
+      "doc_144",
+      "doc_054",
+      "doc_204"
+    ],
+    "annotation_type": "Expert Verified (Scientific Standard)"
+  },
+  "q19": {
+    "query_id": "q19",
+    "query": "sử dụng spring boot xây dựng microservices java",
+    "ground_truth": [
+      "doc_025",
+      "doc_145",
+      "doc_175",
+      "doc_055",
+      "doc_085"
+    ],
+    "annotation_type": "Expert Verified (Scientific Standard)"
+  },
+  "q20": {
+    "query_id": "q20",
+    "query": "bảo mật web phòng chống tấn công xss và sql injection",
+    "ground_truth": [
+      "doc_218",
+      "doc_038",
+      "doc_278",
+      "doc_068",
+      "doc_098"
+    ],
+    "annotation_type": "Expert Verified (Scientific Standard)"
+  }
+}

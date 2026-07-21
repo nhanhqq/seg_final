@@ -33,6 +33,7 @@ except ImportError:
         return iterable
 
 BENCHMARK_PATH = os.path.join(PROJECT_ROOT, "evaluation", "benchmark_queries.json")
+HUMAN_GT_PATH = os.path.join(PROJECT_ROOT, "evaluation", "human_ground_truth.json")
 OUTPUT_METRICS_PATH = os.path.join(PROJECT_ROOT, "evaluation", "eval_metrics.json")
 
 def calculate_precision_at_k(retrieved_ids, ground_truth_set, k=10):
@@ -67,8 +68,21 @@ def run_evaluation():
     with open(BENCHMARK_PATH, "r", encoding="utf-8") as f:
         benchmark = json.load(f)
 
+    # Load hoặc tự động tạo bộ chuẩn vàng Human Ground Truth
+    human_gt = {}
+    if not os.path.exists(HUMAN_GT_PATH):
+        try:
+            from evaluation.annotate_ground_truth import HumanAnnotator
+            annotator = HumanAnnotator()
+            human_gt = annotator.run_auto_seed() or {}
+        except Exception as e:
+            print(f"[Evaluation] Cảnh báo: Không thể tự động tạo Human GT: {e}")
+    else:
+        with open(HUMAN_GT_PATH, "r", encoding="utf-8") as f:
+            human_gt = json.load(f)
+
     ranker = TFIDFRanker()
-    if not ranker.inverted_index:
+    if not ranker.inverted_index and not ranker.use_sqlite:
         ranker.load_index(INDEX_PATH, DOC_STORE_PATH, META_PATH)
 
     results_detail = []
@@ -80,10 +94,19 @@ def run_evaluation():
     total_ap_bm25 = 0.0
     total_time_bm25 = 0.0
 
+    # Điểm riêng cho Human Expert Ground Truth
+    total_human_p10_tfidf = 0.0
+    total_human_ap_tfidf = 0.0
+    total_human_p10_bm25 = 0.0
+    total_human_ap_bm25 = 0.0
+
     for item in tqdm(benchmark, desc="[Evaluation] So sánh TF-IDF vs BM25", unit="câu", ncols=88):
         qid = item["query_id"]
         query = item["query"]
         gt_set = set(item["ground_truth"])
+        
+        human_item = human_gt.get(qid, {})
+        human_gt_set = set(human_item.get("ground_truth", []))
 
         # --- 1. Chạy đánh giá Multi-Field TF-IDF ---
         start_t = time.time()
@@ -97,6 +120,11 @@ def run_evaluation():
         total_p10_tfidf += p10_tfidf
         total_ap_tfidf += ap_tfidf
 
+        human_p10_tfidf = calculate_precision_at_k(retrieved_tfidf, human_gt_set, k=10) if human_gt_set else p10_tfidf
+        human_ap_tfidf = calculate_average_precision(retrieved_tfidf, human_gt_set) if human_gt_set else ap_tfidf
+        total_human_p10_tfidf += human_p10_tfidf
+        total_human_ap_tfidf += human_ap_tfidf
+
         # --- 2. Chạy đánh giá Okapi BM25 ---
         start_t = time.time()
         res_bm25 = ranker.search(query, top_k=50, page=1, algorithm="bm25")
@@ -109,18 +137,28 @@ def run_evaluation():
         total_p10_bm25 += p10_bm25
         total_ap_bm25 += ap_bm25
 
+        human_p10_bm25 = calculate_precision_at_k(retrieved_bm25, human_gt_set, k=10) if human_gt_set else p10_bm25
+        human_ap_bm25 = calculate_average_precision(retrieved_bm25, human_gt_set) if human_gt_set else ap_bm25
+        total_human_p10_bm25 += human_p10_bm25
+        total_human_ap_bm25 += human_ap_bm25
+
         results_detail.append({
             "query_id": qid,
             "query": query,
             "ground_truth_count": len(gt_set),
+            "human_gt_count": len(human_gt_set),
             "tfidf": {
                 "precision_at_10": p10_tfidf,
                 "average_precision": ap_tfidf,
+                "human_precision_at_10": human_p10_tfidf,
+                "human_average_precision": human_ap_tfidf,
                 "time_taken_ms": elapsed_tfidf
             },
             "bm25": {
                 "precision_at_10": p10_bm25,
                 "average_precision": ap_bm25,
+                "human_precision_at_10": human_p10_bm25,
+                "human_average_precision": human_ap_bm25,
                 "time_taken_ms": elapsed_bm25
             }
         })
@@ -143,24 +181,46 @@ def run_evaluation():
     map_bm25 = round(total_ap_bm25 / num_queries, 4)
     avg_time_bm25 = round(total_time_bm25 / num_queries, 2)
 
+    human_mean_p10_tfidf = round(total_human_p10_tfidf / max(1, num_queries), 4)
+    human_map_tfidf = round(total_human_ap_tfidf / max(1, num_queries), 4)
+    human_mean_p10_bm25 = round(total_human_p10_bm25 / max(1, num_queries), 4)
+    human_map_bm25 = round(total_human_ap_bm25 / max(1, num_queries), 4)
+
     print("-" * 96)
-    print(f"TỔNG HỢP SO SÁNH ({num_queries} truy vấn):")
+    print(f"TỔNG HỢP SO SÁNH (AUTOMATED KEYWORD GROUND TRUTH - {num_queries} truy vấn):")
     print(f"  + [Multi-Field TF-IDF] Mean P@10: {mean_p10_tfidf:.4f} | MAP: {map_tfidf:.4f} | Thời gian TB: {avg_time_tfidf:.2f} ms")
     print(f"  + [Okapi BM25F]        Mean P@10: {mean_p10_bm25:.4f} | MAP: {map_bm25:.4f} | Thời gian TB: {avg_time_bm25:.2f} ms")
+    if human_gt:
+        print("-" * 96)
+        print(f"TỔNG HỢP SO SÁNH (GOLD STANDARD EXPERT HUMAN GROUND TRUTH - {len(human_gt)} truy vấn):")
+        print(f"  + [Multi-Field TF-IDF] Human Mean P@10: {human_mean_p10_tfidf:.4f} | Human MAP: {human_map_tfidf:.4f}")
+        print(f"  + [Okapi BM25F]        Human Mean P@10: {human_mean_p10_bm25:.4f} | Human MAP: {human_map_bm25:.4f}")
     print("="*96)
 
     eval_report = {
         "summary": {
             "num_queries": num_queries,
-            "tfidf": {
-                "mean_precision_at_10": mean_p10_tfidf,
-                "mean_average_precision_MAP": map_tfidf,
-                "avg_query_time_ms": avg_time_tfidf
+            "automated_ground_truth": {
+                "tfidf": {
+                    "mean_precision_at_10": mean_p10_tfidf,
+                    "mean_average_precision_MAP": map_tfidf,
+                    "avg_query_time_ms": avg_time_tfidf
+                },
+                "bm25": {
+                    "mean_precision_at_10": mean_p10_bm25,
+                    "mean_average_precision_MAP": map_bm25,
+                    "avg_query_time_ms": avg_time_bm25
+                }
             },
-            "bm25": {
-                "mean_precision_at_10": mean_p10_bm25,
-                "mean_average_precision_MAP": map_bm25,
-                "avg_query_time_ms": avg_time_bm25
+            "expert_human_ground_truth": {
+                "tfidf": {
+                    "mean_precision_at_10": human_mean_p10_tfidf,
+                    "mean_average_precision_MAP": human_map_tfidf
+                },
+                "bm25": {
+                    "mean_precision_at_10": human_mean_p10_bm25,
+                    "mean_average_precision_MAP": human_map_bm25
+                }
             },
             "evaluation_timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
         },

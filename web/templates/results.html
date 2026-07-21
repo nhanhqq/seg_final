@@ -31,7 +31,10 @@
                 </div>
             </form>
 
-            <div class="header-actions">
+            <div class="header-actions" style="display: flex; gap: 0.8rem; align-items: center;">
+                <a href="{{ url_for('annotate_page') }}" style="text-decoration: none; background: rgba(236, 72, 153, 0.15); border: 1px solid rgba(236, 72, 153, 0.4); padding: 0.35rem 0.8rem; border-radius: 9999px; color: #f472b6; font-size: 0.85rem; font-weight: 600;">
+                    <i class="fa-solid fa-user-check"></i> Chấm Điểm
+                </a>
                 <span class="badge-status">
                     <i class="fa-solid fa-circle-check"></i> 
                     {{ "Okapi BM25F" if algorithm == "BM25" else ("Hybrid Engine" if algorithm == "HYBRID" else "Multi-Field TF-IDF") }}

@@ -28,10 +28,12 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
 
+import argparse
 from crawler.it_crawler import ITArticleCrawler
 from engine.indexer import InvertedIndexer
 from evaluation.evaluate import run_evaluation
 from evaluation.generate_benchmark import generate_benchmark
+from evaluation.annotate_ground_truth import HumanAnnotator
 
 def clean_old_data():
     print("\n[BUOC 0/3] Dọn dẹp & Xóa sạch dữ liệu cũ (Reset toàn bộ hệ thống từ đầu)...")
@@ -71,7 +73,7 @@ def clean_old_data():
 
     print(f"-> Đã xóa sạch {deleted_count} file dữ liệu cũ (JSON, CSV, SQLite db, Index, Store...). Sẵn sàng khởi tạo pipeline mới!")
 
-def main():
+def main(mode="seed"):
     print("=" * 96)
     print("DEVSEEK VERTICAL SEARCH ENGINE - ADVANCED FULL PIPELINE (MULTI-STORAGE & DUAL RANKING)")
     print("=" * 96)
@@ -80,22 +82,24 @@ def main():
     # BƯỚC 0: Xóa toàn bộ dữ liệu cũ
     clean_old_data()
 
-    # BƯỚC 1: Thu thập / Tổng hợp Cơ Sở Dữ Liệu IT (520+ bài viết) -> JSON, CSV, SQLite
-    print("\n[BƯỚC 1/3] Thu thập & Xây dựng Cơ sở dữ liệu tài liệu lập trình IT từ đầu...")
+    # BƯỚC 1: Thu thập / Tổng hợp Cơ Sở Dữ Liệu IT -> JSON, CSV, SQLite
+    print(f"\n[BƯỚC 1/3] Thu thập & Xây dựng Cơ sở dữ liệu tài liệu lập trình IT (Mode: {mode})...")
     crawler = ITArticleCrawler()
-    articles = crawler.run(mode="seed")
+    articles = crawler.run(mode=mode)
     print(f"-> Hoàn tất BƯỚC 1: Đã tổng hợp và lưu trữ đồng bộ {len(articles)} bài viết tại data/raw/ (JSON, CSV, SQLite Database)!")
 
-    # BƯỚC 2: Tiền xử lý tiếng Việt & Xây dựng Chỉ mục ngược
+    # BƯỚC 2: Tiền xử lý tiếng Việt & Xây dựng Chỉ mục ngược (Relational SQLite B-Tree)
     print("\n[BƯỚC 2/3] Xử lý NLP tách từ tiếng Việt & Xây dựng Inverted Index đa trường...")
     indexer = InvertedIndexer(raw_path=crawler.output_path)
     indexer.build_index()
-    print("-> Hoàn tất BƯỚC 2: Chỉ mục ngược (index.json, doc_store.json, index_metadata.json) đã sẵn sàng!")
+    print("-> Hoàn tất BƯỚC 2: Chỉ mục ngược (index.json, doc_store.json, devseek_index.db) đã sẵn sàng!")
 
-    # BƯỚC 3: Đồng bộ truy vấn mẫu & Kiểm thử tự động so sánh TF-IDF vs BM25
+    # BƯỚC 3: Đồng bộ truy vấn mẫu & Kiểm thử tự động so sánh TF-IDF vs BM25 vs Human Ground Truth
     print("\n[BƯỚC 3/3] Đồng bộ bộ truy vấn chuẩn & Chạy kiểm thử tự động so sánh (Benchmark)...")
     try:
         generate_benchmark()
+        annotator = HumanAnnotator()
+        annotator.run_auto_seed()
         run_evaluation()
     except Exception as e:
         print(f"[Cảnh báo] Kiểm thử đánh giá gặp lỗi: {e}")
@@ -103,8 +107,11 @@ def main():
     total_elapsed = round(time.time() - start_total_time, 2)
     print("\n" + "=" * 96)
     print(f"HOÀN TẤT CHẠY FULL PIPELINE VÀ SO SÁNH THUẬT TOÁN TRONG {total_elapsed} GIÂY!")
-    print("Bây giờ bạn có thể khởi chạy ứng dụng Web App bằng cách gõ lệnh: py run_app.py")
+    print("Bây giờ bạn có thể khởi chạy ứng dụng Web App bằng cách gõ lệnh: python run_app.py")
     print("=" * 96)
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="DevSeek Full Pipeline Runner")
+    parser.add_argument("--mode", choices=["auto", "crawl", "seed", "api", "full"], default="seed", help="Chế độ thu thập dữ liệu (mặc định: seed)")
+    args = parser.parse_args()
+    main(mode=args.mode)

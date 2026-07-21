@@ -33,6 +33,8 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
 
+from crawler.api_crawler import APICrawler
+
 RAW_DATA_DIR = os.path.join(PROJECT_ROOT, "data", "raw")
 JSON_OUTPUT_PATH = os.path.join(RAW_DATA_DIR, "articles.json")
 CSV_OUTPUT_PATH = os.path.join(RAW_DATA_DIR, "articles.csv")
@@ -417,12 +419,32 @@ class ITArticleCrawler:
                 return self.generate_seed_dataset()
             self.save_multi_format(live_data)
             return live_data
+        elif mode == "api":
+            api_crawler = APICrawler()
+            api_data = api_crawler.run_all()
+            if not api_data:
+                print("[Crawler] Không thể kéo từ API, chuyển về Seed Data...")
+                return self.generate_seed_dataset()
+            self.save_multi_format(api_data)
+            return api_data
+        elif mode == "full" or mode == "auto":
+            seed_data = self.generate_seed_dataset()
+            try:
+                api_crawler = APICrawler()
+                api_data = api_crawler.run_all()
+                if api_data:
+                    seed_data.extend(api_data)
+                    print(f"[Crawler -> Full Mode] Đã gộp dữ liệu Seed ({len(seed_data)-len(api_data)}) và Live API ({len(api_data)}) = {len(seed_data)} bài viết!")
+                    self.save_multi_format(seed_data)
+            except Exception as e:
+                print(f"[Crawler] Lỗi khi chạy API crawler trong chế độ full/auto: {e}")
+            return seed_data
         else:
             return self.generate_seed_dataset()
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="IT Learning Resources Crawler & Generator")
-    parser.add_argument("--mode", choices=["auto", "crawl", "seed"], default="auto", help="Chế độ thu thập dữ liệu")
+    parser.add_argument("--mode", choices=["auto", "crawl", "seed", "api", "full"], default="auto", help="Chế độ thu thập dữ liệu")
     args = parser.parse_args()
 
     crawler = ITArticleCrawler()

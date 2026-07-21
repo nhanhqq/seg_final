@@ -134,6 +134,49 @@ def api_evaluate():
     else:
         return jsonify({"error": "Chưa có file đánh giá eval_metrics.json. Hãy chạy python main.py trước."}), 404
 
+@app.route("/annotate")
+def annotate_page():
+    """Trang giao diện chấm điểm Ground Truth (Relevance Feedback)"""
+    benchmark_path = os.path.join(PROJECT_ROOT, "evaluation", "benchmark_queries.json")
+    queries = []
+    if os.path.exists(benchmark_path):
+        with open(benchmark_path, "r", encoding="utf-8") as f:
+            queries = json.load(f)
+    return render_template("annotate.html", queries=queries)
+
+@app.route("/api/annotate", methods=["POST"])
+def api_annotate():
+    """API lưu trữ đánh giá Relevance (0/1) của chuyên gia vào human_ground_truth.json"""
+    data = request.get_json() or {}
+    query_id = data.get("query_id")
+    query_text = data.get("query")
+    approved_doc_ids = data.get("approved_doc_ids", [])
+
+    if not query_id or not query_text:
+        return jsonify({"error": "Thiếu thông tin query_id hoặc query"}), 400
+
+    human_gt_path = os.path.join(PROJECT_ROOT, "evaluation", "human_ground_truth.json")
+    gt_data = {}
+    if os.path.exists(human_gt_path):
+        try:
+            with open(human_gt_path, "r", encoding="utf-8") as f:
+                gt_data = json.load(f)
+        except Exception:
+            gt_data = {}
+
+    gt_data[query_id] = {
+        "query_id": query_id,
+        "query": query_text,
+        "ground_truth": approved_doc_ids,
+        "annotation_type": "Human Web UI Annotated"
+    }
+
+    os.makedirs(os.path.dirname(human_gt_path), exist_ok=True)
+    with open(human_gt_path, "w", encoding="utf-8") as f:
+        json.dump(gt_data, f, ensure_ascii=False, indent=2)
+
+    return jsonify({"status": "success", "message": f"Đã cập nhật Ground Truth cho {query_id}", "total_annotated": len(gt_data)})
+
 if __name__ == "__main__":
     print("[Flask] Đang khởi động DevSeek Web Engine - Máy tìm kiếm Chuyên sâu IT...")
     app.run(host="0.0.0.0", port=5000, debug=True)

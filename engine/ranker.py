@@ -28,6 +28,7 @@ if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
 
 from engine.preprocessor import TextPreprocessor
+from engine.sqlite_indexer import SQLiteIndexer, SQLITE_INDEX_PATH
 
 PROCESSED_DIR = os.path.join(PROJECT_ROOT, "data", "processed")
 INDEX_PATH = os.path.join(PROCESSED_DIR, "index.json")
@@ -39,7 +40,7 @@ class TFIDFRanker:
     Dual Ranking Engine hỗ trợ Multi-Field TF-IDF, Okapi BM25 và Hybrid.
     Tên lớp giữ nguyên TFIDFRanker để tương thích hoàn toàn với các module khác.
     """
-    def __init__(self, index_path=INDEX_PATH, doc_store_path=DOC_STORE_PATH, meta_path=META_PATH):
+    def __init__(self, index_path=INDEX_PATH, doc_store_path=DOC_STORE_PATH, meta_path=META_PATH, use_sqlite=False):
         self.preprocessor = TextPreprocessor()
         self.inverted_index = {}
         self.doc_store = {}
@@ -49,6 +50,8 @@ class TFIDFRanker:
             "doc_lengths": {},
             "field_avg_lengths": {"title": 10.0, "tags": 5.0, "summary": 40.0, "content": 200.0}
         }
+        self.use_sqlite = use_sqlite
+        self.sqlite_indexer = SQLiteIndexer(SQLITE_INDEX_PATH)
         self.load_index(index_path, doc_store_path, meta_path)
 
         # Trọng số ưu tiên cho các trường thông tin (Field weights)
@@ -64,7 +67,16 @@ class TFIDFRanker:
         self.bm25_b = 0.75
 
     def load_index(self, index_path, doc_store_path, meta_path):
-        if os.path.exists(index_path) and os.path.exists(doc_store_path):
+        if self.use_sqlite or (not os.path.exists(index_path) and os.path.exists(SQLITE_INDEX_PATH)):
+            self.use_sqlite = True
+            print("[Ranker] Đang sử dụng chế độ truy vấn Relational SQLite B-Tree Index...")
+            meta = self.sqlite_indexer.load_metadata()
+            if meta:
+                self.metadata.update(meta)
+            self.doc_store = self.sqlite_indexer.load_doc_store_subset()
+            if not self.metadata.get("doc_count"):
+                self.metadata["doc_count"] = len(self.doc_store)
+        elif os.path.exists(index_path) and os.path.exists(doc_store_path):
             with open(index_path, "r", encoding="utf-8") as f:
                 self.inverted_index = json.load(f)
             with open(doc_store_path, "r", encoding="utf-8") as f:
@@ -78,26 +90,28 @@ class TFIDFRanker:
         else:
             print("[Ranker] Cảnh báo: Chưa tìm thấy chỉ mục. Vui lòng chạy indexer trước.")
 
-    def compute_idf(self, term):
+    def compute_idf(self, term, active_index=None):
         """
         Tính điểm Inverse Document Frequency (IDF) smoothed:
         IDF(t) = log( (N + 1) / (df(t) + 1) ) + 1.0
         """
+        idx = active_index if active_index is not None else self.inverted_index
         N = self.metadata.get("doc_count", len(self.doc_store))
         if N == 0:
             return 0.0
-        df = len(self.inverted_index.get(term, {}))
+        df = len(idx.get(term, {}))
         return math.log((N + 1.0) / (df + 1.0)) + 1.0
 
-    def compute_bm25_idf(self, term):
+    def compute_bm25_idf(self, term, active_index=None):
         """
         IDF chuẩn Okapi BM25:
         IDF_BM25(t) = log( (N - df + 0.5) / (df + 0.5) + 1 )
         """
+        idx = active_index if active_index is not None else self.inverted_index
         N = self.metadata.get("doc_count", len(self.doc_store))
         if N == 0:
             return 0.0
-        df = len(self.inverted_index.get(term, {}))
+        df = len(idx.get(term, {}))
         val = (N - df + 0.5) / (df + 0.5)
         return max(0.1, math.log(val + 1.0))
 
@@ -127,18 +141,26 @@ class TFIDFRanker:
         avg_doc_length = self.metadata.get("avg_doc_length", 200.0)
         field_avg_lengths = self.metadata.get("field_avg_lengths", {"title": 10.0, "tags": 5.0, "summary": 40.0, "content": 200.0})
 
+        active_index = self.sqlite_indexer.load_postings_for_terms(expanded_terms.keys()) if self.use_sqlite else self.inverted_index
+
         # 3. Tính điểm độ liên quan cho từng tài liệu
         for term, boost_weight in expanded_terms.items():
-            if term not in self.inverted_index:
+            if term not in active_index:
                 continue
 
-            idf_tfidf = self.compute_idf(term)
-            idf_bm25 = self.compute_bm25_idf(term)
-            postings = self.inverted_index[term]
+            idf_tfidf = self.compute_idf(term, active_index)
+            idf_bm25 = self.compute_bm25_idf(term, active_index)
+            postings = active_index[term]
 
             for doc_id, posting in postings.items():
                 field_tf = posting.get("field_tf", {"title": 0, "tags": 0, "summary": 0, "content": posting.get("tf", 0)})
                 doc_info = self.doc_store.get(doc_id, {})
+                if not doc_info and self.use_sqlite:
+                    # Tra cứu bổ sung từ SQLite nếu cần
+                    subset = self.sqlite_indexer.load_doc_store_subset([doc_id])
+                    if subset:
+                        doc_info = subset[doc_id]
+                        self.doc_store[doc_id] = doc_info
 
                 # -- A. Tính Multi-Field TF-IDF --
                 weighted_tf = (
