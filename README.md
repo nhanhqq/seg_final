@@ -161,41 +161,101 @@ TỔNG HỢP SO SÁNH (GOLD STANDARD EXPERT HUMAN GROUND TRUTH - 20 truy vấn):
 
 ---
 
-## Installation & Quickstart Guide
+## Installation, Execution & Troubleshooting Guide
 
 ### 1. Prerequisites & Installation
-Ensure Python 3.8+ is installed on your operating system. Open your terminal in the workspace root (`d:\seg_final`) and install the dependencies:
+Ensure Python 3.8+ is installed on your operating system. Open your terminal in the workspace root (`d:\seg_final`) and install all required dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. Run the Full Backend Pipeline (Crawl -> Index -> Evaluate)
-Execute `main.py` with your preferred data ingestion mode:
+> **Core installed libraries**:
+> - `underthesea`: Leading Vietnamese Natural Language Processing library (for accurate word segmentation).
+> - `beautifulsoup4` & `requests`: Web scraping and API connection utilities.
+> - `flask`: Modern backend web server and RESTful API framework.
 
+---
+
+### 2. Run the Full Backend Pipeline (`main.py`)
+The `main.py` script coordinates the entire backend data engineering and evaluation lifecycle: **(0) System Reset -> (1) Data Crawling/Ingestion -> (2) NLP Tokenization & B-Tree Indexing -> (3) Automated & Human Ground Truth Evaluation**.
+
+Execute `main.py` using one of the three available `--mode` arguments:
+
+#### 🟢 Mode 1: Fast Expert Seed Mode (`--mode seed`) - *Recommended for Live Demos*
 ```bash
-# Run with full hybrid ingestion (Seed Data + Live Wikipedia/Dev.to APIs)
-python main.py --mode full
-
-# Or run with rapid seed data generation
 python main.py --mode seed
 ```
+- **Execution Time**: ~28 seconds.
+- **Why use this**: Independent of internet bandwidth or external API latency. Uses a curated, high-precision dataset of 520+ IT articles to guarantee 100% reliable execution during academic demonstrations.
 
-This pipeline automatically:
-1. Cleans old temporary data.
-2. Ingests technical articles into `data/raw/`.
-3. Processes vocabulary and builds the SQLite B-Tree Index at `data/processed/devseek_index.db`.
-4. Executes scientific evaluation (`evaluate.py`) and saves results to `evaluation/eval_metrics.json`.
+#### 🟡 Mode 2: Hybrid Ingestion Mode (`--mode full`)
+```bash
+python main.py --mode full
+```
+- **Why use this**: Combines live API extraction from **Wikipedia REST API** and **Dev.to Articles API** with expert seed articles to build the most comprehensive technical database.
 
-### 3. Launch the Web Search & Annotation Application
+#### 🔵 Mode 3: Pure Live API Extraction (`--mode api`)
+```bash
+python main.py --mode api
+```
+- **Why use this**: Extracts 100% fresh, live articles directly from external developer portals in real-time.
+
+---
+
+### 3. Automated Pre-Demo Verification Suite (`evaluation/test_web_and_pipeline.py`)
+Before presenting or deploying, you can run our comprehensive automated test suite to verify all database tables, ranking algorithms, web routes, and REST APIs:
+
+```bash
+python evaluation/test_web_and_pipeline.py
+```
+
+**Automated verification coverage (8/8 passing)**:
+- ✅ `test_01_sqlite_databases`: Verifies `devseek.db` (>500 articles) and `devseek_index.db` (>900 B-Tree terms).
+- ✅ `test_02_ranker_algorithms`: Validates TF-IDF, BM25, and Hybrid ranking models + `<mark>` keyword highlighting.
+- ✅ `test_03_flask_homepage`: Tests `GET /` route response and branding.
+- ✅ `test_04_flask_search_page`: Tests query execution via `GET /search?q=...`.
+- ✅ `test_05_flask_annotate_page`: Validates `GET /annotate` expert interface.
+- ✅ `test_06_flask_api_stats`: Validates `GET /api/stats` JSON metadata.
+- ✅ `test_07_flask_api_evaluate`: Validates `GET /api/evaluate` MAP comparative report.
+- ✅ `test_08_flask_api_annotate`: Validates `POST /api/annotate` human label persistence.
+
+---
+
+### 4. Launch the Web Application & Demo Walkthrough
 Start the Flask web server:
 
 ```bash
 python run_app.py
 ```
 
-- **Main Search Portal**: Open **http://localhost:5000** to search, filter by category/difficulty, and switch dynamically between TF-IDF and Okapi BM25F.
-- **Human Annotation Portal**: Open **http://localhost:5000/annotate** to verify search relevance and contribute to the gold standard human ground truth dataset.
+When the console displays `[Web Server] May chu dang khoi dong tai: http://localhost:5000`, open your web browser and follow this demo script:
+
+- **Main Search Portal (`http://localhost:5000`)**:
+  - **Try searching**: `python cơ bản`, `quicksort c++`, `docker là gì`, `javascript mảng nâng cao`.
+  - **Demonstrate Synonym Boosting**: Type `k8s` -> Press Enter. Notice how the system automatically expands the query to `['k8s', 'kubernetes']` and returns high-scoring Kubernetes guides! Try `csdl` for `Database` or `js` for `JavaScript`.
+  - **Demonstrate `<mark>` Highlighting**: Observe how matched keywords and expanded terms are highlighted with sleek golden-amber gradient pills (`<mark>`) in document titles and summary snippets.
+  - **Switch Algorithms & Filters**: Switch dynamically between **TF-IDF** and **Okapi BM25F** on the top bar. Filter by category (`Web Development`, `Data Science`, `DevOps`) or difficulty (`Cơ bản`, `Nâng cao`).
+- **Expert Human Ground Truth Portal (`http://localhost:5000/annotate`)**:
+  - Click the **Chấm Điểm Ground Truth (Expert UI)** button on the top banner or results header.
+  - Select any benchmark query (`q01` - `q20`) from the dropdown.
+  - Toggle relevance checkboxes (`[x] Relevant`) on accurate articles and click **Lưu Ground Truth Chuẩn**. This writes directly to `evaluation/human_ground_truth.json` and updates the system's Human MAP metric!
+
+---
+
+### 5. Troubleshooting & FAQ
+
+#### 🛠️ Issue 1: `Port 5000 is already in use` error when running `run_app.py`
+- **Cause**: Port 5000 is occupied by a running background process or system service (such as macOS AirPlay Receiver).
+- **Solution**: Press `Ctrl + C` to terminate any existing Python servers. Alternatively, open `run_app.py`, change line 34 to `app.run(host="0.0.0.0", port=5050, debug=True)`, and access `http://localhost:5050`.
+
+#### 🛠️ Issue 2: Vietnamese font issues (`???` characters) in Windows CMD/PowerShell
+- **Solution**: You don't need to worry! We have proactively programmed a UTF-8 console output wrapper into the first 30 lines of every script (`main.py`, `run_app.py`, `preprocessor.py`, `evaluate.py`):
+  ```python
+  if sys.stdout.encoding != 'utf-8':
+      sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+  ```
+  All Vietnamese console logs and benchmark tables render crisply across all Windows terminal environments.
 
 ---
 

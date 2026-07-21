@@ -183,28 +183,137 @@ Dưới đây là bảng phân công công việc mẫu cho nhóm 4 thành viên
 
 ---
 
-## HƯỚNG DẪN CÀI ĐẶT, CHẠY DEMO & CHUẨN BỊ Q&A
+## HƯỚNG DẪN CÀI ĐẶT, CHẠY ĐỒ ÁN & CHUẨN BỊ Q&A
 
-### 1. Hướng Dẫn Chạy Demo Từ A -> Z
-Để chuẩn bị cho buổi bảo vệ trước giảng viên, chỉ cần mở Terminal tại thư mục `d:\seg_final` và thực hiện đúng 2 bước sau:
+Phần này cung cấp hướng dẫn toàn diện từ khâu cài đặt môi trường, các chế độ cào dữ liệu, bộ kiểm thử tự động, thao tác demo trên giao diện Web cho đến cách xử lý sự cố và bộ câu hỏi Q&A bảo vệ đồ án trước giảng viên.
 
-#### Bước 1: Chạy Full Pipeline (Xóa cũ -> Cào dữ liệu -> Xây Index -> Đánh giá)
+### 1. Chuẩn Bị Môi Trường & Cài Đặt Thư Viện
+Hệ thống DevSeek được thiết kế tương thích hoàn toàn với Windows, macOS và Linux.
+- **Yêu cầu hệ thống**: Python bản `3.8` đến `3.12`.
+- **Mở Terminal (CMD / PowerShell / VS Code Terminal)** tại thư mục gốc của đồ án (`d:\seg_final`) và gõ lệnh cài đặt các gói phụ thuộc:
+
 ```bash
-# Chạy toàn bộ tiến trình và xuất số liệu Precision/MAP trong chưa đầy 30 giây:
+pip install -r requirements.txt
+```
+
+> **Danh sách các thư viện cốt lõi được cài đặt**:
+> - `underthesea`: Thư viện Xử lý Ngôn ngữ Tự nhiên (NLP) tiếng Việt hàng đầu (dùng để tách từ `word_tokenize`).
+> - `beautifulsoup4` & `requests`: Thu thập dữ liệu web và kết nối API.
+> - `flask`: Framework xây dựng máy chủ Web Backend và RESTful API.
+
+---
+
+### 2. Các Chế Độ Chạy Pipeline Xây Dựng Dữ Liệu (`main.py`)
+Kịch bản `main.py` là bộ điều phối trung tâm thực hiện trọn vẹn chu trình: **(0) Xóa sạch dữ liệu cũ -> (1) Thu thập bài viết -> (2) Tách từ NLP & Xây dựng B-Tree Index -> (3) Gán nhãn tự động & Đánh giá MAP/Precision**.
+
+Hệ thống hỗ trợ **3 tham số `--mode`** tùy theo nhu cầu demo và đường truyền mạng:
+
+#### 🟢 Chế độ 1: Chạy chuẩn siêu tốc với bộ dữ liệu chuyên gia (`--mode seed`) - *Khuyến nghị khi demo cho Giảng viên*
+```bash
 python main.py --mode seed
 ```
-*(Hệ thống sẽ in ra console tiến trình chi tiết và xuất bảng so sánh TF-IDF vs BM25 siêu đẹp).*
+- **Thời gian hoàn thành**: ~28 giây.
+- **Ưu điểm**: Không phụ thuộc vào tốc độ mạng Internet hay tình trạng nghẽn của API ngoại bộ. Sử dụng bộ 520+ bài viết IT chuyên sâu chuẩn hóa cao đã qua kiểm duyệt, đảm bảo 100% không lỗi khi thuyết trình trên lớp.
 
-#### Bước 2: Khởi chạy Máy chủ Web App & Demo Trực Quan
+#### 🟡 Chế độ 2: Chạy thu thập lai hợp (`--mode full`)
+```bash
+python main.py --mode full
+```
+- **Hoạt động**: Kết hợp thu thập trực tiếp từ **Wikipedia REST API** và **Dev.to Articles API** kết hợp với bộ dữ liệu chuyên gia để tạo nên kho dữ liệu phong phú nhất.
+
+#### 🔵 Chế độ 3: Chạy cào thuần túy từ Live API ngoại bộ (`--mode api`)
+```bash
+python main.py --mode api
+```
+- **Hoạt động**: Cào 100% dữ liệu tươi sống ngay tại thời điểm gõ lệnh từ các cổng API của Wikipedia và Dev.to.
+
+---
+
+### 3. Kiểm Thử Tự Động Trước Khi Demo (`evaluation/test_web_and_pipeline.py`)
+Để đảm bảo tuyệt đối không có bất kỳ lỗi rò rỉ hay sai sót cấu trúc nào trước khi bước vào phòng bảo vệ, nhóm đã xây dựng **Bộ kiểm thử tự động toàn diện (Automated End-to-End Test Suite)**.
+
+Chạy lệnh sau để tự động kiểm tra cả 8 luồng kỹ thuật:
+```bash
+python evaluation/test_web_and_pipeline.py
+```
+
+**Kết quả kiểm thử tự động 8/8 bài test**:
+- ✅ `test_01_sqlite_databases`: Kiểm tra `devseek.db` (>500 bài viết) và `devseek_index.db` (>900 từ vựng B-Tree).
+- ✅ `test_02_ranker_algorithms`: Kiểm định 3 thuật toán `TFIDF`, `BM25`, `HYBRID` và thẻ `<mark>` highlight.
+- ✅ `test_03_flask_homepage`: Kiểm tra route trang chủ `GET /` trả về mã 200 OK.
+- ✅ `test_04_flask_search_page`: Kiểm tra route tìm kiếm `GET /search?q=...` hoạt động chính xác.
+- ✅ `test_05_flask_annotate_page`: Kiểm tra trang gán nhãn chuyên gia `GET /annotate`.
+- ✅ `test_06_flask_api_stats`: Kiểm tra REST API thống kê `GET /api/stats`.
+- ✅ `test_07_flask_api_evaluate`: Kiểm tra REST API xuất số liệu đánh giá `GET /api/evaluate`.
+- ✅ `test_08_flask_api_annotate`: Kiểm tra REST API lưu nhãn con người `POST /api/annotate`.
+
+---
+
+### 4. Khởi Chạy Máy Chủ Web & Hướng Dẫn Thao Tác Trình Diễn (Demo Walkthrough)
+Sau khi `main.py` hoàn tất xây dựng chỉ mục, khởi chạy máy chủ Web Flask bằng lệnh:
 ```bash
 python run_app.py
 ```
-- Mở trình duyệt truy cập Trang chủ Tìm kiếm: 👉 **http://localhost:5000**
-  + Thử tra cứu các từ khóa: `python cơ bản`, `quicksort c++`, `docker là gì`, `javascript mảng nâng cao`...
-  + Thử gõ tắt từ lóng IT để khoe tính năng Synonym Boosting: gõ `k8s` -> ra bài về `Kubernetes`; gõ `csdl` -> ra bài về `Database`.
-  + Trình diễn chuyển đổi thuật toán giữa **TF-IDF** và **Okapi BM25F** ngay trên ô tìm kiếm, dùng bộ lọc Danh mục (Category) và Độ khó (Difficulty).
-- Mở cổng gán nhãn chuyên gia: 👉 **http://localhost:5000/annotate**
-  + Trình diễn cho thầy cô cách người dùng/chuyên gia có thể gán nhãn chuẩn (`[x] Relevant`) ngay trên web để tự động cập nhật độ chính xác MAP của hệ thống!
+Khi Console báo `[Web Server] May chu dang khoi dong tai: http://localhost:5000`, mở trình duyệt web và thực hiện kịch bản trình diễn sau để lấy điểm tuyệt đối từ hội đồng:
+
+#### 🎬 Kịch bản Demo 1: Khám phá Trang Chủ & Khả Năng Xử Lý Ngữ Nghĩa (`http://localhost:5000`)
+1. **Khám phá giao diện**: Chỉ cho giảng viên thấy dải thống kê quy mô thực tế (520+ bài viết, 923+ từ vựng NLP, điểm benchmark MAP ~0.74). Giao diện Dark Mode Glassmorphism hiện đại, chuyên nghiệp.
+2. **Khoe tính năng Mở rộng Đồng nghĩa (Synonym Boosting)**:
+   - Gõ từ viết tắt: `k8s` -> Bấm Enter. Hệ thống tự động nhận dạng mở rộng thành `['k8s', 'kubernetes']` và trả về các bài hướng dẫn Kubernetes chất lượng cao!
+   - Gõ từ viết tắt: `csdl` -> Trả về tài liệu về `Database` và `Cơ sở dữ liệu`.
+   - Gõ từ viết tắt: `js` -> Trả về tài liệu về `JavaScript`.
+
+#### 🎬 Kịch bản Demo 2: Trang Kết Quả, Bộ Lọc Khía Cạnh & Highlight Từ Khóa
+1. Tra cứu từ khóa: `python cơ bản cho người mới`.
+2. **Trình diễn thẻ Highlight vàng kim `<mark>`**: Chỉ cho thầy cô thấy các từ `python`, `cơ bản`, `người mới` được tự động bôi sáng bằng gradient vàng kim ngay bên trong đoạn tóm tắt và tiêu đề bài viết.
+3. **Trình diễn bộ chuyển đổi thuật toán ngay trên ô tìm kiếm**:
+   - Chọn thuật toán **Okapi BM25F** -> Nhìn điểm số `Score` được chuẩn hóa theo độ dài trường.
+   - Chọn thuật toán **Hybrid Engine** -> Thấy sự kết hợp giữa TF-IDF, BM25 và độ phổ biến.
+4. **Trình diễn bộ lọc Faceted Filter & Sorting**:
+   - Lọc theo Danh mục: Chọn `Web Development` hoặc `Data Science`.
+   - Lọc theo Độ khó: Chọn `Cơ bản`, `Trung bình`, hoặc `Nâng cao`.
+   - Sắp xếp theo `Xem nhiều (Views)` hoặc `Điểm cao (Rating)`.
+
+#### 🎬 Kịch bản Demo 3: Cổng Gán Nhãn Ground Truth Chuyên Gia (`http://localhost:5000/annotate`)
+1. Nhấp vào nút **Chấm Điểm Ground Truth (Expert UI)** màu hồng trên banner trang chủ hoặc trên thanh header trang kết quả.
+2. Chọn một truy vấn bất kỳ từ dropdown (ví dụ: `[q01] học python cơ bản cho người mới bắt đầu`).
+3. Danh sách 20 bài viết hàng đầu xuất hiện bên dưới. Trình diễn cách thành viên nhóm hoặc chuyên gia có thể bấm nút **Chọn (Relevant)** trên các bài thực sự chất lượng.
+4. Bấm **Lưu Ground Truth Chuẩn** ở thanh dưới cùng -> Dữ liệu được ghi trực tiếp vào `evaluation/human_ground_truth.json` và làm cơ sở đo lường chỉ số **Human MAP (0.7398)** trong báo cáo!
+
+---
+
+### 5. Danh Sách RESTful API Endpoints cho Triển Khai Thực Tế
+Hệ thống DevSeek không chỉ có giao diện HTML mà cung cấp đầy đủ các JSON REST API cho phép tích hợp vào các ứng dụng di động hoặc microservices:
+
+| Endpoint | Method | Tham số (Params / Body) | Mô tả chi tiết |
+| :--- | :---: | :--- | :--- |
+| `/api/search` | `GET` | `q`, `algorithm`, `category`, `difficulty`, `sort_by`, `page` | Trả về danh sách tài liệu xếp hạng kèm từ khóa đã mở rộng, thông tin phân trang và Facet counts dưới dạng JSON. |
+| `/api/stats` | `GET` | *Không có* | Trả về thông số quy mô hệ thống: tổng số tài liệu (`doc_count`), kích thước từ vựng (`vocab_size`), độ dài trung bình (`avg_len`), tham số BM25 ($k_1, b$). |
+| `/api/evaluate` | `GET` | *Không có* | Trả về chi tiết bảng đánh giá và chỉ số Precision@10, MAP của TF-IDF và BM25 từ file `eval_metrics.json`. |
+| `/api/annotate` | `POST` | JSON Body: `{ "query_id": "...", "query": "...", "approved_doc_ids": [...] }` | Lưu trữ trực tiếp danh sách tài liệu được con người xác nhận là liên quan vào cơ sở dữ liệu `human_ground_truth.json`. |
+
+---
+
+### 6. Xử Lý Sự Cố Thường Gặp (Troubleshooting / FAQ)
+
+#### 🛠️ Sự cố 1: Lỗi `Address already in use` hoặc `Port 5000 is already in use` khi chạy `run_app.py`
+- **Nguyên nhân**: Cổng `5000` đang bị chiếm bởi một tiến trình cũ chưa tắt hẳn hoặc ứng dụng khác (như AirPlay Receiver trên macOS/Windows).
+- **Cách xử lý nhanh**:
+  - Nhấn `Ctrl + C` trong Terminal cũ để tắt server trước khi chạy lại.
+  - Hoặc mở file `run_app.py`, sửa dòng 34 đổi sang cổng khác: `app.run(host="0.0.0.0", port=5050, debug=True)` rồi truy cập `http://localhost:5050`.
+
+#### 🛠️ Sự cố 2: Lỗi font chữ tiếng Việt bị lỗi dấu `???` khi in ra Terminal Windows
+- **Giải thích**: Các hệ thống Command Prompt cũ trên Windows mặc định dùng bảng mã `CP1258` hoặc `CP437` thay vì `UTF-8`.
+- **Cách giải quyết**: **Bạn hoàn toàn không cần lo lắng!** Nhóm đã chủ động lập trình đoạn mã tự động phát hiện và chuyển đổi bộ đệm đầu ra sang chuẩn `UTF-8` ngay tại 30 dòng đầu tiên của tất cả các file (`main.py`, `run_app.py`, `preprocessor.py`, `evaluate.py`...):
+  ```python
+  if sys.stdout.encoding != 'utf-8':
+      sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+  ```
+  Nhờ vậy, mọi thông báo tiếng Việt đều in ra console sắc nét, tuyệt đối không bao giờ bị lỗi font!
+
+#### 🛠️ Sự cố 3: Lỗi `ModuleNotFoundError: No module named 'underthesea'` (hoặc 'flask', 'bs4')
+- **Nguyên nhân**: Bạn đang mở một môi trường Python/Conda mới hoặc chưa chạy lệnh cài thư viện.
+- **Cách xử lý**: Chạy lại lệnh `pip install -r requirements.txt` tại đúng thư mục đồ án `d:\seg_final`.
 
 ---
 
