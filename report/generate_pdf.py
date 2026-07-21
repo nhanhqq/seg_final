@@ -261,7 +261,7 @@ def generate_report_pdf():
     story.append(Paragraph("<b>Project Development Team</b>", ParagraphStyle("Auth", fontName=font_bold, fontSize=13, alignment=1, leading=18)))
     story.append(Paragraph("Faculty of Information Technology", ParagraphStyle("Dept", fontName=font_name, fontSize=12, alignment=1, leading=16, spaceAfter=20)))
     story.append(Spacer(1, 2 * cm))
-    story.append(Paragraph("<b>Academic Year 2024 - 2025</b>", ParagraphStyle("Year", fontName=font_name, fontSize=11, alignment=1, textColor=colors.HexColor("#64748b"))))
+    story.append(Paragraph("<b>July 21, 2026</b>", ParagraphStyle("Year", fontName=font_name, fontSize=11, alignment=1, textColor=colors.HexColor("#64748b"))))
     story.append(PageBreak())
 
     # ==================== ABSTRACT ====================
