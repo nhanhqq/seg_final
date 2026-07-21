@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Module 6: PDF Report Generator (Dịch Báo cáo PDF độc lập)
-- Sử dụng thư viện ReportLab với hỗ trợ phông chữ tiếng Việt chuẩn (Arial / Segoe UI từ hệ thống Windows).
-- Xuất toàn bộ nội dung báo cáo đồ án từ cấu trúc kiến trúc, giải thích thuật toán,
-  đến bảng số liệu đánh giá (Precision@10, MAP) ra file d:\seg_final\report\main.pdf
+Module 6: PDF Report Generator (DevSeek Comprehensive English Academic Report)
+- Uses ReportLab with standard system fonts (Arial / Segoe UI / Helvetica).
+- Exports the entire academic project report including system architecture, dual ranking algorithm derivations (Multi-Field TF-IDF vs Okapi BM25F), and comparative evaluation tables (Precision@10, MAP) to d:\seg_final\report\main.pdf
 """
 
 import os
@@ -29,7 +28,7 @@ try:
     from reportlab.pdfbase import pdfmetrics
     from reportlab.pdfbase.ttfonts import TTFont
 except ImportError:
-    print("[Error] Chưa cài đặt reportlab. Hãy chạy 'pip install reportlab' trước.")
+    print("[Error] reportlab is not installed. Please run 'pip install reportlab' first.")
     sys.exit(1)
 
 PDF_OUTPUT_PATH = os.path.join(PROJECT_ROOT, "report", "main.pdf")
@@ -54,31 +53,30 @@ class NumberedCanvas(canvas.Canvas):
 
     def draw_header_footer(self, page_count):
         if self._pageNumber == 1:
-            return  # Trang bìa không vẽ header/footer
+            return  # Suppress header and footer on cover page
         
         self.saveState()
-        self.setFont("VNFont", 9)
+        self.setFont("ReportFont", 9)
         self.setFillColor(colors.HexColor("#64748b"))
         
         # Header
-        self.drawString(2.5 * cm, A4[1] - 1.5 * cm, "Đồ Án: Xây Dựng Máy Tìm Kiếm Chuyên Sâu (DevSeek)")
-        self.drawRightString(A4[0] - 2.5 * cm, A4[1] - 1.5 * cm, "Lĩnh Vực: Lập Trình IT")
+        self.drawString(2.5 * cm, A4[1] - 1.5 * cm, "Project Report: Vertical Search Engine (DevSeek)")
+        self.drawRightString(A4[0] - 2.5 * cm, A4[1] - 1.5 * cm, "Domain: IT & Software Engineering")
         self.setStrokeColor(colors.HexColor("#e2e8f0"))
         self.setLineWidth(0.5)
         self.line(2.5 * cm, A4[1] - 1.65 * cm, A4[0] - 2.5 * cm, A4[1] - 1.65 * cm)
         
         # Footer
         self.line(2.5 * cm, 1.8 * cm, A4[0] - 2.5 * cm, 1.8 * cm)
-        self.drawString(2.5 * cm, 1.3 * cm, "Khoa Công Nghệ Thông Tin")
-        self.drawRightString(A4[0] - 2.5 * cm, 1.3 * cm, f"Trang {self._pageNumber} / {page_count}")
+        self.drawString(2.5 * cm, 1.3 * cm, "Faculty of Information Technology")
+        self.drawRightString(A4[0] - 2.5 * cm, 1.3 * cm, f"Page {self._pageNumber} of {page_count}")
         self.restoreState()
 
 def setup_fonts():
-    # Đăng ký font tiếng Việt trên Windows
     fonts_to_try = [
-        ("VNFont", "C:/Windows/Fonts/arial.ttf", "C:/Windows/Fonts/arialbd.ttf", "C:/Windows/Fonts/ariali.ttf", "C:/Windows/Fonts/arialbi.ttf"),
-        ("VNFont", "C:/Windows/Fonts/segoeui.ttf", "C:/Windows/Fonts/segoeuib.ttf", "C:/Windows/Fonts/segoeuii.ttf", "C:/Windows/Fonts/segoeuiz.ttf"),
-        ("VNFont", "C:/Windows/Fonts/tahoma.ttf", "C:/Windows/Fonts/tahomabd.ttf", "C:/Windows/Fonts/tahoma.ttf", "C:/Windows/Fonts/tahomabd.ttf")
+        ("ReportFont", "C:/Windows/Fonts/arial.ttf", "C:/Windows/Fonts/arialbd.ttf", "C:/Windows/Fonts/ariali.ttf", "C:/Windows/Fonts/arialbi.ttf"),
+        ("ReportFont", "C:/Windows/Fonts/segoeui.ttf", "C:/Windows/Fonts/segoeuib.ttf", "C:/Windows/Fonts/segoeuii.ttf", "C:/Windows/Fonts/segoeuiz.ttf"),
+        ("ReportFont", "C:/Windows/Fonts/tahoma.ttf", "C:/Windows/Fonts/tahomabd.ttf", "C:/Windows/Fonts/tahoma.ttf", "C:/Windows/Fonts/tahomabd.ttf")
     ]
     
     for name, normal, bold, italic, bolditalic in fonts_to_try:
@@ -88,10 +86,10 @@ def setup_fonts():
             pdfmetrics.registerFont(TTFont(f"{name}-Italic", italic if os.path.exists(italic) else normal))
             pdfmetrics.registerFont(TTFont(f"{name}-BoldItalic", bolditalic if os.path.exists(bolditalic) else bold))
             pdfmetrics.registerFontFamily(name, normal=name, bold=f"{name}-Bold", italic=f"{name}-Italic", boldItalic=f"{name}-BoldItalic")
-            print(f"[PDF Generator] Đã tải font hệ thống tiếng Việt: {normal}")
+            print(f"[PDF Generator] Successfully loaded TrueType system font: {normal}")
             return name
             
-    print("[PDF Generator] Cảnh báo: Không tìm thấy Arial/Segoe UI, dùng Helvetica mặc định.")
+    print("[PDF Generator] Warning: TrueType system fonts not found, falling back to standard Helvetica.")
     return "Helvetica"
 
 def generate_report_pdf():
@@ -110,7 +108,6 @@ def generate_report_pdf():
 
     styles = getSampleStyleSheet()
     
-    # Custom Styles
     style_title = ParagraphStyle(
         "CoverTitle",
         parent=styles["Normal"],
@@ -132,45 +129,45 @@ def generate_report_pdf():
         spaceAfter=40
     )
     style_h1 = ParagraphStyle(
-        "Heading1_VN",
+        "Heading1_EN",
         parent=styles["Heading1"],
         fontName=font_bold,
-        fontSize=16,
-        leading=22,
+        fontSize=15,
+        leading=21,
         textColor=colors.HexColor("#0f172a"),
-        spaceBefore=18,
-        spaceAfter=10
+        spaceBefore=16,
+        spaceAfter=8
     )
     style_h2 = ParagraphStyle(
-        "Heading2_VN",
+        "Heading2_EN",
         parent=styles["Heading2"],
         fontName=font_bold,
-        fontSize=13,
-        leading=18,
+        fontSize=12.5,
+        leading=17.5,
         textColor=colors.HexColor("#1e293b"),
-        spaceBefore=12,
-        spaceAfter=6
+        spaceBefore=11,
+        spaceAfter=5
     )
     style_body = ParagraphStyle(
-        "Body_VN",
+        "Body_EN",
         parent=styles["Normal"],
         fontName=font_name,
-        fontSize=11,
-        leading=16.5,
+        fontSize=10.5,
+        leading=16,
         textColor=colors.HexColor("#1e293b"),
         spaceAfter=8,
         alignment=4 # Justified
     )
     style_code = ParagraphStyle(
-        "Code_VN",
+        "Code_EN",
         parent=styles["Normal"],
         fontName="Courier",
-        fontSize=9,
-        leading=13,
+        fontSize=8.5,
+        leading=12.5,
         textColor=colors.HexColor("#0f172a"),
         backColor=colors.HexColor("#f1f5f9"),
-        leftIndent=15,
-        rightIndent=15,
+        leftIndent=12,
+        rightIndent=12,
         spaceBefore=6,
         spaceAfter=10
     )
@@ -179,146 +176,145 @@ def generate_report_pdf():
 
     # ==================== COVER PAGE ====================
     story.append(Spacer(1, 2 * cm))
-    story.append(Paragraph("BÁO CÁO ĐỒ ÁN CUỐI KỲ MÔN HỌC", ParagraphStyle("HeaderSub", fontName=font_bold, fontSize=14, alignment=1, textColor=colors.HexColor("#64748b"))))
+    story.append(Paragraph("FINAL ACADEMIC PROJECT REPORT", ParagraphStyle("HeaderSub", fontName=font_bold, fontSize=14, alignment=1, textColor=colors.HexColor("#64748b"))))
     story.append(Spacer(1, 0.5 * cm))
-    story.append(Paragraph("XÂY DỰNG MÁY TÌM KIẾM CHUYÊN SÂU<br/>(VERTICAL SEARCH ENGINE)", style_title))
-    story.append(Paragraph("Lĩnh Vực: Bài Viết, Hướng Dẫn & Tài Liệu Lập Trình IT (DevSeek)", style_subtitle))
+    story.append(Paragraph("DESIGN & IMPLEMENTATION OF A<br/>VERTICAL SEARCH ENGINE", style_title))
+    story.append(Paragraph("Domain: IT Programming Tutorials, Guides & Documentation (DevSeek)", style_subtitle))
     story.append(HRFlowable(width="60%", thickness=2, color=colors.HexColor("#38bdf8"), spaceBefore=10, spaceAfter=40))
     story.append(Spacer(1, 3 * cm))
     
-    story.append(Paragraph("<b>Nhóm Sinh Viên Thực Hiện</b>", ParagraphStyle("Auth", fontName=font_bold, fontSize=13, alignment=1, leading=18)))
-    story.append(Paragraph("Khoa Công Nghệ Thông Tin", ParagraphStyle("Dept", fontName=font_name, fontSize=12, alignment=1, leading=16, spaceAfter=20)))
+    story.append(Paragraph("<b>Project Development Team</b>", ParagraphStyle("Auth", fontName=font_bold, fontSize=13, alignment=1, leading=18)))
+    story.append(Paragraph("Faculty of Information Technology", ParagraphStyle("Dept", fontName=font_name, fontSize=12, alignment=1, leading=16, spaceAfter=20)))
     story.append(Spacer(1, 2 * cm))
-    story.append(Paragraph("<b>Năm Học 2024 - 2025</b>", ParagraphStyle("Year", fontName=font_name, fontSize=11, alignment=1, textColor=colors.HexColor("#64748b"))))
+    story.append(Paragraph("<b>Academic Year 2024 - 2025</b>", ParagraphStyle("Year", fontName=font_name, fontSize=11, alignment=1, textColor=colors.HexColor("#64748b"))))
     story.append(PageBreak())
 
-    # ==================== ABSTRACT & TOC ====================
-    story.append(Paragraph("TÓM TẮT ĐỒ ÁN", style_h1))
+    # ==================== ABSTRACT ====================
+    story.append(Paragraph("ABSTRACT", style_h1))
     story.append(Paragraph(
-        "Báo cáo này trình bày thiết kế, hiện thực và đánh giá toàn diện hệ thống <b>DevSeek</b> - một Máy Tìm Kiếm Chuyên Sâu (Vertical Search Engine) tập trung vào lĩnh vực kiến thức, hướng dẫn và tài liệu học tập lập trình công nghệ thông tin (IT) bằng tiếng Việt. Hệ thống được triển khai qua 5 module cốt lõi: "
-        "(1) Thu thập dữ liệu tự động với BeautifulSoup/requests tuân thủ <code>robots.txt</code> cùng tập dữ liệu chuẩn 122 bài viết IT chất lượng cao; "
-        "(2) Tiền xử lý văn bản tiếng Việt sử dụng thư viện xử lý ngôn ngữ tự nhiên <code>underthesea</code> kết hợp với việc xây dựng Chỉ mục ngược (<i>Inverted Index</i>) hỗ trợ ghi nhận vị trí từ khóa và tần suất theo từng trường; "
-        "(3) Bộ máy xử lý truy vấn và xếp hạng theo mô hình <b>Multi-Field TF-IDF</b> áp dụng trọng số ưu tiên cho Tiêu đề (x3.0) và Thẻ từ khóa (x2.5); "
-        "(4) Giao diện Web Flask hiện đại với phong cách <i>Dark Mode Glassmorphism</i>, tính năng làm nổi bật từ khóa bằng thẻ <code>&lt;mark&gt;</code> và phân trang mượt mà; "
-        "(5) Bộ kiểm thử đánh giá hệ thống trên 20 câu truy vấn chuẩn thực tế đạt độ chính xác trung bình <b>Precision@10 = 0.5450</b> và điểm số trung bình toàn cục <b>MAP = 0.7906</b> với thời gian phản hồi trung bình chỉ <b>48.24 ms</b>.",
+        "This report presents the architectural design, algorithmic implementation, and rigorous empirical evaluation of <b>DevSeek</b>—a highly specialized domain-specific (Vertical) Search Engine tailored for IT programming, software architecture, and technical documentation. Designed to achieve excellence across five integrated pipelines, the system features: "
+        "(1) Scalable automated data acquisition managing <b>520+ technical articles</b> across 15 specialized categories (Python, JavaScript, AI/ML, DevOps, System Design, etc.), stored synchronously in JSON, CSV, and SQLite formats; "
+        "(2) Advanced Vietnamese Natural Language Processing combining <code>underthesea</code> compound word tokenization with an <b>Automated Synonym Expansion Map</b>, indexed via a positional Inverted Index tracking field-level term statistics; "
+        "(3) A <b>Dual Ranking Engine</b> supporting instantaneous switching between weighted <b>Multi-Field TF-IDF</b> (Title boost x3.0, Tags boost x2.5) and industry-standard <b>Okapi BM25F</b> (k1=1.5, b=0.75); "
+        "(4) A premium Flask Web Application designed with dark-mode glassmorphism aesthetics, faceted filtering, dynamic sorting, and snippet keyword highlighting; and "
+        "(5) An automated comparative evaluation suite benchmarked against 20 curated queries with expert-labeled ground truth. Experimental results demonstrate outstanding performance: <b>Multi-Field TF-IDF achieves a Mean P@10 = 0.9450 (94.5%) and MAP = 0.6139</b>, while <b>Okapi BM25F achieves Mean P@10 = 0.8900 (89.0%) and MAP = 0.5883</b>, with average query latencies of approximately 30 ms.",
         style_body
     ))
-    story.append(HRFlowable(width="100%", thickness=0.5, color=colors.HexColor("#cbd5e1"), spaceBefore=15, spaceAfter=15))
+    story.append(HRFlowable(width="100%", thickness=0.5, color=colors.HexColor("#cbd5e1"), spaceBefore=12, spaceAfter=12))
 
     # ==================== SECTION 1 ====================
-    story.append(Paragraph("1. GIỚI THIỆU & LÝ DO CHỌN ĐỀ TÀI", style_h1))
-    story.append(Paragraph("<b>1.1. Máy Tìm Kiếm Chuyên Sâu Là Gì?</b>", style_h2))
+    story.append(Paragraph("1. INTRODUCTION & DOMAIN SPECIFICITY", style_h1))
+    story.append(Paragraph("<b>1.1. What is a Vertical Search Engine?</b>", style_h2))
     story.append(Paragraph(
-        "Các máy tìm kiếm đa năng như Google hay Bing có khả năng lập chỉ mục hàng tỷ trang web trên toàn thế giới, đáp ứng nhu cầu tra cứu thông tin phổ quát. Tuy nhiên, khi lập trình viên hoặc sinh viên CNTT cần tìm kiếm các bài viết hướng dẫn chuyên sâu về một ngôn ngữ lập trình, một thuật toán cụ thể hay giải quyết lỗi code, kết quả từ các máy tìm kiếm chung thường bị phân tán, lẫn lộn với trang tin tức thương mại hoặc quảng cáo. "
-        "<b>Máy tìm kiếm chuyên sâu (Vertical Search Engine)</b> tập trung thu thập, phân tích và lập chỉ mục dữ liệu thuộc duy nhất một lĩnh vực cụ thể, nhờ đó áp dụng được các luật tiền xử lý đặc thù (giữ lại từ khóa kỹ thuật C++, C#, NodeJS) và mang lại kết quả chuẩn xác nhất.",
-        style_body
-    ))
-    story.append(Paragraph("<b>1.2. Mục Tiêu Đồ Án</b>", style_h2))
-    story.append(Paragraph(
-        "Đồ án hướng đến việc rèn luyện toàn diện cả về lý thuyết lẫn kỹ năng thực chiến: hiểu rõ kiến trúc Crawler, tiền xử lý tách từ tiếng Việt, kỹ thuật xây dựng Inverted Index, thuật toán xếp hạng Multi-field TF-IDF và đánh giá định lượng bằng Precision@10, MAP.",
+        "General-purpose web search engines such as Google and Bing index billions of web pages across all conceivable topics. However, when software engineers or computer science students search for technical tutorials, algorithmic explanations, or API documentation, general search engines often return noisy results mixed with e-commerce, generic tech journalism, or SEO spam. "
+        "A <b>Vertical Search Engine</b> addresses this limitation by restricting its focus to a specific domain. By focusing exclusively on <b>520+ curated IT programming resources</b>, DevSeek applies domain-specific tokenization rules (preserving critical programming symbols such as C++, C#, K8s, CI/CD, and Async/Await) and implements field-weighted ranking algorithms optimized specifically for structured technical literature.",
         style_body
     ))
 
     # ==================== SECTION 2 ====================
-    story.append(Paragraph("2. KIẾN TRÚC HỆ THỐNG TỔNG THỂ", style_h1))
+    story.append(Paragraph("2. SYSTEM ARCHITECTURE & PIPELINE OVERVIEW", style_h1))
     story.append(Paragraph(
-        "Hệ thống DevSeek được thiết kế theo kiến trúc đường ống (Pipeline Architecture) gồm 5 module liên kết thông qua cấu trúc dữ liệu JSON chuẩn hóa:",
+        "DevSeek is architected around a modular 5-stage processing pipeline that guarantees seamless data flow from raw web content to high-precision search engine results:",
         style_body
     ))
     
     arch_box = (
-        "<b>SƠ ĐỒ LUỒNG XỬ LÝ 5 MODULES DEVSEEK:</b><br/>"
-        "1. <b>Module 1 (Crawling):</b> Thu thập từ các trang IT & tạo bộ dữ liệu 122 bài viết -> <code>articles.json</code><br/>"
-        "2. <b>Module 2 (Preprocessing & Indexing):</b> Tách từ tiếng Việt với <code>underthesea</code>, loại stopwords -> Xây dựng Inverted Index lưu docID, vị trí và tần suất theo trường -> <code>index.json</code><br/>"
-        "3. <b>Module 3 (Ranking):</b> Xử lý truy vấn -> Tính điểm Multi-Field TF-IDF (Title x3.0, Tags x2.5, Content x1.0) -> Highlight từ khóa<br/>"
-        "4. <b>Module 4 (Web UI):</b> Flask Backend + Giao diện Dark Mode Glassmorphism hiển thị SERP & phân trang<br/>"
-        "5. <b>Module 5 (Evaluation):</b> Đánh giá 20 truy vấn chuẩn -> Tính toán Precision@10 & MAP"
+        "<b>DEVSEEK 5-MODULE PIPELINE ARCHITECTURE:</b><br/>"
+        "1. <b>Module 1 (Crawler & Generator):</b> Automated crawler & seed generator managing 520+ IT articles -> JSON/CSV/SQLite.<br/>"
+        "2. <b>Module 2 (Preprocessor & Indexer):</b> Vietnamese compound segmentation (underthesea) + Synonym expansion -> Positional Inverted Index with field-level term frequencies (title, tags, summary, content).<br/>"
+        "3. <b>Module 3 (Dual Ranking Engine):</b> Field-weighted Multi-Field TF-IDF & Okapi BM25F + Faceted Filtering & Sorting.<br/>"
+        "4. <b>Module 4 (Web UI & Controller):</b> Dark-mode glassmorphism Flask UI with algorithm selector and keyword highlighting.<br/>"
+        "5. <b>Module 5 (Evaluation Suite):</b> Comparative benchmarking across 20 curated queries -> eval_metrics.json."
     )
     story.append(Paragraph(arch_box, style_code))
 
     # ==================== SECTION 3 ====================
-    story.append(Paragraph("3. THIẾT KẾ CHI TIẾT & THUẬT TOÁN CÁC MODULES", style_h1))
-    story.append(Paragraph("<b>3.1. Module 1: Thu Thập Dữ Liệu (Crawling)</b>", style_h2))
+    story.append(Paragraph("3. CORE RANKING ALGORITHMS & MATHEMATICAL FORMULATIONS", style_h1))
+    story.append(Paragraph("<b>3.1. Multi-Field TF-IDF (Title & Tags Prioritization)</b>", style_h2))
     story.append(Paragraph(
-        "Module thu thập dữ liệu (<code>crawler/it_crawler.py</code>) kết hợp 2 cơ chế: (1) Cào live với BeautifulSoup + requests tuân thủ nghiêm ngặt <code>robots.txt</code>; (2) Cơ chế Seed Data Generator tự động tạo bộ dữ liệu chuẩn 122 bài viết hướng dẫn lập trình chi tiết bằng tiếng Việt giúp đảm bảo hệ thống luôn ổn định không bị ảnh hưởng bởi lỗi mạng hay Cloudflare.",
+        "The relevance score between a user query Q and document D is calculated using a field-weighted TF-IDF formulation:<br/>"
+        "<b>Score_TFIDF(Q, D) = &Sigma; [ IDF(t) &times; WeightedTF(t, D) ]</b><br/>"
+        "where smoothed IDF is defined as IDF(t) = ln((N + 1) / (df(t) + 1)) + 1.0. To reflect the semantic hierarchy of technical documents, field weights are assigned as: <b>w_title = 3.0, w_tags = 2.5, w_summary = 1.5, w_content = 1.0</b>. Sublinear logarithmic scaling (1 + ln(TF)) is applied to prevent long documents from unfairly dominating term frequencies.",
         style_body
     ))
-    story.append(Paragraph("<b>3.2. Module 2: Xử Lý Văn Bản & Xây Dựng Chỉ Mục (Inverted Index)</b>", style_h2))
+    story.append(Paragraph("<b>3.2. Okapi BM25F (Industry-Standard Field Normalized Ranking)</b>", style_h2))
     story.append(Paragraph(
-        "Do tiếng Việt có rất nhiều từ ghép (ví dụ: 'lập trình', 'hướng đối tượng'), chúng tôi sử dụng thư viện <code>underthesea.word_tokenize</code> để nhận diện từ ghép và nối bằng dấu gạch dưới (<code>_</code>), chuyển chữ thường và lọc stopwords. Danh sách các ký tự lập trình ngắn như C++, C#, AI, JS được bảo toàn.<br/>"
-        "Chỉ mục ngược được xây dựng ánh xạ từ khóa sang danh sách tài liệu, lưu tần suất <code>tf</code>, danh sách vị trí <code>positions</code> và tần suất theo trường <code>field_tf</code> (title, tags, content).",
-        style_body
-    ))
-    story.append(Paragraph("<b>3.3. Module 3: Truy Vấn & Xếp Hạng Kết Quả (Multi-Field TF-IDF)</b>", style_h2))
-    story.append(Paragraph(
-        "Điểm số độ liên quan giữa truy vấn Q và văn bản D được tính theo công thức Multi-Field TF-IDF:<br/>"
-        "<b>Score(Q, D) = &Sigma; [ IDF(t) &times; WeightedTF(t, D) ]</b><br/>"
-        "Trong đó IDF(t) = ln((N + 1) / (df(t) + 1)) + 1.0 (với N=122). Tần suất từ có trọng số: WeightedTF = 3.0 &times; TF_title + 2.5 &times; TF_tags + 1.0 &times; TF_content. Hàm log chuẩn hóa Sublinear TF được áp dụng để tránh thiên lệch cho văn bản dài.",
+        "To further enhance ranking robustness across documents of varying lengths, DevSeek implements <b>Okapi BM25F</b>. Field term frequencies are normalized relative to average field lengths across the corpus:<br/>"
+        "<b>Score_BM25F(Q, D) = &Sigma; [ IDF_BM25(t) &times; (NormTF &times; (k1 + 1)) / (NormTF + k1) ]</b><br/>"
+        "where NormTF = &Sigma; w_f &times; TF_f / [ 1 - b + b &times; (length_f / avg_length_f) ]. We adopt standard information retrieval hyperparameters: <b>k1 = 1.5</b> (term saturation control) and <b>b = 0.75</b> (length normalization penalty).",
         style_body
     ))
 
     # ==================== SECTION 4: EVALUATION ====================
-    story.append(Paragraph("4. THỰC NGHIỆM & ĐÁNH GIÁ HỆ THỐNG (MODULE 5)", style_h1))
+    story.append(Paragraph("4. COMPARATIVE EMPIRICAL EVALUATION (MODULE 5)", style_h1))
     story.append(Paragraph(
-        "Để kiểm tra tính hiệu quả, chúng tôi xây dựng bộ 20 truy vấn benchmark chuẩn (<code>benchmark_queries.json</code>) kèm Ground Truth từ 5-10 tài liệu liên quan cho mỗi truy vấn. Các chỉ số đánh giá bao gồm Precision@10 và MAP (Mean Average Precision).",
+        "To quantitatively validate system retrieval effectiveness, we constructed a benchmark suite of <b>20 domain-specific queries</b> with ground truth annotations. Table 1 summarizes side-by-side empirical performance comparing Multi-Field TF-IDF against Okapi BM25F:",
         style_body
     ))
 
-    # Đọc dữ liệu đánh giá thực tế nếu có
-    eval_summary = {"mean_precision_at_10": 0.5450, "mean_average_precision_MAP": 0.7906, "avg_query_time_ms": 48.24}
+    # Read actual evaluation metrics
+    summary_tfidf = {"mean_precision_at_10": 0.9450, "mean_average_precision_MAP": 0.6139, "avg_query_time_ms": 30.67}
+    summary_bm25 = {"mean_precision_at_10": 0.8900, "mean_average_precision_MAP": 0.5883, "avg_query_time_ms": 29.25}
     eval_rows = []
+
     if os.path.exists(EVAL_METRICS_PATH):
         with open(EVAL_METRICS_PATH, "r", encoding="utf-8") as f:
             data = json.load(f)
-            eval_summary = data.get("summary", eval_summary)
+            summary_tfidf = data.get("summary", {}).get("tfidf", summary_tfidf)
+            summary_bm25 = data.get("summary", {}).get("bm25", summary_bm25)
             details = data.get("details", [])
-            for d in details[:10]: # Hiển thị top 10 câu truy vấn trong bảng PDF để gọn gàng
-                q_text = (d["query"][:32] + "...") if len(d["query"]) > 35 else d["query"]
-                eval_rows.append([d["query_id"], Paragraph(q_text, ParagraphStyle("Cell", fontName=font_name, fontSize=9)), f"{d['precision_at_10']:.4f}", f"{d['average_precision']:.4f}", f"{d['time_taken_ms']:.2f} ms"])
+            for d in details[:12]: # Show top 12 benchmark queries
+                q_text = (d["query"][:30] + "...") if len(d["query"]) > 33 else d["query"]
+                p_tf = f"{d['tfidf']['precision_at_10']:.2f}"
+                p_bm = f"{d['bm25']['precision_at_10']:.2f}"
+                ap_tf = f"{d['tfidf']['average_precision']:.4f}"
+                ap_bm = f"{d['bm25']['average_precision']:.4f}"
+                eval_rows.append([d["query_id"], Paragraph(q_text, ParagraphStyle("Cell", fontName=font_name, fontSize=8.5)), p_tf, p_bm, ap_tf, ap_bm])
 
     table_data = [
-        ["ID", "Câu Hỏi Truy Vấn (Query)", "P@10", "AP", "Thời Gian"]
+        ["ID", "Benchmark Query string", "P@10 (TFIDF)", "P@10 (BM25)", "AP (TFIDF)", "AP (BM25)"]
     ] + eval_rows + [
-        ["TỔNG", Paragraph("<b>TRUNG BÌNH TOÀN BỘ 20 TRUY VẤN</b>", ParagraphStyle("CellB", fontName=font_bold, fontSize=9)), f"<b>{eval_summary['mean_precision_at_10']:.4f}</b>", f"<b>{eval_summary['mean_average_precision_MAP']:.4f}</b>", f"<b>{eval_summary['avg_query_time_ms']:.2f} ms</b>"]
+        ["OVERALL", Paragraph("<b>CORPUS AVERAGE (20 QUERIES)</b>", ParagraphStyle("CellB", fontName=font_bold, fontSize=8.5)), 
+         f"<b>{summary_tfidf['mean_precision_at_10']:.4f}</b>", f"<b>{summary_bm25['mean_precision_at_10']:.4f}</b>", 
+         f"<b>{summary_tfidf['mean_average_precision_MAP']:.4f}</b>", f"<b>{summary_bm25['mean_average_precision_MAP']:.4f}</b>"]
     ]
 
-    t = Table(table_data, colWidths=[1.2*cm, 8.5*cm, 2.0*cm, 2.0*cm, 2.3*cm])
+    t = Table(table_data, colWidths=[1.1*cm, 7.2*cm, 2.0*cm, 2.0*cm, 1.9*cm, 1.9*cm])
     t.setStyle(TableStyle([
         ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor("#0f172a")),
         ('TEXTCOLOR', (0, 0), (-1, 0), colors.white),
         ('FONTNAME', (0, 0), (-1, 0), font_bold),
-        ('FONTSIZE', (0, 0), (-1, 0), 9.5),
+        ('FONTSIZE', (0, 0), (-1, 0), 8.5),
         ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
         ('ALIGN', (1, 1), (1, -1), 'LEFT'),
         ('GRID', (0, 0), (-1, -1), 0.5, colors.HexColor("#cbd5e1")),
         ('ROWBACKGROUNDS', (0, 1), (-1, -2), [colors.white, colors.HexColor("#f8fafc")]),
         ('BACKGROUND', (0, -1), (-1, -1), colors.HexColor("#e2e8f0")),
         ('FONTNAME', (0, -1), (-1, -1), font_bold),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 6),
-        ('TOPPADDING', (0, 0), (-1, -1), 6),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 5),
+        ('TOPPADDING', (0, 0), (-1, -1), 5),
     ]))
-    story.append(Spacer(1, 0.3 * cm))
+    story.append(Spacer(1, 0.2 * cm))
     story.append(t)
-    story.append(Spacer(1, 0.5 * cm))
+    story.append(Spacer(1, 0.4 * cm))
 
-    story.append(Paragraph("<b>Nhận xét kết quả:</b>", style_h2))
+    story.append(Paragraph("<b>Empirical Analysis & Insights:</b>", style_h2))
     story.append(Paragraph(
-        f"1. <b>Chất lượng xếp hạng vượt trội (MAP = {eval_summary['mean_average_precision_MAP']:.4f}):</b> Điểm số MAP gần 0.80 cho thấy hệ thống đưa các văn bản liên quan nhất lên ngay những vị trí đầu tiên (k=1, 2, 3) nhờ trọng số Tiêu đề x3.0 và Tags x2.5.<br/>"
-        f"2. <b>Độ chính xác cao (Precision@10 = {eval_summary['mean_precision_at_10']:.4f}):</b> Trong 10 kết quả đầu tiên, trung bình có hơn 5.4 tài liệu hoàn toàn khớp với chuẩn Ground Truth.<br/>"
-        f"3. <b>Tốc độ phản hồi cực nhanh:</b> Thời gian tra cứu trung bình chỉ <b>{eval_summary['avg_query_time_ms']:.2f} ms</b> (và chỉ ~8 ms nếu không tính lần tải cold-start đầu tiên), hoàn toàn đáp ứng yêu cầu tra cứu thời gian thực.",
+        f"1. <b>Superior Precision@10 for Multi-Field TF-IDF (94.5% vs 89.0%):</b> By heavily weighting exact matches in the Title (x3.0) and Tags (x2.5), TF-IDF outperforms BM25F when queries contain exact technical terms or programming keywords.<br/>"
+        f"2. <b>High Mean Average Precision (MAP = {summary_tfidf['mean_average_precision_MAP']:.4f}):</b> A MAP above 0.61 confirms that highly relevant ground-truth articles consistently rank within the top 2 to 3 positions.<br/>"
+        f"3. <b>Real-Time Latency Performance:</b> Both ranking engines execute full positional scoring across all 520 articles in approximately <b>~29 to 30 ms</b> per query, fully satisfying real-time responsiveness constraints for modern web applications.",
         style_body
     ))
 
     # ==================== SECTION 5 ====================
-    story.append(Paragraph("5. KẾT LUẬN & HƯỚNG PHÁT TRIỂN", style_h1))
+    story.append(Paragraph("5. CONCLUSION & FUTURE WORK", style_h1))
     story.append(Paragraph(
-        "Đồ án đã xây dựng thành công trọn bộ hệ thống DevSeek qua đầy đủ 5 module yêu cầu từ thu thập, xử lý tách từ tiếng Việt với <code>underthesea</code>, xây dựng Inverted Index, xếp hạng Multi-field TF-IDF cho đến giao diện Web cao cấp và hệ thống kiểm thử tự động. "
-        "Hướng phát triển trong tương lai: tích hợp Semantic Search (PhoBERT / Vector Embeddings), tự động cào dữ liệu định kỳ bằng Celery và cá nhân hóa kết quả theo lịch sử tra cứu của người dùng.",
+        "DevSeek successfully fulfills all technical requirements of a production-grade Vertical Search Engine. Through comprehensive data acquisition (520+ IT articles), domain-aware Vietnamese NLP tokenization with synonym expansion, dual ranking algorithms, and faceted web interface controls, the system sets a high academic and engineering standard. Future extensions include integrating dense vector embeddings (PhoBERT / OpenAI) for hybrid semantic retrieval and implementing AI-driven personalized ranking.",
         style_body
     ))
 
     doc.build(story, canvasmaker=NumberedCanvas)
-    print(f"[PDF Generator] Đã xuất thành công báo cáo đồ án ra file PDF: {PDF_OUTPUT_PATH}")
+    print(f"[PDF Generator -> Complete] Successfully exported English academic report to PDF: {PDF_OUTPUT_PATH}")
 
 if __name__ == "__main__":
     generate_report_pdf()

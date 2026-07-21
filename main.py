@@ -4,11 +4,13 @@ File: main.py
 Chạy full pipeline quy trình xây dựng máy tìm kiếm DevSeek từ A đến Z:
     py main.py
 
-Quy trình thực thi:
-0. Xóa sạch toàn bộ dữ liệu cũ (raw & processed index, metadata, evaluation)
-1. Thu thập & tổng hợp bộ dữ liệu tài liệu lập trình IT mới từ đầu (520+ bài viết)
-2. Tiền xử lý tách từ ghép tiếng Việt (underthesea) & Xây dựng Inverted Index (tqdm)
-3. Đồng bộ truy vấn Benchmark & Chạy kiểm thử tự động đo lường P@10, MAP (tqdm)
+Quy trình thực thi chuẩn Data Engineering & Information Retrieval:
+0. Dọn dẹp & Xóa sạch toàn bộ dữ liệu cũ (raw, processed index, metadata, database, evaluation)
+1. Thu thập & tổng hợp bộ dữ liệu lập trình IT chuyên sâu mới từ đầu (Quy mô 520+ bài viết)
+   Lưu trữ đa định dạng: JSON (articles.json), CSV (articles.csv), SQLite Database (devseek.db).
+2. Tiền xử lý tách từ ghép tiếng Việt (underthesea) & Xây dựng Inverted Index + Positions + Field TF (tqdm)
+3. Đồng bộ truy vấn Benchmark & Chạy kiểm thử tự động đo lường và so sánh song song:
+   Multi-Field TF-IDF vs Okapi BM25F (Precision@10 & MAP).
 """
 
 import os
@@ -32,7 +34,7 @@ from evaluation.evaluate import run_evaluation
 from evaluation.generate_benchmark import generate_benchmark
 
 def clean_old_data():
-    print("\n[BUOC 0/3] Don dep & Xoa sach du lieu cu (Reset he thong tu dau)...")
+    print("\n[BUOC 0/3] Dọn dẹp & Xóa sạch dữ liệu cũ (Reset toàn bộ hệ thống từ đầu)...")
     raw_dir = os.path.join(PROJECT_ROOT, "data", "raw")
     processed_dir = os.path.join(PROJECT_ROOT, "data", "processed")
     eval_metrics = os.path.join(PROJECT_ROOT, "evaluation", "eval_metrics.json")
@@ -67,42 +69,42 @@ def clean_old_data():
         except Exception:
             pass
 
-    print(f"-> Da xoa sach {deleted_count} file du lieu cu (articles.json, index.json, doc_store.json...). San sang xay dung moi!")
+    print(f"-> Đã xóa sạch {deleted_count} file dữ liệu cũ (JSON, CSV, SQLite db, Index, Store...). Sẵn sàng khởi tạo pipeline mới!")
 
 def main():
-    print("=" * 80)
-    print("DEVSEEK VERTICAL SEARCH ENGINE - FULL PIPELINE (CLEAN -> CRAWL -> INDEX -> EVAL)")
-    print("=" * 80)
+    print("=" * 96)
+    print("DEVSEEK VERTICAL SEARCH ENGINE - ADVANCED FULL PIPELINE (MULTI-STORAGE & DUAL RANKING)")
+    print("=" * 96)
     start_total_time = time.time()
 
-    # BUOC 0: Xoa toan bo du lieu cu
+    # BƯỚC 0: Xóa toàn bộ dữ liệu cũ
     clean_old_data()
 
-    # BUOC 1: Thu thap / Tong hop Co So Du Lieu (Quy mo 520+ bai viet)
-    print("\n[BUOC 1/3] Thu thap & Xay dung Co so du lieu tai lieu lap trinh IT tu dau...")
+    # BƯỚC 1: Thu thập / Tổng hợp Cơ Sở Dữ Liệu IT (520+ bài viết) -> JSON, CSV, SQLite
+    print("\n[BƯỚC 1/3] Thu thập & Xây dựng Cơ sở dữ liệu tài liệu lập trình IT từ đầu...")
     crawler = ITArticleCrawler()
     articles = crawler.run(mode="seed")
-    print(f"-> Hoan tat BUOC 1: Da chuan bi {len(articles)} bai viet moi tai data/raw/articles.json")
+    print(f"-> Hoàn tất BƯỚC 1: Đã tổng hợp và lưu trữ đồng bộ {len(articles)} bài viết tại data/raw/ (JSON, CSV, SQLite Database)!")
 
-    # BUOC 2: Tien xu ly van ban tieng Viet & Xay dung Chi muc nguoc (co tqdm)
-    print("\n[BUOC 2/3] Xu ly NLP tach tu tieng Viet & Xay dung Inverted Index...")
+    # BƯỚC 2: Tiền xử lý tiếng Việt & Xây dựng Chỉ mục ngược
+    print("\n[BƯỚC 2/3] Xử lý NLP tách từ tiếng Việt & Xây dựng Inverted Index đa trường...")
     indexer = InvertedIndexer(raw_path=crawler.output_path)
     indexer.build_index()
-    print("-> Hoan tat BUOC 2: Chi muc nguoc (index.json & doc_store.json) da san sang!")
+    print("-> Hoàn tất BƯỚC 2: Chỉ mục ngược (index.json, doc_store.json, index_metadata.json) đã sẵn sàng!")
 
-    # BUOC 3: Dong bo truy van mau & Kiem thu tu dong (co tqdm)
-    print("\n[BUOC 3/3] Dong bo bo truy van mau & Chay kiem thu tu dong (Benchmark)...")
+    # BƯỚC 3: Đồng bộ truy vấn mẫu & Kiểm thử tự động so sánh TF-IDF vs BM25
+    print("\n[BƯỚC 3/3] Đồng bộ bộ truy vấn chuẩn & Chạy kiểm thử tự động so sánh (Benchmark)...")
     try:
         generate_benchmark()
         run_evaluation()
     except Exception as e:
-        print(f"[Canh bao] Kiem thu danh gia gap loi: {e}")
+        print(f"[Cảnh báo] Kiểm thử đánh giá gặp lỗi: {e}")
 
     total_elapsed = round(time.time() - start_total_time, 2)
-    print("\n" + "=" * 80)
-    print(f"HOAN TAT CHAY FULL PIPELINE VA XAY DUNG MOI TRONG {total_elapsed} GIAY!")
-    print("Bay gio ban co the mo Web App bang cach go lenh: py run_app.py")
-    print("=" * 80)
+    print("\n" + "=" * 96)
+    print(f"HOÀN TẤT CHẠY FULL PIPELINE VÀ SO SÁNH THUẬT TOÁN TRONG {total_elapsed} GIÂY!")
+    print("Bây giờ bạn có thể khởi chạy ứng dụng Web App bằng cách gõ lệnh: py run_app.py")
+    print("=" * 96)
 
 if __name__ == "__main__":
     main()

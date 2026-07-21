@@ -901,3 +901,119 @@ mark {
     flex-direction: column;
     gap: 0.5rem;
 }
+
+/* ==================== Dual Ranking & Faceted Control Bar ==================== */
+.control-bar {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-glass);
+    border-radius: 14px;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    backdrop-filter: blur(14px);
+    box-shadow: var(--shadow-glass);
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.control-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.algo-tabs {
+    display: flex;
+    background: rgba(0, 0, 0, 0.35);
+    padding: 0.25rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.algo-tab {
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 0.4rem 1rem;
+    border-radius: 9999px;
+    color: var(--text-secondary);
+    transition: var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.algo-tab:hover {
+    color: var(--text-primary);
+}
+
+.algo-tab.active {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: #0f172a;
+    box-shadow: 0 2px 10px var(--color-primary-glow);
+}
+
+.filter-select {
+    background: rgba(26, 34, 56, 0.85);
+    border: 1px solid var(--border-glass);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 0.86rem;
+    padding: 0.45rem 1.8rem 0.45rem 0.8rem;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.filter-select:hover, .filter-select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 10px var(--color-primary-glow);
+}
+
+/* ==================== Rich Metadata Badges inside Card ==================== */
+.meta-badge-cat {
+    background: rgba(56, 189, 248, 0.15);
+    color: var(--color-primary);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    padding: 0.18rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.meta-badge-diff {
+    background: rgba(251, 191, 36, 0.15);
+    color: #fbbf24;
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    padding: 0.18rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.meta-badge-views, .meta-badge-rating, .meta-badge-time {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.meta-badge-rating {
+    color: #facc15;
+    font-weight: 600;
+}
+

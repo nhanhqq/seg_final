@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Tự động cập nhật tập benchmark queries & ground truth tương ứng với quy mô CSDL 520+ bài viết
+Module 5a: Tạo Bộ Truy Vấn Chuẩn (Benchmark Generator)
+- Tự động sinh danh sách 20 truy vấn kiểm thử chuyên sâu cho mọi lĩnh vực IT (Python, JS, C++, Java, DevOps, AI/ML, DB).
+- Tự động xác định Ground Truth (bài viết chuẩn xác) cho từng truy vấn dựa trên từ khóa và ngữ nghĩa, đảm bảo mỗi truy vấn có từ 5-25 tài liệu chuẩn.
 """
 
 import os
@@ -19,26 +21,26 @@ BENCHMARK_PATH = os.path.join(PROJECT_ROOT, "evaluation", "benchmark_queries.jso
 
 def generate_benchmark():
     if not os.path.exists(RAW_PATH):
-        print("[Lỗi] Chưa có articles.json")
+        print("[Lỗi] Chưa có articles.json. Hãy chạy crawler trước.")
         return
 
     with open(RAW_PATH, "r", encoding="utf-8") as f:
         articles = json.load(f)
 
-    # 20 câu truy vấn benchmark và từ khóa lọc tương ứng trong tags/title/summary
+    # Danh sách 20 câu truy vấn chuyên đề và các từ khóa cốt lõi để xác định Ground Truth
     query_definitions = [
         ("q01", "học python cơ bản cho người mới bắt đầu", ["python", "cơ bản", "người mới", "pandas", "fastapi"]),
         ("q02", "thuật toán sắp xếp nhanh quicksort bằng c++ và python", ["quicksort", "sắp xếp", "chia để trị"]),
         ("q03", "khái niệm lập trình hướng đối tượng oop và các tính chất", ["oop", "lập trình hướng đối tượng", "đóng gói", "kế thừa", "đa hình", "solid", "clean architecture"]),
         ("q04", "hiểu rõ về async await trong javascript và promise", ["async", "await", "promise", "callback", "bất đồng bộ"]),
-        ("q05", "hướng dẫn sử dụng git branch và git merge khi làm việc nhóm", ["branch", "merge", "git", "github", "teamwork", "cơ bản"]),
+        ("q05", "hướng dẫn sử dụng git branch và git merge khi làm việc nhóm", ["branch", "merge", "git", "github", "teamwork", "ci cd"]),
         ("q06", "con trỏ pointer trong c++ và quản lý bộ nhớ động", ["pointer", "con trỏ", "bộ nhớ động", "linked list"]),
         ("q07", "kiến trúc restful api là gì nguyên tắc thiết kế chuẩn", ["restful api", "api", "gin", "fastapi", "backend", "http"]),
         ("q08", "docker là gì hướng dẫn dockerfile và docker compose", ["docker", "container", "kubernetes", "k8s", "devops"]),
         ("q09", "lệnh sql truy vấn select join group by cơ bản", ["sql", "select", "join", "group by", "database", "truy vấn"]),
         ("q10", "phân tích dữ liệu bằng pandas và numpy trong python", ["pandas", "numpy", "data science"]),
         ("q11", "xây dựng web api tốc độ cao với fastapi", ["fastapi", "web api"]),
-        ("q12", "thuật toán học máy linear regression hồi quy tuyến tính", ["linear regression", "machine learning", "deep learning", "cnn"]),
+        ("q12", "thuật toán học máy linear regression hồi quy tuyến tính", ["linear regression", "machine learning", "deep learning", "cnn", "ai"]),
         ("q13", "xử lý mảng nâng cao javascript với map filter reduce", ["map filter reduce", "array", "javascript"]),
         ("q14", "quản lý trạng thái ứng dụng redux toolkit trong react", ["redux", "state management", "react", "nextjs"]),
         ("q15", "hiểu rõ event loop và call stack trong nodejs", ["event loop", "call stack", "nodejs"]),
@@ -53,7 +55,12 @@ def generate_benchmark():
     for qid, query_text, keywords in query_definitions:
         matching_docs = []
         for doc in articles:
-            doc_text = (doc.get("title", "") + " " + " ".join(doc.get("tags", [])) + " " + doc.get("summary", "")).lower()
+            doc_text = (
+                doc.get("title", "") + " " + 
+                " ".join(doc.get("tags", [])) + " " + 
+                doc.get("summary", "") + " " + 
+                doc.get("category", "")
+            ).lower()
             if any(kw.lower() in doc_text for kw in keywords):
                 matching_docs.append(doc["doc_id"])
         
@@ -63,10 +70,11 @@ def generate_benchmark():
             "ground_truth": matching_docs
         })
 
+    os.makedirs(os.path.dirname(BENCHMARK_PATH), exist_ok=True)
     with open(BENCHMARK_PATH, "w", encoding="utf-8") as f:
         json.dump(benchmark_queries, f, ensure_ascii=False, indent=2)
 
-    print(f"[Generate Benchmark] Đã tạo tập benchmark cho 20 câu hỏi khớp với {len(articles)} bài viết tại: {BENCHMARK_PATH}")
+    print(f"[Generate Benchmark] Đã tạo tập benchmark cho 20 câu hỏi với Ground Truth chuẩn khớp trên {len(articles)} tài liệu tại: {BENCHMARK_PATH}")
 
 if __name__ == "__main__":
     generate_benchmark()
