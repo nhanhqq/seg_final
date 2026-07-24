@@ -265,7 +265,7 @@ const ThemeToggle = () => {
       whileHover={{ scale: 1.1, rotate: 15 }}
       whileTap={{ scale: 0.9 }}
       className="relative p-3 rounded-full bg-white/10 dark:bg-black/20 backdrop-blur-xl border border-white/20 hover:bg-white/20 transition-all duration-300 group"
-      aria-label={darkMode ? 'Chuyển sang chế độ sáng' : 'Chuyển sang chế độ tối'}
+      aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
     >
       <AnimatePresence mode="wait">
         {darkMode ? (
@@ -371,7 +371,7 @@ const StatsCard = ({ icon: Icon, value, label, color = 'blue', delay = 0 }) => {
 // ============================================================
 // ANIMATED SEARCH BAR - With voice/AI suggestions
 // ============================================================
-const AnimatedSearchBar = ({ onSearch, initialQuery = '', placeholder = "Tìm kiếm tài liệu, giải pháp lập trình..." }) => {
+const AnimatedSearchBar = ({ onSearch, initialQuery = '', placeholder = "Search documents, programming solutions..." }) => {
   const [query, setQuery] = useState(initialQuery)
   const [isFocused, setIsFocused] = useState(false)
   const [isListening, setIsListening] = useState(false)
@@ -396,7 +396,7 @@ const AnimatedSearchBar = ({ onSearch, initialQuery = '', placeholder = "Tìm ki
 
   const handleVoiceSearch = () => {
     if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-      alert('Trình duyệt của bạn không hỗ trợ tìm kiếm bằng giọng nói.')
+      alert('Your browser does not support voice search.')
       return
     }
     
@@ -473,7 +473,7 @@ const AnimatedSearchBar = ({ onSearch, initialQuery = '', placeholder = "Tìm ki
               type="button"
               onClick={handleVoiceSearch}
               className={`p-2 rounded-full transition-colors ${isListening ? 'bg-red-500/20 text-red-400 animate-pulse' : 'text-white/60 hover:text-white hover:bg-white/10'}`}
-              title="Tìm kiếm bằng giọng nói"
+              title="Voice search"
             >
               <Mic className="h-5 w-5" />
             </button>
@@ -486,7 +486,7 @@ const AnimatedSearchBar = ({ onSearch, initialQuery = '', placeholder = "Tìm ki
               whileTap={{ scale: 0.95 }}
               className="px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium rounded-full transition-all duration-300 shadow-lg shadow-blue-500/30 flex items-center gap-2"
             >
-              <span className="hidden sm:inline">Tìm</span>
+              <span className="hidden sm:inline">Search</span>
               <ArrowRight className="h-4 w-4" />
             </motion.button>
           </div>
@@ -509,7 +509,7 @@ const HomePage = () => {
   }
 
   const quickSearches = [
-    { label: 'Python Cơ bản', icon: '🐍', color: 'from-blue-500 to-cyan-500' },
+    { label: 'Python Basics', icon: '🐍', color: 'from-blue-500 to-cyan-500' },
     { label: 'React Hooks', icon: '⚛️', color: 'from-cyan-500 to-blue-500' },
     { label: 'RESTful API', icon: '🔌', color: 'from-purple-500 to-pink-500' },
     { label: 'Docker Compose', icon: '🐳', color: 'from-blue-500 to-indigo-500' },
@@ -550,7 +550,7 @@ const HomePage = () => {
             <ThemeToggle />
             <GlassButton onClick={() => navigate('/about')} variant="ghost">
               <Info className="h-4 w-4" />
-              <span className="hidden sm:inline">Giới thiệu</span>
+              <span className="hidden sm:inline">About</span>
             </GlassButton>
           </div>
         </motion.header>
@@ -598,7 +598,7 @@ const HomePage = () => {
               transition={{ delay: 0.5, duration: 0.5 }}
               className="text-xl text-white/70 max-w-2xl mx-auto"
             >
-              Tìm kiếm tài liệu lập trình với công nghệ <span className="text-blue-400 font-semibold">TF-IDF</span> và <span className="text-purple-400 font-semibold">BM25</span> tiên tiến
+              Search programming documents with advanced <span className="text-blue-400 font-semibold">TF-IDF</span> and <span className="text-purple-400 font-semibold">BM25</span> technology
             </motion.p>
           </motion.div>
 
@@ -621,7 +621,7 @@ const HomePage = () => {
           >
             <div className="flex items-center gap-2 mb-4 text-sm text-white/60">
               <Sparkles className="h-4 w-4" />
-              <span>Gợi ý phổ biến</span>
+              <span>Popular Suggestions</span>
             </div>
             <div className="flex flex-wrap gap-3">
               {quickSearches.map((item, index) => (
@@ -661,13 +661,13 @@ const HomePage = () => {
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-2 text-sm text-white/60">
                   <History className="h-4 w-4" />
-                  <span>Tìm kiếm gần đây</span>
+                  <span>Recent Searches</span>
                 </div>
                 <button
                   onClick={clearHistory}
                   className="text-xs text-white/40 hover:text-white/80 transition-colors"
                 >
-                  Xóa tất cả
+                  Clear all
                 </button>
               </div>
               <div className="flex flex-wrap gap-2">
@@ -695,10 +695,10 @@ const HomePage = () => {
             transition={{ delay: 1, duration: 0.5 }}
             className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-5xl"
           >
-            <StatsCard icon={Database} value="1000+" label="Tài liệu" color="blue" delay={1.0} />
-            <StatsCard icon={Zap} value="<10ms" label="Tốc độ" color="purple" delay={1.1} />
-            <StatsCard icon={Users} value="10K+" label="Người dùng" color="green" delay={1.2} />
-            <StatsCard icon={Award} value="4.9★" label="Đánh giá" color="orange" delay={1.3} />
+            <StatsCard icon={Database} value="1000+" label="Documents" color="blue" delay={1.0} />
+            <StatsCard icon={Zap} value="<10ms" label="Speed" color="purple" delay={1.1} />
+            <StatsCard icon={Users} value="10K+" label="Users" color="green" delay={1.2} />
+            <StatsCard icon={Award} value="4.9★" label="Rating" color="orange" delay={1.3} />
           </motion.div>
         </main>
 
@@ -714,8 +714,8 @@ const HomePage = () => {
               © 2024 DevSeek • Made with <Heart className="inline h-3 w-3 text-red-400" /> in Vietnam
             </p>
             <div className="flex gap-6 text-sm text-white/40">
-              <a href="#" className="hover:text-white transition-colors">Điều khoản</a>
-              <a href="#" className="hover:text-white transition-colors">Quyền riêng tư</a>
+              <a href="#" className="hover:text-white transition-colors">Terms</a>
+              <a href="#" className="hover:text-white transition-colors">Privacy</a>
               <a href="#" className="hover:text-white transition-colors">API</a>
             </div>
           </div>
@@ -894,7 +894,7 @@ const ResultCard = React.memo(({ result, query, index, viewMode = 'list', onOpen
                   whileTap={{ scale: 0.9 }}
                   onClick={() => toggleBookmark(result)}
                   className={`p-2 rounded-full border transition-colors ${bookmarked ? 'bg-blue-500/20 border-blue-500/50 text-blue-400' : 'bg-white/5 hover:bg-white/10 border-white/10 text-white/60 hover:text-white'}`}
-                  title={bookmarked ? "Bỏ lưu" : "Lưu"}
+                  title={bookmarked ? "Remove bookmark" : "Bookmark"}
                 >
                   <Bookmark className={`h-4 w-4 ${bookmarked ? 'fill-current' : ''}`} />
                 </motion.button>
@@ -940,7 +940,7 @@ const IframeModal = ({ result, onClose }) => {
           <button
             onClick={onClose}
             className="p-2 rounded-full bg-white/5 hover:bg-white/10 text-white/70 hover:text-white transition-colors flex-shrink-0"
-            title="Đóng"
+            title="Close"
           >
             <X className="h-5 w-5" />
           </button>
@@ -955,7 +955,7 @@ const IframeModal = ({ result, onClose }) => {
           rel="noopener noreferrer"
           className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/20 hover:bg-blue-500/40 text-blue-300 hover:text-blue-200 text-sm transition-colors border border-blue-500/30 flex-shrink-0 ml-4"
         >
-          <span className="hidden sm:inline">Mở tab mới</span>
+          <span className="hidden sm:inline">Open in new tab</span>
           <ExternalLink className="h-4 w-4" />
         </a>
       </div>
@@ -992,9 +992,9 @@ const AIAnswerCard = ({ results, query }) => {
     if (!results || results.length === 0) return
     
     // Generate a mock summary from the top results
-    let summaryText = `Dựa trên các kết quả hàng đầu cho "${query}", `
+    let summaryText = `Based on top results for "${query}", `
     if (results[0].category) {
-      summaryText += `chủ yếu thuộc chuyên đề ${results[0].category}. `
+      summaryText += `mostly related to ${results[0].category}. `
     }
     
     const topSnippets = results.slice(0, 2).map(r => 
@@ -1002,17 +1002,17 @@ const AIAnswerCard = ({ results, query }) => {
     ).filter(Boolean)
     
     if (topSnippets.length > 0) {
-      summaryText += `Thông tin chính: ${topSnippets[0]} `
-      if (topSnippets[1]) summaryText += `Ngoài ra: ${topSnippets[1]} `
+      summaryText += `Key info: ${topSnippets[0]} `
+      if (topSnippets[1]) summaryText += `Additionally: ${topSnippets[1]} `
     } else {
-      summaryText += `Hệ thống tìm thấy ${results.length} tài liệu phù hợp để bạn tham khảo.`
+      summaryText += `Found ${results.length} relevant documents for your reference.`
     }
 
     setDisplayText('')
     setIsTyping(true)
     
     let i = 0
-    // Tối ưu hóa: Thay vì render từng ký tự (gây lag), ta render mỗi lần 3 ký tự và tăng thời gian chờ
+    // Optimization: Render 3 characters at a time to prevent lag
     const interval = setInterval(() => {
       i += 3
       if (i >= summaryText.length) {
@@ -1113,7 +1113,7 @@ const SearchResultsPage = () => {
       })
       setError(null)
     } catch (err) {
-      setError('Không thể kết nối đến máy chủ tìm kiếm')
+      setError('Cannot connect to search server')
       console.error('Search error:', err)
     } finally {
       setLoading(false)
@@ -1187,7 +1187,7 @@ const SearchResultsPage = () => {
           <AnimatedSearchBar
             onSearch={handleSearch}
             initialQuery={query}
-            placeholder="Tìm kiếm..."
+            placeholder="Search..."
           />
         </motion.div>
 
@@ -1203,9 +1203,9 @@ const SearchResultsPage = () => {
               <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
                 <div>
                   <p className="text-white/80">
-                    Tìm thấy <span className="font-bold text-white text-lg">{stats.total}</span> kết quả cho
+                    Found <span className="font-bold text-white text-lg">{stats.total}</span> results for
                     <span className="font-bold text-blue-400 mx-1">"{query}"</span>
-                    trong <span className="font-bold text-white">{stats.time}ms</span>
+                    in <span className="font-bold text-white">{stats.time}ms</span>
                   </p>
                   {stats.tokens && stats.tokens.length > 0 && (
                     <div className="flex flex-wrap gap-1.5 mt-2">
@@ -1228,7 +1228,7 @@ const SearchResultsPage = () => {
                         onChange={(e) => handleFilterChange('category', e.target.value)}
                         className="bg-transparent text-xs font-medium text-white/80 outline-none cursor-pointer appearance-none pr-2"
                       >
-                        <option value="All" className="bg-slate-900">Mọi chủ đề</option>
+                        <option value="All" className="bg-slate-900">All Categories</option>
                         {Object.entries(stats.facets.category).map(([cat, count]) => (
                           <option key={cat} value={cat} className="bg-slate-900">{cat} ({count})</option>
                         ))}
@@ -1245,7 +1245,7 @@ const SearchResultsPage = () => {
                         onChange={(e) => handleFilterChange('difficulty', e.target.value)}
                         className="bg-transparent text-xs font-medium text-white/80 outline-none cursor-pointer appearance-none pr-2"
                       >
-                        <option value="All" className="bg-slate-900">Mọi cấp độ</option>
+                        <option value="All" className="bg-slate-900">All Difficulties</option>
                         {Object.entries(stats.facets.difficulty).map(([diff, count]) => (
                           <option key={diff} value={diff} className="bg-slate-900">{diff} ({count})</option>
                         ))}
@@ -1290,7 +1290,7 @@ const SearchResultsPage = () => {
                   <button
                     onClick={exportResults}
                     className="p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white/70 hover:text-white transition-colors"
-                    title="Xuất kết quả"
+                    title="Export results"
                   >
                     <Download className="h-4 w-4" />
                   </button>
@@ -1318,7 +1318,7 @@ const SearchResultsPage = () => {
               transition={{ delay: 0.5 }}
               className="mt-4 text-white/60"
             >
-              Đang tìm kiếm...
+              Searching...
             </motion.p>
           </motion.div>
         )}
@@ -1338,11 +1338,11 @@ const SearchResultsPage = () => {
               >
                 <X className="h-8 w-8 text-red-400" />
               </motion.div>
-              <h3 className="text-xl font-semibold text-white mb-2">Lỗi tìm kiếm</h3>
+              <h3 className="text-xl font-semibold text-white mb-2">Search Error</h3>
               <p className="text-white/60 mb-4">{error}</p>
               <GlassButton onClick={() => fetchResults(query, algorithm, sortBy)} variant="primary">
                 <Activity className="h-4 w-4" />
-                <span>Thử lại</span>
+                <span>Try again</span>
               </GlassButton>
             </GlassCard>
           </motion.div>
@@ -1393,8 +1393,8 @@ const SearchResultsPage = () => {
               >
                 <Search className="h-10 w-10 text-blue-400" />
               </motion.div>
-              <h3 className="text-2xl font-semibold text-white mb-3">Không tìm thấy kết quả</h3>
-              <p className="text-white/60 mb-6">Thử với từ khóa khác hoặc kiểm tra chính tả</p>
+              <h3 className="text-2xl font-semibold text-white mb-3">No results found</h3>
+              <p className="text-white/60 mb-6">Try different keywords or check your spelling</p>
               <div className="flex flex-wrap justify-center gap-2">
                 {['Python', 'JavaScript', 'React', 'Docker', 'API', 'Algorithm'].map(suggestion => (
                   <motion.button
@@ -1423,12 +1423,12 @@ const AboutPage = () => {
   const navigate = useNavigate()
 
   const features = [
-    { icon: Search, title: 'Tìm kiếm thông minh', description: 'Thuật toán TF-IDF & BM25 tiên tiến', color: 'from-blue-500 to-cyan-500' },
-    { icon: Zap, title: 'Siêu nhanh', description: 'Kết quả trong vài mili-giây', color: 'from-yellow-500 to-orange-500' },
-    { icon: Sparkles, title: 'AI-Powered', description: 'Ranking thông minh với hybrid algorithm', color: 'from-purple-500 to-pink-500' },
-    { icon: Globe, title: 'Đa ngôn ngữ', description: 'Hỗ trợ tiếng Việt và tiếng Anh', color: 'from-green-500 to-emerald-500' },
-    { icon: Layers, title: 'B-Tree Indexing', description: 'Truy vấn nhanh với cấu trúc B-Tree', color: 'from-indigo-500 to-purple-500' },
-    { icon: BarChart3, title: 'Analytics', description: 'Báo cáo và đánh giá chi tiết', color: 'from-red-500 to-pink-500' },
+    { icon: Search, title: 'Smart Search', description: 'Advanced TF-IDF & BM25 algorithms', color: 'from-blue-500 to-cyan-500' },
+    { icon: Zap, title: 'Lightning Fast', description: 'Results in milliseconds', color: 'from-yellow-500 to-orange-500' },
+    { icon: Sparkles, title: 'AI-Powered', description: 'Smart ranking with hybrid algorithm', color: 'from-purple-500 to-pink-500' },
+    { icon: Globe, title: 'Multi-language', description: 'Supports English and Vietnamese', color: 'from-green-500 to-emerald-500' },
+    { icon: Layers, title: 'B-Tree Indexing', description: 'Fast queries with B-Tree index', color: 'from-indigo-500 to-purple-500' },
+    { icon: BarChart3, title: 'Analytics', description: 'Detailed reporting and analytics', color: 'from-red-500 to-pink-500' },
   ]
 
   return (
@@ -1461,10 +1461,10 @@ const AboutPage = () => {
             className="text-center mb-16"
           >
             <h1 className="text-5xl md:text-6xl font-black mb-4 text-white">
-              Về <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">DevSeek</span>
+              About <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">DevSeek</span>
             </h1>
             <p className="text-xl text-white/70 max-w-2xl mx-auto">
-              Máy tìm kiếm chuyên sâu cho lập trình viên với công nghệ AI tiên tiến
+              Advanced AI-powered search engine for developers
             </p>
           </motion.div>
 
@@ -1498,7 +1498,7 @@ const AboutPage = () => {
           >
             <GlassButton onClick={() => navigate('/')} variant="primary">
               <Search className="h-4 w-4" />
-              <span>Bắt đầu tìm kiếm ngay</span>
+              <span>Start searching now</span>
               <ArrowRight className="h-4 w-4" />
             </GlassButton>
           </motion.div>
@@ -1555,7 +1555,7 @@ const BookmarkDrawer = () => {
             <div className="p-4 border-b border-white/10 flex items-center justify-between bg-slate-950">
               <div className="flex items-center gap-2 text-white font-semibold text-lg">
                 <Bookmark className="h-5 w-5 text-blue-400" />
-                Bài viết đã lưu ({bookmarks.length})
+                Saved Articles ({bookmarks.length})
               </div>
               <button onClick={() => setIsDrawerOpen(false)} className="p-2 rounded-full hover:bg-white/10 text-white/60 hover:text-white transition-colors">
                 <X className="h-5 w-5" />
@@ -1563,7 +1563,7 @@ const BookmarkDrawer = () => {
             </div>
             <div className="flex-1 overflow-y-auto p-4 space-y-4">
               {bookmarks.length === 0 ? (
-                <div className="text-center text-white/50 mt-10">Chưa có bài viết nào được lưu.</div>
+                <div className="text-center text-white/50 mt-10">No saved articles yet.</div>
               ) : (
                 bookmarks.map(b => (
                   <GlassCard key={b.doc_id} className="p-4 group hoverable={false}">
