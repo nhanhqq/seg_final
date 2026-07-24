@@ -1,17 +1,43 @@
 # DevSeek React Web Interface 🚀
 
-Modern React-based web interface for DevSeek search engine with liquid glass effects, dark/light mode, and optimized performance.
+Modern React-based web interface for DevSeek search engine with liquid glass effects, dark/light mode, framer-motion animations, and optimized performance.
 
 ## ✨ Features
 
-- **Modern UI** with liquid glass effects and animations
-- **Dark/Light Mode** toggle with local storage persistence
-- **Responsive Design** for all device sizes
-- **Optimized Performance** with Vite and code splitting
-- **React Router** for smooth navigation
-- **Tailwind CSS** for utility-first styling
-- **Lucide Icons** for beautiful vector icons
-- **API Integration** with Flask backend
+### Core Features
+- 🎨 **Modern UI** with liquid glass effects and framer-motion animations
+- 🌓 **Dark/Light Mode** toggle with local storage persistence
+- 📱 **Responsive Design** for all device sizes
+- ⚡ **Optimized Performance** with Vite and code splitting
+- 🔍 **Smart Search** with query highlighting using backend HTML
+- 🎯 **Real-time Results** with smooth transitions
+
+### Advanced Features
+- ✨ **Particle Background** - Animated floating particles
+- 🌊 **Liquid Glass Effects** - Advanced glassmorphism with backdrop filters
+- 🎭 **Framer Motion Animations** - Smooth spring animations and transitions
+- 💫 **Animated Score Circles** - SVG circular progress indicators
+- 🎨 **Gradient Animations** - Animated gradient text and backgrounds
+- 🔥 **Cmd+K Shortcut** - Quick search keyboard shortcut
+- 📊 **Search History** - Persistent localStorage history
+- 🎯 **Multiple Algorithms** - TF-IDF, BM25, Hybrid switching
+- 📱 **Grid/List View** - Toggle between view modes
+- 💾 **Export Results** - Download as JSON
+- ⭐ **Bookmark & Share** - Save and share results
+- 🎨 **Animated Grid Background** - Cyberpunk-style grid overlay
+- 🌟 **Hover Effects** - Smooth lift, glow, and scale animations
+- 📈 **Statistics Cards** - Animated stats with delays
+- 🎪 **Ripple Effects** - Interactive button feedback
+
+## 🛠️ Tech Stack
+
+- **React 18** - UI framework
+- **Vite 5** - Build tool and dev server
+- **Framer Motion** - Animation library
+- **React Router 6** - Client-side routing
+- **Tailwind CSS 3** - Utility-first CSS
+- **Lucide React** - Beautiful vector icons
+- **ESBuild** - Fast minification
 
 ## 📋 Prerequisites
 
@@ -19,219 +45,98 @@ Modern React-based web interface for DevSeek search engine with liquid glass eff
 - npm v9+ or yarn
 - Python 3.8+
 
-## 🛠️ Installation & Setup
-
-### 1. Navigate to the web directory
+## 🛠️ Installation
 
 ```bash
 cd web
-```
-
-### 2. Install Node.js dependencies
-
-```bash
 npm install
-```
-
-This will install all required packages including React, Vite, Tailwind CSS, and Lucide icons.
-
-### 3. Install Python dependencies (if not already installed)
-
-```bash
-pip install flask
 ```
 
 ## 🚀 Running the Application
 
-### Development Mode (Recommended for Development)
+### Development Mode (Recommended)
 
-Start the Vite development server:
-
+**Terminal 1 - Start Vite dev server:**
 ```bash
 npm run dev
 ```
+Access at: `http://localhost:3000`
 
-This will:
-- Start Vite on `http://localhost:3000`
-- Enable hot module replacement (HMR)
-- Proxy API requests to Flask backend
-- Provide fast refresh and error overlay
-
-In a **separate terminal**, start the Flask backend:
-
+**Terminal 2 - Start Flask backend:**
 ```bash
 python app.py
 ```
-
-This will start Flask on `http://localhost:5000`
-
-**Access the app at:** `http://localhost:3000`
 
 ### Production Mode
 
-#### Step 1: Build the React app
-
 ```bash
 npm run build
-```
-
-This will:
-- Create optimized production bundles
-- Output files to `static/` directory
-- Minify and compress assets
-- Generate source maps
-
-#### Step 2: Start Flask server
-
-```bash
 python app.py
 ```
+Access at: `http://localhost:5000/react`
 
-#### Step 3: Access the production app
+## 🎨 Key Components
 
-**Access at:** `http://localhost:5000/react`
+### 🎭 Animations
+- Page transitions with fade/slide
+- Staggered animations on lists
+- Hover effects with scale/glow
+- Loading states with spinners
+- Score circles with animated SVG
+- Particle background effects
+
+### 🌊 Liquid Glass Effects
+- Backdrop blur on all cards
+- Gradient borders on hover
+- Smooth glass transitions
+- Multi-layer glassmorphism
+
+### 🔍 Search Features
+- **Query Highlighting** - Backend returns HTML with `<mark>` tags
+- **Multiple Algorithms** - Switch between TF-IDF/BM25/Hybrid
+- **View Modes** - Grid or list view
+- **Export Results** - Download as JSON
+- **Search History** - LocalStorage persistence
 
 ## 📁 Project Structure
 
 ```
 web/
-├── src/                  # React source code
-│   ├── App.jsx           # Main application with all components
+├── src/
+│   ├── App.jsx           # Main application
 │   ├── main.jsx          # Entry point
-│   └── index.css         # Global styles with Tailwind & custom animations
-├── static/               # Build output (generated by npm run build)
-│   ├── assets/           # Compiled CSS, JS, and assets
-│   └── index.html        # Main HTML file
-├── templates/            # Flask templates (legacy - kept for reference)
-├── app.py                # Flask backend (updated with React routes)
-├── vite.config.js        # Vite configuration with proxy setup
+│   └── index.css         # Global styles
+├── vite.config.js        # Vite configuration
 ├── tailwind.config.js    # Tailwind configuration
-├── package.json          # Node.js dependencies
-├── build_react.sh        # Build script (alternative)
-└── REACT_README.md       # This documentation
-```
-
-## 🔧 Key Components
-
-### Theme System
-```jsx
-// Automatic dark/light mode with persistence
-const [darkMode, setDarkMode] = useState(() => {
-  const savedTheme = localStorage.getItem('theme')
-  return savedTheme ? savedTheme === 'dark' : true
-})
-```
-
-### Liquid Glass Effects
-```css
-/* Custom glassmorphism effects */
-.glass-effect {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Floating orb animations */
-@keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(2deg); }
-}
-```
-
-### Search Functionality
-```jsx
-// Real-time search with Flask API integration
-const fetchResults = async (searchQuery) => {
-  const response = await fetch(`/api/search?q=${encodeURIComponent(searchQuery)}&algorithm=hybrid`)
-  const data = await response.json()
-  // Process and display results
-}
+├── package.json          # Dependencies
+└── index.html            # HTML entry
 ```
 
 ## 🎯 API Endpoints
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|
-| `/api/search` | GET | Search for documents with query parameters |
-| `/api/stats` | GET | Get system statistics (doc count, vocab size) |
-| `/api/evaluate` | GET | Get evaluation metrics |
+| `/api/search` | GET | Search with algorithm parameter |
+| `/api/stats` | GET | System statistics |
+| `/api/evaluate` | GET | Evaluation metrics |
 
-## 🔧 Customization
+## 🎨 Customization
 
-### Change Colors
-Edit `tailwind.config.js`:
-```js
-module.exports = {
-  theme: {
-    extend: {
-      colors: {
-        primary: '#3b82f6', // Change to your preferred color
-        secondary: '#8b5cf6'
-      }
-    }
-  }
-}
-```
+### Change Theme Colors
+Edit `tailwind.config.js` and `index.css`
 
 ### Modify Animations
-Edit `src/index.css`:
-```css
-@keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-30px) rotate(5deg); } /* Adjust values */
-}
-```
+Edit Framer Motion props in `App.jsx`
 
-### Replace Icons
-Import different icons from `lucide-react`:
-```jsx
-import { Search, Moon, Sun, Zap } from 'lucide-react'
-// Use any icon from: https://lucide.dev
-```
+### Add New Features
+Components are modular and easy to extend
 
 ## 🐛 Troubleshooting
 
-### Vite configuration errors
-If you see `Dynamic require is not supported`:
-1. Delete `node_modules` and `package-lock.json`
-2. Run `npm install` again
-3. Ensure you're using Node.js v18+
-
-### API proxy not working
-1. Check Flask is running on `http://localhost:5000`
-2. Verify Vite config has correct proxy settings
-3. Check browser console for CORS errors
-
-### Build failures
-1. Run `npm install` to ensure all dependencies are installed
-2. Check Node.js version (`node -v` should be >= 18)
-3. Try `npm run build` again
-
-## 📱 Browser Support
-
-| Browser | Version |
-|---------|---------|
-| Chrome | 90+ |
-| Firefox | 88+ |
-| Safari | 14+ |
-| Edge | 90+ |
-
-## 📝 Notes
-
-- The React app communicates with Flask via API endpoints
-- Dark mode preference is saved in localStorage
-- Search results include query highlighting
-- All animations are GPU-accelerated for smooth performance
-- The build process optimizes assets for production
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to your branch
-5. Open a pull request
+- **Build fails**: Delete `node_modules` and run `npm install`
+- **Animations laggy**: Reduce particle count in `App.jsx`
+- **Mark tags not highlighted**: Check `index.css` for `mark` styles
 
 ## 📄 License
 
-MIT License - Feel free to use, modify, and distribute!
+MIT License
