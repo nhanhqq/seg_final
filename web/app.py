@@ -68,8 +68,7 @@ def search():
         return render_template("index.html")
 
     engine = get_ranker()
-    if not engine.inverted_index:
-        engine.load_index(engine.INDEX_PATH, engine.DOC_STORE_PATH, engine.META_PATH)
+    # Ranker automatically loads index on init.
 
     search_result = engine.search(
         query=query,
@@ -118,6 +117,80 @@ def api_search():
         sort_by=sort_by
     )
     return jsonify(search_result)
+
+@app.route("/api/doc/<doc_id>")
+def api_get_doc(doc_id):
+    engine = get_ranker()
+    doc_info = engine.doc_store.get(doc_id)
+    if not doc_info and getattr(engine, "use_sqlite", False):
+        subset = engine.sqlite_indexer.load_doc_store_subset([doc_id])
+        if subset:
+            doc_info = subset[doc_id]
+            engine.doc_store[doc_id] = doc_info
+
+    if doc_info:
+        title = doc_info.get("title", "Document")
+        author = doc_info.get("author", "Unknown")
+        date = doc_info.get("publish_date", "Unknown")
+        url = doc_info.get("url", "#")
+        content = doc_info.get("content", "No content available.").replace("\n", "<br>")
+        html = f"""
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="utf-8">
+            <title>{title}</title>
+            <style>
+                body {{ font-family: sans-serif; line-height: 1.6; padding: 20px; max-width: 800px; margin: 0 auto; color: #333; }}
+                h1 {{ color: #2563eb; }}
+                .meta {{ color: #666; font-size: 0.9em; margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 10px; }}
+            </style>
+        </head>
+        <body>
+            <h1>{title}</h1>
+            <div class="meta">
+                Author: {author} | Date: {date} | <a href="{url}" target="_blank">Original Link</a>
+            </div>
+            <div class="content">
+                {content}
+            </div>
+        </body>
+        </html>
+        """
+        return html
+    return "Document not found", 404
+
+import requests
+import re
+from flask import Response
+
+@app.route("/api/proxy")
+def api_proxy():
+    url = request.args.get("url")
+    if not url:
+        return "Missing URL", 400
+    try:
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        }
+        resp = requests.get(url, headers=headers, timeout=10)
+        content = resp.text
+
+        # Inject <base> tag to fix relative links (css, js, images)
+        base_tag = f'<base href="{url}">'
+        if '<head>' in content:
+            content = content.replace('<head>', f'<head>\n    {base_tag}', 1)
+        else:
+            content = re.sub(r'(<head[^>]*>)', rf'\1\n    {base_tag}', content, count=1, flags=re.IGNORECASE)
+
+        # Strip security headers that prevent iframe embedding
+        excluded_headers = ['content-encoding', 'content-length', 'transfer-encoding', 'connection', 'x-frame-options', 'content-security-policy']
+        headers = [(name, value) for (name, value) in resp.raw.headers.items()
+                   if name.lower() not in excluded_headers]
+                   
+        return Response(content, resp.status_code, headers)
+    except Exception as e:
+        return f"Lỗi tải trang: {str(e)}", 500
 
 @app.route("/api/stats")
 def api_stats():

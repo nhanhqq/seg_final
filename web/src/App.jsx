@@ -1,3 +1,4 @@
+import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react'
 import { createBrowserRouter, RouterProvider, Link, useNavigate, useLocation } from 'react-router-dom'
 import {
   Moon, Sun, Search, Zap, Database, Code, Book, Star, Settings, Info, ExternalLink,
@@ -37,9 +38,108 @@ function ThemeProvider({ children }) {
 }
 
 // ============================================================
+// BOOKMARKS SYSTEM
+// ============================================================
+const BookmarksContext = React.createContext()
+
+function BookmarksProvider({ children }) {
+  const [bookmarks, setBookmarks] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('devseek_bookmarks') || '[]') }
+    catch { return [] }
+  })
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+
+  useEffect(() => {
+    localStorage.setItem('devseek_bookmarks', JSON.stringify(bookmarks))
+  }, [bookmarks])
+
+  const toggleBookmark = useCallback((result) => {
+    setBookmarks(prev => {
+      const exists = prev.find(b => b.doc_id === result.doc_id)
+      if (exists) return prev.filter(b => b.doc_id !== result.doc_id)
+      return [result, ...prev]
+    })
+  }, [])
+
+  const isBookmarked = useCallback((doc_id) => {
+    return bookmarks.some(b => b.doc_id === doc_id)
+  }, [bookmarks])
+
+  return (
+    <BookmarksContext.Provider value={{ bookmarks, toggleBookmark, isBookmarked, isDrawerOpen, setIsDrawerOpen }}>
+      {children}
+    </BookmarksContext.Provider>
+  )
+}
+
+const useBookmarks = () => React.useContext(BookmarksContext)
+
+// ============================================================
+// CUSTOM CURSOR
+// ============================================================
+const CustomCursor = () => {
+  const cursorX = useMotionValue(-100)
+  const cursorY = useMotionValue(-100)
+  const springConfig = { damping: 25, stiffness: 300 }
+  const cursorXSpring = useSpring(cursorX, springConfig)
+  const cursorYSpring = useSpring(cursorY, springConfig)
+  const [isHovering, setIsHovering] = useState(false)
+
+  useEffect(() => {
+    const moveCursor = (e) => {
+      cursorX.set(e.clientX - 16)
+      cursorY.set(e.clientY - 16)
+    }
+    const handleMouseOver = (e) => {
+      if (e.target.closest('button, a, input, [role="button"], .cursor-pointer')) {
+        setIsHovering(true)
+      } else {
+        setIsHovering(false)
+      }
+    }
+    
+    window.addEventListener('mousemove', moveCursor)
+    window.addEventListener('mouseover', handleMouseOver)
+    return () => {
+      window.removeEventListener('mousemove', moveCursor)
+      window.removeEventListener('mouseover', handleMouseOver)
+    }
+  }, [])
+
+  return (
+    <motion.div
+      className="fixed top-0 left-0 w-8 h-8 rounded-full border-2 border-blue-400/50 pointer-events-none z-[9999] mix-blend-screen hidden lg:block"
+      style={{ x: cursorXSpring, y: cursorYSpring }}
+      animate={{ 
+        scale: isHovering ? 1.5 : 1,
+        backgroundColor: isHovering ? 'rgba(96, 165, 250, 0.2)' : 'transparent',
+      }}
+      transition={{ duration: 0.15 }}
+    >
+      <div className="absolute inset-0 bg-blue-400 rounded-full blur-md opacity-20" />
+    </motion.div>
+  )
+}
+
+// ============================================================
+// PAGE WRAPPER (TRANSITIONS)
+// ============================================================
+const PageWrapper = ({ children }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -20 }}
+    transition={{ duration: 0.4, ease: "easeOut" }}
+    className="min-h-screen flex flex-col"
+  >
+    {children}
+  </motion.div>
+)
+
+// ============================================================
 // PARTICLE BACKGROUND - Animated floating particles
 // ============================================================
-const ParticleBackground = ({ count = 50 }) => {
+const ParticleBackground = React.memo(({ count = 15 }) => {
   const particles = useMemo(() =>
     Array.from({ length: count }, (_, i) => ({
       id: i,
@@ -78,7 +178,7 @@ const ParticleBackground = ({ count = 50 }) => {
       ))}
     </div>
   )
-}
+})
 
 // ============================================================
 // ANIMATED GRID BACKGROUND
@@ -294,6 +394,37 @@ const AnimatedSearchBar = ({ onSearch, initialQuery = '', placeholder = "Tìm ki
     if (query.trim()) onSearch(query.trim())
   }
 
+  const handleVoiceSearch = () => {
+    if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+      alert('Trình duyệt của bạn không hỗ trợ tìm kiếm bằng giọng nói.')
+      return
+    }
+    
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+    const recognition = new SpeechRecognition()
+    
+    recognition.lang = 'vi-VN'
+    recognition.continuous = false
+    recognition.interimResults = false
+    
+    recognition.onstart = () => setIsListening(true)
+    
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript
+      setQuery(transcript)
+      onSearch(transcript)
+    }
+    
+    recognition.onerror = (event) => {
+      console.error('Speech recognition error', event.error)
+      setIsListening(false)
+    }
+    
+    recognition.onend = () => setIsListening(false)
+    
+    recognition.start()
+  }
+
   return (
     <motion.form
       onSubmit={handleSubmit}
@@ -338,6 +469,14 @@ const AnimatedSearchBar = ({ onSearch, initialQuery = '', placeholder = "Tìm ki
           />
 
           <div className="flex items-center gap-2 pr-2">
+            <button
+              type="button"
+              onClick={handleVoiceSearch}
+              className={`p-2 rounded-full transition-colors ${isListening ? 'bg-red-500/20 text-red-400 animate-pulse' : 'text-white/60 hover:text-white hover:bg-white/10'}`}
+              title="Tìm kiếm bằng giọng nói"
+            >
+              <Mic className="h-5 w-5" />
+            </button>
             <kbd className="hidden sm:inline-flex items-center gap-1 px-2 py-1 text-xs text-white/50 bg-white/5 rounded border border-white/10">
               <Command className="h-3 w-3" />K
             </kbd>
@@ -587,9 +726,28 @@ const HomePage = () => {
 }
 
 // ============================================================
-// RESULT CARD - With HTML rendering for highlight
+// RESULT CARD - With HTML rendering for highlight & 3D Tilt
 // ============================================================
-const ResultCard = ({ result, query, index, viewMode = 'list' }) => {
+const ResultCard = React.memo(({ result, query, index, viewMode = 'list', onOpenUrl }) => {
+  const { toggleBookmark, isBookmarked } = useBookmarks()
+  const bookmarked = isBookmarked(result.doc_id)
+
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
+  const rotateX = useTransform(y, [-100, 100], [5, -5])
+  const rotateY = useTransform(x, [-100, 100], [-5, 5])
+
+  const handleMouseMove = (event) => {
+    const rect = event.currentTarget.getBoundingClientRect()
+    x.set(event.clientX - rect.left - rect.width / 2)
+    y.set(event.clientY - rect.top - rect.height / 2)
+  }
+
+  const handleMouseLeave = () => {
+    x.set(0)
+    y.set(0)
+  }
+
   // Parse the HTML to extract highlighted parts
   const renderHTML = (htmlString) => {
     if (!htmlString) return null
@@ -608,138 +766,293 @@ const ResultCard = ({ result, query, index, viewMode = 'list' }) => {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.05, duration: 0.3 }}
+      style={{ perspective: 1000 }}
     >
-      <GlassCard className="p-6 group cursor-pointer">
-        <div className="flex flex-col md:flex-row gap-6">
-          {/* Main Content */}
-          <div className="flex-1 min-w-0">
-            {/* Title with HTML rendering */}
-            <h3 className="text-xl font-semibold mb-2">
-              <a
-                href={result.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-blue-400 transition-colors flex items-center gap-2 group"
-                dangerouslySetInnerHTML={renderHTML(result.title)}
+      <motion.div
+        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
+        <GlassCard className="p-6 group" hoverable={false}>
+          <div className="flex flex-col md:flex-row gap-6">
+            {/* Main Content */}
+            <div className="flex-1 min-w-0" style={{ transform: "translateZ(30px)" }}>
+              {/* Title with HTML rendering */}
+              <h3 className="text-xl font-semibold mb-2">
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (onOpenUrl) onOpenUrl(result);
+                    else window.open(result.url, '_blank', 'noopener,noreferrer');
+                  }}
+                  className="text-left text-white hover:text-blue-400 transition-colors flex items-center gap-2 group cursor-pointer"
+                  dangerouslySetInnerHTML={renderHTML(result.title)}
+                />
+              </h3>
+
+              {/* URL */}
+              {result.url && (
+                <div className="flex items-center gap-2 text-sm text-green-400/70 mb-3">
+                  <Globe className="h-3 w-3" />
+                  <span className="truncate">
+                    {(() => {
+                      try { return new URL(result.url).hostname }
+                      catch { return result.url }
+                    })()}
+                  </span>
+                </div>
+              )}
+
+              {/* Snippet with HTML rendering */}
+              <p
+                className="text-white/80 leading-relaxed mb-4 line-clamp-3"
+                dangerouslySetInnerHTML={renderHTML(result.snippet || result.summary)}
               />
-            </h3>
 
-            {/* URL */}
-            {result.url && (
-              <div className="flex items-center gap-2 text-sm text-green-400/70 mb-3">
-                <Globe className="h-3 w-3" />
-                <span className="truncate">
-                  {(() => {
-                    try { return new URL(result.url).hostname }
-                    catch { return result.url }
-                  })()}
-                </span>
+              {/* Tags */}
+              {result.tags && result.tags.length > 0 && (
+                <div className="flex flex-wrap gap-2 mb-3">
+                  {result.tags.slice(0, 4).map((tag, i) => (
+                    <motion.span
+                      key={i}
+                      whileHover={{ scale: 1.05 }}
+                      className="px-3 py-1 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white/70 text-xs transition-colors"
+                    >
+                      <Hash className="inline h-3 w-3 mr-1" />
+                      {tag}
+                    </motion.span>
+                  ))}
+                </div>
+              )}
+
+              {/* Meta info */}
+              <div className="flex flex-wrap items-center gap-4 text-xs text-white/50">
+                {result.author && (
+                  <span className="flex items-center gap-1">
+                    <User className="h-3 w-3" />
+                    {result.author}
+                  </span>
+                )}
+                {formattedDate && (
+                  <span className="flex items-center gap-1">
+                    <Calendar className="h-3 w-3" />
+                    {formattedDate}
+                  </span>
+                )}
+                {result.category && (
+                  <span className="flex items-center gap-1 px-2 py-0.5 rounded bg-blue-500/10 text-blue-400">
+                    <Tag className="h-3 w-3" />
+                    {result.category}
+                  </span>
+                )}
               </div>
-            )}
+            </div>
 
-            {/* Snippet with HTML rendering */}
-            <p
-              className="text-white/80 leading-relaxed mb-4 line-clamp-3"
-              dangerouslySetInnerHTML={renderHTML(result.snippet || result.summary)}
-            />
+            {/* Score & Actions */}
+            <div className="flex md:flex-col items-end justify-between md:justify-start gap-3 md:min-w-[120px]" style={{ transform: "translateZ(20px)" }}>
+              {/* Score circle */}
+              <motion.div
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                className="relative w-16 h-16 flex items-center justify-center"
+              >
+                <svg className="absolute inset-0" viewBox="0 0 36 36">
+                  <path
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                    fill="none"
+                    stroke="rgba(255,255,255,0.1)"
+                    strokeWidth="3"
+                  />
+                  <motion.path
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                    fill="none"
+                    stroke="url(#gradient)"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    initial={{ strokeDasharray: "0, 100" }}
+                    animate={{ strokeDasharray: `${(result.score || 0) * 100}, 100` }}
+                    transition={{ duration: 1, delay: index * 0.1 }}
+                  />
+                  <defs>
+                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#3b82f6" />
+                      <stop offset="100%" stopColor="#a855f7" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+                <div className="relative text-center">
+                  <div className="text-lg font-bold text-white">
+                    {Math.round((result.score || 0) * 100)}
+                  </div>
+                  <div className="text-[10px] text-white/50">SCORE</div>
+                </div>
+              </motion.div>
 
-            {/* Tags */}
-            {result.tags && result.tags.length > 0 && (
-              <div className="flex flex-wrap gap-2 mb-3">
-                {result.tags.slice(0, 4).map((tag, i) => (
-                  <motion.span
-                    key={i}
-                    whileHover={{ scale: 1.05 }}
-                    className="px-3 py-1 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white/70 text-xs transition-colors"
-                  >
-                    <Hash className="inline h-3 w-3 mr-1" />
-                    {tag}
-                  </motion.span>
-                ))}
+              {/* Action buttons */}
+              <div className="flex md:flex-col gap-2">
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={() => toggleBookmark(result)}
+                  className={`p-2 rounded-full border transition-colors ${bookmarked ? 'bg-blue-500/20 border-blue-500/50 text-blue-400' : 'bg-white/5 hover:bg-white/10 border-white/10 text-white/60 hover:text-white'}`}
+                  title={bookmarked ? "Bỏ lưu" : "Lưu"}
+                >
+                  <Bookmark className={`h-4 w-4 ${bookmarked ? 'fill-current' : ''}`} />
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={() => {
+                     navigator.clipboard.writeText(result.url)
+                     // A real app would show a toast here, but for now it's okay
+                  }}
+                  className="p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white/60 hover:text-white transition-colors"
+                  title="Copy link"
+                >
+                  <Share2 className="h-4 w-4" />
+                </motion.button>
               </div>
-            )}
-
-            {/* Meta info */}
-            <div className="flex flex-wrap items-center gap-4 text-xs text-white/50">
-              {result.author && (
-                <span className="flex items-center gap-1">
-                  <User className="h-3 w-3" />
-                  {result.author}
-                </span>
-              )}
-              {formattedDate && (
-                <span className="flex items-center gap-1">
-                  <Calendar className="h-3 w-3" />
-                  {formattedDate}
-                </span>
-              )}
-              {result.category && (
-                <span className="flex items-center gap-1 px-2 py-0.5 rounded bg-blue-500/10 text-blue-400">
-                  <Tag className="h-3 w-3" />
-                  {result.category}
-                </span>
-              )}
             </div>
           </div>
+        </GlassCard>
+      </motion.div>
+    </motion.div>
+  )
+})
 
-          {/* Score & Actions */}
-          <div className="flex md:flex-col items-end justify-between md:justify-start gap-3 md:min-w-[120px]">
-            {/* Score circle */}
-            <motion.div
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              className="relative w-16 h-16 flex items-center justify-center"
-            >
-              <svg className="absolute inset-0" viewBox="0 0 36 36">
-                <path
-                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                  fill="none"
-                  stroke="rgba(255,255,255,0.1)"
-                  strokeWidth="3"
-                />
-                <motion.path
-                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                  fill="none"
-                  stroke="url(#gradient)"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  initial={{ strokeDasharray: "0, 100" }}
-                  animate={{ strokeDasharray: `${(result.score || 0) * 100}, 100` }}
-                  transition={{ duration: 1, delay: index * 0.1 }}
-                />
-                <defs>
-                  <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#3b82f6" />
-                    <stop offset="100%" stopColor="#a855f7" />
-                  </linearGradient>
-                </defs>
-              </svg>
-              <div className="relative text-center">
-                <div className="text-lg font-bold text-white">
-                  {Math.round((result.score || 0) * 100)}
-                </div>
-                <div className="text-[10px] text-white/50">SCORE</div>
-              </div>
-            </motion.div>
+// ============================================================
+// IFRAME MODAL (WEBVIEW)
+// ============================================================
+const IframeModal = ({ result, onClose }) => {
+  if (!result) return null;
+  const originalUrl = result.url;
+  const localUrl = `/api/proxy?url=${encodeURIComponent(originalUrl)}`;
 
-            {/* Action buttons */}
-            <div className="flex md:flex-col gap-2">
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white/60 hover:text-white transition-colors"
-                title="Lưu"
-              >
-                <Bookmark className="h-4 w-4" />
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white/60 hover:text-white transition-colors"
-                title="Chia sẻ"
-              >
-                <Share2 className="h-4 w-4" />
-              </motion.button>
+  return (
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-50 flex flex-col bg-slate-900/90 backdrop-blur-sm"
+    >
+      {/* Header */}
+      <div className="flex items-center justify-between px-4 py-3 bg-slate-950 border-b border-white/10 shadow-lg">
+        <div className="flex items-center gap-3 flex-1 min-w-0">
+          <button
+            onClick={onClose}
+            className="p-2 rounded-full bg-white/5 hover:bg-white/10 text-white/70 hover:text-white transition-colors flex-shrink-0"
+            title="Đóng"
+          >
+            <X className="h-5 w-5" />
+          </button>
+          <div className="text-white/80 text-sm truncate flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-full border border-white/10 max-w-md">
+            <Globe className="h-4 w-4 flex-shrink-0 text-blue-400" />
+            <span className="truncate">{originalUrl}</span>
+          </div>
+        </div>
+        <a
+          href={originalUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/20 hover:bg-blue-500/40 text-blue-300 hover:text-blue-200 text-sm transition-colors border border-blue-500/30 flex-shrink-0 ml-4"
+        >
+          <span className="hidden sm:inline">Mở tab mới</span>
+          <ExternalLink className="h-4 w-4" />
+        </a>
+      </div>
+      
+      {/* Iframe */}
+      <div className="flex-1 w-full bg-white relative">
+        {/* Loading overlay */}
+        <div className="absolute inset-0 flex items-center justify-center bg-slate-900 -z-10">
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+            className="w-12 h-12 border-4 border-blue-500/30 border-t-blue-500 rounded-full"
+          />
+        </div>
+        <iframe
+          src={localUrl}
+          className="w-full h-full border-0"
+          title="Webview"
+          sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+        />
+      </div>
+    </motion.div>
+  )
+}
+
+// ============================================================
+// AI ANSWER CARD - Typewriter Effect
+// ============================================================
+const AIAnswerCard = ({ results, query }) => {
+  const [displayText, setDisplayText] = useState('')
+  const [isTyping, setIsTyping] = useState(true)
+  
+  useEffect(() => {
+    if (!results || results.length === 0) return
+    
+    // Generate a mock summary from the top results
+    let summaryText = `Dựa trên các kết quả hàng đầu cho "${query}", `
+    if (results[0].category) {
+      summaryText += `chủ yếu thuộc chuyên đề ${results[0].category}. `
+    }
+    
+    const topSnippets = results.slice(0, 2).map(r => 
+      r.snippet ? r.snippet.replace(/<[^>]+>/g, '').trim() : ''
+    ).filter(Boolean)
+    
+    if (topSnippets.length > 0) {
+      summaryText += `Thông tin chính: ${topSnippets[0]} `
+      if (topSnippets[1]) summaryText += `Ngoài ra: ${topSnippets[1]} `
+    } else {
+      summaryText += `Hệ thống tìm thấy ${results.length} tài liệu phù hợp để bạn tham khảo.`
+    }
+
+    setDisplayText('')
+    setIsTyping(true)
+    
+    let i = 0
+    // Tối ưu hóa: Thay vì render từng ký tự (gây lag), ta render mỗi lần 3 ký tự và tăng thời gian chờ
+    const interval = setInterval(() => {
+      i += 3
+      if (i >= summaryText.length) {
+        setDisplayText(summaryText)
+        clearInterval(interval)
+        setIsTyping(false)
+      } else {
+        setDisplayText(summaryText.substring(0, i))
+      }
+    }, 30)
+    
+    return () => clearInterval(interval)
+  }, [results, query])
+
+  if (!results || results.length === 0) return null
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="mb-8"
+    >
+      <GlassCard glow className="p-6 relative overflow-hidden border-blue-500/30">
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500" />
+        <div className="flex items-start gap-4">
+          <div className="p-3 bg-blue-500/20 rounded-full shadow-[0_0_15px_rgba(59,130,246,0.5)]">
+            <Wand2 className="h-6 w-6 text-blue-400" />
+          </div>
+          <div className="flex-1">
+            <div className="flex items-center gap-2 mb-2">
+              <h3 className="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+                DevSeek AI Summary
+              </h3>
+              <Sparkles className="h-4 w-4 text-yellow-400 animate-pulse" />
             </div>
+            <p className="text-white/90 leading-relaxed text-sm">
+              {displayText}
+              {isTyping && <span className="inline-block w-1.5 h-4 ml-1 bg-blue-400 animate-pulse" />}
+            </p>
           </div>
         </div>
       </GlassCard>
@@ -759,6 +1072,9 @@ const SearchResultsPage = () => {
   const [viewMode, setViewMode] = useState('list')
   const [sortBy, setSortBy] = useState('relevance')
   const [algorithm, setAlgorithm] = useState('hybrid')
+  const [category, setCategory] = useState('All')
+  const [difficulty, setDifficulty] = useState('All')
+  const [selectedResult, setSelectedResult] = useState(null)
   const navigate = useNavigate()
   const { addToHistory } = useSearchHistory()
 
@@ -767,20 +1083,24 @@ const SearchResultsPage = () => {
     const searchQuery = params.get('q') || ''
     const algo = params.get('algorithm') || 'hybrid'
     const sort = params.get('sort_by') || 'relevance'
+    const cat = params.get('category') || 'All'
+    const diff = params.get('difficulty') || 'All'
     setQuery(searchQuery)
     setAlgorithm(algo)
     setSortBy(sort)
+    setCategory(cat)
+    setDifficulty(diff)
 
     if (searchQuery) {
       addToHistory(searchQuery)
-      fetchResults(searchQuery, algo, sort)
+      fetchResults(searchQuery, algo, sort, cat, diff)
     }
   }, [])
 
-  const fetchResults = async (searchQuery, algo = 'hybrid', sort = 'relevance') => {
+  const fetchResults = async (searchQuery, algo = 'hybrid', sort = 'relevance', cat = 'All', diff = 'All') => {
     try {
       setLoading(true)
-      const response = await fetch(`/api/search?q=${encodeURIComponent(searchQuery)}&algorithm=${algo}&sort_by=${sort}`)
+      const response = await fetch(`/api/search?q=${encodeURIComponent(searchQuery)}&algorithm=${algo}&sort_by=${sort}&category=${encodeURIComponent(cat)}&difficulty=${encodeURIComponent(diff)}`)
       const data = await response.json()
 
       setResults(data.results || [])
@@ -788,7 +1108,8 @@ const SearchResultsPage = () => {
         total: data.total_results || 0,
         time: data.time_taken_ms || 0,
         algorithm: data.algorithm || 'HYBRID',
-        tokens: data.query_tokens || []
+        tokens: data.query_tokens || [],
+        facets: data.facets || {}
       })
       setError(null)
     } catch (err) {
@@ -801,14 +1122,25 @@ const SearchResultsPage = () => {
 
   const handleSearch = (newQuery) => {
     if (newQuery.trim()) {
-      navigate(`/search?q=${encodeURIComponent(newQuery)}&algorithm=${algorithm}&sort_by=${sortBy}`)
+      navigate(`/search?q=${encodeURIComponent(newQuery)}&algorithm=${algorithm}&sort_by=${sortBy}&category=${encodeURIComponent(category)}&difficulty=${encodeURIComponent(difficulty)}`)
     }
   }
 
   const handleAlgorithmChange = (newAlgo) => {
     setAlgorithm(newAlgo)
     if (query) {
-      navigate(`/search?q=${encodeURIComponent(query)}&algorithm=${newAlgo}&sort_by=${sortBy}`)
+      navigate(`/search?q=${encodeURIComponent(query)}&algorithm=${newAlgo}&sort_by=${sortBy}&category=${encodeURIComponent(category)}&difficulty=${encodeURIComponent(difficulty)}`)
+    }
+  }
+
+  const handleFilterChange = (type, value) => {
+    const newCat = type === 'category' ? value : category
+    const newDiff = type === 'difficulty' ? value : difficulty
+    if (type === 'category') setCategory(value)
+    if (type === 'difficulty') setDifficulty(value)
+    
+    if (query) {
+      navigate(`/search?q=${encodeURIComponent(query)}&algorithm=${algorithm}&sort_by=${sortBy}&category=${encodeURIComponent(newCat)}&difficulty=${encodeURIComponent(newDiff)}`)
     }
   }
 
@@ -887,6 +1219,40 @@ const SearchResultsPage = () => {
                 </div>
 
                 <div className="flex flex-wrap items-center gap-2">
+                  {/* Category Filter */}
+                  {stats.facets?.category && Object.keys(stats.facets.category).length > 0 && (
+                    <div className="flex items-center gap-2 p-1 rounded-full bg-white/5 border border-white/10 px-3">
+                      <Filter className="h-4 w-4 text-white/60" />
+                      <select 
+                        value={category} 
+                        onChange={(e) => handleFilterChange('category', e.target.value)}
+                        className="bg-transparent text-xs font-medium text-white/80 outline-none cursor-pointer appearance-none pr-2"
+                      >
+                        <option value="All" className="bg-slate-900">Mọi chủ đề</option>
+                        {Object.entries(stats.facets.category).map(([cat, count]) => (
+                          <option key={cat} value={cat} className="bg-slate-900">{cat} ({count})</option>
+                        ))}
+                      </select>
+                    </div>
+                  )}
+
+                  {/* Difficulty Filter */}
+                  {stats.facets?.difficulty && Object.keys(stats.facets.difficulty).length > 0 && (
+                    <div className="flex items-center gap-2 p-1 rounded-full bg-white/5 border border-white/10 px-3">
+                      <Layers className="h-4 w-4 text-white/60" />
+                      <select 
+                        value={difficulty} 
+                        onChange={(e) => handleFilterChange('difficulty', e.target.value)}
+                        className="bg-transparent text-xs font-medium text-white/80 outline-none cursor-pointer appearance-none pr-2"
+                      >
+                        <option value="All" className="bg-slate-900">Mọi cấp độ</option>
+                        {Object.entries(stats.facets.difficulty).map(([diff, count]) => (
+                          <option key={diff} value={diff} className="bg-slate-900">{diff} ({count})</option>
+                        ))}
+                      </select>
+                    </div>
+                  )}
+
                   {/* Algorithm selector */}
                   <div className="flex items-center gap-1 p-1 rounded-full bg-white/5 border border-white/10">
                     {['tfidf', 'bm25', 'hybrid'].map(algo => (
@@ -982,6 +1348,11 @@ const SearchResultsPage = () => {
           </motion.div>
         )}
 
+        {/* AI Answer Summary */}
+        {!loading && !error && results.length > 0 && (
+          <AIAnswerCard results={results} query={query} />
+        )}
+
         {/* Results */}
         {!loading && !error && results.length > 0 && (
           <div className={viewMode === 'grid'
@@ -995,10 +1366,17 @@ const SearchResultsPage = () => {
                 query={query}
                 index={index}
                 viewMode={viewMode}
+                onOpenUrl={setSelectedResult}
               />
             ))}
           </div>
         )}
+
+        <AnimatePresence>
+          {selectedResult && (
+            <IframeModal result={selectedResult} onClose={() => setSelectedResult(null)} />
+          )}
+        </AnimatePresence>
 
         {/* No Results */}
         {!loading && !error && results.length === 0 && (
@@ -1145,10 +1523,68 @@ const ScrollToTop = () => {
 // ROUTER
 // ============================================================
 const router = createBrowserRouter([
-  { path: '/', element: <><ScrollToTop /><HomePage /></> },
-  { path: '/search', element: <><ScrollToTop /><SearchResultsPage /></> },
-  { path: '/about', element: <><ScrollToTop /><AboutPage /></> }
+  { path: '/', element: <><ScrollToTop /><PageWrapper><HomePage /></PageWrapper></> },
+  { path: '/search', element: <><ScrollToTop /><PageWrapper><SearchResultsPage /></PageWrapper></> },
+  { path: '/about', element: <><ScrollToTop /><PageWrapper><AboutPage /></PageWrapper></> }
 ])
+
+// ============================================================
+// BOOKMARK DRAWER
+// ============================================================
+const BookmarkDrawer = () => {
+  const { bookmarks, isDrawerOpen, setIsDrawerOpen, toggleBookmark } = useBookmarks()
+  
+  return (
+    <AnimatePresence>
+      {isDrawerOpen && (
+        <>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsDrawerOpen(false)}
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100]"
+          />
+          <motion.div
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="fixed top-0 right-0 h-full w-full max-w-md bg-slate-900 border-l border-white/10 z-[101] flex flex-col shadow-2xl"
+          >
+            <div className="p-4 border-b border-white/10 flex items-center justify-between bg-slate-950">
+              <div className="flex items-center gap-2 text-white font-semibold text-lg">
+                <Bookmark className="h-5 w-5 text-blue-400" />
+                Bài viết đã lưu ({bookmarks.length})
+              </div>
+              <button onClick={() => setIsDrawerOpen(false)} className="p-2 rounded-full hover:bg-white/10 text-white/60 hover:text-white transition-colors">
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+              {bookmarks.length === 0 ? (
+                <div className="text-center text-white/50 mt-10">Chưa có bài viết nào được lưu.</div>
+              ) : (
+                bookmarks.map(b => (
+                  <GlassCard key={b.doc_id} className="p-4 group hoverable={false}">
+                    <div className="flex justify-between items-start gap-3">
+                      <a href={b.url} target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-400 text-sm font-medium line-clamp-2">
+                        <span dangerouslySetInnerHTML={{ __html: b.title }} />
+                      </a>
+                      <button onClick={() => toggleBookmark(b)} className="p-1.5 rounded bg-blue-500/20 text-blue-400 hover:bg-red-500/20 hover:text-red-400 transition-colors flex-shrink-0">
+                        <Bookmark className="h-4 w-4 fill-current" />
+                      </button>
+                    </div>
+                  </GlassCard>
+                ))
+              )}
+            </div>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
+  )
+}
 
 // ============================================================
 // APP
@@ -1156,7 +1592,11 @@ const router = createBrowserRouter([
 function App() {
   return (
     <ThemeProvider>
-      <RouterProvider router={router} />
+      <BookmarksProvider>
+        <CustomCursor />
+        <BookmarkDrawer />
+        <RouterProvider router={router} />
+      </BookmarksProvider>
     </ThemeProvider>
   )
 }
