@@ -44,6 +44,14 @@ def index():
     vocab_size = len(engine.inverted_index)
     return render_template("index.html", doc_count=doc_count, vocab_size=vocab_size)
 
+@app.route("/react")
+def react_app():
+    return send_from_directory('static', 'index.html')
+
+@app.route("/react/<path:subpath>")
+def react_subpaths(subpath):
+    return send_from_directory('static', 'index.html')
+
 @app.route("/search")
 def search():
     query = request.args.get("q", "").strip()
@@ -176,6 +184,8 @@ def api_annotate():
         json.dump(gt_data, f, ensure_ascii=False, indent=2)
 
     return jsonify({"status": "success", "message": f"Đã cập nhật Ground Truth cho {query_id}", "total_annotated": len(gt_data)})
+
+from flask import send_from_directory
 
 if __name__ == "__main__":
     print("[Flask] Đang khởi động DevSeek Web Engine - Máy tìm kiếm Chuyên sâu IT...")
