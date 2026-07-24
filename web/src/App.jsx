@@ -1036,9 +1036,9 @@ const AIAnswerCard = ({ results, query }) => {
       transition={{ duration: 0.5 }}
       className="mb-8"
     >
-      <GlassCard glow className="p-6 relative overflow-hidden border-blue-500/30">
+      <GlassCard glow className="relative overflow-hidden border-blue-500/30">
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500" />
-        <div className="flex items-start gap-4">
+        <div className="p-6 flex items-start gap-4">
           <div className="p-3 bg-blue-500/20 rounded-full shadow-[0_0_15px_rgba(59,130,246,0.5)]">
             <Wand2 className="h-6 w-6 text-blue-400" />
           </div>
